@@ -23,6 +23,10 @@ body {
     box-shadow: 0 0 10px #252529;
 }
 
+.custom-card-body{
+    color: white;
+}
+
 .custom-container{
     margin-top: 50px;
 }

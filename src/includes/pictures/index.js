@@ -19,5 +19,5 @@ async function init() {
 
     const importer = new Importer('multiple pictures');
     const importerElement = importer.render();
-    containerElement.appendChild(importerElement);
+    cardElement.appendChild(importerElement);
 }

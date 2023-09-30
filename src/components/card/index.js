@@ -9,6 +9,7 @@ class Card {
 
         this.cardBody = document.createElement('div');
         this.cardBody.classList.add('card-body');
+        this.cardBody.classList.add('custom-card-body');
         this.card.appendChild(this.cardBody);
     }
 
