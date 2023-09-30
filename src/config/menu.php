@@ -1,4 +1,4 @@
-<!-- Menu barre -->
+<!-- Menu bar -->
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #0B1321;">
 <div class="container-fluid">
     <!-- logo -->
@@ -9,11 +9,9 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            
-        <!-- item à gauche -->
+
         <ul class="navbar-nav" id="navbar-gauche">
         </ul>
-
 
         <ul class="navbar-nav ml-auto" id="navbar-droite">
             <li class="nav-item">
@@ -35,6 +33,7 @@
 </nav>
 
 <script>
+
 const menuU1 = document.getElementById("navbar-gauche");
 const menuU2 = document.getElementById("navbar-droite");
 fetch('/src/config/menu.json')
@@ -57,7 +56,7 @@ fetch('/src/config/menu.json')
                 a.appendChild(text);
                 li.appendChild(a);
                 if (item.position == 'droite') {
-                    if (item.contenu) { // Si le menu a un contenu, créer le dropdown
+                    if (item.contenu) {
                         const dropdown = document.createElement("li");
                         dropdown.classList.add("nav-item", "dropdown");
                         const dropdownLink = document.createElement("a");
@@ -70,7 +69,7 @@ fetch('/src/config/menu.json')
                         const dropdownMenu = document.createElement("ul");
                         dropdownMenu.classList.add("dropdown-menu");
                         dropdownMenu.classList.add("dropdown-menu-color");
-                        item.contenu.forEach(contenuItem => { // Ajouter chaque élément du menu au dropdown
+                        item.contenu.forEach(contenuItem => {
                             if (!('lvl' in contenuItem) || contenuItem.lvl <= <?php echo isset($_SESSION['lvl']) ? $_SESSION['lvl'] : 0 ?>) {
                                 const dropdownMenuItem = document.createElement("li");
                                 dropdownMenuItem.classList.add("dropdown-item");
@@ -92,14 +91,14 @@ fetch('/src/config/menu.json')
                         });
                         dropdown.appendChild(dropdownMenu);
                         menuU2.insertBefore(dropdown, menuU2.firstChild);
-                        dropdownLink.addEventListener("click", () => { // Ajouter l'événement "click" pour afficher le dropdown
+                        dropdownLink.addEventListener("click", () => {
                             dropdownMenu.classList.toggle("show");
                         });
-                    } else { // Sinon, ajouter l'élément de menu normalement
+                    } else {
                         menuU2.insertBefore(li, menuU2.firstChild);
                     }
                 } else if (item.position == 'gauche') {
-                    if (item.contenu) { // Si le menu a un contenu, créer le dropdown
+                    if (item.contenu) {
                         const dropdown = document.createElement("li");
                         dropdown.classList.add("nav-item", "dropdown");
                         const dropdownLink = document.createElement("a");
@@ -112,7 +111,7 @@ fetch('/src/config/menu.json')
                         const dropdownMenu = document.createElement("ul");
                         dropdownMenu.classList.add("dropdown-menu");
                         dropdownMenu.classList.add("dropdown-menu-color");
-                        item.contenu.forEach(contenuItem => { // Ajouter chaque élément du menu au dropdown
+                        item.contenu.forEach(contenuItem => {
                             if (!('lvl' in contenuItem) || contenuItem.lvl <= <?php echo isset($_SESSION['lvl']) ? $_SESSION['lvl'] : 0 ?>) {
                                 const dropdownMenuItem = document.createElement("li");
                                 dropdownMenuItem.classList.add("dropdown-item");
@@ -134,10 +133,10 @@ fetch('/src/config/menu.json')
                         });
                         dropdown.appendChild(dropdownMenu);
                         menuU1.appendChild(dropdown);
-                        dropdownLink.addEventListener("click", () => { // Ajouter l'événement "click" pour afficher le dropdown
+                        dropdownLink.addEventListener("click", () => {
                             dropdownMenu.classList.toggle("show");
                         });
-                    } else { // Sinon, ajouter l'élément de menu normalement
+                    } else {
                         menuU1.appendChild(li);
                     }
                 };

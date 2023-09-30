@@ -1,0 +1,11 @@
+[
+    {
+        "label": "Menu",
+        "url": "/"
+    },
+    {
+        "label": "Pictures",
+        "url": "/pictures",
+        "position": "gauche"
+    } 
+]
