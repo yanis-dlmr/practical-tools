@@ -11,9 +11,11 @@ class Card {
     }
 
     setTitle(title) {
-        this.cardTitle.classList.add('card-title');
-        this.cardTitle.innerText = title;
-        this.cardBody.appendChild(this.cardTitle);
+        this.cardHeader = document.createElement('h3');
+        this.cardHeader.classList.add('card-header');
+        this.cardHeader.classList.add('card-title');
+        this.cardHeader.innerText = title;
+        this.cardBody.appendChild(this.cardHeader);
     }
 
     render() {
