@@ -10,7 +10,7 @@
     <body>
 
         <div class="container container-sm" style="margin-top: 100px; max-width: 500px;">
-            <div class="card" style="background-color: #252529;">
+            <div class="card" style="background-color: #161618;">
                 <h3 class="card-header text-center title-color">
                     Pictures !
                 </h3>
