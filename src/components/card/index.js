@@ -11,7 +11,6 @@ class Card {
     }
 
     setTitle(title) {
-        this.cardTitle = document.createElement('h5');
         this.cardTitle.classList.add('card-title');
         this.cardTitle.innerText = title;
         this.cardBody.appendChild(this.cardTitle);
