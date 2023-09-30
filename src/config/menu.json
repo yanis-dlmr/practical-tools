@@ -6,6 +6,7 @@
     {
         "label": "Pictures",
         "url": "/pictures",
+        "icon": "/src/assets/images/camera.png",
         "position": "gauche"
     } 
 ]
