@@ -67,6 +67,7 @@ fetch('/src/config/menu.json')
                                 if (contenuItem.icon) {
                                     const dropdownMenuIcon = document.createElement("img");
                                     dropdownMenuIcon.src = contenuItem.icon;
+                                    dropdownMenuIcon.classList.add("icon-menu");
                                     dropdownMenuLink.appendChild(dropdownMenuIcon);
                                 }
                                 dropdownMenuLink.appendChild(document.createTextNode(contenuItem.label));
@@ -106,7 +107,6 @@ fetch('/src/config/menu.json')
                                 dropdownMenuLink.href = contenuItem.url;
                                 if (contenuItem.icon) {
                                     const dropdownMenuIcon = document.createElement("img");
-                                    dropdownMenuIcon.style.height = "30px";
                                     dropdownMenuIcon.src = contenuItem.icon;
                                     dropdownMenuIcon.classList.add("icon-menu");
                                     dropdownMenuLink.appendChild(dropdownMenuIcon);
