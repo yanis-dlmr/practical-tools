@@ -1,13 +1,8 @@
 body {
-    background-color: black;
+    background-color: #2e3138;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
     margin: 0;
     padding: 0;
-}
-
-.icon-menu{
-    margin-right: 20px;
-    height: 10px;
 }

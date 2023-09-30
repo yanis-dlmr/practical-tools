@@ -67,7 +67,6 @@ fetch('/src/config/menu.json')
                                 if (contenuItem.icon) {
                                     const dropdownMenuIcon = document.createElement("img");
                                     dropdownMenuIcon.src = contenuItem.icon;
-                                    dropdownMenuIcon.classList.add("icon-menu");
                                     dropdownMenuLink.appendChild(dropdownMenuIcon);
                                 }
                                 dropdownMenuLink.appendChild(document.createTextNode(contenuItem.label));
