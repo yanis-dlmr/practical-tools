@@ -13,3 +13,5 @@ class Button {
     }
 
 }
+
+export { Button }
