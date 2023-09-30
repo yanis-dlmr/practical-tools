@@ -9,7 +9,7 @@
 
     <body>
 
-        <div class="container container-sm" style="margin-top: 100px; max-width: 500px;">
+        <div class="container container-sm" style="margin-top: 100px; max-width: 700px;">
             <div class="card" style="background-color: #252529;">
                 <h3 class="card-header text-center title-color">
                     Welcome !
