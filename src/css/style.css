@@ -7,6 +7,10 @@ body {
     padding: 0;
 }
 
+.title-color {
+    color: #2061ae;
+}
+
 .icon-menu{
     margin-right: 5px;
     height: 20px;
