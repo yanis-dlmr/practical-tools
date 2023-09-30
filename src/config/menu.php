@@ -1,35 +1,22 @@
 <!-- Menu bar -->
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #0B1321;">
-<div class="container-fluid">
-    <!-- logo -->
-    <a class="navbar-brand" href="/">
-        <img style="height:30px;" src="/src/assets/images/logo.ico"> Practicals Tools
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="container-fluid">
+        <!-- logo -->
+        <a class="navbar-brand" href="/">
+            <img style="height:30px;" src="/src/assets/images/logo.ico"> Practicals Tools
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-        <ul class="navbar-nav" id="navbar-gauche">
-        </ul>
+            <ul class="navbar-nav" id="navbar-gauche">
+            </ul>
 
-        <ul class="navbar-nav ml-auto" id="navbar-droite">
-            <li class="nav-item">
-                <?php
-                    if(isset($_SESSION['pseudo']) && isset($_SESSION['lvl'])){
-                        ?>
-                            <a class="nav-link text-info" href="/src/database/deconnexion.php">Se déconnecter : <?= $_SESSION['pseudo'] ?> lvl <?= $_SESSION['lvl'] ?></a>
-                        <?php
-                    }else{
-                        ?>
-                            <a class="nav-link text-info" href="/src/html/login.php">Connexion / Inscription</a>
-                        <?php
-                    }
-                ?>
-            </li>
-        </ul>
+            <ul class="navbar-nav ml-auto" id="navbar-droite">
+            </ul>
+        </div>
     </div>
-</div>
 </nav>
 
 <script>
