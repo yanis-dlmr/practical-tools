@@ -1,0 +1,19 @@
+name: build website
+on: [push]
+jobs:
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: copy file via ssh password
+      uses: appleboy/scp-action@v0.1.4
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: 22 
+        rm: true
+        source: "./*"
+        target: /home/ubuntu/www/yanis-dlmr.fr/tp-thermique
