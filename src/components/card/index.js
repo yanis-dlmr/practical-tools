@@ -1,9 +1,11 @@
 class Card {
 
-    constructor() {
+    constructor(title) {
         this.card = document.createElement('div');
         this.card.classList.add('card');
         this.card.classList.add('custom-card')
+
+        this.setTitle(title);
 
         this.cardBody = document.createElement('div');
         this.cardBody.classList.add('card-body');
