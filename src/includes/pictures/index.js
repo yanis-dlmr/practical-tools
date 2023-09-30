@@ -1,4 +1,4 @@
-import { Card } from '/src/components/card/index.js';
+import { Card } from '/src/components/card/';
 
 document.addEventListener('DOMContentLoaded', function() {
     init();
