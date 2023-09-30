@@ -1,5 +1,5 @@
 <!-- Menu bar -->
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #0B1321;">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #252529;">
     <div class="container-fluid">
         <!-- logo -->
         <a class="navbar-brand" href="/">
