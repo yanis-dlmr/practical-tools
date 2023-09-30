@@ -9,6 +9,8 @@ body {
 
 .card-title {
     color: white;
+    margin: 1rem;
+    font-size: 2rem;
 }
 
 .icon-menu{
@@ -21,6 +23,7 @@ body {
     border: 1px solid #252529;
     border-radius: 10px;
     box-shadow: 0 0.5rem 1rem #252529;
+    margin: 1rem;
 }
 
 .custom-card-body{
