@@ -11,7 +11,7 @@
 
         <div class="container container-sm" style="margin-top: 100px; max-width: 700px;">
             <div class="card" style="background-color: #252529;">
-                <h3 class="card-header text-center title-color">
+                <h3 class="card-header text-center card-title">
                     Welcome !
                 </h3>
                 <div class="card-body" style="color: #fff;">
