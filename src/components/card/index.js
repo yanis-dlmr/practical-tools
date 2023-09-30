@@ -15,7 +15,7 @@ class Card {
         this.cardHeader.classList.add('card-header');
         this.cardHeader.classList.add('card-title');
         this.cardHeader.innerText = title;
-        this.cardBody.appendChild(this.cardHeader);
+        this.card.appendChild(this.cardHeader);
     }
 
     render() {
