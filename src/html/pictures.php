@@ -10,6 +10,6 @@
     <body>
     </body>
 
-    <script type="module" src = "/src/include/pictures/index.js"></script>
+    <script type="module" src="/src/includes/pictures/index.js"></script>
 
 </html>
