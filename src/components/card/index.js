@@ -21,6 +21,10 @@ class Card {
         this.card.appendChild(this.cardHeader);
     }
 
+    addComponent(component) {
+        this.cardBody.appendChild(component);
+    }
+
     render() {
         return this.card;
     }

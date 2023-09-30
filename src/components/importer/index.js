@@ -2,20 +2,16 @@ class Importer {
 
     constructor(kind) {
         if (kind == 'multiple pictures') {
-            this.importer = document.createElement('input');
-            this.importer.setAttribute('type', 'file');
-            this.importer.setAttribute('multiple', 'multiple');
-            this.importer.classList.add('custom-importer');
-    
-            this.label = document.createElement('label');
-            this.label.classList.add('custom-label');
-            this.label.innerText = 'Select a bunch of pictures';
-            this.label.appendChild(this.importer);
+            this.fileInput = document.createElement('input');
+            this.fileInput.classList.add('form-control');
+            this.fileInput.type = 'file';
+            this.fileInput.accept = '.BMP';
+            this.fileInput.classList.add('mb-3');
         }
     }
 
     render() {
-        return this.label;
+        return this.fileInput;
     }    
 }
 
