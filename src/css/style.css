@@ -31,5 +31,6 @@ body {
 }
 
 .custom-container{
-    margin: 1rem;
+    margin-top: 40px;
+    padding: 1rem;
 }
