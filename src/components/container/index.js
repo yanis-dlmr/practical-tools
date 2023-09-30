@@ -2,7 +2,6 @@ class Container {
 
     constructor() {
         this.container = document.createElement('div');
-        this.container.classList.add('container');
         this.container.classList.add('custom-container');
         this.container.classList.add('container-fluid');
     }
