@@ -17,7 +17,7 @@ async function init() {
 
     document.body.appendChild(containerElement);
 
-    const importer = Importer('multiple pictures');
+    const importer = new Importer('multiple pictures');
     const importerElement = importer.render();
     containerElement.appendChild(importerElement);
 }
