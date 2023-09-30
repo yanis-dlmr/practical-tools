@@ -1,6 +1,6 @@
 import { Card } from '/src/components/card/index.js';
 import { Container } from '/src/components/container/index.js';
-import { Importer } from '/src/includes/pictures/importer.js';
+import { Importer } from '/src/components/importer/index.js';
 
 document.addEventListener('DOMContentLoaded', function() {
     init();
