@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 async function init() {
 
-    const card = new Card('Pictures');
+    const card = new Card('Pictures treatment');
     const cardElement = card.render();
 
     const container = new Container();
