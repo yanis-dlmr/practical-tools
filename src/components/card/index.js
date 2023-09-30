@@ -3,6 +3,7 @@ class Card {
     constructor() {
         this.card = document.createElement('div');
         this.card.classList.add('card');
+        this.card.classList.add('custom-card')
 
         this.cardBody = document.createElement('div');
         this.cardBody.classList.add('card-body');
