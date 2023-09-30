@@ -66,7 +66,7 @@ fetch('/src/config/menu.json')
                                 dropdownMenuLink.href = contenuItem.url;
                                 if (contenuItem.icon) {
                                     const dropdownMenuIcon = document.createElement("img");
-                                    dropdownMenuIcon.style.height = "16px";
+                                    dropdownMenuIcon.style.height = "15px";
                                     dropdownMenuIcon.src = contenuItem.icon;
                                     dropdownMenuIcon.classList.add("icon-menu");
                                     dropdownMenuLink.appendChild(dropdownMenuIcon);
