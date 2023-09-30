@@ -9,7 +9,6 @@ body {
 
 .card-title {
     color: white;
-    font-weight: bold;
 }
 
 .icon-menu{
@@ -25,6 +24,7 @@ body {
 }
 
 .custom-container{
-    margin: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
     margin-top: 50px;
 }
