@@ -16,4 +16,4 @@ jobs:
         port: 22 
         rm: true
         source: "./*"
-        target: /home/ubuntu/www/yanis-dlmr.fr/tp-thermique
+        target: /home/ubuntu/www/yanis-dlmr.fr/practicals
