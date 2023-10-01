@@ -67,30 +67,16 @@ class PictureManager {
 
         validation_buttonElement.addEventListener('click', async () => {
             const files = importerElement.files;
-            this.cv_pictures = [];
+            this.pictures = [];
+            // store all the pictures in an array
             for (let i = 0; i < files.length; i++) {
                 const file = files[i];
-                // convert file into img object
-                const img = await new Promise((resolve, reject) => {
-                    const reader = new FileReader();
-                    reader.onload = () => resolve(reader.result);
-                    reader.onerror = reject;
-                    reader.readAsDataURL(file);
-                });
-                // convert img object into mat object, only black and white
-                const mat = await new Promise((resolve, reject) => {
-                    const imgElement = document.createElement('img');
-                    imgElement.onload = () => {
-                        const mat = cv.imread(imgElement);
-                        cv.cvtColor(mat, mat, cv.COLOR_RGB2GRAY);
-                        resolve(mat);
-                    };
-                    imgElement.onerror = reject;
-                    imgElement.src = img;
-                });
-                this.cv_pictures.push(mat);
+                const url = URL.createObjectURL(file);
+                const picture = await urlToImage(url);
+                this.pictures.push(picture);
             }
-            console.table(this.cv_pictures);
+
+            console.table(this.pictures);
 
             if (selectElementParameters.value == 'Display only') {
                 this.display_pictures();
@@ -118,32 +104,16 @@ class PictureManager {
     }
 
     display_pictures = () => {
-        for (let i = 0; i < this.cv_pictures.length; i++) {
-            const picture = this.cv_pictures[i];
-            cv.imshow('canvasOutputBlock', picture);
-            picture.delete();
+        const canvasOutput = document.getElementById('canvasOutputBlock');
+        const ctx = canvasOutput.getContext('2d');
+        ctx.clearRect(0, 0, canvasOutput.width, canvasOutput.height);
+        for (let i = 0; i < this.pictures.length; i++) {
+            const picture = this.pictures[i];
+            ctx.drawImage(picture, 0, 0, canvasOutput.width, canvasOutput.height);
         }
     }
 
     average_pictures = () => {
-        const avg_picture = this.computeAverageImage();
-        cv.imshow('canvasOutputBlock', avg_picture);
-        picture.delete();
-    }
-    
-    computeAverageImage = () => {
-        const avg_picture = new cv.Mat();
-        const nb_pictures = this.cv_pictures.length;
-        const rows = this.cv_pictures[0].rows;
-        const cols = this.cv_pictures[0].cols;
-        const type = this.cv_pictures[0].type();
-        const channels = this.cv_pictures[0].channels();
-        avg_picture.create(rows, cols, type);
-        for (let i = 0; i < nb_pictures; i++) {
-            const picture = this.cv_pictures[i];
-            cv.addWeighted(avg_picture, 1, picture, 1 / nb_pictures, 0, avg_picture);
-        }
-        return avg_picture;
     }
 
 }
