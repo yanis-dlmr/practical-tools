@@ -77,8 +77,17 @@ class PictureManager {
                     reader.onerror = reject;
                     reader.readAsDataURL(file);
                 });
-                // convert img object into mat object
-                const mat = cv.imread(await urlToImage(img));
+                // convert img object into mat object, only black and white
+                const mat = await new Promise((resolve, reject) => {
+                    const imgElement = document.createElement('img');
+                    imgElement.onload = () => {
+                        const mat = cv.imread(imgElement);
+                        cv.cvtColor(mat, mat, cv.COLOR_RGB2GRAY);
+                        resolve(mat);
+                    };
+                    imgElement.onerror = reject;
+                    imgElement.src = img;
+                });
                 this.cv_pictures.push(mat);
             }
             console.table(this.cv_pictures);
