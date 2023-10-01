@@ -98,6 +98,7 @@ class PictureManager {
                 this.average_pictures();
             }
 
+            this.cv_pictures.delete();
         });
 
 
