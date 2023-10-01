@@ -62,9 +62,27 @@ async function init() {
         const pictures = [];
         for (let i = 0; i < files.length; i++) {
             const file = files[i];
-            const imgMat = await cv.imgMatFromFile(file);
-            console.log(imgMat);
+            let mat = cv.imread(imgElement);
+            cv.imshow('canvasOutput', mat);
+            mat.delete();
         }
         console.log(pictures);
     });
+
+
+    // Output  
+    const card_output = new Card('Output');
+    const cardElementOutput = card_output.render();
+
+    const container_output = new Container('12');
+    container_output.addComponent(cardElementOutput);
+    const containerElementOutput = container_output.render();
+
+    row.appendChild(containerElementOutput);
+
+    const canvasOutput = document.createElement('canvas');
+    canvasOutput.id = 'canvasOutput';
+    canvasOutput.width = 640;
+    canvasOutput.height = 480;
+    card_output.addComponent(canvasOutput);
 }
