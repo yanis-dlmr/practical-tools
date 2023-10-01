@@ -168,7 +168,7 @@ class PictureManager {
         const canvasOutput = document.getElementById('canvasOutputBlock');
         const ctx = canvasOutput.getContext('2d');
         ctx.clearRect(0, 0, canvasOutput.width, canvasOutput.height);
-        add_output_block('Fist cv picture as test', 'nomnomnom', this.cv_pictures[0])
+        this.add_output_block('Fist cv picture as test', 'nomnomnom', this.cv_pictures[0])
 
         // process the pictures
         console.log('process_pictures');
