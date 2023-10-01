@@ -126,50 +126,23 @@ class PictureManager {
     }
 
     average_pictures = () => {
-        // convert mat object into Uint8Array 
-        const imageList = [];
-        for (let i = 0; i < this.cv_pictures.length; i++) {
-            const picture = this.cv_pictures[i];
-            const image = new Uint8Array(picture.data);
-            imageList.push(image);
-            picture.delete();
-        }
-        console.log(imageList)
-        console.table(imageList)
-        // compute average image
-        const avg_image = this.computeAverageImage(imageList);
-        // convert Uint8Array into mat object
-        const avg_picture = new cv.Mat(avg_image, avg_image.length / 3, cv.CV_8UC3);
-        // display average image
+        const avg_picture = this.computeAverageImage(this.cv_pictures);
         cv.imshow('canvasOutputBlock', avg_picture);
         picture.delete();
     }
     
-    computeAverageImage = (imageList) => {
-        // compute average image
-        let avg_image = imageList[0];
-        for (let i = 1; i < imageList.length; i++) {
-            avg_image = this.addImage(avg_image, imageList[i]);
+    computeAverageImage = (images) => {
+        const avg = new cv.Mat(images[0].rows, images[0].cols, cv.CV_32FC3, [0, 0, 0]);
+        for (let i = 0; i < images.length; i++) {
+            const image = images[i];
+            const tmp = new cv.Mat();
+            image.convertTo(tmp, cv.CV_32FC3);
+            cv.add(avg, tmp, avg);
+            tmp.delete();
         }
-        avg_image = this.divideImage(avg_image, imageList.length);
-        return avg_image;
-    };
-
-    addImage = (image1, image2) => {
-        const result = new Uint8Array(image1.length);
-        for (let i = 0; i < image1.length; i++) {
-            result[i] = image1[i] + image2[i];
-        }
-        return result;
-    };
-
-    divideImage = (image, divisor) => {
-        const result = new Uint8Array(image.length);
-        for (let i = 0; i < image.length; i++) {
-            result[i] = image[i] / divisor;
-        }
-        return result;
-    };
+        avg.convertTo(avg, cv.CV_8UC3, 1.0 / images.length);
+        return avg;
+    }
 
 }
 
