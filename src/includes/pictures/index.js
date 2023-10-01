@@ -89,8 +89,8 @@ class PictureManager {
 
 
         // Output  
-        const card_output = new Card('Output');
-        const cardElementOutput = card_output.render();
+        this.card_output = new Card('Output');
+        const cardElementOutput = this.card_output.render();
 
         const container_output = new Container('12');
         container_output.addComponent(cardElementOutput);
@@ -100,7 +100,7 @@ class PictureManager {
 
         const canvasOutput = document.createElement('canvas');
         canvasOutput.id = 'canvasOutputBlock';
-        card_output.addComponent(canvasOutput);
+        this.card_output.addComponent(canvasOutput);
     }
 
     display_pictures = () => { // Display all the pictures in the output block with their original size
@@ -206,18 +206,18 @@ class PictureManager {
     add_output_block (title, text, cv_picture) {
         const caption = new Caption(title);
         const captionElement = caption.render();
-        card_output.addComponent(captionElement);
+        this.card_output.addComponent(captionElement);
 
         const textElement = document.createElement('p');
         textElement.innerHTML = text;
-        card_output.addComponent(textElement);
+        this.card_output.addComponent(textElement);
 
         const canvasOutput = document.createElement('canvas');
         canvasOutput.id = 'canvasOutputBlock' + title;
         canvasOutput.width = cv_picture.cols;
         canvasOutput.height = cv_picture.rows;
         cv.imshow('canvasOutputBlock' + title, cv_picture);
-        card_output.addComponent(canvasOutput);
+        this.card_output.addComponent(canvasOutput);
     }
 }
 
