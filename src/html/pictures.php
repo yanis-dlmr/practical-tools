@@ -11,7 +11,5 @@
     </body>
 
     <script type="module" src="/src/includes/pictures/index.js"></script>
-    <script async src="/src/includes/pictures/opencv.js" type="text/javascript"></script>
-
 
 </html>
