@@ -56,7 +56,24 @@ async function init() {
     const validation_button = new Button('Compute');
     const validation_buttonElement = validation_button.render();
     card.addComponent(validation_buttonElement);
+    
+    // Output  
+    const card_output = new Card('Output');
+    const cardElementOutput = card_output.render();
 
+    const container_output = new Container('12');
+    container_output.addComponent(cardElementOutput);
+    const containerElementOutput = container_output.render();
+
+    row.appendChild(containerElementOutput);
+
+    const canvasOutput = document.createElement('canvas');
+    canvasOutput.id = 'canvasOutputBlock';
+    //canvasOutput.width = 640;
+    //canvasOutput.height = 480;
+    card_output.addComponent(canvasOutput);
+
+    // Event listeners
     validation_buttonElement.addEventListener('click', async function() {
         const files = importerElement.files;
         const pictures = [];
@@ -70,19 +87,4 @@ async function init() {
     });
 
 
-    // Output  
-    const card_output = new Card('Output');
-    const cardElementOutput = card_output.render();
-
-    const container_output = new Container('12');
-    container_output.addComponent(cardElementOutput);
-    const containerElementOutput = container_output.render();
-
-    row.appendChild(containerElementOutput);
-
-    const canvasOutput = document.createElement('canvas');
-    canvasOutput.id = 'canvasOutputBlock';
-    canvasOutput.width = 640;
-    canvasOutput.height = 480;
-    card_output.addComponent(canvasOutput);
 }
