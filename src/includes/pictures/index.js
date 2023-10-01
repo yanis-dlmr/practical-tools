@@ -63,7 +63,7 @@ async function init() {
         for (let i = 0; i < files.length; i++) {
             const file = files[i];
             let mat = cv.imread(file);
-            cv.imshow('canvasOutput', mat);
+            cv.imshow('canvasOutputBlock', mat);
             mat.delete();
         }
         console.log(pictures);
@@ -81,7 +81,7 @@ async function init() {
     row.appendChild(containerElementOutput);
 
     const canvasOutput = document.createElement('canvas');
-    canvasOutput.id = 'canvasOutput';
+    canvasOutput.id = 'canvasOutputBlock';
     canvasOutput.width = 640;
     canvasOutput.height = 480;
     card_output.addComponent(canvasOutput);
