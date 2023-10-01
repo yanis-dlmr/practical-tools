@@ -90,9 +90,8 @@ class PictureManager {
                         const data = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
                         const image = new Uint8Array(data);
                         console.log(image)
-                        // create mat object
-                        const mat = cv.imread(imgElement);
-                        cv.cvtColor(mat, mat, cv.COLOR_RGB2GRAY);
+                        // create mat object from Uint8Array object
+                        const mat = new cv.Mat(image, image.length / 3, cv.CV_8UC3);
                         resolve(mat);
                     };
                     imgElement.onerror = reject;
