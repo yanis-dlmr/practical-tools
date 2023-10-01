@@ -38,7 +38,7 @@ class PictureManager {
         const captionElementParameters = caption_parameters.render();
         card_parameters.addComponent(captionElementParameters);
 
-        const select_parameters = new Select(['Display only', 'Average']);
+        const select_parameters = new Select(['Display only', 'Average', 'Determine axis']);
         const selectElementParameters = select_parameters.render();
         card_parameters.addComponent(selectElementParameters);
 
@@ -82,6 +82,8 @@ class PictureManager {
                 this.display_pictures();
             } else if (selectElementParameters.value == 'Average') {
                 this.compute_average_pictures();
+            } else if (selectElementParameters.value == 'Determine axis') {
+                this.compute_determine_axis();
             }
         });
 
@@ -143,6 +145,31 @@ class PictureManager {
         document.getElementById('canvasOutputBlock').replaceWith(this.average_picture);
     }
 
+    compute_determine_axis = () => {
+        // convert all the pictures into cv.Mat
+        this.cv_pictures = [];
+        for (let i = 0; i < this.pictures.length; i++) {
+            const canvas = document.createElement('canvas');
+            canvas.width = this.pictures[i].width;
+            canvas.height = this.pictures[i].height;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(this.pictures[i], 0, 0);
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const data = imageData.data;
+            const length = data.length;
+            const mat = new cv.Mat(canvas.height, canvas.width, cv.CV_8UC4);
+            const mat_data = mat.data;
+            for (let j = 0; j < length; j++) {
+                mat_data[j] = data[j];
+            }
+            this.cv_pictures.push(mat);
+        }
+        // display the first picture in the output block using cv
+        const canvasOutput = document.getElementById('canvasOutputBlock');
+        const ctx = canvasOutput.getContext('2d');
+        ctx.clearRect(0, 0, canvasOutput.width, canvasOutput.height);
+        cv.imshow('canvasOutputBlock', this.cv_pictures[0]);
+    }
 }
 
 async function urlToImage(url) {
