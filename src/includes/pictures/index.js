@@ -14,14 +14,24 @@ async function init() {
     const card = new Card('Pictures treatment');
     const cardElement = card.render();
 
-    const container = new Container('6');
-    container.addComponent(cardElement);
-    const containerElement = container.render();
+    const container_parameters = new Container('3');
+    container_parameters.addComponent(cardElement);
+    const containerParametersElement = container_parameters.render();
 
-    document.body.appendChild(containerElement);
+    document.body.appendChild(containerParametersElement);
 
-    const caption = new Caption('Import your pictures');
-    const captionElement = caption.render();
+    var caption = new Caption('Kind of treatment');
+    var captionElement = caption.render();
+    card.addComponent(captionElement);
+
+    const container_pictures = new Container('7');
+    container_pictures.addComponent(cardElement);
+    const containerPicturesElement = container_pictures.render();
+
+    document.body.appendChild(containerPicturesElement);
+
+    var caption = new Caption('Import your pictures');
+    var captionElement = caption.render();
     card.addComponent(captionElement);
 
     const importer = new Importer('multiple pictures');
