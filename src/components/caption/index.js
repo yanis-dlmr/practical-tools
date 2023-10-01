@@ -4,7 +4,7 @@ class Caption {
         this.caption = document.createElement("div");
         this.caption.textContent = title;
         this.caption.setAttribute("class", "h4");
-        this.caption.classList.add('m-3');
+        this.caption.classList.add('mb-3');
     }
 
     render() {
