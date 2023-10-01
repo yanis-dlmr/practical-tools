@@ -11,7 +11,7 @@
     </body>
 
     <script type="module" src="/src/includes/pictures/index.js"></script>
-    <script src=" https://cdn.jsdelivr.net/npm/opencv@7.0.0/lib/opencv.min.js "></script>
+    <script async src="/src/includes/pictures/opencv.js"></script>
 
 
 </html>
