@@ -31,6 +31,10 @@ async function init() {
     const captionElementParameters = caption_parameters.render();
     card_parameters.addComponent(captionElementParameters);
 
+    const select_parameters = new Select(['Display only', 'Average']);
+    const selectElementParameters = select_parameters.render();
+    card_parameters.addComponent(selectElementParameters);
+
 
     // Data import
     const card = new Card('Data importation');

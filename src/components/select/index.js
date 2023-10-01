@@ -6,6 +6,7 @@ class Select {
 
     render() {
         const select = document.createElement('select');
+        select.style.color = 'black';
         select.classList.add('form-control');
         select.classList.add('mb-3');
         this.options.forEach(option => {
