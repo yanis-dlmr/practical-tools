@@ -81,6 +81,16 @@ class PictureManager {
                 const mat = await new Promise((resolve, reject) => {
                     const imgElement = document.createElement('img');
                     imgElement.onload = () => {
+                        // create Uint8Array object
+                        const canvas = document.createElement('canvas');
+                        canvas.width = imgElement.width;
+                        canvas.height = imgElement.height;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(imgElement, 0, 0);
+                        const data = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+                        const image = new Uint8Array(data);
+                        console.log(image)
+                        // create mat object
                         const mat = cv.imread(imgElement);
                         cv.cvtColor(mat, mat, cv.COLOR_RGB2GRAY);
                         resolve(mat);
