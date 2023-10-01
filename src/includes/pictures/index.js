@@ -14,7 +14,7 @@ async function init() {
     const card = new Card('Pictures treatment');
     const cardElement = card.render();
 
-    const container = new Container('12');
+    const container = new Container('6');
     container.addComponent(cardElement);
     const containerElement = container.render();
 
