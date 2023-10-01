@@ -110,8 +110,8 @@ class PictureManager {
         canvasOutput.width = this.pictures[0].width;
         canvasOutput.height = this.pictures[0].height;
         for (let i = 0; i < this.pictures.length; i++) {
-            this.add_output_block('Picture ' + (i+1), 'test', this.pictures[i]);
-            ctx.drawImage(this.pictures[i], 0, 0);
+            this.add_output_block('Title', 'text', this.pictures[i]);
+            //ctx.drawImage(this.pictures[i], 0, 0);
         }
     }
 
@@ -204,7 +204,7 @@ class PictureManager {
         }
     }
 
-    add_output_block  = (title, text, cv_picture) => {
+    add_output_block  = (title, text, picture) => {
         const caption = new Caption(title);
         const captionElement = caption.render();
         this.card_output.addComponent(captionElement);
@@ -213,13 +213,16 @@ class PictureManager {
         textElement.innerHTML = text;
         this.card_output.addComponent(textElement);
 
-        const canvasOutput = document.createElement('canvas');
-        canvasOutput.id = 'canvasOutputBlock' + title;
-        canvasOutput.width = cv_picture.cols;
-        canvasOutput.height = cv_picture.rows;
-        canvasOutput.drawImage(this.pictures[i], 0, 0);
-        //cv.imshow('canvasOutputBlock' + title, cv_picture);
-        this.card_output.addComponent(canvasOutput);
+        const canvas = document.createElement('canvas');
+        canvas.id = 'canvasOutputBlock' + title;
+        canvas.width = picture.width;
+        canvas.height = picture.height;
+        this.card_output.addComponent(canvas);
+
+        // display image using ctx.drawImage
+        const canvasOutput = document.getElementById('canvasOutputBlock'  + title);
+        const ctx = canvasOutput.getContext('2d');
+        ctx.drawImage(picture, 0, 0);
     }
 }
 
