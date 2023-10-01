@@ -97,3 +97,12 @@ async function init() {
     canvasOutput.height = 480;
     card_output.addComponent(canvasOutput);
 }
+
+function urlToImage(url) {
+    return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => resolve(img);
+        img.onerror = reject;
+        img.src = url;
+    });
+}
