@@ -4,7 +4,7 @@ class Caption {
         this.caption = document.createElement("div");
         this.caption.textContent = title;
         this.caption.setAttribute("class", "h4"); 
-        this.caption.setAttribute("margin-bottom", "20px")
+        this.caption.setAttribute("padding", "10px")
     }
 
     render() {
