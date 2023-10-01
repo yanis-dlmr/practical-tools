@@ -5,7 +5,7 @@ import { Caption } from '/src/components/caption/index.js';
 import { Button } from '/src/components/button/index.js';
 import { Select } from '/src/components/select/index.js';
 
-const cv = require('opencv4nodejs');
+import * as cv from 'opencv4nodejs';
 
 document.addEventListener('DOMContentLoaded', function() {
     init();
