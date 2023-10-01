@@ -126,22 +126,24 @@ class PictureManager {
     }
 
     average_pictures = () => {
-        const avg_picture = this.computeAverageImage(this.cv_pictures);
+        const avg_picture = this.computeAverageImage();
         cv.imshow('canvasOutputBlock', avg_picture);
         picture.delete();
     }
     
-    computeAverageImage = (images) => {
-        const avg = new cv.Mat(images[0].rows, images[0].cols, cv.CV_32FC3, [0, 0, 0]);
-        for (let i = 0; i < images.length; i++) {
-            const image = images[i];
-            const tmp = new cv.Mat();
-            image.convertTo(tmp, cv.CV_32FC3);
-            cv.add(avg, tmp, avg);
-            tmp.delete();
+    computeAverageImage = () => {
+        const avg_picture = new cv.Mat();
+        const nb_pictures = this.cv_pictures.length;
+        const rows = this.cv_pictures[0].rows;
+        const cols = this.cv_pictures[0].cols;
+        const type = this.cv_pictures[0].type();
+        const channels = this.cv_pictures[0].channels();
+        avg_picture.create(rows, cols, type);
+        for (let i = 0; i < nb_pictures; i++) {
+            const picture = this.cv_pictures[i];
+            cv.addWeighted(avg_picture, 1, picture, 1 / nb_pictures, 0, avg_picture);
         }
-        avg.convertTo(avg, cv.CV_8UC3, 1.0 / images.length);
-        return avg;
+        return avg_picture;
     }
 
 }
