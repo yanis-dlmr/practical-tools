@@ -3,6 +3,7 @@ import { Container } from '/src/components/container/index.js';
 import { Importer } from '/src/components/importer/index.js';
 import { Caption } from '/src/components/caption/index.js';
 import { Button } from '/src/components/button/index.js';
+import { Select } from '/src/components/select/index.js';
 
 document.addEventListener('DOMContentLoaded', function() {
     init();
@@ -18,6 +19,15 @@ async function init() {
     const containerElement = container.render();
 
     document.body.appendChild(containerElement);
+    
+    const caption_select = new Caption('Kind of treatment');
+    const captionElementSelect = caption_select.render();
+    card.addComponent(captionElementSelect);
+
+    const options = [ 'Average' ];
+    const select = new Select(options);
+    const selectElement = select.render();
+    card.addComponent(selectElement);
 
     const caption = new Caption('Import your pictures');
     const captionElement = caption.render();
