@@ -168,7 +168,8 @@ class PictureManager {
         const canvasOutput = document.getElementById('canvasOutputBlock');
         const ctx = canvasOutput.getContext('2d');
         ctx.clearRect(0, 0, canvasOutput.width, canvasOutput.height);
-        cv.imshow('canvasOutputBlock', this.cv_pictures[0]);
+        add_output_block('Fist cv picture as test', 'nomnomnom', this.cv_pictures[0])
+
         // process the pictures
         console.log('process_pictures');
         for (let i = 0; i < this.cv_pictures.length; i++) {
@@ -200,6 +201,23 @@ class PictureManager {
             cv.imshow('canvasOutputBlock', this.cv_pictures[i]);
             
         }
+    }
+
+    add_output_block (title, text, cv_picture) {
+        const caption = new Caption(title);
+        const captionElement = caption.render();
+        card_output.addComponent(captionElement);
+
+        const textElement = document.createElement('p');
+        textElement.innerHTML = text;
+        card_output.addComponent(textElement);
+
+        const canvasOutput = document.createElement('canvas');
+        canvasOutput.id = 'canvasOutputBlock' + title;
+        canvasOutput.width = cv_picture.cols;
+        canvasOutput.height = cv_picture.rows;
+        cv.imshow('canvasOutputBlock' + title, cv_picture);
+        card_output.addComponent(canvasOutput);
     }
 }
 
