@@ -109,7 +109,7 @@ class PictureManager {
         card_output.addComponent(canvasOutput);
     }
 
-    display_pictures() {
+    display_pictures = () => {
         for (let i = 0; i < this.cv_pictures.length; i++) {
             const picture = cv_pictures[i];
             cv.imshow('canvasOutputBlock', picture);
@@ -117,10 +117,10 @@ class PictureManager {
         }
     }
 
-    average_pictures() {
-        const picture = cv_pictures[0];
+    average_pictures = () => {
+        const picture = this.cv_pictures[0];
         for (let i = 1; i < this.cv_pictures.length; i++) {
-            const picture_to_add = cv_pictures[i];
+            const picture_to_add = this.cv_pictures[i];
             cv.addWeighted(picture, 0.5, picture_to_add, 0.5, 0.0, picture);
             picture_to_add.delete();
         }
