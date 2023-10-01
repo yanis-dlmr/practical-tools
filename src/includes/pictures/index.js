@@ -129,18 +129,19 @@ class PictureManager {
             return null;
         }
     
-        const sumImage = imageList[0];
+        const sumImage = imageList[0].clone();
     
         for (let i = 1; i < imageList.length; i++) {
             const currentImage = imageList[i];
             cv.add(sumImage, currentImage, sumImage);
         }
+
         const scalar = new cv.Scalar(imageList.length);
-        cv.divide(sumImage, scalar, sumImage);
+        const averageImage = new cv.Mat();
+        cv.divide(sumImage, scalar, averageImage);
     
-        return sumImage;
+        return averageImage;
     };
-    
 
 }
 
