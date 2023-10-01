@@ -116,8 +116,14 @@ class PictureManager {
         avg_picture.width = this.pictures[0].width;
         avg_picture.height = this.pictures[0].height;
         let avg_ctx = avg_picture.getContext('2d');
+
         let imgData = avg_ctx.getImageData(0, 0, avg_picture.width, avg_picture.height);
         let data = imgData.data;
+
+        for (let i = 0; i < data.length; i++) {
+            data[i] = 0;
+        }
+
         for (let i = 0; i < this.pictures.length; i++) {
             const picture = this.pictures[i];
             const ctx = picture.getContext('2d');
@@ -127,10 +133,12 @@ class PictureManager {
                 data[j] += picturePixels[j];
             }
         }
+        
         for (let i = 0; i < data.length; i++) {
             data[i] /= this.pictures.length;
         }
         avg_ctx.putImageData(imgData, 0, 0);
+
         const canvasOutput = document.getElementById('canvasOutputBlock');
         const ctx = canvasOutput.getContext('2d');
         ctx.clearRect(0, 0, canvasOutput.width, canvasOutput.height);
