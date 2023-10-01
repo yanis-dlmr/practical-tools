@@ -11,10 +11,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
 async function init() {
 
+    // Parameters
+    const card_parameters = new Card('Parameters');
+    const cardElementParameters = card_parameters.render();
+
+    const container_parameters = new Container('2');
+    container_parameters.addComponent(cardElementParameters);
+    const containerElementParameters = container_parameters.render();
+
+    document.body.appendChild(containerElementParameters);
+
+    const caption_parameters = new Caption('Select your parameters');
+    const captionElementParameters = caption_parameters.render();
+    card_parameters.addComponent(captionElementParameters);
+
+
+    // Data import
     const card = new Card('Pictures treatment');
     const cardElement = card.render();
 
-    const container = new Container('12');
+    const container = new Container('8');
     container.addComponent(cardElement);
     const containerElement = container.render();
 
