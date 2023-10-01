@@ -134,13 +134,24 @@ class PictureManager {
     }
     
     computeAverageImage = (imageList) => {
-        let averageImage = imageList[0].clone();
-        for (let i = 1; i < imageList.length; i++) {
-            const image = imageList[i];
-            averageImage = this.addImage(averageImage, image);
+        if (imageList.length === 0) {
+            console.error("La liste d'images est vide");
+            return null;
         }
-        averageImage = this.divideImage(averageImage, imageList.length);
-        return averageImage;
+    
+        const sumImage = imageList[0].clone();
+    
+        for (let i = 1; i < imageList.length; i++) {
+            const currentImage = imageList[i];
+            cv.add(sumImage, currentImage, sumImage);
+        }
+    
+        sumImage.convertTo(sumImage, cv.CV_32F);
+        sumImage /= imageList.length;
+    
+        cv.normalize(sumImage, sumImage, 0, 255, cv.NORM_MINMAX, cv.CV_8U);
+    
+        return sumImage;
     };
 
     addImage = (image1, image2) => {
