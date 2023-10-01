@@ -38,7 +38,7 @@ class PictureManager {
         const captionElementParameters = caption_parameters.render();
         card_parameters.addComponent(captionElementParameters);
 
-        const select_parameters = new Select(['Display only', 'Average', 'Determine axis']);
+        const select_parameters = new Select(['Display only', 'Average Color', 'Determine axis']);
         const selectElementParameters = select_parameters.render();
         card_parameters.addComponent(selectElementParameters);
 
@@ -80,7 +80,7 @@ class PictureManager {
 
             if (selectElementParameters.value == 'Display only') {
                 this.display_pictures();
-            } else if (selectElementParameters.value == 'Average') {
+            } else if (selectElementParameters.value == 'Average Color') {
                 this.compute_average_pictures();
             } else if (selectElementParameters.value == 'Determine axis') {
                 this.compute_determine_axis();
@@ -110,6 +110,7 @@ class PictureManager {
         canvasOutput.width = this.pictures[0].width;
         canvasOutput.height = this.pictures[0].height;
         for (let i = 0; i < this.pictures.length; i++) {
+            this.add_output_block('Picture ' + (i+1), 'test', this.pictures[i]);
             ctx.drawImage(this.pictures[i], 0, 0);
         }
     }
@@ -203,7 +204,7 @@ class PictureManager {
         }
     }
 
-    add_output_block (title, text, cv_picture) {
+    add_output_block  = (title, text, cv_picture) => {
         const caption = new Caption(title);
         const captionElement = caption.render();
         this.card_output.addComponent(captionElement);
