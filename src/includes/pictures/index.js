@@ -65,7 +65,7 @@ class PictureManager {
         const validation_buttonElement = validation_button.render();
         card.addComponent(validation_buttonElement);
 
-        validation_buttonElement.addEventListener('click', async function() {
+        validation_buttonElement.addEventListener('click', async () => {
             const files = importerElement.files;
             this.cv_pictures = [];
             for (let i = 0; i < files.length; i++) {
@@ -84,9 +84,9 @@ class PictureManager {
             console.table(this.cv_pictures);
 
             if (selectElementParameters.value == 'Display only') {
-                display_pictures();
+                this.display_pictures();
             } else if (selectElementParameters.value == 'Average') {
-                average_pictures();
+                this.average_pictures();
             }
 
         });
@@ -109,26 +109,25 @@ class PictureManager {
         card_output.addComponent(canvasOutput);
     }
 
-}
+    display_pictures = () => {
+        for (let i = 0; i < this.cv_pictures.length; i++) {
+            const picture = cv_pictures[i];
+            cv.imshow('canvasOutputBlock', picture);
+            picture.delete();
+        }
+    }
 
-
-display_pictures = () => {
-    for (let i = 0; i < this.cv_pictures.length; i++) {
-        const picture = cv_pictures[i];
+    average_pictures = () => {
+        const picture = this.cv_pictures[0];
+        for (let i = 1; i < this.cv_pictures.length; i++) {
+            const picture_to_add = this.cv_pictures[i];
+            cv.addWeighted(picture, 0.5, picture_to_add, 0.5, 0.0, picture);
+            picture_to_add.delete();
+        }
         cv.imshow('canvasOutputBlock', picture);
         picture.delete();
     }
-}
 
-average_pictures = () => {
-    const picture = this.cv_pictures[0];
-    for (let i = 1; i < this.cv_pictures.length; i++) {
-        const picture_to_add = this.cv_pictures[i];
-        cv.addWeighted(picture, 0.5, picture_to_add, 0.5, 0.0, picture);
-        picture_to_add.delete();
-    }
-    cv.imshow('canvasOutputBlock', picture);
-    picture.delete();
 }
 
 async function urlToImage(url) {
