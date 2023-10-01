@@ -119,6 +119,7 @@ class PictureManager {
 
     average_pictures = () => {
         const picture = this.computeAverageImage( this.cv_pictures );
+        console.log(picture);
         cv.imshow('canvasOutputBlock', picture);
         picture.delete();
     }
