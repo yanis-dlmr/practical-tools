@@ -80,16 +80,13 @@ class PictureManager {
                 // convert img object into mat object
                 const mat = cv.imread(await urlToImage(img));
                 this.cv_pictures.push(mat);
-                // push mat object into pictures array
-                cv.imshow('canvasOutputBlock', mat);
-                mat.delete();
             }
             console.table(this.cv_pictures);
 
             if (selectElementParameters.value == 'Display only') {
-                console.log('Display only');
+                this.display_pictures();
             } else if (selectElementParameters.value == 'Average') {
-                console.log('Average');
+                this.average_pictures();
             }
 
         });
@@ -110,6 +107,25 @@ class PictureManager {
         canvasOutput.width = 640;
         canvasOutput.height = 480;
         card_output.addComponent(canvasOutput);
+    }
+
+    display_pictures() {
+        for (let i = 0; i < this.cv_pictures.length; i++) {
+            const picture = cv_pictures[i];
+            cv.imshow('canvasOutputBlock', picture);
+            picture.delete();
+        }
+    }
+
+    average_pictures() {
+        const picture = cv_pictures[0];
+        for (let i = 1; i < this.cv_pictures.length; i++) {
+            const picture_to_add = cv_pictures[i];
+            cv.addWeighted(picture, 0.5, picture_to_add, 0.5, 0.0, picture);
+            picture_to_add.delete();
+        }
+        cv.imshow('canvasOutputBlock', picture);
+        picture.delete();
     }
 
 }
