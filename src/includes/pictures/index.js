@@ -135,8 +135,8 @@ class PictureManager {
             const currentImage = imageList[i];
             cv.add(sumImage, currentImage, sumImage);
         }
-
-        cv.divide(sumImage, imageList.length, sumImage);
+        const value = new cv.Mat(sumImage.rows, sumImage.cols, sumImage.type(), new cv.Scalar(imageList.length));
+        cv.divide(sumImage, value, sumImage);
     
         return sumImage;
     };
