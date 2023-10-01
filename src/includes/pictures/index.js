@@ -78,7 +78,7 @@ class PictureManager {
                     reader.readAsDataURL(file);
                 });
                 // convert img object into mat object
-                const mat = cv.imread(await urlToImage(img));
+                const mat = cv.imread(await this.urlToImage(img));
                 this.cv_pictures.push(mat);
                 // push mat object into pictures array
                 cv.imshow('canvasOutputBlock', mat);
@@ -91,6 +91,7 @@ class PictureManager {
             } else if (selectElementParameters.value == 'Average') {
                 console.log('Average');
             }
+
         });
 
 
