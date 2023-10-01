@@ -131,10 +131,10 @@ class PictureManager {
     
         const sumImage = imageList[0];
     
-        //for (let i = 1; i < imageList.length; i++) {
-        //    const currentImage = imageList[i];
-        //    cv.add(sumImage, currentImage, sumImage);
-        //}
+        for (let i = 1; i < imageList.length; i++) {
+            const currentImage = imageList[i];
+            cv.add(sumImage, currentImage, sumImage);
+        }
         //const scalarValue = 1.0 / imageList.length;
         //cv.multiply(sumImage, new cv.Mat.ones(sumImage.rows, sumImage.cols, sumImage.type()).mul(scalarValue), sumImage);
     
