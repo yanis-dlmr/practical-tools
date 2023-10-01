@@ -125,9 +125,10 @@ class PictureManager {
     
     computeAverageImage = (imageList) => {
         if (imageList.length === 0) {
-            console.error("Picture list is empty");
+            console.error("La liste d'images est vide");
             return null;
         }
+    
         const sumImage = new cv.Mat();
         sumImage.setTo(imageList[0]);
     
@@ -135,12 +136,13 @@ class PictureManager {
             const currentImage = imageList[i];
             cv.add(sumImage, currentImage, sumImage);
         }
-    
-        const scalar = new cv.Scalar(imageList.length);
-        cv.divide(sumImage, scalar, sumImage);
+        
+        const scalarValue = 1.0 / imageList.length;
+        cv.multiply(sumImage, new cv.Mat.ones(sumImage.rows, sumImage.cols, sumImage.type()).mul(scalarValue), sumImage);
     
         return sumImage;
     };
+    
 
 }
 
