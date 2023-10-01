@@ -136,12 +136,10 @@ class PictureManager {
             cv.add(sumImage, currentImage, sumImage);
         }
     
-        const averageImage = new cv.Mat();
-        cv.divide(sumImage, new cv.Scalar(imageList.length), averageImage);
+        const scalar = new cv.Scalar(imageList.length);
+        cv.divide(sumImage, scalar, sumImage);
     
-        sumImage.delete();
-    
-        return averageImage;
+        return sumImage;
     };
 
 }
