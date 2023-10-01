@@ -134,6 +134,8 @@ class PictureManager {
             imageList.push(image);
             picture.delete();
         }
+        console.log(imageList)
+        console.table(imageList)
         // compute average image
         const avg_image = this.computeAverageImage(imageList);
         // convert Uint8Array into mat object
