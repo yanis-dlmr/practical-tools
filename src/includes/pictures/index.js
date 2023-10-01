@@ -128,33 +128,19 @@ class PictureManager {
             console.error("La liste d'images est vide");
             return null;
         }
-
-        const sumImage = new Image();
-        sumImage.src = imageList[0];
     
-        const canvas = document.createElement("canvas");
-        const ctx = canvas.getContext("2d");
-        canvas.width = sumImage.width;
-        canvas.height = sumImage.height;
-        ctx.drawImage(sumImage, 0, 0);
+        var sumImage = imageList[0];
     
         for (let i = 1; i < imageList.length; i++) {
-            const currentImage = new Image();
-            currentImage.src = imageList[i];
-            ctx.drawImage(currentImage, 0, 0);
+            const currentImage = imageList[i];
+            cv.add(sumImage, currentImage, sumImage);
         }
+        
+        const scalarValue = 1.0 / imageList.length;
+        cv.multiply(sumImage, new cv.Mat.ones(sumImage.rows, sumImage.cols, sumImage.type()).mul(scalarValue), sumImage);
     
-        const numImages = imageList.length;
-        ctx.globalCompositeOperation = "source-over";
-        ctx.globalAlpha = 1 / numImages;
-        ctx.drawImage(sumImage, 0, 0);
-    
-        const averageImage = new Image();
-        averageImage.src = canvas.toDataURL();
-    
-        return averageImage;
+        return sumImage;
     };
-    
     
 
 }
