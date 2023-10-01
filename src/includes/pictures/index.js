@@ -84,7 +84,7 @@ class PictureManager {
                 cv.imshow('canvasOutputBlock', mat);
                 mat.delete();
             }
-            console.table(cv_pictures);
+            console.table(this.cv_pictures);
 
             if (selectElementParameters.value == 'Display only') {
                 console.log('Display only');
