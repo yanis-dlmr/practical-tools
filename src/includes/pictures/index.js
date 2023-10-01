@@ -112,7 +112,25 @@ class PictureManager {
         }
     }
 
-    compute_average_pictures = () => {
+    compute_average_pictures = () => { // Compute the average of all the pictures and display it in the output block
+        const canvasOutput = document.getElementById('canvasOutputBlock');
+        const ctx = canvasOutput.getContext('2d');
+        ctx.clearRect(0, 0, canvasOutput.width, canvasOutput.height);
+        canvasOutput.width = this.pictures[0].width;
+        canvasOutput.height = this.pictures[0].height;
+        const imageData = ctx.getImageData(0, 0, canvasOutput.width, canvasOutput.height);
+        const data = imageData.data;
+        for (let i = 0; i < this.pictures.length; i++) {
+            const picture = this.pictures[i];
+            const pictureData = picture.getContext('2d').getImageData(0, 0, picture.width, picture.height).data;
+            for (let j = 0; j < data.length; j++) {
+                data[j] += pictureData[j];
+            }
+        }
+        for (let i = 0; i < data.length; i++) {
+            data[i] /= this.pictures.length;
+        }
+        ctx.putImageData(imageData, 0, 0);
     }
 
 }
