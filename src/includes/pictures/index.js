@@ -56,7 +56,21 @@ async function init() {
     const validation_button = new Button('Compute');
     const validation_buttonElement = validation_button.render();
     card.addComponent(validation_buttonElement);
-    
+
+    validation_buttonElement.addEventListener('click', async function() {
+        const files = importerElement.files;
+        const pictures = [];
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+            let mat = cv.imread(file);
+            console.log(mat);
+            cv.imshow('canvasOutputBlock', mat);
+            mat.delete();
+        }
+        console.log(pictures);
+    });
+
+
     // Output  
     const card_output = new Card('Output');
     const cardElementOutput = card_output.render();
@@ -69,22 +83,7 @@ async function init() {
 
     const canvasOutput = document.createElement('canvas');
     canvasOutput.id = 'canvasOutputBlock';
-    //canvasOutput.width = 640;
-    //canvasOutput.height = 480;
+    canvasOutput.width = 640;
+    canvasOutput.height = 480;
     card_output.addComponent(canvasOutput);
-
-    // Event listeners
-    validation_buttonElement.addEventListener('click', async function() {
-        const files = importerElement.files;
-        const pictures = [];
-        for (let i = 0; i < files.length; i++) {
-            const file = files[i];
-            let mat = cv.imread(file);
-            cv.imshow('canvasOutputBlock', mat);
-            mat.delete();
-        }
-        console.log(pictures);
-    });
-
-
 }
