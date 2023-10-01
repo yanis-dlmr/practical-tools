@@ -12,14 +12,14 @@ document.addEventListener('DOMContentLoaded', function() {
 async function init() {
 
     const row = document.createElement('div');
-    row.classList.add('row');
+    row.classList.add('row', 'custom-row');
     document.body.appendChild(row);
 
     // Parameters
     const card_parameters = new Card('Parameters');
     const cardElementParameters = card_parameters.render();
 
-    const container_parameters = new Container('4');
+    const container_parameters = new Container('5');
     container_parameters.addComponent(cardElementParameters);
     const containerElementParameters = container_parameters.render();
 
