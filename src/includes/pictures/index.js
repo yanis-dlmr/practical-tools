@@ -84,9 +84,9 @@ class PictureManager {
             console.table(this.cv_pictures);
 
             if (selectElementParameters.value == 'Display only') {
-                this.display_pictures();
+                display_pictures();
             } else if (selectElementParameters.value == 'Average') {
-                this.average_pictures();
+                average_pictures();
             }
 
         });
@@ -109,25 +109,26 @@ class PictureManager {
         card_output.addComponent(canvasOutput);
     }
 
-    display_pictures = () => {
-        for (let i = 0; i < this.cv_pictures.length; i++) {
-            const picture = cv_pictures[i];
-            cv.imshow('canvasOutputBlock', picture);
-            picture.delete();
-        }
-    }
+}
 
-    average_pictures = () => {
-        const picture = this.cv_pictures[0];
-        for (let i = 1; i < this.cv_pictures.length; i++) {
-            const picture_to_add = this.cv_pictures[i];
-            cv.addWeighted(picture, 0.5, picture_to_add, 0.5, 0.0, picture);
-            picture_to_add.delete();
-        }
+
+display_pictures = () => {
+    for (let i = 0; i < this.cv_pictures.length; i++) {
+        const picture = cv_pictures[i];
         cv.imshow('canvasOutputBlock', picture);
         picture.delete();
     }
+}
 
+average_pictures = () => {
+    const picture = this.cv_pictures[0];
+    for (let i = 1; i < this.cv_pictures.length; i++) {
+        const picture_to_add = this.cv_pictures[i];
+        cv.addWeighted(picture, 0.5, picture_to_add, 0.5, 0.0, picture);
+        picture_to_add.delete();
+    }
+    cv.imshow('canvasOutputBlock', picture);
+    picture.delete();
 }
 
 async function urlToImage(url) {
