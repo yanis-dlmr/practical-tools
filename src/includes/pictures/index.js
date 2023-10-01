@@ -11,30 +11,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
 async function init() {
 
-    const card = new Card('Data importation');
+    const card = new Card('Pictures treatment', '12');
     const cardElement = card.render();
-    
-    const card_parameters = new Card('Treatment parameters');
-    const cardElementParameters = card_parameters.render();
 
-    const container_parameters = new Container('3');
-    container_parameters.addComponent(cardElement);
-    const containerParametersElement = container_parameters.render();
+    const container = new Container();
+    container.addComponent(cardElement);
+    const containerElement = container.render();
 
-    document.body.appendChild(containerParametersElement);
+    document.body.appendChild(containerElement);
 
-    var caption = new Caption('Kind of treatment');
-    var captionElement = caption.render();
-    card_parameters.addComponent(captionElement);
-
-    const container_pictures = new Container('7');
-    container_pictures.addComponent(cardElement);
-    const containerPicturesElement = container_pictures.render();
-
-    document.body.appendChild(containerPicturesElement);
-
-    var caption = new Caption('Import your pictures');
-    var captionElement = caption.render();
+    const caption = new Caption('Import your pictures');
+    const captionElement = caption.render();
     card.addComponent(captionElement);
 
     const importer = new Importer('multiple pictures');

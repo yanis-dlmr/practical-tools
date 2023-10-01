@@ -1,9 +1,10 @@
 class Card {
 
-    constructor(title) {
+    constructor(title, proportion) {
         this.card = document.createElement('div');
         this.card.classList.add('card');
         this.card.classList.add('custom-card')
+        this.card.classList.add('col-' + proportion);
 
         this.setTitle(title);
 
