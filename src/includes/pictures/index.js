@@ -62,7 +62,7 @@ async function init() {
         const pictures = [];
         for (let i = 0; i < files.length; i++) {
             const file = files[i];
-            let mat = cv.imread(imgElement);
+            let mat = cv.imread(file);
             cv.imshow('canvasOutput', mat);
             mat.delete();
         }
