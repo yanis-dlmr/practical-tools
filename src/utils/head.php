@@ -4,4 +4,3 @@
 <link rel="icon" href="/src/assets/images/logo.ico">
 <?php include '../config/link.php'; ?>
 <?php include '../config/menu.php'; ?>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

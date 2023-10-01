@@ -170,10 +170,6 @@ class PictureManager {
         ctx.clearRect(0, 0, canvasOutput.width, canvasOutput.height);
         cv.imshow('canvasOutputBlock', this.cv_pictures[0]);
         // process the pictures
-        this.process_pictures();
-    }
-
-    process_pictures = () => {
         console.log('process_pictures');
         for (let i = 0; i < this.cv_pictures.length; i++) {
             console.log('process_pictures : ', i);
