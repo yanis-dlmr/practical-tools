@@ -59,24 +59,19 @@ async function init() {
 
     validation_buttonElement.addEventListener('click', async function() {
         const files = importerElement.files;
-        const pictures = [];
         for (let i = 0; i < files.length; i++) {
             const file = files[i];
-            let mat = cv.imread(file);
-            console.log(mat);
 
-
-            const canvasOutput = document.createElement('canvas');
-            canvasOutput.id = 'canvasOutputBlock';
-            canvasOutput.width = 640;
-            canvasOutput.height = 480;
-            card_output.addComponent(canvasOutput);
-
-            
-            cv.imshow('canvasOutputBlock', mat);
-            mat.delete();
+            const reader = new FileReader();
+            reader.onload = async function(event) {
+                const blob = event.target.result;
+                const buffer = new Uint8Array(blob);
+                let mat = cv.imdecode(buffer);
+                cv.imshow('canvasOutputBlock', mat);
+                mat.delete();
+            };
+            reader.readAsArrayBuffer(file);
         }
-        console.log(pictures);
     });
 
 
@@ -90,4 +85,9 @@ async function init() {
 
     row.appendChild(containerElementOutput);
 
+    const canvasOutput = document.createElement('canvas');
+    canvasOutput.id = 'canvasOutputBlock';
+    canvasOutput.width = 640;
+    canvasOutput.height = 480;
+    card_output.addComponent(canvasOutput);
 }
