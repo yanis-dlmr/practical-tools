@@ -139,7 +139,7 @@ class PictureManager {
             return null;
         }
     
-        const sumImage = imageList[0].clone();
+        let sumImage = imageList[0].clone();
     
         for (let i = 1; i < imageList.length; i++) {
             const currentImage = imageList[i];
