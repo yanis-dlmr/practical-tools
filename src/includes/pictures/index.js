@@ -217,7 +217,8 @@ class PictureManager {
         canvasOutput.id = 'canvasOutputBlock' + title;
         canvasOutput.width = cv_picture.cols;
         canvasOutput.height = cv_picture.rows;
-        cv.imshow('canvasOutputBlock' + title, cv_picture);
+        canvasOutput.drawImage(this.pictures[i], 0, 0);
+        //cv.imshow('canvasOutputBlock' + title, cv_picture);
         this.card_output.addComponent(canvasOutput);
     }
 }
