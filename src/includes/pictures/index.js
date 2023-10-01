@@ -89,7 +89,7 @@ class PictureManager {
                         ctx.drawImage(imgElement, 0, 0);
                         const data = ctx.getImageData(0, 0, imgElement.width, imgElement.height).data;
                         const array = new Uint8Array(data);
-                        console.log(array)
+                        resolve(array);
                         // convert array to mat
                         const mat = cv.imread(imgElement);
                         cv.cvtColor(mat, mat, cv.COLOR_RGB2GRAY);
@@ -144,12 +144,29 @@ class PictureManager {
     }
     
     computeAverageImage = (imageList) => {
-        let averageImage = imageList[0].clone();
-        for (let i = 1; i < imageList.length; i++) {
+        // convert imageList to Uint8Array List
+        const imageListArray = [];
+        for (let i = 0; i < imageList.length; i++) {
             const image = imageList[i];
-            averageImage = this.addImage(averageImage, image);
+            const array = new Uint8Array(image.data);
+            imageListArray.push(array);
         }
-        averageImage = this.divideImage(averageImage, imageList.length);
+        // compute average image
+        const averageArray = new Uint8Array(imageListArray[0].length);
+        for (let i = 0; i < imageListArray.length; i++) {
+            const array = imageListArray[i];
+            for (let j = 0; j < array.length; j++) {
+                const value = array[j];
+                averageArray[j] += value;
+            }
+        }
+        for (let i = 0; i < averageArray.length; i++) {
+            const value = averageArray[i];
+            averageArray[i] = value / imageListArray.length;
+        }
+        console.log(averageArray)
+        // convert averageArray to Mat
+        const averageImage = new cv.Mat(imageList[0].rows, imageList[0].cols, imageList[0].type(), averageArray);
         return averageImage;
     };
 
