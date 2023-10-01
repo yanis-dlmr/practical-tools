@@ -97,8 +97,6 @@ class PictureManager {
             } else if (selectElementParameters.value == 'Average') {
                 this.average_pictures();
             }
-
-            this.cv_pictures.delete();
         });
 
 
@@ -128,32 +126,46 @@ class PictureManager {
     }
 
     average_pictures = () => {
-        const picture = this.computeAverageImage( this.cv_pictures );
-        console.log(picture);
-        cv.imshow('canvasOutputBlock', picture);
+        // convert mat object into Uint8Array 
+        const imageList = [];
+        for (let i = 0; i < this.cv_pictures.length; i++) {
+            const picture = this.cv_pictures[i];
+            const image = new Uint8Array(picture.data);
+            imageList.push(image);
+            picture.delete();
+        }
+        // compute average image
+        const avg_image = this.computeAverageImage(imageList);
+        // convert Uint8Array into mat object
+        const avg_picture = new cv.Mat(avg_image, avg_image.length / 3, cv.CV_8UC3);
+        // display average image
+        cv.imshow('canvasOutputBlock', avg_picture);
         picture.delete();
     }
     
     computeAverageImage = (imageList) => {
-        let averageImage = imageList[0].clone();
+        // compute average image
+        let avg_image = imageList[0];
         for (let i = 1; i < imageList.length; i++) {
-            const image = imageList[i];
-            averageImage = this.addImage(averageImage, image);
+            avg_image = this.addImage(avg_image, imageList[i]);
         }
-        averageImage = this.divideImage(averageImage, imageList.length);
-        return averageImage;
+        avg_image = this.divideImage(avg_image, imageList.length);
+        return avg_image;
     };
 
     addImage = (image1, image2) => {
-        const result = new cv.Mat();
-        cv.add(image1, image2, result);
+        const result = new Uint8Array(image1.length);
+        for (let i = 0; i < image1.length; i++) {
+            result[i] = image1[i] + image2[i];
+        }
         return result;
     };
 
     divideImage = (image, divisor) => {
-        const result = new cv.Mat();
-        const divisorMat = new cv.Mat(image.rows, image.cols, image.type(), new cv.Scalar(divisor/3, divisor/3, divisor/3, 1));
-        cv.divide(image, divisorMat, result);
+        const result = new Uint8Array(image.length);
+        for (let i = 0; i < image.length; i++) {
+            result[i] = image[i] / divisor;
+        }
         return result;
     };
 
