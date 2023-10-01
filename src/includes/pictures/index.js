@@ -141,7 +141,8 @@ class PictureManager {
 
     divideImage = (image, divisor) => {
         const result = new cv.Mat();
-        cv.divide(image, new cv.Mat(image.rows, image.cols, cv.CV_8UC1, divisor), result);
+        const divisorMat = new cv.Mat(image.rows, image.cols, image.type(), new cv.Scalar(divisor, divisor, divisor, divisor));
+        cv.divide(image, divisorMat, result);
         return result;
     };
 
