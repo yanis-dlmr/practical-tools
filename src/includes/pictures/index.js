@@ -5,7 +5,6 @@ import { Caption } from '/src/components/caption/index.js';
 import { Button } from '/src/components/button/index.js';
 import { Select } from '/src/components/select/index.js';
 
-import * as cv from '/src/includes/pictures/opencv.js';
 
 document.addEventListener('DOMContentLoaded', function() {
     init();
