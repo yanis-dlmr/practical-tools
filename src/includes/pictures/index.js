@@ -59,19 +59,15 @@ async function init() {
 
     validation_buttonElement.addEventListener('click', async function() {
         const files = importerElement.files;
+        const pictures = [];
         for (let i = 0; i < files.length; i++) {
             const file = files[i];
-
-            const reader = new FileReader();
-            reader.onload = async function(event) {
-                const blob = event.target.result;
-                const buffer = new Uint8Array(blob);
-                let mat = cv.imdecode(buffer);
-                cv.imshow('canvasOutputBlock', mat);
-                mat.delete();
-            };
-            reader.readAsArrayBuffer(file);
+            let mat = cv.imread(file);
+            console.log(mat);
+            cv.imshow('canvasOutputBlock', mat);
+            mat.delete();
         }
+        console.log(pictures);
     });
 
 
