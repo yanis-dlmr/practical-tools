@@ -19,15 +19,6 @@ async function init() {
     const containerElement = container.render();
 
     document.body.appendChild(containerElement);
-    
-    const caption_select = new Caption('Kind of treatment');
-    const captionElementSelect = caption_select.render();
-    card.addComponent(captionElementSelect);
-
-    const options = [ 'Average' ];
-    const select = new Select(options);
-    const selectElement = select.render();
-    card.addComponent(selectElement);
 
     const caption = new Caption('Import your pictures');
     const captionElement = caption.render();
@@ -40,4 +31,15 @@ async function init() {
     const validation_button = new Button('Import pictures');
     const validation_buttonElement = validation_button.render();
     card.addComponent(validation_buttonElement);
+
+    validation_buttonElement.addEventListener('click', async function() {
+        const files = importerElement.files;
+        const pictures = [];
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+            const picture = await file.arrayBuffer();
+            pictures.push(picture);
+        }
+        console.log(pictures);
+    });
 }
