@@ -118,7 +118,10 @@ class PictureManager {
     }
 
     average_pictures = () => {
-        const picture = this.computeAverageImage(this.cv_pictures);
+        for (let i = 0; i < this.cv_pictures.length; i++) {
+            const picture = this.cv_pictures[i];
+            cv.cvtColor(picture, picture, cv.COLOR_RGB2GRAY);
+        }
         cv.imshow('canvasOutputBlock', picture);
         picture.delete();
     }
