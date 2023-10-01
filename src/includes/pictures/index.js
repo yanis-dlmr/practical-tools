@@ -63,11 +63,17 @@ async function init() {
         for (let i = 0; i < files.length; i++) {
             const file = files[i];
             const data = await file.arrayBuffer();
-            pictures.push(data);
-            let mat = cv.imread(data);
+            
+            const blob = new Blob([data], { type: file.type });
+            
+            const url = URL.createObjectURL(blob);
+            
+            let mat = cv.imread(url);
             console.log(mat);
             cv.imshow('canvasOutputBlock', mat);
             mat.delete();
+            
+            URL.revokeObjectURL(url);
         }
         console.log(pictures);
     });
