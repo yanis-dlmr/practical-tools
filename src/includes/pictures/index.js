@@ -59,7 +59,7 @@ async function init() {
 
     validation_buttonElement.addEventListener('click', async function() {
         const files = importerElement.files;
-        const pictures = [];
+        const cv_pictures = [];
         for (let i = 0; i < files.length; i++) {
             const file = files[i];
             // convert file into img object
@@ -71,13 +71,12 @@ async function init() {
             });
             // convert img object into mat object
             const mat = cv.imread(await urlToImage(img));
+            cv_pictures.push(mat);
             // push mat object into pictures array
             cv.imshow('canvasOutputBlock', mat);
             mat.delete();
-            
-            URL.revokeObjectURL(url);
         }
-        console.log(pictures);
+        console.table(cv_pictures);
     });
 
 
