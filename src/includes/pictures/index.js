@@ -7,101 +7,116 @@ import { Select } from '/src/components/select/index.js';
 
 
 document.addEventListener('DOMContentLoaded', function() {
-    init();
+    new PictureManager();
 });
 
-async function init() {
+class PictureManager {
 
-    const row = document.createElement('div');
-    row.classList.add('row', 'custom-row');
-    document.body.appendChild(row);
+    constructor() {
 
-    // Parameters
-    const card_parameters = new Card('Parameters');
-    const cardElementParameters = card_parameters.render();
+        this.cv_pictures = [];
+        this.create_body();
 
-    const container_parameters = new Container('5');
-    container_parameters.addComponent(cardElementParameters);
-    const containerElementParameters = container_parameters.render();
+    }
 
-    row.appendChild(containerElementParameters);
+    create_body() {
+        const row = document.createElement('div');
+        row.classList.add('row', 'custom-row');
+        document.body.appendChild(row);
 
-    const caption_parameters = new Caption('Select your parameters');
-    const captionElementParameters = caption_parameters.render();
-    card_parameters.addComponent(captionElementParameters);
+        // Parameters
+        const card_parameters = new Card('Parameters');
+        const cardElementParameters = card_parameters.render();
 
-    const select_parameters = new Select(['Display only', 'Average']);
-    const selectElementParameters = select_parameters.render();
-    card_parameters.addComponent(selectElementParameters);
+        const container_parameters = new Container('5');
+        container_parameters.addComponent(cardElementParameters);
+        const containerElementParameters = container_parameters.render();
 
+        row.appendChild(containerElementParameters);
 
-    // Data import
-    const card = new Card('Data importation');
-    const cardElement = card.render();
+        const caption_parameters = new Caption('Select your parameters');
+        const captionElementParameters = caption_parameters.render();
+        card_parameters.addComponent(captionElementParameters);
 
-    const container = new Container('7');
-    container.addComponent(cardElement);
-    const containerElement = container.render();
-
-    row.appendChild(containerElement);
-
-    const caption = new Caption('Import your pictures (.BMP, .jpg, .jpeg, .png allowed)');
-    const captionElement = caption.render();
-    card.addComponent(captionElement);
-
-    const importer = new Importer('multiple pictures');
-    const importerElement = importer.render();
-    card.addComponent(importerElement);
-
-    const validation_button = new Button('Compute');
-    const validation_buttonElement = validation_button.render();
-    card.addComponent(validation_buttonElement);
-
-    validation_buttonElement.addEventListener('click', async function() {
-        const files = importerElement.files;
-        const cv_pictures = [];
-        for (let i = 0; i < files.length; i++) {
-            const file = files[i];
-            // convert file into img object
-            const img = await new Promise((resolve, reject) => {
-                const reader = new FileReader();
-                reader.onload = () => resolve(reader.result);
-                reader.onerror = reject;
-                reader.readAsDataURL(file);
-            });
-            // convert img object into mat object
-            const mat = cv.imread(await urlToImage(img));
-            cv_pictures.push(mat);
-            // push mat object into pictures array
-            cv.imshow('canvasOutputBlock', mat);
-            mat.delete();
-        }
-        console.table(cv_pictures);
-    });
+        const select_parameters = new Select(['Display only', 'Average']);
+        const selectElementParameters = select_parameters.render();
+        card_parameters.addComponent(selectElementParameters);
 
 
-    // Output  
-    const card_output = new Card('Output');
-    const cardElementOutput = card_output.render();
+        // Data import
+        const card = new Card('Data importation');
+        const cardElement = card.render();
 
-    const container_output = new Container('12');
-    container_output.addComponent(cardElementOutput);
-    const containerElementOutput = container_output.render();
+        const container = new Container('7');
+        container.addComponent(cardElement);
+        const containerElement = container.render();
 
-    row.appendChild(containerElementOutput);
+        row.appendChild(containerElement);
 
-    const canvasOutput = document.createElement('canvas');
-    canvasOutput.id = 'canvasOutputBlock';
-    canvasOutput.width = 640;
-    canvasOutput.height = 480;
-    card_output.addComponent(canvasOutput);
-}
+        const caption = new Caption('Import your pictures (.BMP, .jpg, .jpeg, .png allowed)');
+        const captionElement = caption.render();
+        card.addComponent(captionElement);
 
-function urlToImage(url) {
-    return new Promise((resolve, reject) => {
-        const img = new Image();
-        img.onload = () => resolve(img);
-        img.onerror = reject;
-        img.src = url;
-    });
+        const importer = new Importer('multiple pictures');
+        const importerElement = importer.render();
+        card.addComponent(importerElement);
+
+        const validation_button = new Button('Compute');
+        const validation_buttonElement = validation_button.render();
+        card.addComponent(validation_buttonElement);
+
+        validation_buttonElement.addEventListener('click', async function() {
+            const files = importerElement.files;
+            this.cv_pictures = [];
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                // convert file into img object
+                const img = await new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onload = () => resolve(reader.result);
+                    reader.onerror = reject;
+                    reader.readAsDataURL(file);
+                });
+                // convert img object into mat object
+                const mat = cv.imread(await urlToImage(img));
+                this.cv_pictures.push(mat);
+                // push mat object into pictures array
+                cv.imshow('canvasOutputBlock', mat);
+                mat.delete();
+            }
+            console.table(cv_pictures);
+
+            if (selectElementParameters.value == 'Display only') {
+                console.log('Display only');
+            } else if (selectElementParameters.value == 'Average') {
+                console.log('Average');
+            }
+        });
+
+
+        // Output  
+        const card_output = new Card('Output');
+        const cardElementOutput = card_output.render();
+
+        const container_output = new Container('12');
+        container_output.addComponent(cardElementOutput);
+        const containerElementOutput = container_output.render();
+
+        row.appendChild(containerElementOutput);
+
+        const canvasOutput = document.createElement('canvas');
+        canvasOutput.id = 'canvasOutputBlock';
+        canvasOutput.width = 640;
+        canvasOutput.height = 480;
+        card_output.addComponent(canvasOutput);
+    }
+
+    urlToImage(url) {
+        return new Promise((resolve, reject) => {
+            const img = new Image();
+            img.onload = () => resolve(img);
+            img.onerror = reject;
+            img.src = url;
+        });
+    }
 }
