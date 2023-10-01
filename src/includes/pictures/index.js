@@ -67,7 +67,7 @@ class PictureManager {
 
         validation_buttonElement.addEventListener('click', async () => {
             const files = importerElement.files;
-            this.array_pictures = [];
+            this.cv_pictures = [];
             for (let i = 0; i < files.length; i++) {
                 const file = files[i];
                 // convert file into img object
@@ -78,33 +78,25 @@ class PictureManager {
                     reader.readAsDataURL(file);
                 });
                 // convert img object into mat object, only black and white
-                const array = await new Promise((resolve, reject) => {
+                const mat = await new Promise((resolve, reject) => {
                     const imgElement = document.createElement('img');
                     imgElement.onload = () => {
-                        // convert img to array
-                        const canvas = document.createElement('canvas');
-                        canvas.width = imgElement.width;
-                        canvas.height = imgElement.height;
-                        const ctx = canvas.getContext('2d');
-                        ctx.drawImage(imgElement, 0, 0);
-                        const data = ctx.getImageData(0, 0, imgElement.width, imgElement.height).data;
-                        const array = new Uint8Array(data);
-                        resolve(array);
+                        const mat = cv.imread(imgElement);
+                        cv.cvtColor(mat, mat, cv.COLOR_RGB2GRAY);
+                        resolve(mat);
                     };
                     imgElement.onerror = reject;
                     imgElement.src = img;
                 });
-                this.array_pictures.push(array);
+                this.cv_pictures.push(mat);
             }
-            console.table(this.array_pictures);
+            console.table(this.cv_pictures);
 
             if (selectElementParameters.value == 'Display only') {
                 this.display_pictures();
             } else if (selectElementParameters.value == 'Average') {
                 this.average_pictures();
             }
-
-            this.array_pictures.delete();
 
         });
 
@@ -127,8 +119,8 @@ class PictureManager {
     }
 
     display_pictures = () => {
-        for (let i = 0; i < this.array_pictures.length; i++) {
-            const picture = this.array_pictures[i];
+        for (let i = 0; i < this.cv_pictures.length; i++) {
+            const picture = this.cv_pictures[i];
             cv.imshow('canvasOutputBlock', picture);
             picture.delete();
         }
@@ -142,29 +134,12 @@ class PictureManager {
     }
     
     computeAverageImage = (imageList) => {
-        // convert imageList to Uint8Array List
-        const imageListArray = [];
-        for (let i = 0; i < imageList.length; i++) {
+        let averageImage = imageList[0].clone();
+        for (let i = 1; i < imageList.length; i++) {
             const image = imageList[i];
-            const array = new Uint8Array(image.data);
-            imageListArray.push(array);
+            averageImage = this.addImage(averageImage, image);
         }
-        // compute average image
-        const averageArray = new Uint8Array(imageListArray[0].length);
-        for (let i = 0; i < imageListArray.length; i++) {
-            const array = imageListArray[i];
-            for (let j = 0; j < array.length; j++) {
-                const value = array[j];
-                averageArray[j] += value;
-            }
-        }
-        for (let i = 0; i < averageArray.length; i++) {
-            const value = averageArray[i];
-            averageArray[i] = value / imageListArray.length;
-        }
-        console.log(averageArray)
-        // convert averageArray to Mat
-        const averageImage = new cv.Mat(imageList[0].rows, imageList[0].cols, imageList[0].type(), averageArray);
+        averageImage = this.divideImage(averageImage, imageList.length);
         return averageImage;
     };
 
