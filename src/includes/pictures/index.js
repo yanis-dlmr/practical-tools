@@ -118,13 +118,8 @@ class PictureManager {
     }
 
     average_pictures = () => {
-        var picture_avg = this.cv_pictures[0].clone();
-        for (let i = 0; i < this.cv_pictures.length; i++) {
-            var picture = this.cv_pictures[i];
-            cv.cvtColor(picture_avg, picture, cv.COLOR_RGB2GRAY);
-        }
-        cv.imshow('canvasOutputBlock', picture_avg);
-        picture_avg.delete();
+        const picture = this.computeAverageImage();
+        cv.imshow('canvasOutputBlock', picture);
         picture.delete();
     }
     
@@ -141,8 +136,7 @@ class PictureManager {
             cv.add(sumImage, currentImage, sumImage);
         }
 
-        const scalar = new cv.Scalar(imageList.length);
-        cv.divide(sumImage, scalar, sumImage);
+        cv.divide(sumImage, imageList.length, sumImage);
     
         return sumImage;
     };
