@@ -11,8 +11,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 async function init() {
 
-    const card = new Card('Pictures treatment');
+    const card = new Card('Data importation');
     const cardElement = card.render();
+    
+    const card_parameters = new Card('Treatment parameters');
+    const cardElementParameters = card_parameters.render();
 
     const container_parameters = new Container('3');
     container_parameters.addComponent(cardElement);
@@ -22,7 +25,7 @@ async function init() {
 
     var caption = new Caption('Kind of treatment');
     var captionElement = caption.render();
-    card.addComponent(captionElement);
+    card_parameters.addComponent(captionElement);
 
     const container_pictures = new Container('7');
     container_pictures.addComponent(cardElement);
