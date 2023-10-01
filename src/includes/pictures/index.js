@@ -31,7 +31,7 @@ async function init() {
 
 
     // Data import
-    const card = new Card('Pictures treatment');
+    const card = new Card('Data importation');
     const cardElement = card.render();
 
     const container = new Container('7');
@@ -40,7 +40,7 @@ async function init() {
 
     row.appendChild(containerElement);
 
-    const caption = new Caption('Import your pictures');
+    const caption = new Caption('Import your pictures (.BMP, .jpg, .jpeg, .png allowed)');
     const captionElement = caption.render();
     card.addComponent(captionElement);
 
@@ -48,7 +48,7 @@ async function init() {
     const importerElement = importer.render();
     card.addComponent(importerElement);
 
-    const validation_button = new Button('Import pictures');
+    const validation_button = new Button('Compute');
     const validation_buttonElement = validation_button.render();
     card.addComponent(validation_buttonElement);
 
