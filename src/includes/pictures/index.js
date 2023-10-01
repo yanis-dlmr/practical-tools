@@ -133,6 +133,18 @@ class PictureManager {
         return averageImage;
     };
 
+    addImage = (image1, image2) => {
+        const result = new cv.Mat();
+        cv.add(image1, image2, result);
+        return result;
+    };
+
+    divideImage = (image, divisor) => {
+        const result = new cv.Mat();
+        cv.divide(image, new cv.Mat(image.rows, image.cols, cv.CV_8UC1, divisor), result);
+        return result;
+    };
+
 }
 
 async function urlToImage(url) {
