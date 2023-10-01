@@ -129,8 +129,7 @@ class PictureManager {
             return null;
         }
     
-        const sumImage = new cv.Mat();
-        sumImage.setTo(imageList[0]);
+        const sumImage = imageList[0];
     
         //for (let i = 1; i < imageList.length; i++) {
         //    const currentImage = imageList[i];
