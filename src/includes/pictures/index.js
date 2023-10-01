@@ -11,6 +11,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 async function init() {
 
+    const row = document.createElement('div');
+    row.classList.add('row');
+    document.body.appendChild(row);
+
     // Parameters
     const card_parameters = new Card('Parameters');
     const cardElementParameters = card_parameters.render();
@@ -19,7 +23,7 @@ async function init() {
     container_parameters.addComponent(cardElementParameters);
     const containerElementParameters = container_parameters.render();
 
-    document.body.appendChild(containerElementParameters);
+    row.appendChild(containerElementParameters);
 
     const caption_parameters = new Caption('Select your parameters');
     const captionElementParameters = caption_parameters.render();
@@ -34,7 +38,7 @@ async function init() {
     container.addComponent(cardElement);
     const containerElement = container.render();
 
-    document.body.appendChild(containerElement);
+    row.appendChild(containerElement);
 
     const caption = new Caption('Import your pictures');
     const captionElement = caption.render();
