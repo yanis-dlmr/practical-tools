@@ -11,8 +11,8 @@ class Select {
         select.classList.add('black-text');
         this.options.forEach(option => {
             const optionElement = document.createElement('option');
-            optionElement.value = option.value;
-            optionElement.textContent = option.text;
+            optionElement.value = option;
+            optionElement.textContent = option;
             select.appendChild(optionElement);
         });
         return select;
