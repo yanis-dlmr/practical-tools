@@ -130,7 +130,8 @@ class PictureManager {
         for (let i = 0; i < data.length; i++) {
             data[i] /= this.pictures.length;
         }
-        ctx.putImageData(imageData, 0, 0);
+        image = new ImageData(data, canvasOutput.width, canvasOutput.height);
+        ctx.putImageData(image, 0, 0);
     }
 
 }
