@@ -19,7 +19,7 @@ async function init() {
     const card_parameters = new Card('Parameters');
     const cardElementParameters = card_parameters.render();
 
-    const container_parameters = new Container('2');
+    const container_parameters = new Container('5');
     container_parameters.addComponent(cardElementParameters);
     const containerElementParameters = container_parameters.render();
 
@@ -34,7 +34,7 @@ async function init() {
     const card = new Card('Pictures treatment');
     const cardElement = card.render();
 
-    const container = new Container('8');
+    const container = new Container('7');
     container.addComponent(cardElement);
     const containerElement = container.render();
 
