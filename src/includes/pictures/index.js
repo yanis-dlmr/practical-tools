@@ -118,50 +118,14 @@ class PictureManager {
     }
 
     average_pictures = () => {
-        averagedImage = this.averageImages(this.cv_pictures);
-        cv.imshow('canvasOutputBlock', averagedImage);
+        const picture = this.cv_pictures[0];
+        for (let i = 1; i < this.cv_pictures.length; i++) {
+            const picture_to_add = this.cv_pictures[i];
+            cv.addWeighted(picture, 0.5, picture_to_add, 0.5, 0.0, picture);
+            picture_to_add.delete();
+        }
+        cv.imshow('canvasOutputBlock', picture);
         picture.delete();
-    }
-
-    averageImages(images) {
-        if (images.length === 0) {
-            return null;
-        }
-    
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-    
-        const width = images[0].width;
-        const height = images[0].height;
-    
-        canvas.width = width;
-        canvas.height = height;
-    
-        const imageData = ctx.getImageData(0, 0, width, height);
-        const data = new Uint8Array(width * height * 4);
-    
-        for (let i = 0; i < images.length; i++) {
-            const img = images[i];
-            ctx.drawImage(img, 0, 0, width, height);
-    
-            const currentImageData = ctx.getImageData(0, 0, width, height);
-    
-            for (let j = 0; j < data.length; j++) {
-                data[j] += currentImageData.data[j];
-            }
-        }
-    
-        for (let i = 0; i < data.length; i++) {
-            data[i] = Math.round(data[i] / images.length);
-        }
-    
-        imageData.data.set(data);
-        ctx.putImageData(imageData, 0, 0);
-    
-        const averagedImage = new Image();
-        averagedImage.src = canvas.toDataURL('image/png');
-    
-        return averagedImage;
     }
 
 }
