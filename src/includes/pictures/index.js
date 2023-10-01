@@ -77,26 +77,20 @@ class PictureManager {
                     reader.onerror = reject;
                     reader.readAsDataURL(file);
                 });
-                // convert img object into array
-                const picture_array = await new Promise((resolve, reject) => {
+                // convert img object into mat object, only black and white
+                const mat = await new Promise((resolve, reject) => {
                     const imgElement = document.createElement('img');
                     imgElement.onload = () => {
-                        const canvas = document.createElement('canvas');
-                        canvas.width = imgElement.width;
-                        canvas.height = imgElement.height;
-                        const ctx = canvas.getContext('2d');
-                        ctx.drawImage(imgElement, 0, 0);
-                        const data = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
-                        const picture_array = new Uint8Array(data);
-                        resolve(picture_array);
+                        const mat = cv.imread(imgElement);
+                        cv.cvtColor(mat, mat, cv.COLOR_RGB2GRAY);
+                        resolve(mat);
                     };
                     imgElement.onerror = reject;
                     imgElement.src = img;
                 });
-                console.table(picture_array)
-                this.array_pictures.push(picture_array);
+                this.cv_pictures.push(mat);
             }
-            console.table(this.array_pictures);
+            console.table(this.cv_pictures);
 
             if (selectElementParameters.value == 'Display only') {
                 this.display_pictures();
@@ -136,7 +130,6 @@ class PictureManager {
         const imageList = [];
         for (let i = 0; i < this.cv_pictures.length; i++) {
             const picture = this.cv_pictures[i];
-            console.log(picture.data)
             const image = new Uint8Array(picture.data);
             imageList.push(image);
             picture.delete();
