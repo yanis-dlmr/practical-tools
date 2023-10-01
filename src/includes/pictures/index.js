@@ -62,14 +62,16 @@ async function init() {
         const pictures = [];
         for (let i = 0; i < files.length; i++) {
             const file = files[i];
-            const data = await file.arrayBuffer();
-            
-            const blob = new Blob([data], { type: file.type });
-            
-            const url = URL.createObjectURL(blob);
-            
-            let mat = cv.imread(url);
-            console.log(mat);
+            // convert file into img object
+            const img = await new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
+            // convert img object into mat object
+            const mat = cv.imread(await urlToImage(img));
+            // push mat object into pictures array
             cv.imshow('canvasOutputBlock', mat);
             mat.delete();
             
