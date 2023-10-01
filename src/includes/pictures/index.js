@@ -122,7 +122,7 @@ class PictureManager {
         const data = imageData.data;
         for (let i = 0; i < this.pictures.length; i++) {
             const picture = this.pictures[i];
-            const pictureData = picture.getContext('2d').getImageData(0, 0, picture.width, picture.height).data;
+            const pictureData = picture.data;
             for (let j = 0; j < data.length; j++) {
                 data[j] += pictureData[j];
             }
