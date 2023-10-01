@@ -205,6 +205,7 @@ class PictureManager {
             
         }
     }
+}
 
 async function urlToImage(url) {
     return new Promise((resolve, reject) => {
