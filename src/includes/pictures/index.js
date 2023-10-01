@@ -113,25 +113,34 @@ class PictureManager {
     }
 
     compute_average_pictures = () => { // Compute the average of all the pictures and display it in the output block, with the original size
-        const canvasOutput = document.getElementById('canvasOutputBlock');
-        const ctx = canvasOutput.getContext('2d');
-        ctx.clearRect(0, 0, canvasOutput.width, canvasOutput.height);
-        canvasOutput.width = this.pictures[0].width;
-        canvasOutput.height = this.pictures[0].height;
-        let average = ctx.createImageData(canvasOutput.width, canvasOutput.height);
-        let data = average.data;
+        this.average_picture = document.createElement('canvas');
+        this.average_picture.id = 'canvasOutputBlock';
+        this.average_picture.width = this.pictures[0].width;
+        this.average_picture.height = this.pictures[0].height;
+        const ctx = this.average_picture.getContext('2d');
+        ctx.clearRect(0, 0, this.average_picture.width, this.average_picture.height);
         for (let i = 0; i < this.pictures.length; i++) {
-            const picture = this.pictures[i];
-            console.log(picture.data)
-            const pictureData = picture.data;
-            for (let j = 0; j < pictureData.length; j++) {
-                data[j] += pictureData[j];
-            }
+            ctx.drawImage(this.pictures[i], 0, 0);
         }
-        for (let i = 0; i < data.length; i++) {
-            data[i] /= this.pictures.length;
+        const imageData = ctx.getImageData(0, 0, this.average_picture.width, this.average_picture.height);
+        const data = imageData.data;
+        const length = data.length;
+        const average = [0, 0, 0];
+        for (let i = 0; i < length; i += 4) {
+            average[0] += data[i];
+            average[1] += data[i + 1];
+            average[2] += data[i + 2];
         }
-        ctx.putImageData(average, 0, 0);
+        average[0] /= length / 4;
+        average[1] /= length / 4;
+        average[2] /= length / 4;
+        for (let i = 0; i < length; i += 4) {
+            data[i] = average[0];
+            data[i + 1] = average[1];
+            data[i + 2] = average[2];
+        }
+        ctx.putImageData(imageData, 0, 0);
+        document.getElementById('canvasOutputBlock').replaceWith(this.average_picture);
     }
 
 }
