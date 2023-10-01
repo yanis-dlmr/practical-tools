@@ -122,6 +122,7 @@ class PictureManager {
         let data = average.data;
         for (let i = 0; i < this.pictures.length; i++) {
             const picture = this.pictures[i];
+            console.log(picture.data)
             const pictureData = picture.data;
             for (let j = 0; j < pictureData.length; j++) {
                 data[j] += pictureData[j];
