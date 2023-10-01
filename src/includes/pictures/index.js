@@ -78,7 +78,7 @@ class PictureManager {
                     reader.readAsDataURL(file);
                 });
                 // convert img object into mat object
-                const mat = cv.imread(await this.urlToImage(img));
+                const mat = cv.imread(await urlToImage(img));
                 this.cv_pictures.push(mat);
                 // push mat object into pictures array
                 cv.imshow('canvasOutputBlock', mat);
@@ -112,12 +112,13 @@ class PictureManager {
         card_output.addComponent(canvasOutput);
     }
 
-    urlToImage(url) {
-        return new Promise((resolve, reject) => {
-            const img = new Image();
-            img.onload = () => resolve(img);
-            img.onerror = reject;
-            img.src = url;
-        });
-    }
+}
+
+async function urlToImage(url) {
+    return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => resolve(img);
+        img.onerror = reject;
+        img.src = url;
+    });
 }
