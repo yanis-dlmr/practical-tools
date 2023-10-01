@@ -67,7 +67,7 @@ class PictureManager {
 
         validation_buttonElement.addEventListener('click', async () => {
             const files = importerElement.files;
-            this.cv_pictures = [];
+            this.array_pictures = [];
             for (let i = 0; i < files.length; i++) {
                 const file = files[i];
                 // convert file into img object
@@ -78,7 +78,7 @@ class PictureManager {
                     reader.readAsDataURL(file);
                 });
                 // convert img object into mat object, only black and white
-                const mat = await new Promise((resolve, reject) => {
+                const array = await new Promise((resolve, reject) => {
                     const imgElement = document.createElement('img');
                     imgElement.onload = () => {
                         // convert img to array
@@ -90,23 +90,21 @@ class PictureManager {
                         const data = ctx.getImageData(0, 0, imgElement.width, imgElement.height).data;
                         const array = new Uint8Array(data);
                         resolve(array);
-                        // convert array to mat
-                        const mat = cv.imread(imgElement);
-                        cv.cvtColor(mat, mat, cv.COLOR_RGB2GRAY);
-                        resolve(mat);
                     };
                     imgElement.onerror = reject;
                     imgElement.src = img;
                 });
-                this.cv_pictures.push(mat);
+                this.array_pictures.push(array);
             }
-            console.table(this.cv_pictures);
+            console.table(this.array_pictures);
 
             if (selectElementParameters.value == 'Display only') {
                 this.display_pictures();
             } else if (selectElementParameters.value == 'Average') {
                 this.average_pictures();
             }
+
+            this.array_pictures.delete();
 
         });
 
@@ -129,8 +127,8 @@ class PictureManager {
     }
 
     display_pictures = () => {
-        for (let i = 0; i < this.cv_pictures.length; i++) {
-            const picture = this.cv_pictures[i];
+        for (let i = 0; i < this.array_pictures.length; i++) {
+            const picture = this.array_pictures[i];
             cv.imshow('canvasOutputBlock', picture);
             picture.delete();
         }
