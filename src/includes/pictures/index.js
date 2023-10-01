@@ -62,8 +62,8 @@ async function init() {
         const pictures = [];
         for (let i = 0; i < files.length; i++) {
             const file = files[i];
-            const picture = await file.arrayBuffer();
-            pictures.push(picture);
+            const imgMat = await cv.imgMatFromFile(file);
+            console.log(imgMat);
         }
         console.log(pictures);
     });
