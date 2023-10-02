@@ -277,8 +277,7 @@ class PictureManager {
                 const lefty = Math.round((-x * vy / vx) + y);
                 const righty = Math.round(((src.cols - x) * vy / vx) + y);
                 biggest_contours.push([points, [lefty, 0], [righty, src.cols]]);
-                console.log('Equation of the line : y = ' + vy / vx + ' * (x - ' + x + ') + ' + lefty);
-                text += 'Equation of the line : y = ' + vy / vx + ' * (x - ' + x + ') + ' + lefty + '\n';
+                text += 'Equation of the line : y = a x + b : a = ' + vy / vx + ' b = ' + lefty + '\n';
             }
             console.log(biggest_contours);
             // Compute the angle between the 2 lines
