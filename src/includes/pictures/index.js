@@ -416,7 +416,9 @@ class PictureManager {
                         if (y < 0 || y >= this.cv_pictures[i].height) {
                             light_intensity_line.push(0);
                         } else {
-                            light_intensity_line.push((this.cv_pictures[i].data[y * this.cv_pictures[i].width + x] + this.cv_pictures[i].data[y * this.cv_pictures[i].width + x + 1] + this.cv_pictures[i].data[y * this.cv_pictures[i].width + x + 2]) / 3);
+                            const pixel = this.cv_pictures[i].at(y, x);
+                            const light_intensity_pixel = (pixel[0] + pixel[1] + pixel[2]) / 3;
+                            light_intensity_line.push(light_intensity_pixel);
                         }
                     }
                     light_intensity.push(light_intensity_line);
