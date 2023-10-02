@@ -39,13 +39,15 @@ class PictureManager {
         const formElement = form.render();
         card_parameters.addComponent(formElement);
         let list_check_input = [
-            {id: 'display_only', label: 'Display Only', value: 'display_only', checked: 'true'},
+            {id: 'display_only', label: 'Display Only', value: 'display_only', checked: 'false'},
             {id: 'average_color', label: 'Average Color', value: 'average_color', checked: 'false'},
             {id: 'average_pictures', label: 'Average Pictures', value: 'average_pictures', checked: 'false'},
             {id: 'determine_axis', label: 'Determine Axis', value: 'determine_axis', checked: 'false', son_id: ['determine_axis_threshold_min', 'determine_axis_threshold_max']},
         ];
         let name = 'Select the treatment needed';
         form.add_multiple_check_input_single_choice(list_check_input, name)
+        // Manually check the first one
+        document.getElementById(list_check_input[0].id).checked = true;
         //form.add_divider();
         form.add_caption('Settings for the axis processing')
         form.add_text_input({
