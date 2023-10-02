@@ -110,14 +110,8 @@ class PictureManager {
     }
 
     display_pictures = () => { // Display all the pictures in the output block with their original size
-        const canvasOutput = document.getElementById('canvasOutputBlock');
-        const ctx = canvasOutput.getContext('2d');
-        ctx.clearRect(0, 0, canvasOutput.width, canvasOutput.height);
-        canvasOutput.width = this.pictures[0].width;
-        canvasOutput.height = this.pictures[0].height;
         for (let i = 0; i < this.pictures.length; i++) {
             this.add_output_block('Title', 'text', this.pictures[i]);
-            //ctx.drawImage(this.pictures[i], 0, 0);
         }
     }
 
