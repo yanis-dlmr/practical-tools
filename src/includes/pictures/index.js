@@ -27,6 +27,27 @@ class PictureManager {
     }
 
     create_body() {
+        // Create the allert 
+        var alert = document.createElement(`div`);
+        alert.classList.add(`alert`);
+        alert.classList.add(`alert-primary`);
+        alert.classList.add(`alert-dismissible`);
+        alert.classList.add(`fade`);
+        alert.classList.add(`show`);
+        alert.classList.add('m-4');
+        alert.style.boxShadow = '0 0.5rem 1rem rgba(0,0,0,0.15)';
+        alert.setAttribute(`role`, `alert`);
+        alert.innerHTML = `This tool is still in development, some results may not be accurate. A Python equivalent script is available on my <a class="custom-link" href="https://github.com/yanis-dlmr/picture-treatment" target="_blank">GitHub</a>`;
+        
+        var closeButton = document.createElement(`button`);
+        closeButton.classList.add(`btn-close`);
+        closeButton.setAttribute(`type`, `button`);
+        closeButton.setAttribute(`data-bs-dismiss`, `alert`);
+        closeButton.setAttribute(`aria-label`, `Close`);
+        alert.appendChild(closeButton);
+    
+        document.body.appendChild(alert);
+
         const row = document.createElement('div');
         row.classList.add('row', 'custom-row');
         document.body.appendChild(row);
