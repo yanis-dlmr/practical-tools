@@ -89,7 +89,7 @@ class Form {
         text.id = structure["id"];
         text.classList.add('form-control');
         text.required = true;
-        text.textContent = structure["value"];
+        text.value = structure["value"];
     
         input.appendChild(span);
         input.appendChild(text);
