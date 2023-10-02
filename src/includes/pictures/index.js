@@ -420,29 +420,26 @@ class PictureManager {
 
     add_cv_output_block  = (title, text, picture) => {
 
-        //const picture_name = picture.name;
-        //const picture_size = picture.width + 'x' + picture.height;
-
         const caption = new Caption(title);
         const captionElement = caption.render();
         this.card_output.addComponent(captionElement);
 
         const textElement = document.createElement('p');
-        let final_text = text; //'\n' + picture_name + ' (' + picture_size + ')';
+        let final_text = text;
         const replacedText = final_text.replace(/\n/g, "<br>");
         textElement.innerHTML = replacedText
         this.card_output.addComponent(textElement);
 
         const canvas = document.createElement('canvas');
-        canvas.id = 'canvasOutputBlock' + picture_name;
+        canvas.id = 'canvasOutputBlock' + picture.src;
         canvas.width = picture.width;
         canvas.height = picture.height;
         this.card_output.addComponent(canvas);
 
         // display image using cv
-        const canvasOutput = document.getElementById('canvasOutputBlock'  + picture_name);
+        const canvasOutput = document.getElementById('canvasOutputBlock'  + picture.src);
         const ctx = canvasOutput.getContext('2d');
-        cv.imshow('canvasOutputBlock'  + picture_name, picture);
+        cv.imshow('canvasOutputBlock'  + picture.src, picture);
     }
 }
 
