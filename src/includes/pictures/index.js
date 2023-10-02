@@ -315,7 +315,7 @@ class PictureManager {
         this.card_output.addComponent(captionElement);
 
         const textElement = document.createElement('p');
-        final_text = text + '\n' + picture_name + ' (' + picture_size + ')';
+        let final_text = text + '\n' + picture_name + ' (' + picture_size + ')';
         const replacedText = final_text.replace(/\n/g, "<br>");
         textElement.innerHTML = replacedText
         this.card_output.addComponent(textElement);
@@ -344,7 +344,7 @@ class PictureManager {
         this.card_output.addComponent(captionElement);
 
         const textElement = document.createElement('p');
-        final_text = text + '\n' + picture_name + ' (' + picture_size + ')';
+        let final_text = text + '\n' + picture_name + ' (' + picture_size + ')';
         const replacedText = final_text.replace(/\n/g, "<br>");
         textElement.innerHTML = replacedText
         this.card_output.addComponent(textElement);
