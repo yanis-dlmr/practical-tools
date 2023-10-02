@@ -230,10 +230,10 @@ class PictureManager {
             const threshold_type = cv.THRESH_BINARY;
             const threshold = new cv.Mat();
             cv.threshold(this.cv_pictures[i], threshold, threshold_min_value, threshold_max_value, threshold_type);
-        //    // Find contours
-        //    const contours = new cv.MatVector();
-        //    const hierarchy = new cv.Mat();
-        //    cv.findContours(threshold, contours, hierarchy, cv.RETR_CCOMP, cv.CHAIN_APPROX_SIMPLE);
+            // Find contours
+            const contours = new cv.MatVector();
+            const hierarchy = new cv.Mat();
+            cv.findContours(threshold, contours, hierarchy, cv.RETR_CCOMP, cv.CHAIN_APPROX_SIMPLE);
         //    // Sort contours by area
         //    const contours_area = [];
         //    for (let j = 0; j < contours.size(); j++) {
