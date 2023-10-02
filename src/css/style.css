@@ -36,7 +36,7 @@ h4{
 }
 
 .custom-header{
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: bold;
     color: #2061ae;
     border-radius: 0.25rem;
@@ -56,7 +56,7 @@ h4{
 
 .custom-card{
     margin: 1rem;
-    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.05);
+    box-shadow: 0 0.2rem 0.5rem rgba(0,0,0,0.04);
 }
 
 .custom-big-card{
