@@ -12,11 +12,12 @@ class Form {
     add_multiple_check_input_single_choice(list_check_input, name) { // list_check_input = [check_input1, check_input2, ...] with check_input = {id: id, label: label, value: value}
         let caption = new Caption(name);
         this.form.appendChild(caption.render());
-        
-        let div = document.createElement('div');
-        div.classList.add('form-check');
+
         
         list_check_input.forEach(check_input => {
+            let div = document.createElement('div');
+            div.classList.add('form-check');
+
             var input = document.createElement("input");
             input.className = "form-check-input";
             input.type = "checkbox";
@@ -30,8 +31,8 @@ class Form {
             
             div.appendChild(input);
             div.appendChild(label);
+            this.form.appendChild(div);
         });
-        this.form.appendChild(div);
     }
 
     render() {
