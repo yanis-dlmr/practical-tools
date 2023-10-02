@@ -369,6 +369,9 @@ class PictureManager {
                     const points = biggest_contours[j][0];
                     const lefty = biggest_contours[j][1];
                     const righty = biggest_contours[j][2];
+                    b = lefty[j][1][0]
+                    a = (points[j][0][1] - points[j][1][1]) / (points[j][0][0] - points[j][1][0])
+                    console.log(a, b)
                     console.table(points);
                     console.table(lefty);
                     console.table(righty);
