@@ -304,6 +304,7 @@ class PictureManager {
             
             // Find contours
             let src_original = this.cv_pictures[i];
+            let src_copy = src_original.clone();
             let src = src_original.clone();
             let dst = cv.Mat.zeros(src.rows, src.cols, cv.CV_8UC3);
             dst.name = 'Contours' + this.cv_pictures[i].name;
@@ -389,7 +390,7 @@ class PictureManager {
             this.add_cv_output_block('Lines', text, dst);
 
             // Draw the lines on the original picture
-            const src2 = src_original;
+            const src2 = src_copy;
             src2.name = 'Lines on original picture' + this.cv_pictures[i].name;
             for (let j = 0; j < biggest_contours.length; j++) {
                 //const points = biggest_contours[j][0];
@@ -419,9 +420,9 @@ class PictureManager {
                             light_intensity_line.push(0);
                         } else {
                             // Get the average light intensity of the 3 channels and don't compute the alpha channel
-                            const pixel_r = this.cv_pictures[i].data[(x * this.cv_pictures[i].height + y) * 4 + 0];
-                            const pixel_g = this.cv_pictures[i].data[(x * this.cv_pictures[i].height + y) * 4 + 1];
-                            const pixel_b = this.cv_pictures[i].data[(x * this.cv_pictures[i].height + y) * 4 + 2];
+                            const pixel_r = this.cv_pictures[i].data[(y * this.cv_pictures[i].width + x) * 4 + 0];
+                            const pixel_g = this.cv_pictures[i].data[(y * this.cv_pictures[i].width + x) * 4 + 1];
+                            const pixel_b = this.cv_pictures[i].data[(y * this.cv_pictures[i].width + x) * 4 + 2];
                             const pixel = Math.round((pixel_r + pixel_g + pixel_b) / 3);
                             light_intensity_line.push(pixel);
                         }
