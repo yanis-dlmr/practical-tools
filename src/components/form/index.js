@@ -86,6 +86,9 @@ class Form {
         text.setAttribute('type', 'text');
         text.setAttribute('class', 'form-control');
         text.id = structure["id"];
+        if ("parent_id" in structure) {
+            text.parent_id = structure["parent_id"];
+        }
         text.classList.add('form-control');
         text.required = true;
     
