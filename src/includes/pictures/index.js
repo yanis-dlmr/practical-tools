@@ -401,7 +401,6 @@ class PictureManager {
 
             // Get light intensity along the lines accross all the pictures
             console.log(this.cv_pictures[i].data)
-            console.table(this.cv_pictures[i].data)
             const light_intensity_bool = document.getElementById('get_light_intensity').checked;
             if (light_intensity_bool) {
                 const light_intensity = [];
