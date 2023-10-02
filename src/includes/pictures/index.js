@@ -350,11 +350,16 @@ class PictureManager {
                 biggest_contours.push([points, [lefty, 0], [righty, src.cols]]);
                 text += 'Equation of the line : y = ' + vy / vx + ' x + ' + lefty + '\n';
             }
-            console.log(biggest_contours);
-            // Compute the angle between the 2 lines
-            const angle = Math.atan2(biggest_contours[0][0][0][1] - biggest_contours[1][0][0][1], biggest_contours[0][0][0][0] - biggest_contours[1][0][0][0]) * 180 / Math.PI;
-            console.log(angle);
-            text += 'Angle between the 2 lines : ' + angle + '°' + '\n';
+
+            // Compute the angle between the n lines, 1 with 2, 1 with 3, 2 with 3, etc.
+            for (let j = 0; j < biggest_contours.length; j++) {
+                for (let k = j + 1; k < biggest_contours.length; k++) {
+                    const angle = Math.atan2(biggest_contours[j][0][0][1] - biggest_contours[k][0][0][1], biggest_contours[j][0][0][0] - biggest_contours[k][0][0][0]) * 180 / Math.PI;
+                    text += 'Angle between the line ' + j + ' and the line ' + k + ' : ' + angle + '°' + '\n';
+                }
+            }
+
+
             // Draw the lines
             for (let j = 0; j < biggest_contours.length; j++) {
                 const points = biggest_contours[j][0];
