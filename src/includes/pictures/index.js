@@ -400,6 +400,8 @@ class PictureManager {
             this.add_cv_output_block('Lines on original picture', text, src2);
 
             // Get light intensity along the lines accross all the pictures
+            console.log(this.cv_pictures[i].data)
+            console.table(this.cv_pictures[i].data)
             const light_intensity_bool = document.getElementById('get_light_intensity').checked;
             if (light_intensity_bool) {
                 const light_intensity = [];
@@ -416,7 +418,7 @@ class PictureManager {
                         if (y < 0 || y >= this.cv_pictures[i].height) {
                             light_intensity_line.push(0);
                         } else {
-                            light_intensity_line.push(this.cv_pictures[i].data[y * this.cv_pictures[i].width + x]);
+                            light_intensity_line.push(this.cv_pictures[i].data[y * this.cv_pictures[i].width * 4 + x * 4]);
                         }
                     }
                     light_intensity.push(light_intensity_line);
