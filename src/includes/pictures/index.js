@@ -189,7 +189,7 @@ class PictureManager {
 
     display_pictures = () => { // Display all the pictures in the output block with their original size
         for (let i = 0; i < this.pictures.length; i++) {
-            this.add_output_block('Title', 'text', this.pictures[i]);
+            this.add_output_block('Title', 'This is your original picture', this.pictures[i]);
         }
     }
 
@@ -221,7 +221,7 @@ class PictureManager {
             data[i + 2] = average[2];
         }
         ctx.putImageData(imageData, 0, 0);
-        this.add_output_block('Average Color', 'nomnomnom', this.average_picture);
+        this.add_output_block('Average Color', 'This is the average color of your picture', this.average_picture);
     }
 
     compute_average_picture = () => { // Compute the average of all the pictures and display it in the output block, with the original size
