@@ -400,6 +400,7 @@ class PictureManager {
                     // Equation of the line : y = a x + b
                     const a = (points[1][1] - points[0][1]) / (points[1][0] - points[0][0]);
                     const b = points[0][1] - a * points[0][0];
+                    console.log("dimensions", this.cv_pictures[i].width, this.cv_pictures[i].height)
                     for (let x = 0; x < this.cv_pictures[i].width; x++) {
                         const y = Math.round(a * x + b);
                         console.log(x, y)
