@@ -49,7 +49,7 @@ class Form {
                         }
                     });
                     // query all inputs, if input.id contains check_input.id, put it as required and not disabled
-                    let inputs = document.querySelectorAll(`input[id*="${check_input.id}"]`);
+                    let inputs = document.querySelectorAll(`input[id^="${check_input.id}"]`);
                     inputs.forEach(input => {
                         console.log(input)
                         input.required = true;
@@ -57,7 +57,7 @@ class Form {
                     });
                 } else {
                     // put all inputs with parent_id == check_input_id as not required and disabled on all the document (not only on the form)
-                    let inputs = document.querySelectorAll(`input[id*="${check_input.id}"]`);
+                    let inputs = document.querySelectorAll(`input[id^="${check_input.id}"]`);
                     inputs.forEach(input => {
                         console.log(input)
                         input.required = false;
