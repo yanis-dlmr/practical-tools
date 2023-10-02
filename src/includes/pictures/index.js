@@ -412,7 +412,22 @@ class PictureManager {
                             light_intensity_line.push(this.cv_pictures[i].data[y * this.cv_pictures[i].width + x]);
                         }
                     }
-                    light_intensity.push(light_intensity_line);
+                    // Apply the moving average filter to smooth the signal
+                    const light_intensity_line_smoothed = [];
+                    const window_size = 10;
+                    for (let x = 0; x < this.cv_pictures[i].width; x++) {
+                        let sum = 0;
+                        for (let k = 0; k < window_size; k++) {
+                            if (x - window_size / 2 + k < 0 || x - window_size / 2 + k >= this.cv_pictures[i].width) {
+                                sum += 0;
+                            } else {
+                                sum += light_intensity_line[x - window_size / 2 + k];
+                            }
+                        }
+                        light_intensity_line_smoothed.push(sum / window_size);
+                    }
+                    light_intensity.push(light_intensity_line_smoothed);
+                    //light_intensity.push(light_intensity_line);
                 }
                 console.log(light_intensity);
                 text = '';
