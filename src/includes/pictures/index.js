@@ -232,9 +232,11 @@ class PictureManager {
             cv.cvtColor(src, src, cv.COLOR_RGBA2GRAY, 0);
 
             // Threshold the picture
-            cv.threshold(src, src, 50, 255, cv.THRESH_BINARY);
+            let threshold_min_value = 55;
+            let threshold_max_value = 255;
+            cv.threshold(src, src, threshold_min_value, threshold_max_value, cv.THRESH_BINARY);
             src.name = 'Threshold' + this.cv_pictures[i].name;
-            this.add_cv_output_block('Threshold', 'nomnomnom', src);
+            this.add_cv_output_block('Threshold', 'Threshold between ' + threshold_min_value + ' and ' + threshold_max_value + ' (range 0:255) ', src);
 
             // Find contours
             let contours = new cv.MatVector();
@@ -245,7 +247,7 @@ class PictureManager {
                                           Math.round(Math.random() * 255));
                 cv.drawContours(dst, contours, i, color, 1, cv.LINE_8, hierarchy, 100);
             }
-            this.add_cv_output_block('Contours', "j'espère ça marche", dst);
+            this.add_cv_output_block('Contours', "Number of contours : " + contours.size(), dst);
             src.delete(); dst.delete(); contours.delete(); hierarchy.delete();
         //    // Sort contours by area
         //    const contours_area = [];
