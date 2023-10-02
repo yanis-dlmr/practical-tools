@@ -1,5 +1,4 @@
 body {
-    background-color: #1e1e20;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -23,7 +22,6 @@ body {
 }
 
 .custom-card{
-    background-color: #252529;
     border: 1px solid #252529;
     margin: 1rem;
 }
