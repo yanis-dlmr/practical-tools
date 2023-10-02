@@ -46,6 +46,13 @@ class PictureManager {
         ];
         let name = 'Select the treatment needed';
         form.add_multiple_check_input_single_choice(list_check_input, name)
+        form.add_divider();
+        var structure = {
+            label: 'Threshold minimum',
+            id: 'threshold_min',
+            unit: 'px'
+        }
+        form.add_text_input(structure);
 
 
         // Data import

@@ -46,12 +46,55 @@ class Form {
                 }
             });
         });
+    }
 
-        // add divider 
+    add_divider() {
         let divider = document.createElement('hr');
         divider.classList.add('my-4');
         this.form.appendChild(divider);
     }
+
+    add_text_input(structure) {
+
+        var input = document.createElement(`div`);
+        input.setAttribute("class", "input-group mb-3");
+    
+        var span = document.createElement(`span`);
+        span.setAttribute("class", "input-group-text col-4");
+        span.textContent = structure["label"];
+    
+        var text = document.createElement('input');
+        text.setAttribute('type', 'text');
+        text.setAttribute('class', 'form-control');
+        text.id = structure["id"];
+        text.classList.add('form-control');
+        text.required = true;
+    
+        input.appendChild(span);
+        input.appendChild(text);
+    
+        if (("unit" in structure) && (structure["unit"] != "")) {
+            var unit = document.createElement(`span`);
+            unit.setAttribute("class", "input-group-text col-2");
+            unit.textContent = structure["unit"];
+            input.appendChild(unit);
+        };
+    
+        
+        var validFeedback = document.createElement('div');
+        validFeedback.classList.add('valid-feedback');
+        validFeedback.textContent = 'Looks good!';
+        input.appendChild(validFeedback);
+    
+        var invalidFeedback = document.createElement('div');
+        invalidFeedback.classList.add('invalid-feedback');
+        invalidFeedback.textContent = 'Please provide a valid value.';
+        input.appendChild(invalidFeedback);
+    
+        this.form.appendChild(input);
+    
+    }
+
 
     render() {
         return this.form;
