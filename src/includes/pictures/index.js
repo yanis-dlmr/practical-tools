@@ -395,7 +395,7 @@ class PictureManager {
                 //const points = biggest_contours[j][0];
                 const lefty = biggest_contours[j][1];
                 const righty = biggest_contours[j][2];
-                cv.line(src2, new cv.Point(lefty[0], lefty[1]), new cv.Point(righty[0], righty[1]), [255, 255, 255, 255], 2, cv.LINE_AA, 0);
+                cv.line(src2, new cv.Point(lefty[1], lefty[0]), new cv.Point(righty[1], righty[0]), [255, 255, 255, 255], 2, cv.LINE_AA, 0);
             }
             this.add_cv_output_block('Lines on original picture', text, src2);
 
