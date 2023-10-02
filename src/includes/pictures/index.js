@@ -429,11 +429,13 @@ class PictureManager {
                     }
                     light_intensity.push(light_intensity_line);
                 }
+                this.add_output_title('Light intensity along the lines')
                 text = '';
                 for (let j = 0; j < light_intensity.length; j++) {
-                    text += 'Light intensity along the line ' + (j+1) + ' : ' + light_intensity[j] + '\n';
+                    this.add_output_text('Light intensity along the line ' + (j+1) + ' : ' + light_intensity[j]);
+                    const array = light_intensity[j];
+                    this.add_output_array(array);
                 }
-                this.add_output_block_without_picture('Light intensity along the lines', text);
             }
             
             src.delete(); dst.delete(); contours.delete(); src_copy.delete(); src_original.delete();
@@ -442,6 +444,35 @@ class PictureManager {
 
     remove_all_output_blocks = () => {
         this.card_output.removeAllComponents();
+    }
+
+    add_output_title = (title) => {
+        const caption = new Caption(title);
+        const captionElement = caption.render();
+        this.card_output.addComponent(captionElement);
+    }
+
+    add_output_text = (text) => {
+        const textElement = document.createElement('p');
+        let final_text = text + '\n' + picture_name + ' (' + picture_size + ')';
+        const replacedText = final_text.replace(/\n/g, "<br>");
+        textElement.innerHTML = replacedText
+        this.card_output.addComponent(textElement);
+    }
+
+    add_output_array = (array) => { // Display array between brackets and inside a code block
+        const textElement = document.createElement('p');
+        let final_text = '[';
+        for (let i = 0; i < array.length; i++) {
+            final_text += array[i];
+            if (i < array.length - 1) {
+                final_text += ', ';
+            }
+        }
+        final_text += ']';
+        const replacedText = final_text.replace(/\n/g, "<br>");
+        textElement.innerHTML = replacedText
+        this.card_output.addComponent(textElement);
     }
 
     add_output_block = (title, text, picture) => {
