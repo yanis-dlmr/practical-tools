@@ -364,31 +364,18 @@ class PictureManager {
             }
 
             // Compute the angle between the n lines, 1 with 2, 1 with 3, 2 with 3, etc.
-            const all_equations = [];
+            // Get angles of all lines with the x axis
+            const all_angles = [];
             for (let j = 0; j < biggest_contours.length; j++) {
-                const equations = [];
-                for (let k = j + 1; k < biggest_contours.length; k++) {
-                    const points = biggest_contours[j][0];
-                    const lefty = biggest_contours[j][1];
-                    //const righty = biggest_contours[j][2];
-                    const b = lefty[0]
-                    const a = (points[0][1] - points[1][1]) / (points[0][0] - points[1][0])
-                    equations.push([a, b]);
-                }
-                all_equations.push(equations);
+                const points = biggest_contours[j][0];
+                const lefty = biggest_contours[j][1];
+                //const righty = biggest_contours[j][2];
+                const b = lefty[0]
+                const a = (points[0][1] - points[1][1]) / (points[0][0] - points[1][0])
+                const angle = Math.atan(a) * 180 / Math.PI;
+                all_angles.push(angle);
             }
-            for (let j = 0; j < all_equations.length; j++) {
-                for (let k = 0; k < all_equations[j].length; k++) {
-                    const a1 = all_equations[j][k][0];
-                    //const b1 = all_equations[j][k][1];
-                    for (let l = k + 1; l < all_equations[j].length; l++) {
-                        const a2 = all_equations[j][l][0];
-                        //const b2 = all_equations[j][l][1];
-                        const angle = Math.atan((a2 - a1) / (1 + a1 * a2)) * 180 / Math.PI;
-                        test += 'Angle between lines ' + (j+1) + ' and ' + (j+l+1) + ' : ' + angle + '°\n';
-                    }
-                }
-            }
+            console.table(all_angles);
 
 
             // Draw the lines
@@ -444,7 +431,7 @@ class PictureManager {
                 this.add_output_block_without_picture('Light intensity along the lines', text);
             }
             
-            src.delete(); dst.delete(); contours.delete(); hierarchy.delete(); biggest_contours.delete(); src_original.delete(); src2.delete(); line.delete(); points.delete(); text.delete(); light_intensity.delete();
+            src.delete(); dst.delete(); contours.delete(); hierarchy.delete(); src_original.delete(); src2.delete(); line.delete(); points.delete(); text.delete(); light_intensity.delete();
         }
     }
 
