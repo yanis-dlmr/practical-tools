@@ -184,18 +184,16 @@ class Form {
         div.appendChild(input);
         div.appendChild(label);
         this.form.appendChild(div);
-        list_check_input.forEach(check_input => {
-            document.getElementById(check_input.id).addEventListener('change', function() {
-                if (this.checked) {
-                    if ('son_id' in check_input) {
-                        // put all the sons as not disabled and required
-                        check_input.son_id.forEach(son => {
-                            document.getElementById(son).disabled = false;
-                            document.getElementById(son).required = true;
-                        });
-                    }
+        document.getElementById(structure.id).addEventListener('change', function() {
+            if (this.checked) {
+                if ('son_id' in structure) {
+                    // put all the sons as not disabled and required
+                    structure.son_id.forEach(son => {
+                        document.getElementById(son).disabled = false;
+                        document.getElementById(son).required = true;
+                    });
                 }
-            });
+            }
         });
     }
 
