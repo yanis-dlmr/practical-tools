@@ -44,7 +44,7 @@ class PictureManager {
             {id: 'average_pictures', label: 'Average Pictures', value: 'average_pictures'},
             {id: 'determine_axis', label: 'Determine Axis', value: 'determine_axis'}
         ];
-        let name = 'Select the kind of treatment you want to apply to your pictures';
+        let name = 'Select the treatment needed';
         form.add_multiple_check_input_single_choice(list_check_input, name)
 
 
