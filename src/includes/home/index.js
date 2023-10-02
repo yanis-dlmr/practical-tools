@@ -53,7 +53,7 @@ The tools are still in development, some features may not work properly. If you 
     //picture of the logo
     cardBody2.innerHTML =
     `
-<img src="/assets/images/logo.ico" alt="logo" style="width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem;">
+<img src="/src/assets/images/logo.ico" alt="logo" style="width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem;">
     `   
 
 
