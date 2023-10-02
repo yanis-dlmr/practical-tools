@@ -14,17 +14,20 @@ class Form {
         this.form.appendChild(caption.render());
         
         let div = document.createElement('div');
-        div.classList.add('custom-form-check');
+        div.classList.add('form-check');
+        
         list_check_input.forEach(check_input => {
-            let input = document.createElement('input');
-            input.classList.add('custom-form-check-input');
+            var input = document.createElement("input");
+            input.className = "form-check-input";
             input.type = "checkbox";
             input.id = check_input.id;
             input.value = check_input.value;
-            let label = document.createElement('label');
-            label.classList.add('custom-form-check-label');
+
+            var label = document.createElement("label");
+            label.className = "form-check-label";
             label.for = check_input.id;
             label.textContent = check_input.label;
+            
             div.appendChild(input);
             div.appendChild(label);
         });
