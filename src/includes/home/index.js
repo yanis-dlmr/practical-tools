@@ -6,12 +6,7 @@ async function init_home() {
 
     const cardContainer = document.createElement('div');
     cardContainer.classList.add('card');
-    cardContainer.style.backgroundColor = 'transparent';
-    cardContainer.style.maxWidth = '60%'
-    cardContainer.style.margin = '0 auto'; 
-    cardContainer.style.boxShadow = '0 0.5rem 1rem rgba(0,0,0,0.15)';
-    cardContainer.style.marginTop = '5rem';
-    cardContainer.style.marginBottom = '5rem';
+    cardContainer.classList.add('custom-big-card');
 
     const cardHeader = document.createElement('div');
     cardHeader.classList.add('card-header');
