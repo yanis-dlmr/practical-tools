@@ -420,6 +420,10 @@ class PictureManager {
 
     add_cv_output_block  = (title, text, picture) => {
 
+        console.log('banane')
+        console.table(picture)
+        console.log(picture)
+
         const caption = new Caption(title);
         const captionElement = caption.render();
         this.card_output.addComponent(captionElement);
