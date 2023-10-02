@@ -99,7 +99,7 @@ class PictureManager {
             label: 'Limit condition',
             id: 'limit_condition',
             value: 'min max derivative',
-            choices: ['min max derivative', 'average value as threshold']
+            options: ['min max derivative', 'average value as threshold']
         });
 
         
