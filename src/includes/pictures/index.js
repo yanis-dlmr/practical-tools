@@ -291,6 +291,8 @@ class PictureManager {
             for (let j = 0; j < length; j++) {
                 mat_data[j] = data[j];
             }
+            mat.height = canvas.height;
+            mat.width = canvas.width;
             this.cv_pictures.push(mat);
         }
         this.add_cv_output_block('Imported picture', '', this.cv_pictures[0])
