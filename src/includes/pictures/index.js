@@ -416,12 +416,9 @@ class PictureManager {
                         if (y < 0 || y >= this.cv_pictures[i].height) {
                             light_intensity_line.push(0);
                         } else {
-                            const coef = (y * this.cv_pictures[i].width + x) * 4;
-                            const pixel_1 = this.cv_pictures[i].data[coef];
-                            const pixel_2 = this.cv_pictures[i].data[coef + 1];
-                            const pixel_3 = this.cv_pictures[i].data[coef + 2];
-                            const average = (pixel_1 + pixel_2 + pixel_3) / 3;
-                            light_intensity_line.push(average);
+                            // Get the average light intensity of the 3 channels and don't compute the alpha channel
+                            const pixel = this.cv_pictures[i].data[(y * this.cv_pictures[i].width + x) * 4];
+                            light_intensity_line.push(pixel);
                         }
                     }
                     light_intensity.push(light_intensity_line);
