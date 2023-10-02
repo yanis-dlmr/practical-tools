@@ -145,8 +145,9 @@ class Form {
         return button;
     }
 
-    get_importer_element () {
+    get_importer_element (importer_id) {
         const importer = new Importer('multiple pictures');
+        importer.id = importer_id;
         const formGroup = document.createElement('div');
         formGroup.classList.add('form-group');
         formGroup.appendChild(importer.render());
