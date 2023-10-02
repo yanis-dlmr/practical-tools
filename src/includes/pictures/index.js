@@ -50,12 +50,9 @@ class PictureManager {
         // Manually check the first one in order to trigger the event change
         const inputElement = document.getElementById(list_check_input[0].id);
         inputElement.checked = true;
-        const changeEvent = new Event('change', {
-            bubbles: true,
-            cancelable: false
-        });
-        inputElement.dispatchEvent(changeEvent);
-        
+        // Send the event change
+        inputElement.dispatchEvent(new Event('change'));
+
         //form.add_divider();
         form.add_caption('Settings for the axis processing')
         form.add_text_input({
