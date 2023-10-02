@@ -210,6 +210,8 @@ class PictureManager {
 
     add_output_block  = (title, text, picture) => {
 
+        console.log(picture)
+
         const picture_name = picture.name;
         const picture_size = picture.width + 'x' + picture.height;
 
