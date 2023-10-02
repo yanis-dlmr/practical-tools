@@ -419,9 +419,9 @@ class PictureManager {
                             light_intensity_line.push(0);
                         } else {
                             // Get the average light intensity of the 3 channels and don't compute the alpha channel
-                            const pixel_r = this.cv_pictures[i].data[(y * this.cv_pictures[i].width + x) * 4 + 0];
-                            const pixel_g = this.cv_pictures[i].data[(y * this.cv_pictures[i].width + x) * 4 + 1];
-                            const pixel_b = this.cv_pictures[i].data[(y * this.cv_pictures[i].width + x) * 4 + 2];
+                            const pixel_r = this.cv_pictures[i].data[(y * this.cv_pictures[i].height + x) * 4 + 0];
+                            const pixel_g = this.cv_pictures[i].data[(y * this.cv_pictures[i].height + x) * 4 + 1];
+                            const pixel_b = this.cv_pictures[i].data[(y * this.cv_pictures[i].height + x) * 4 + 2];
                             const pixel = Math.round((pixel_r + pixel_g + pixel_b) / 3);
                             light_intensity_line.push(pixel);
                         }
