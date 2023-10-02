@@ -108,6 +108,14 @@ class Form {
         button.classList.add('btn-block');
         button.setAttribute('type', 'submit');
         button.textContent = 'Compute';
+        // check for valid or invalid input
+        button.addEventListener('click', function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            if (this.form.checkValidity() === false) {
+                this.classList.add('was-validated');
+            }
+        });
         return button;
     }
 
