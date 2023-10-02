@@ -6,6 +6,13 @@ import { Button } from '/src/components/button/index.js';
 import { Select } from '/src/components/select/index.js';
 import { Form } from '/src/components/form/index.js';
 
+const main_check_input = [
+    {id: 'display_only', label: 'Display Only', value: 'display_only', checked: 'false'},
+    {id: 'average_color', label: 'Average Color', value: 'average_color', checked: 'false'},
+    {id: 'average_pictures', label: 'Average Pictures', value: 'average_pictures', checked: 'false'},
+    {id: 'determine_axis', label: 'Determine Axis', value: 'determine_axis', checked: 'false', son_id: ['threshold_min', 'threshold_max', 'nb_axis']},
+];
+
 
 document.addEventListener('DOMContentLoaded', function() {
     new PictureManager();
@@ -38,14 +45,8 @@ class PictureManager {
         const form = new Form();
         const formElement = form.render();
         card_parameters.addComponent(formElement);
-        let list_check_input = [
-            {id: 'display_only', label: 'Display Only', value: 'display_only', checked: 'false'},
-            {id: 'average_color', label: 'Average Color', value: 'average_color', checked: 'false'},
-            {id: 'average_pictures', label: 'Average Pictures', value: 'average_pictures', checked: 'false'},
-            {id: 'determine_axis', label: 'Determine Axis', value: 'determine_axis', checked: 'false', son_id: ['threshold_min', 'threshold_max', 'nb_axis']},
-        ];
         let name = 'Select the treatment needed';
-        form.add_multiple_check_input_single_choice(list_check_input, name)
+        form.add_multiple_check_input_single_choice(main_check_input, name)
 
         //form.add_divider();
         form.add_caption('Settings for the axis processing')
@@ -112,13 +113,15 @@ class PictureManager {
             console.table(this.pictures);
             this.remove_all_output_blocks();
 
-            if (selectElementParameters.value == 'Display only') {
+            const check_input_id_checked = this.get_main_check_input_id_checked();
+
+            if (check_input_id_checked == 'display_only') {
                 this.display_pictures();
-            } else if (selectElementParameters.value == 'Average Color') {
+            } else if (check_input_id_checked == 'average_color') {
                 this.compute_average_color();
-            } else if (selectElementParameters.value == 'Average picture') {
+            } else if (check_input_id_checked == 'average_pictures') {
                 this.compute_average_picture();
-            } else if (selectElementParameters.value == 'Determine axis') {
+            } else if (check_input_id_checked == 'determine_axis') {
                 this.compute_determine_axis();
             }
             // clear memory
@@ -143,6 +146,15 @@ class PictureManager {
         canvasOutput.id = 'canvasOutputBlock';
         this.card_output.addComponent(canvasOutput);
     }
+
+    get_main_check_input_id_checked = () => { // Get the id of checked main check input
+        for (let i = 0; i < main_check_input.length; i++) {
+            if (document.getElementById(main_check_input[i].id).checked) {
+                return main_check_input[i].id;
+            }
+        }
+    }
+
 
     display_pictures = () => { // Display all the pictures in the output block with their original size
         for (let i = 0; i < this.pictures.length; i++) {
