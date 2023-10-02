@@ -10,19 +10,9 @@ body {
     --bs-gutter-x: 0;
 }
 
-.card-title {
-    margin: 1rem;
-    font-size: 2rem;
-}
-
 .icon-menu{
     margin-right: 5px;
     height: 20px;
-}
-
-.custom-card{
-    margin: 1rem;
-    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
 }
 
 .custom-card-body{
@@ -53,6 +43,11 @@ h4{
     border-radius: 0.25rem;
     padding: 0.5rem 1rem;
     margin-bottom: 1rem;
+}
+
+.custom-card{
+    margin: 1rem;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
 }
 
 .custom-big-card{

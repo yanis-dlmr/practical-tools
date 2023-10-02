@@ -14,9 +14,8 @@ class Card {
     }
 
     setTitle(title) {
-        this.cardHeader = document.createElement('h3');
-        this.cardHeader.classList.add('card-header');
-        this.cardHeader.classList.add('card-title');
+        this.cardHeader = document.createElement('div');
+        this.cardHeader.classList.add('custom-big-header');
         this.cardHeader.innerText = title;
         this.card.appendChild(this.cardHeader);
     }
