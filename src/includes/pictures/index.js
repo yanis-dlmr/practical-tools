@@ -366,6 +366,12 @@ class PictureManager {
             // Compute the angle between the n lines, 1 with 2, 1 with 3, 2 with 3, etc.
             for (let j = 0; j < biggest_contours.length; j++) {
                 for (let k = j + 1; k < biggest_contours.length; k++) {
+                    const points = biggest_contours[j][0];
+                    const lefty = biggest_contours[j][1];
+                    const righty = biggest_contours[j][2];
+                    console.table(points);
+                    console.table(lefty);
+                    console.table(righty);
                     const angle = Math.atan2(biggest_contours[j][0][0][1] - biggest_contours[k][0][0][1], biggest_contours[j][0][0][0] - biggest_contours[k][0][0][0]) * 180 / Math.PI;
                     text += 'Angle between the line ' + (j+1) + ' and the line ' + (k+1) + ' : ' + angle + '°' + '\n';
                 }
