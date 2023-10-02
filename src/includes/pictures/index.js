@@ -403,7 +403,7 @@ class PictureManager {
             const light_intensity_bool = document.getElementById('get_light_intensity').checked;
             if (light_intensity_bool) {
                 const light_intensity = [];
-                console.log('biggest_contours', biggest_contours)
+                console.log('biggest_contours.length', biggest_contours.length)
                 for (let j = 0; j < biggest_contours.length; j++) {
                     // Equation of the line : y = a x + b
                     const equation = biggest_contours[j][3];
@@ -411,6 +411,7 @@ class PictureManager {
                     const b = equation[1];
                     // Get the light intensity along the line
                     const light_intensity_line = [];
+                    console.log('this.cv_pictures[i].width', this.cv_pictures[i].width);
                     for (let x = 0; x < this.cv_pictures[i].width; x++) {
                         const y = Math.round(a * x + b);
                         if (y < 0 || y >= this.cv_pictures[i].height) {
