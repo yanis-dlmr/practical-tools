@@ -233,11 +233,13 @@ class PictureManager {
             cv.threshold(this.cv_pictures[i], threshold, threshold_min_value, threshold_max_value, threshold_type);
             this.add_cv_output_block('Threshold', 'nomnomnom', threshold);
             // Find contours
-            const contours = new cv.MatVector();
-            const hierarchy = new cv.Mat();
-            const mode = cv.RETR_CCOMP;
-            const method = cv.CHAIN_APPROX_SIMPLE;
-            cv.findContours(threshold, contours, hierarchy, cv.RETR_CCOMP, cv.CHAIN_APPROX_SIMPLE);
+
+            let src = this.cv_pictures[i];
+            cv.cvtColor(src, src, cv.COLOR_RGBA2GRAY, 0);
+            cv.threshold(src, src, 120, 200, cv.THRESH_BINARY);
+            let contours = new cv.MatVector();
+            let hierarchy = new cv.Mat();
+            cv.findContours(src, contours, hierarchy, cv.RETR_CCOMP, cv.CHAIN_APPROX_SIMPLE);
             
         //    // Sort contours by area
         //    const contours_area = [];
