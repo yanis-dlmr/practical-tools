@@ -208,9 +208,10 @@ class PictureManager {
         this.card_output.removeAllComponents();
     }
 
-    add_output_block  = (title, text, picture) => {
-        picture_name = picture.name;
-        picture_size = picture.width + 'x' + picture.height;
+    add_output_block  = (title, text, picture) => {.
+
+        const picture_name = picture.name;
+        const picture_size = picture.width + 'x' + picture.height;
 
         const caption = new Caption(title);
         const captionElement = caption.render();
