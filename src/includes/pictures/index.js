@@ -233,8 +233,8 @@ class PictureManager {
             cv.threshold(this.cv_pictures[i], threshold, threshold_min_value, threshold_max_value, threshold_type);
             this.add_cv_output_block('Threshold', 'nomnomnom', threshold);
             // Find contours
-
             let src = this.cv_pictures[i];
+            let dst = cv.Mat.zeros(src.rows, src.cols, cv.CV_8UC3);
             cv.cvtColor(src, src, cv.COLOR_RGBA2GRAY, 0);
             cv.threshold(src, src, 120, 200, cv.THRESH_BINARY);
             let contours = new cv.MatVector();
