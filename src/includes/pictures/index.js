@@ -78,9 +78,10 @@ class PictureManager {
         const importerElement = importer.render();
         card.addComponent(importerElement);
 
-        card.addComponent(form.get_validation_button());
+        const validation_button = form.get_validation_button();
+        card.addComponent(validation_button);
 
-        validation_buttonElement.addEventListener('click', async () => {
+        validation_button.addEventListener('click', async () => {
             const files = importerElement.files;
             this.pictures = [];
             // store all the pictures in an array
