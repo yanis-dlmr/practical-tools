@@ -198,6 +198,7 @@ class PictureManager {
         this.average_picture.id = 'canvasOutputBlock';
         this.average_picture.width = this.pictures[0].width;
         this.average_picture.height = this.pictures[0].height;
+        this.average_picture.name = this.picture[0].name;
         const ctx = this.average_picture.getContext('2d');
         ctx.clearRect(0, 0, this.average_picture.width, this.average_picture.height);
         for (let i = 0; i < this.pictures.length; i++) {
