@@ -48,15 +48,15 @@ class Form {
                             document.getElementById(check_input.id).checked = false;
                         }
                     });
-                    // put all inputs with parent_id == check_input_id as required and enabled on all the document (not only on the form)
-                    let inputs = document.querySelectorAll(`input[parent_id="${this.id}"]`);
+                    // put all inputs with input.id including check_input.id as required and enabled on all the document (not only on the form)
+                    let inputs = document.querySelectorAll(`input[id*="${check_input.id}"]`);
                     inputs.forEach(input => {
                         input.required = true;
                         input.disabled = false;
                     });
                 } else {
                     // put all inputs with parent_id == check_input_id as not required and disabled on all the document (not only on the form)
-                    let inputs = document.querySelectorAll(`input[parent_id="${this.id}"]`);
+                    let inputs = document.querySelectorAll(`input[id*="${check_input.id}"]`);
                     inputs.forEach(input => {
                         input.required = false;
                         input.disabled = true;
@@ -77,9 +77,6 @@ class Form {
 
         var input = document.createElement(`div`);
         input.setAttribute("class", "input-group mb-3");
-        if ("parent_id" in structure) {
-            input.parent_id = structure["parent_id"];
-        }
     
         var span = document.createElement(`span`);
         span.setAttribute("class", "input-group-text col-4");
