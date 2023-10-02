@@ -289,20 +289,19 @@ class PictureManager {
                 const points = biggest_contours[j][0];
                 const lefty = biggest_contours[j][1];
                 const righty = biggest_contours[j][2];
-                cv.line(dst, new cv.Point(points[0][0], points[0][1]), new cv.Point(points[1][0], points[1][1]), [255, 0, 0, 255], 2, cv.LINE_AA, 0);
+                cv.line(dst, new cv.Point(points[0][0], points[0][1]), new cv.Point(points[1][0], points[1][1]), [255, 255, 255, 255], 2, cv.LINE_AA, 0);
             }
             dst.name = 'Lines' + this.cv_pictures[i].name;
             this.add_cv_output_block('Lines', text, dst);
 
             // Draw the lines on the original picture
             const src2 = this.cv_pictures[i];
-            const dst2 = cv.Mat.zeros(src2.rows, src2.cols, cv.CV_8UC3);
-            dst2.name = 'Lines on original picture' + this.cv_pictures[i].name;
+            src2.name = 'Lines on original picture' + this.cv_pictures[i].name;
             for (let j = 0; j < biggest_contours.length; j++) {
                 const points = biggest_contours[j][0];
                 const lefty = biggest_contours[j][1];
                 const righty = biggest_contours[j][2];
-                cv.line(src2, new cv.Point(points[0][0], points[0][1]), new cv.Point(points[1][0], points[1][1]), [255, 0, 0, 255], 2, cv.LINE_AA, 0);
+                cv.line(src2, new cv.Point(points[0][0], points[0][1]), new cv.Point(points[1][0], points[1][1]), [255, 255, 255, 255], 2, cv.LINE_AA, 0);
             }
             this.add_cv_output_block('Lines on original picture', text, src2);
             
