@@ -208,7 +208,7 @@ class PictureManager {
         this.card_output.removeAllComponents();
     }
 
-    add_output_block  = (title, text, picture) => {.
+    add_output_block  = (title, text, picture) => {
 
         const picture_name = picture.name;
         const picture_size = picture.width + 'x' + picture.height;
