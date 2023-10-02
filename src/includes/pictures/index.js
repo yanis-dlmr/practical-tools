@@ -370,12 +370,19 @@ class PictureManager {
                 const points = biggest_contours[j][0];
                 const lefty = biggest_contours[j][1];
                 //const righty = biggest_contours[j][2];
-                const b = lefty[0]
+                //const b = lefty[0]
                 const a = (points[0][1] - points[1][1]) / (points[0][0] - points[1][0])
                 const angle = Math.atan(a) * 180 / Math.PI;
                 all_angles.push(angle);
             }
             console.table(all_angles);
+            // Compare the angles between each line, 1 with 2, 1 with 3, 2 with 3, etc.
+            for (let j = 0; j < biggest_contours.length; j++) {
+                for (let k = j + 1; k < biggest_contours.length; k++) {
+                    const angle = Math.abs(all_angles[j] - all_angles[k]);
+                    text += 'Angle between line ' + (j+1) + ' and ' + (k+1) + ' : ' + angle + '°\n';
+                }
+            }
 
 
             // Draw the lines
@@ -431,7 +438,7 @@ class PictureManager {
                 this.add_output_block_without_picture('Light intensity along the lines', text);
             }
             
-            src.delete(); dst.delete(); contours.delete(); hierarchy.delete(); src_original.delete(); src2.delete(); line.delete(); points.delete(); text.delete(); light_intensity.delete();
+            src.delete(); dst.delete(); contours.delete();
         }
     }
 
