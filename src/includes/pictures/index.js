@@ -428,6 +428,8 @@ class PictureManager {
 
         console.log(picture)
 
+        console.log(picture.name)
+
         const picture_name = picture.name;
         const picture_size = picture.width + 'x' + picture.height;
 
