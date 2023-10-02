@@ -404,6 +404,7 @@ class PictureManager {
             if (light_intensity_bool) {
                 const light_intensity = [];
                 console.log('biggest_contours.length', biggest_contours.length)
+                console.log('this.cv_pictures[i].data', this.cv_pictures[i].data);
                 for (let j = 0; j < biggest_contours.length; j++) {
                     // Equation of the line : y = a x + b
                     const equation = biggest_contours[j][3];
