@@ -24,13 +24,13 @@ class Form {
             input.type = "checkbox";
             input.id = check_input.id;
             input.value = check_input.value;
+            // put input to no valid state
+            input.classList.add('is-invalid');
 
             var label = document.createElement("label");
             label.className = "form-check-label";
             label.htmlFor = check_input.id;
             label.textContent = check_input.label;
-            // put label to no valid state
-            label.classList.add('is-invalid');
             
             div.appendChild(input);
             div.appendChild(label);
