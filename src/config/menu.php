@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <!-- logo -->
         <a class="navbar-brand title-color" href="/">
-            <img style="height:30px;" src="/src/assets/images/logo.ico"> Practicals Tools
+            <img style="height:30px;" src="/src/assets/images/logo.ico"> Practical Tools
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
