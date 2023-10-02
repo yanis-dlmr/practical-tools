@@ -392,13 +392,13 @@ class PictureManager {
             // Get light intensity along the lines accross all the pictures
             const light_intensity_bool = document.getElementById('get_light_intensity').checked;
             if (light_intensity_bool) {
-                var light_intensity = [];
+                const light_intensity = [];
                 for (let j = 0; j < biggest_contours.length; j++) {
                     const points = biggest_contours[j][0];
                     const lefty = biggest_contours[j][1];
                     const righty = biggest_contours[j][2];
                     // Get the light intensity along the line
-                    var light_intensity_line = [];
+                    const light_intensity_line = [];
                     // Equation of the line : y = a x + b
                     const a = (points[1][1] - points[0][1]) / (points[1][0] - points[0][0]);
                     const b = points[0][1] - a * points[0][0];
