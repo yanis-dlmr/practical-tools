@@ -432,9 +432,8 @@ class PictureManager {
                 this.add_output_title('Light intensity along the lines')
                 text = '';
                 for (let j = 0; j < light_intensity.length; j++) {
-                    this.add_output_text('Light intensity along the line ' + (j+1) + ' : ' + light_intensity[j]);
-                    const array = light_intensity[j];
-                    this.add_output_array(array);
+                    this.add_output_text('Light intensity along the line ' + (j+1) + ' : ');
+                    this.add_output_array(light_intensity[j]);
                 }
             }
             
