@@ -288,7 +288,7 @@ class PictureManager {
                 const lefty = biggest_contours[j][1];
                 const righty = biggest_contours[j][2];
                 cv.line(dst, new cv.Point(points[0][0], points[0][1]), new cv.Point(points[1][0], points[1][1]), [255, 0, 0, 255], 2, cv.LINE_AA, 0);
-                cv.line(dst, new cv.Point(lefty[0], lefty[1]), new cv.Point(righty[0], righty[1]), [0, 255, 0, 255], 2, cv.LINE_AA, 0);
+                //cv.line(dst, new cv.Point(lefty[0], lefty[1]), new cv.Point(righty[0], righty[1]), [0, 255, 0, 255], 2, cv.LINE_AA, 0);
             }
             dst.name = 'Lines' + this.cv_pictures[i].name;
             this.add_cv_output_block('Lines', "Angle between the 2 lines : " + angle, dst);
