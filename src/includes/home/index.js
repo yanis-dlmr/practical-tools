@@ -67,8 +67,8 @@ Please take a look at the documentation before using the tools and to have furth
     `
 
     cardContainer.appendChild(cardHeader);
-    cardBody.appendChild(cardBody1);
     cardBody.appendChild(cardBody2);
+    cardBody.appendChild(cardBody1);
     cardContainer.appendChild(cardBody);
     cardContainer.appendChild(cardFooter);
 
