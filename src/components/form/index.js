@@ -184,9 +184,41 @@ class Form {
         div.appendChild(input);
         div.appendChild(label);
         this.form.appendChild(div);
+        list_check_input.forEach(check_input => {
+            document.getElementById(check_input.id).addEventListener('change', function() {
+                if (this.checked) {
+                    if ('son_id' in check_input) {
+                        // put all the sons as not disabled and required
+                        check_input.son_id.forEach(son => {
+                            document.getElementById(son).disabled = false;
+                            document.getElementById(son).required = true;
+                        });
+                    }
+                }
+            });
+        });
     }
-    
 
+    add_select_input(structure) {
+        let div = document.createElement('div');
+        div.classList.add('form-group');
+        let label = document.createElement('label');
+        label.setAttribute('for', structure.id);
+        label.textContent = structure.label;
+        div.appendChild(label);
+        let select = document.createElement('select');
+        select.classList.add('form-control');
+        select.id = structure.id;
+        select.required = true;
+        structure.options.forEach(option => {
+            let option_element = document.createElement('option');
+            option_element.value = option.value;
+            option_element.textContent = option.label;
+            select.appendChild(option_element);
+        });
+        div.appendChild(select);
+        this.form.appendChild(div);
+    }
 
     render() {
         return this.form;

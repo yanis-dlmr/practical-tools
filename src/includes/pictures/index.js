@@ -89,10 +89,17 @@ class PictureManager {
             value: '2'
         });
         form.add_switch_input({
-            label: 'Get light intensity along the axis',
+            label: 'Process light intensity along the axis to determine the length of the colored axis',
             id: 'get_light_intensity',
             value: 'false',
-            checked: 'false'
+            checked: 'false',
+            son_id: ['limit_condition']
+        });
+        form.add_select_input({
+            label: 'Limit condition',
+            id: 'limit_condition',
+            value: 'min max derivative',
+            choices: ['min max derivative', 'average value as threshold']
         });
 
         
@@ -436,6 +443,9 @@ class PictureManager {
                     this.add_output_array(light_intensity[j]);
                 }
             }
+
+            // Derivative of the light intensity to determine the min and max
+
             
             src.delete(); dst.delete(); contours.delete(); src_copy.delete(); src_original.delete();
         }
