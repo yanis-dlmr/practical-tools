@@ -100,6 +100,18 @@ class Form {
         this.form.appendChild(caption.render());
     }
 
+    get_validation_button() {
+        let button = document.createElement('button');
+        button.classList.add('btn');
+        button.classList.add('btn-primary');
+        button.classList.add('btn-lg');
+        button.classList.add('btn-block');
+        button.setAttribute('type', 'submit');
+        button.textContent = 'Compute';
+        return button;
+    }
+
+
 
     render() {
         return this.form;

@@ -78,9 +78,7 @@ class PictureManager {
         const importerElement = importer.render();
         card.addComponent(importerElement);
 
-        const validation_button = new Button('Compute');
-        const validation_buttonElement = validation_button.render();
-        card.addComponent(validation_buttonElement);
+        card.addComponent(form.get_validation_button());
 
         validation_buttonElement.addEventListener('click', async () => {
             const files = importerElement.files;
