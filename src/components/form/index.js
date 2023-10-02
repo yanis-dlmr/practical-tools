@@ -1,3 +1,5 @@
+import { Caption } from '/src/components/caption/index.js';
+
 class Form {
 
     constructor() {
@@ -8,14 +10,15 @@ class Form {
     }
 
     add_multiple_check_input_single_choice(list_check_input, name) { // list_check_input = [check_input1, check_input2, ...] with check_input = {id: id, label: label, value: value}
+        let caption = new Caption(name);
+        this.form.appendChild(caption.render());
+        
         let div = document.createElement('div');
         div.classList.add('custom-form-check');
-        div.classList.add('custom-form-check-inline');
         list_check_input.forEach(check_input => {
             let input = document.createElement('input');
             input.classList.add('custom-form-check-input');
-            input.type = 'radio';
-            input.name = name;
+            input.type = "checkbox";
             input.id = check_input.id;
             input.value = check_input.value;
             let label = document.createElement('label');
