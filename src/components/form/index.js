@@ -62,6 +62,9 @@ class Form {
                             document.getElementById(son).required = true;
                         });
                     }
+                } else {
+                    // can't uncheck all the checkboxes
+                    this.checked = true;
                 }
             });
         });
