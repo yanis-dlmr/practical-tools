@@ -85,8 +85,8 @@ class PictureManager {
         form.add_text_input({
             label: 'Nb. of Axis',
             id: 'nb_axis',
-            unit: '1 - 10',
-            value: '1'
+            unit: '2 - 10',
+            value: '2'
         });
 
         
@@ -302,8 +302,8 @@ class PictureManager {
             cv.cvtColor(src, src, cv.COLOR_RGBA2GRAY, 0);
 
             // Threshold the picture
-            let threshold_min_value = 55;
-            let threshold_max_value = 255;
+            let threshold_min_value = document.getElementById('threshold_min').value;
+            let threshold_max_value = document.getElementById('threshold_max').value;
             cv.threshold(src, src, threshold_min_value, threshold_max_value, cv.THRESH_BINARY);
             src.name = 'Threshold' + this.cv_pictures[i].name;
             this.add_cv_output_block('Threshold', 'Threshold between ' + threshold_min_value + ' and ' + threshold_max_value + ' (range 0:255) ', src);
@@ -326,10 +326,11 @@ class PictureManager {
                 contours_area.push([contour, area]);
             }
             contours_area.sort((a, b) => b[1] - a[1]);
-            // For the 2 biggest contours, fit a line to the contour points using least squares
+            // For the n biggest contours, fit a line to the contour points using least squares
             let text = '';
             const biggest_contours = [];
-            for (let j = 0; j < 2; j++) {
+            var n_bigger_contours = document.getElementById('nb_axis').value;
+            for (let j = 0; j < n_bigger_contours; j++) {
                 const contour = contours_area[j][0];
                 const epsilon = 0.1 * cv.arcLength(contour, true);
                 const approx = new cv.Mat();
