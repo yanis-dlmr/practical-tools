@@ -49,11 +49,13 @@ class PictureManager {
         //form.add_divider();
         form.add_caption('Settings for the axis processing')
         form.add_text_input({
+            parent_id: 'determine_axis',
             label: 'Threshold minimum',
             id: 'threshold_min',
             unit: '0 - 255'
         });
         form.add_text_input({
+            parent_id: 'determine_axis',
             label: 'Threshold maximum',
             id: 'threshold_max',
             unit: '0 - 255'

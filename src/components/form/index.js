@@ -42,10 +42,24 @@ class Form {
         list_check_input.forEach(check_input => {
             document.getElementById(check_input.id).addEventListener('change', function() {
                 if (this.checked) {
+                    // uncheck the others
                     list_check_input.forEach(check_input => {
                         if (check_input.id != this.id) {
                             document.getElementById(check_input.id).checked = false;
                         }
+                    });
+                    // put all inputs with parent_id == check_input_id as required and enabled on all the document (not only on the form)
+                    let inputs = document.querySelectorAll(`input[parent_id="${this.id}"]`);
+                    inputs.forEach(input => {
+                        input.required = true;
+                        input.disabled = false;
+                    });
+                } else {
+                    // put all inputs with parent_id == check_input_id as not required and disabled on all the document (not only on the form)
+                    let inputs = document.querySelectorAll(`input[parent_id="${this.id}"]`);
+                    inputs.forEach(input => {
+                        input.required = false;
+                        input.disabled = true;
                     });
                 }
             });
