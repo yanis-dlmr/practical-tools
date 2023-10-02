@@ -388,7 +388,7 @@ class PictureManager {
             this.add_cv_output_block('Lines on original picture', text, src2);
 
             // Get light intensity along the lines accross all the pictures
-            const light_intensity_bool = document.getElementById('light_intensity').checked;
+            const light_intensity_bool = document.getElementById('get_light_intensity').checked;
             if (light_intensity_bool) {
                 const light_intensity = [];
                 for (let j = 0; j < biggest_contours.length; j++) {
