@@ -95,6 +95,11 @@ class Form {
     
     }
 
+    add_caption(title) {
+        let caption = new Caption(title);
+        this.form.appendChild(caption.render());
+    }
+
 
     render() {
         return this.form;

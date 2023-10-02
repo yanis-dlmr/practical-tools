@@ -47,12 +47,17 @@ class PictureManager {
         let name = 'Select the treatment needed';
         form.add_multiple_check_input_single_choice(list_check_input, name)
         form.add_divider();
-        var structure = {
+        form.add_caption('Settings for the axis processing')
+        form.add_text_input({
             label: 'Threshold minimum',
             id: 'threshold_min',
             unit: 'px'
-        }
-        form.add_text_input(structure);
+        });
+        form.add_text_input({
+            label: 'Threshold maximum',
+            id: 'threshold_max',
+            unit: 'px'
+        });
 
 
         // Data import
