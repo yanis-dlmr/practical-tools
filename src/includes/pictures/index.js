@@ -209,7 +209,7 @@ class PictureManager {
     }
 
     add_output_block  = (title, text, picture) => {
-        picture_name = picture.src.split('/').pop();
+        picture_name = picture.name;
         picture_size = picture.width + 'x' + picture.height;
 
         const caption = new Caption(title);
