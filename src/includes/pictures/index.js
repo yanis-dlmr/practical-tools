@@ -169,7 +169,7 @@ class PictureManager {
         const canvasOutput = document.getElementById('canvasOutputBlock');
         const ctx = canvasOutput.getContext('2d');
         ctx.clearRect(0, 0, canvasOutput.width, canvasOutput.height);
-        this.add_output_block('Fist cv picture as test', 'nomnomnom', this.cv_pictures[0])
+        this.add_cv_output_block('Fist cv picture as test', 'nomnomnom', this.cv_pictures[0])
 
         // process the pictures
         console.log('process_pictures');
@@ -233,6 +233,33 @@ class PictureManager {
         const canvasOutput = document.getElementById('canvasOutputBlock'  + picture_name);
         const ctx = canvasOutput.getContext('2d');
         ctx.drawImage(picture, 0, 0);
+    }
+
+    add_cv_output_block  = (title, text, picture) => {
+
+        console.log(picture)
+
+        const picture_name = picture.src.split('/').pop();
+        const picture_size = picture.width + 'x' + picture.height;
+
+        const caption = new Caption(title);
+        const captionElement = caption.render();
+        this.card_output.addComponent(captionElement);
+
+        const textElement = document.createElement('p');
+        textElement.innerHTML = text + '\n' + picture_name + ' (' + picture_size + ')';
+        this.card_output.addComponent(textElement);
+
+        const canvas = document.createElement('canvas');
+        canvas.id = 'canvasOutputBlock' + picture_name;
+        canvas.width = picture.width;
+        canvas.height = picture.height;
+        this.card_output.addComponent(canvas);
+
+        // display image using cv
+        const canvasOutput = document.getElementById('canvasOutputBlock'  + picture_name);
+        const ctx = canvasOutput.getContext('2d');
+        cv.imshow('canvasOutputBlock'  + picture_name, picture);
     }
 }
 
