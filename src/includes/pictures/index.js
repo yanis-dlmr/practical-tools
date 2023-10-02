@@ -224,12 +224,12 @@ class PictureManager {
         console.log('process_pictures');
         for (let i = 0; i < this.cv_pictures.length; i++) {
             console.log('process_pictures : ', i);
-        //    // Threshold the picture
-        //    const threshold_min_value = 100;
-        //    const threshold_max_value = 255;
-        //    const threshold_type = cv.THRESH_BINARY;
-        //    const threshold = new cv.Mat();
-        //    cv.threshold(this.cv_pictures[i], threshold, threshold_min_value, threshold_max_value, threshold_type);
+            // Threshold the picture
+            const threshold_min_value = 100;
+            const threshold_max_value = 255;
+            const threshold_type = cv.THRESH_BINARY;
+            const threshold = new cv.Mat();
+            cv.threshold(this.cv_pictures[i], threshold, threshold_min_value, threshold_max_value, threshold_type);
         //    // Find contours
         //    const contours = new cv.MatVector();
         //    const hierarchy = new cv.Mat();
