@@ -386,6 +386,37 @@ class PictureManager {
                 cv.line(src2, new cv.Point(points[0][0], points[0][1]), new cv.Point(points[1][0], points[1][1]), [255, 255, 255, 255], 2, cv.LINE_AA, 0);
             }
             this.add_cv_output_block('Lines on original picture', text, src2);
+
+            // Get light intensity along the lines accross all the pictures
+            const light_intensity_bool = document.getElementById('light_intensity').checked;
+            if (light_intensity_bool) {
+                const light_intensity = [];
+                for (let j = 0; j < biggest_contours.length; j++) {
+                    const points = biggest_contours[j][0];
+                    const lefty = biggest_contours[j][1];
+                    const righty = biggest_contours[j][2];
+                    // Get the light intensity along the line
+                    const light_intensity_line = [];
+                    for (let k = 0; k < this.cv_pictures.length; k++) {
+                        const src = this.cv_pictures[k];
+                        const dst = new cv.Mat();
+                        cv.cvtColor(src, dst, cv.COLOR_RGBA2GRAY, 0);
+                        const mask = cv.Mat.zeros(src.rows, src.cols, cv.CV_8UC1);
+                        cv.fillPoly(mask, [points], [255, 255, 255, 255]);
+                        const mean = cv.mean(dst, mask);
+                        light_intensity_line.push(mean[0]);
+                        dst.delete(); mask.delete();
+                    }
+                    light_intensity.push(light_intensity_line);
+                }
+                text = '';
+                for (let j = 0; j < light_intensity.length; j++) {
+                    text += 'Light intensity along the line ' + (j+1) + ' : ' + light_intensity[j] + '\n';
+                }
+                this.add_output_block('Light intensity along the lines', text);
+            }
+
+            
             
             src.delete(); dst.delete(); contours.delete(); hierarchy.delete();
         }
@@ -426,10 +457,6 @@ class PictureManager {
 
     add_cv_output_block  = (title, text, picture) => {
 
-        console.log('banane')
-        console.table(picture)
-        console.log(picture)
-
         const caption = new Caption(title);
         const captionElement = caption.render();
         this.card_output.addComponent(captionElement);
@@ -450,6 +477,23 @@ class PictureManager {
         const canvasOutput = document.getElementById('canvasOutputBlock' + title);
         const ctx = canvasOutput.getContext('2d');
         cv.imshow('canvasOutputBlock' + title, picture);
+
+        let divider = document.createElement('hr');
+        divider.classList.add('my-4');
+        this.card_output.appendChild(divider);
+    }
+
+    add_output_block = (title, text) => {
+
+        const caption = new Caption(title);
+        const captionElement = caption.render();
+        this.card_output.addComponent(captionElement);
+
+        const textElement = document.createElement('p');
+        let final_text = text;
+        const replacedText = final_text.replace(/\n/g, "<br>");
+        textElement.innerHTML = replacedText
+        this.card_output.addComponent(textElement);
 
         let divider = document.createElement('hr');
         divider.classList.add('my-4');
