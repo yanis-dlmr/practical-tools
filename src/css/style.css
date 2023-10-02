@@ -40,3 +40,7 @@ h4{
     color: #2061ae;
     text-decoration: none;
 }
+
+.card-body {
+    white-space: pre-wrap;
+}
