@@ -368,7 +368,7 @@ class PictureManager {
             const all_angles = [];
             for (let j = 0; j < biggest_contours.length; j++) {
                 const points = biggest_contours[j][0];
-                const lefty = biggest_contours[j][1];
+                //const lefty = biggest_contours[j][1];
                 //const righty = biggest_contours[j][2];
                 //const b = lefty[0]
                 const a = (points[0][1] - points[1][1]) / (points[0][0] - points[1][0])
@@ -383,7 +383,6 @@ class PictureManager {
                     text += 'Angle between line ' + (j+1) + ' and ' + (k+1) + ' : ' + angle + '°\n';
                 }
             }
-
 
             // Draw the lines
             for (let j = 0; j < biggest_contours.length; j++) {
@@ -411,14 +410,14 @@ class PictureManager {
             if (light_intensity_bool) {
                 const light_intensity = [];
                 for (let j = 0; j < biggest_contours.length; j++) {
+                    // Equation of the line : y = a x + b
                     const points = biggest_contours[j][0];
                     const lefty = biggest_contours[j][1];
-                    const righty = biggest_contours[j][2];
+                    //const righty = biggest_contours[j][2];
+                    const b = lefty[0]
+                    const a = (points[0][1] - points[1][1]) / (points[0][0] - points[1][0])
                     // Get the light intensity along the line
                     const light_intensity_line = [];
-                    // Equation of the line : y = a x + b
-                    const a = (points[1][1] - points[0][1]) / (points[1][0] - points[0][0]);
-                    const b = points[0][1] - a * points[0][0];
                     for (let x = 0; x < this.cv_pictures[i].width; x++) {
                         const y = Math.round(a * x + b);
                         if (y < 0 || y >= this.cv_pictures[i].height) {
