@@ -480,7 +480,7 @@ class PictureManager {
 
         let divider = document.createElement('hr');
         divider.classList.add('my-4');
-        this.card_output.appendChild(divider);
+        this.card_output.addComponent(divider);
     }
 
     add_output_block = (title, text) => {
@@ -497,7 +497,7 @@ class PictureManager {
 
         let divider = document.createElement('hr');
         divider.classList.add('my-4');
-        this.card_output.appendChild(divider);
+        this.card_output.addComponent(divider);
     }
 }
 
