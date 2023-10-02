@@ -326,6 +326,10 @@ class PictureManager {
                 cv.drawContours(dst, contours, i, color, 1, cv.LINE_8, hierarchy, 100);
             }
             this.add_cv_output_block('Contours', "Number of contours : " + contours.size(), dst);
+            if (contours.size() > 500) {
+                this.add_output_block_without_picture('Error', 'Too many contours, please select a smaller range of threshold');
+                return;
+            }
             // Sort contours by area
             const contours_area = [];
             for (let j = 0; j < contours.size(); j++) {
