@@ -248,23 +248,50 @@ class PictureManager {
                 cv.drawContours(dst, contours, i, color, 1, cv.LINE_8, hierarchy, 100);
             }
             this.add_cv_output_block('Contours', "Number of contours : " + contours.size(), dst);
+            // Sort contours by area
+            const contours_area = [];
+            for (let j = 0; j < contours.size(); j++) {
+                const contour = contours.get(j);
+                const area = cv.contourArea(contour, false);
+                contours_area.push([contour, area]);
+            }
+            contours_area.sort((a, b) => b[1] - a[1]);
+            // For the 2 biggest contours, fit a line to the contour points using least squares
+            const biggest_contours = [];
+            for (let j = 0; j < 2; j++) {
+                const contour = contours_area[j][0];
+                const epsilon = 0.1 * cv.arcLength(contour, true);
+                const approx = new cv.Mat();
+                cv.approxPolyDP(contour, approx, epsilon, true);
+                const points = [];
+                for (let k = 0; k < approx.rows; k++) {
+                    points.push([approx.data32S[k * 2], approx.data32S[k * 2 + 1]]);
+                }
+                const line = cv.fitLine(approx, cv.DIST_L2, 0, 0.01, 0.01);
+                const vx = line.data32F[0];
+                const vy = line.data32F[1];
+                const x = line.data32F[2];
+                const y = line.data32F[3];
+                const lefty = Math.round((-x * vy / vx) + y);
+                const righty = Math.round(((src.cols - x) * vy / vx) + y);
+                biggest_contours.push([points, [lefty, 0], [righty, src.cols]]);
+            }
+            console.log(biggest_contours);
+            // Compute the angle between the 2 lines
+            const angle = Math.atan2(biggest_contours[0][0][0][1] - biggest_contours[1][0][0][1], biggest_contours[0][0][0][0] - biggest_contours[1][0][0][0]) * 180 / Math.PI;
+            console.log(angle);
+            // Draw the lines
+            for (let j = 0; j < biggest_contours.length; j++) {
+                const points = biggest_contours[j][0];
+                const lefty = biggest_contours[j][1];
+                const righty = biggest_contours[j][2];
+                cv.line(dst, new cv.Point(points[0][0], points[0][1]), new cv.Point(points[1][0], points[1][1]), [255, 0, 0, 255], 2, cv.LINE_AA, 0);
+                cv.line(dst, new cv.Point(lefty[0], lefty[1]), new cv.Point(righty[0], righty[1]), [0, 255, 0, 255], 2, cv.LINE_AA, 0);
+            }
+            dst.name = 'Lines' + this.cv_pictures[i].name;
+            this.add_cv_output_block('Lines', "Angle between the 2 lines : " + angle, dst);
+            
             src.delete(); dst.delete(); contours.delete(); hierarchy.delete();
-        //    // Sort contours by area
-        //    const contours_area = [];
-        //    for (let j = 0; j < contours.size(); j++) {
-        //        const contour = contours.get(j);
-        //        const area = cv.contourArea(contour, false);
-        //        contours_area.push([contour, area]);
-        //    }
-        //    contours_area.sort((a, b) => b[1] - a[1]);
-        //    console.log(contours.size(), ' contours');
-        //    // Draw contours
-        //    const canvasOutput = document.getElementById('canvasOutputBlock');
-        //    const ctx = canvasOutput.getContext('2d');
-        //    ctx.clearRect(0, 0, canvasOutput.width, canvasOutput.height);
-        //    cv.drawContours(this.cv_pictures[i], contours, -1, [255, 255, 255, 255], 1, cv.LINE_8);
-        //    cv.imshow('canvasOutputBlock', this.cv_pictures[i]);
-        //    
         }
     }
 
