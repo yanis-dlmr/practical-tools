@@ -360,7 +360,9 @@ class PictureManager {
                 const y = line.data32F[3];
                 const lefty = Math.round((-x * vy / vx) + y);
                 const righty = Math.round(((src.cols - x) * vy / vx) + y);
-                biggest_contours.push([points, [lefty, 0], [righty, src.cols]]);
+                const a = vy / vx;
+                const b = lefty;
+                biggest_contours.push([points, [lefty, 0], [righty, src.cols], [a, b]]);
                 // Get angles of all lines with the x axis
                 const angle = Math.atan(vy / vx) * 180 / Math.PI;
                 all_angles.push(angle);
@@ -403,11 +405,9 @@ class PictureManager {
                 const light_intensity = [];
                 for (let j = 0; j < biggest_contours.length; j++) {
                     // Equation of the line : y = a x + b
-                    const points = biggest_contours[j][0];
-                    const lefty = biggest_contours[j][1];
-                    //const righty = biggest_contours[j][2];
-                    const b = lefty[0]
-                    const a = (points[0][1] - points[1][1]) / (points[0][0] - points[1][0])
+                    const equation = biggest_contours[j][3];
+                    const a = equation[0];
+                    const b = equation[1];
                     // Get the light intensity along the line
                     const light_intensity_line = [];
                     for (let x = 0; x < this.cv_pictures[i].width; x++) {
