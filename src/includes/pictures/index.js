@@ -46,8 +46,16 @@ class PictureManager {
         ];
         let name = 'Select the treatment needed';
         form.add_multiple_check_input_single_choice(list_check_input, name)
-        // Manually check the first one
-        document.getElementById(list_check_input[0].id).checked = true;
+
+        // Manually check the first one in order to trigger the event change
+        const inputElement = document.getElementById(list_check_input[0].id);
+        inputElement.checked = true;
+        const changeEvent = new Event('change', {
+            bubbles: true,
+            cancelable: false
+        });
+        inputElement.dispatchEvent(changeEvent);
+        
         //form.add_divider();
         form.add_caption('Settings for the axis processing')
         form.add_text_input({
