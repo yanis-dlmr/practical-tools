@@ -4,6 +4,7 @@ import { Importer } from '/src/components/importer/index.js';
 import { Caption } from '/src/components/caption/index.js';
 import { Button } from '/src/components/button/index.js';
 import { Select } from '/src/components/select/index.js';
+import { Form } from '/src/components/form/index.js';
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -41,6 +42,17 @@ class PictureManager {
         const select_parameters = new Select(['Display only', 'Average Color', 'Average picture', 'Determine axis']);
         const selectElementParameters = select_parameters.render();
         card_parameters.addComponent(selectElementParameters);
+
+        const form = new Form();
+        const formElement = form.render();
+        card_parameters.addComponent(formElement);
+        let list_check_input = [
+            {id: 'check_input1', label: 'Check input 1', value: 'check_input1'},
+            {id: 'check_input2', label: 'Check input 2', value: 'check_input2'},
+            {id: 'check_input3', label: 'Check input 3', value: 'check_input3'}
+        ];
+        let name = 'Make you choice';
+        form.add_multiple_check_input_single_choice(list_check_input, name)
 
 
         // Data import
