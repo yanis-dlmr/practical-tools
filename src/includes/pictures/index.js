@@ -415,8 +415,6 @@ class PictureManager {
                 }
                 this.add_output_block('Light intensity along the lines', text);
             }
-
-            
             
             src.delete(); dst.delete(); contours.delete(); hierarchy.delete();
         }
@@ -426,12 +424,14 @@ class PictureManager {
         this.card_output.removeAllComponents();
     }
 
-    add_output_block  = (title, text, picture) => {
+    add_output_block = (title, text, picture) => {
 
         console.log(picture)
 
         const picture_name = picture.name;
         const picture_size = picture.width + 'x' + picture.height;
+
+        console.log(picture_name, picture_size)
 
         const caption = new Caption(title);
         const captionElement = caption.render();
