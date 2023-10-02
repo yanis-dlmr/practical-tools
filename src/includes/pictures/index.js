@@ -73,6 +73,7 @@ class PictureManager {
                 const file = files[i];
                 const url = URL.createObjectURL(file);
                 const picture = await urlToImage(url);
+                picture.name = file.name;            
                 this.pictures.push(picture);
             }
 
@@ -165,10 +166,6 @@ class PictureManager {
             }
             this.cv_pictures.push(mat);
         }
-        // display the first picture in the output block using cv
-        const canvasOutput = document.getElementById('canvasOutputBlock');
-        const ctx = canvasOutput.getContext('2d');
-        ctx.clearRect(0, 0, canvasOutput.width, canvasOutput.height);
         this.add_cv_output_block('Fist cv picture as test', 'nomnomnom', this.cv_pictures[0])
 
         // process the pictures
