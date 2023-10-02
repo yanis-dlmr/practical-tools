@@ -221,7 +221,7 @@ class PictureManager {
         this.card_output.addComponent(textElement);
 
         const canvas = document.createElement('canvas');
-        canvas.id = 'canvasOutputBlock' + title;
+        canvas.id = 'canvasOutputBlock' + picture_name;
         canvas.width = picture.width;
         canvas.height = picture.height;
         this.card_output.addComponent(canvas);
