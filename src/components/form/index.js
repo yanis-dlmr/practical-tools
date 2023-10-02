@@ -39,6 +39,10 @@ class Form {
         list_check_input.forEach(check_input => {
             document.getElementById(check_input.id).addEventListener('change', function() {
                 if (this.checked) {
+                    // put all checkboxes in valid state
+                    list_check_input.forEach(check_input => {
+                        document.getElementById(check_input.id).classList.add('is-valid');
+                    });
                     list_check_input.forEach(check_input => {
                         if (check_input.id != this.id) {
                             document.getElementById(check_input.id).checked = false;
@@ -117,7 +121,7 @@ class Form {
             if (form.checkValidity() === false) {
                 form.classList.add('was-validated');
             }
-        });
+        }, false);
         return button;
     }
 
