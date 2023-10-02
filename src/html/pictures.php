@@ -8,7 +8,7 @@
     </head>
 
     <body>
-        <script async src="https://docs.opencv.org/master/opencv.js" type="text/javascript"></script>
+        <script async src="/src/includes/pictures/opencv.js" type="text/javascript"></script>
         <?php include '../utils/header.php'; ?>
     </body>
 
