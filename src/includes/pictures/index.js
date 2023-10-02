@@ -267,7 +267,7 @@ class PictureManager {
                 for (let k = 0; k < approx.rows; k++) {
                     points.push([approx.data32S[k * 2], approx.data32S[k * 2 + 1]]);
                 }
-                const line = cv.fitLine(approx, cv.DIST_L2, 0, 0.01, 0.01);
+                const line = cv.fitLine(approx, approx.rows, cv.DIST_L2, 0, 0.01, 0.01);
                 const vx = line.data32F[0];
                 const vy = line.data32F[1];
                 const x = line.data32F[2];
