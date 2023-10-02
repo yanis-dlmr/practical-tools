@@ -193,6 +193,14 @@ class Form {
                         document.getElementById(son).required = true;
                     });
                 }
+            } else {
+                if ('son_id' in structure) {
+                    // put all the sons as disabled and not required
+                    structure.son_id.forEach(son => {
+                        document.getElementById(son).disabled = true;
+                        document.getElementById(son).required = false;
+                    });
+                }
             }
         });
     }
