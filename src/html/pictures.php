@@ -3,12 +3,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Pictures | Pictures</title>
+        <title>Practical Tools | Pictures</title>
         <?php include '../utils/head.php'; ?>
     </head>
 
     <body>
         <script async src="https://docs.opencv.org/master/opencv.js" type="text/javascript"></script>
+        <?php include '../utils/header.php'; ?>
     </body>
 
     <script type="module" src="/src/includes/pictures/index.js"></script>
