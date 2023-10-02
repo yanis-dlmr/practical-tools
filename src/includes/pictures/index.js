@@ -1,6 +1,5 @@
 import { Card } from '/src/components/card/index.js';
 import { Container } from '/src/components/container/index.js';
-import { Importer } from '/src/components/importer/index.js';
 import { Caption } from '/src/components/caption/index.js';
 import { Button } from '/src/components/button/index.js';
 import { Select } from '/src/components/select/index.js';
@@ -91,9 +90,8 @@ class PictureManager {
         const captionElement = caption.render();
         card.addComponent(captionElement);
 
-        const importer = new Importer('multiple pictures');
-        const importerElement = importer.render();
-        card.addComponent(importerElement);
+        const importer = form.get_importer_element();
+        card.addComponent(importer);
 
         const validation_button = form.get_validation_button();
         card.addComponent(validation_button);

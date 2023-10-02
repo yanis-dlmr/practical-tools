@@ -1,4 +1,5 @@
 import { Caption } from '/src/components/caption/index.js';
+import { Importer } from '/src/components/importer/index.js';
 
 class Form {
 
@@ -142,6 +143,22 @@ class Form {
             }
         }, false);
         return button;
+    }
+
+    get_importer_element () {
+        const importer = new Importer('multiple pictures');
+        const formGroup = document.createElement('div');
+        formGroup.classList.add('form-group');
+        formGroup.appendChild(importer.render());
+        var validFeedback = document.createElement('div');
+        validFeedback.classList.add('valid-feedback');
+        validFeedback.textContent = 'Looks good!';
+        formGroup.appendChild(validFeedback);
+        var invalidFeedback = document.createElement('div');
+        invalidFeedback.classList.add('invalid-feedback');
+        invalidFeedback.textContent = 'Please import at least one picture.';
+        formGroup.appendChild(invalidFeedback);
+        return formGroup;
     }
 
 
