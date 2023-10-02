@@ -397,15 +397,16 @@ class PictureManager {
                     const righty = biggest_contours[j][2];
                     // Get the light intensity along the line
                     const light_intensity_line = [];
-                    for (let k = 0; k < this.cv_pictures.length; k++) {
-                        const src = this.cv_pictures[k];
-                        const dst = new cv.Mat();
-                        cv.cvtColor(src, dst, cv.COLOR_RGBA2GRAY, 0);
-                        const mask = cv.Mat.zeros(src.rows, src.cols, cv.CV_8UC1);
-                        cv.fillPoly(mask, [points], [255, 255, 255, 255]);
-                        const mean = cv.mean(dst, mask);
-                        light_intensity_line.push(mean[0]);
-                        dst.delete(); mask.delete();
+                    // Equation of the line : y = a x + b
+                    const a = (points[1][1] - points[0][1]) / (points[1][0] - points[0][0]);
+                    const b = points[0][1] - a * points[0][0];
+                    for (let x = 0; x < this.cv_pictures[i].width; x++) {
+                        const y = Math.round(a * x + b);
+                        if (y < 0 || y >= this.cv_pictures[i].height) {
+                            light_intensity_line.push(0);
+                        } else {
+                            light_intensity_line.push(this.cv_pictures[i].data[y * this.cv_pictures[i].width + x]);
+                        }
                     }
                     light_intensity.push(light_intensity_line);
                 }
