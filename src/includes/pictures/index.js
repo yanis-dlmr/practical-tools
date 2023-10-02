@@ -348,14 +348,14 @@ class PictureManager {
                 const lefty = Math.round((-x * vy / vx) + y);
                 const righty = Math.round(((src.cols - x) * vy / vx) + y);
                 biggest_contours.push([points, [lefty, 0], [righty, src.cols]]);
-                text += 'Equation of the line : y = ' + vy / vx + ' x + ' + lefty + '\n';
+                text += 'Equation of the line : y' + (j+1) + ' = ' + vy / vx + ' x + ' + lefty + '\n';
             }
 
             // Compute the angle between the n lines, 1 with 2, 1 with 3, 2 with 3, etc.
             for (let j = 0; j < biggest_contours.length; j++) {
                 for (let k = j + 1; k < biggest_contours.length; k++) {
                     const angle = Math.atan2(biggest_contours[j][0][0][1] - biggest_contours[k][0][0][1], biggest_contours[j][0][0][0] - biggest_contours[k][0][0][0]) * 180 / Math.PI;
-                    text += 'Angle between the line ' + j + ' and the line ' + k + ' : ' + angle + '°' + '\n';
+                    text += 'Angle between the line ' + (j+1) + ' and the line ' + (k+1) + ' : ' + angle + '°' + '\n';
                 }
             }
 
