@@ -435,15 +435,15 @@ class PictureManager {
         this.card_output.addComponent(textElement);
 
         const canvas = document.createElement('canvas');
-        canvas.id = 'canvasOutputBlock' + picture.src;
+        canvas.id = 'canvasOutputBlock' + title;
         canvas.width = picture.width;
         canvas.height = picture.height;
         this.card_output.addComponent(canvas);
 
         // display image using cv
-        const canvasOutput = document.getElementById('canvasOutputBlock'  + picture.src);
+        const canvasOutput = document.getElementById('canvasOutputBlock' + title);
         const ctx = canvasOutput.getContext('2d');
-        cv.imshow('canvasOutputBlock'  + picture.src, picture);
+        cv.imshow('canvasOutputBlock' + title, picture);
     }
 }
 
