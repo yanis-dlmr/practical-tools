@@ -282,16 +282,17 @@ class PictureManager {
             // Compute the angle between the 2 lines
             const angle = Math.atan2(biggest_contours[0][0][0][1] - biggest_contours[1][0][0][1], biggest_contours[0][0][0][0] - biggest_contours[1][0][0][0]) * 180 / Math.PI;
             console.log(angle);
+            let text = 'Angle between the 2 lines : ' + angle + '°' + '\n';
             // Draw the lines
             for (let j = 0; j < biggest_contours.length; j++) {
                 const points = biggest_contours[j][0];
                 const lefty = biggest_contours[j][1];
                 const righty = biggest_contours[j][2];
                 cv.line(dst, new cv.Point(points[0][0], points[0][1]), new cv.Point(points[1][0], points[1][1]), [255, 0, 0, 255], 2, cv.LINE_AA, 0);
-                //cv.line(dst, new cv.Point(lefty[0], lefty[1]), new cv.Point(righty[0], righty[1]), [0, 255, 0, 255], 2, cv.LINE_AA, 0);
+                text += 'Equation of the line ' + j + ' : y = ' + vy + ' / ' + vx + ' * (x - ' + x + ') + ' + y + '\n';
             }
             dst.name = 'Lines' + this.cv_pictures[i].name;
-            this.add_cv_output_block('Lines', "Angle between the 2 lines : " + angle, dst);
+            this.add_cv_output_block('Lines', text, dst);
             
             src.delete(); dst.delete(); contours.delete(); hierarchy.delete();
         }
