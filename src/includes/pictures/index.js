@@ -99,6 +99,11 @@ class PictureManager {
         validation_button.addEventListener('click', async () => {
             const importerElement = document.getElementById('importer_id');
             const files = importerElement.files;
+            // if no file is selected, return
+            if (files.length == 0) {
+                return;
+            }
+
             this.pictures = [];
             // store all the pictures in an array
             for (let i = 0; i < files.length; i++) {
