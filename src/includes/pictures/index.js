@@ -414,7 +414,6 @@ class PictureManager {
                     }
                     light_intensity.push(light_intensity_line);
                 }
-                console.log(light_intensity);
                 text = '';
                 for (let j = 0; j < light_intensity.length; j++) {
                     text += 'Light intensity along the line ' + (j+1) + ' : ' + light_intensity[j] + '\n';
@@ -422,7 +421,7 @@ class PictureManager {
                 this.add_output_block_without_picture('Light intensity along the lines', text);
             }
             
-            src.delete(); dst.delete(); contours.delete(); hierarchy.delete();
+            src.delete(); dst.delete(); contours.delete(); hierarchy.delete(); approx.delete(); biggest_contours.delete(); src_original.delete(); src2.delete(); line.delete(); points.delete(); text.delete(); light_intensity.delete();
         }
     }
 
