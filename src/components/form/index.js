@@ -26,12 +26,25 @@ class Form {
 
             var label = document.createElement("label");
             label.className = "form-check-label";
-            label.for = check_input.id;
+            label.htmlFor = check_input.id;
             label.textContent = check_input.label;
             
             div.appendChild(input);
             div.appendChild(label);
             this.form.appendChild(div);
+        });
+
+        // if one checkbox is checked, uncheck the others that are in list_check_input
+        list_check_input.forEach(check_input => {
+            document.getElementById(check_input.id).addEventListener('change', function() {
+                if (this.checked) {
+                    list_check_input.forEach(check_input => {
+                        if (check_input.id != this.id) {
+                            document.getElementById(check_input.id).checked = false;
+                        }
+                    });
+                }
+            });
         });
     }
 
