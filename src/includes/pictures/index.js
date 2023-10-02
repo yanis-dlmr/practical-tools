@@ -413,7 +413,7 @@ class PictureManager {
                 for (let j = 0; j < light_intensity.length; j++) {
                     text += 'Light intensity along the line ' + (j+1) + ' : ' + light_intensity[j] + '\n';
                 }
-                this.add_output_block('Light intensity along the lines', text);
+                this.add_output_block_without_picture('Light intensity along the lines', text);
             }
             
             src.delete(); dst.delete(); contours.delete(); hierarchy.delete();
@@ -426,14 +426,8 @@ class PictureManager {
 
     add_output_block = (title, text, picture) => {
 
-        console.log(picture)
-
-        console.log(picture.name)
-
         const picture_name = picture.name;
         const picture_size = picture.width + 'x' + picture.height;
-
-        console.log(picture_name, picture_size)
 
         const caption = new Caption(title);
         const captionElement = caption.render();
@@ -485,7 +479,7 @@ class PictureManager {
         this.card_output.addComponent(divider);
     }
 
-    add_output_block = (title, text) => {
+    add_output_block_without_picture = (title, text) => {
 
         const caption = new Caption(title);
         const captionElement = caption.render();
