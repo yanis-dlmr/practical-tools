@@ -143,7 +143,7 @@ class PictureManager {
             data[i + 2] = average[2];
         }
         ctx.putImageData(imageData, 0, 0);
-        document.getElementById('canvasOutputBlock').replaceWith(this.average_picture);
+        this.add_output_block('Average Color', 'nomnomnom', this.average_picture);
     }
 
     compute_determine_axis = () => {
@@ -212,7 +212,7 @@ class PictureManager {
 
         console.log(picture)
 
-        const picture_name = picture.name;
+        const picture_name = picture.src.split('/').pop();
         const picture_size = picture.width + 'x' + picture.height;
 
         const caption = new Caption(title);
