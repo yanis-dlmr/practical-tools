@@ -46,6 +46,11 @@ class Form {
                 }
             });
         });
+
+        // add divider 
+        let divider = document.createElement('hr');
+        divider.classList.add('my-4');
+        this.form.appendChild(divider);
     }
 
     render() {
