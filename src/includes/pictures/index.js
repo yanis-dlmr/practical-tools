@@ -404,7 +404,7 @@ class PictureManager {
             if (light_intensity_bool) {
                 const light_intensity = [];
                 console.log('biggest_contours', biggest_contours)
-                for (let j = 0; j < biggest_contours.length; j+4) {
+                for (let j = 0; j < biggest_contours.length; j++) {
                     // Equation of the line : y = a x + b
                     const equation = biggest_contours[j][3];
                     const a = equation[0];
@@ -416,9 +416,10 @@ class PictureManager {
                         if (y < 0 || y >= this.cv_pictures[i].height) {
                             light_intensity_line.push(0);
                         } else {
-                            const pixel_1 = this.cv_pictures[i].data[(y * this.cv_pictures[i].width + x) * 4];
-                            const pixel_2 = this.cv_pictures[i].data[(y * this.cv_pictures[i].width + x) * 4 + 1];
-                            const pixel_3 = this.cv_pictures[i].data[(y * this.cv_pictures[i].width + x) * 4 + 2];
+                            const coef = (y * this.cv_pictures[i].width + x) * 4;
+                            const pixel_1 = this.cv_pictures[i].data[coef];
+                            const pixel_2 = this.cv_pictures[i].data[coef + 1];
+                            const pixel_3 = this.cv_pictures[i].data[coef + 2];
                             const average = (pixel_1 + pixel_2 + pixel_3) / 3;
                             light_intensity_line.push(average);
                         }
