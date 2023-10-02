@@ -222,35 +222,35 @@ class PictureManager {
 
         // process the pictures
         console.log('process_pictures');
-        for (let i = 0; i < this.cv_pictures.length; i++) {
-            console.log('process_pictures : ', i);
-            // Threshold the picture
-            const threshold_min_value = 100;
-            const threshold_max_value = 255;
-            const threshold_type = cv.THRESH_BINARY;
-            const threshold = new cv.Mat();
-            cv.threshold(this.cv_pictures[i], threshold, threshold_min_value, threshold_max_value, threshold_type);
-            // Find contours
-            const contours = new cv.MatVector();
-            const hierarchy = new cv.Mat();
-            cv.findContours(threshold, contours, hierarchy, cv.RETR_CCOMP, cv.CHAIN_APPROX_SIMPLE);
-            // Sort contours by area
-            const contours_area = [];
-            for (let j = 0; j < contours.size(); j++) {
-                const contour = contours.get(j);
-                const area = cv.contourArea(contour, false);
-                contours_area.push([contour, area]);
-            }
-            contours_area.sort((a, b) => b[1] - a[1]);
-            console.log(contours.size(), ' contours');
-            // Draw contours
-            const canvasOutput = document.getElementById('canvasOutputBlock');
-            const ctx = canvasOutput.getContext('2d');
-            ctx.clearRect(0, 0, canvasOutput.width, canvasOutput.height);
-            cv.drawContours(this.cv_pictures[i], contours, -1, [255, 255, 255, 255], 1, cv.LINE_8);
-            cv.imshow('canvasOutputBlock', this.cv_pictures[i]);
-            
-        }
+        //for (let i = 0; i < this.cv_pictures.length; i++) {
+        //    console.log('process_pictures : ', i);
+        //    // Threshold the picture
+        //    const threshold_min_value = 100;
+        //    const threshold_max_value = 255;
+        //    const threshold_type = cv.THRESH_BINARY;
+        //    const threshold = new cv.Mat();
+        //    cv.threshold(this.cv_pictures[i], threshold, threshold_min_value, threshold_max_value, threshold_type);
+        //    // Find contours
+        //    const contours = new cv.MatVector();
+        //    const hierarchy = new cv.Mat();
+        //    cv.findContours(threshold, contours, hierarchy, cv.RETR_CCOMP, cv.CHAIN_APPROX_SIMPLE);
+        //    // Sort contours by area
+        //    const contours_area = [];
+        //    for (let j = 0; j < contours.size(); j++) {
+        //        const contour = contours.get(j);
+        //        const area = cv.contourArea(contour, false);
+        //        contours_area.push([contour, area]);
+        //    }
+        //    contours_area.sort((a, b) => b[1] - a[1]);
+        //    console.log(contours.size(), ' contours');
+        //    // Draw contours
+        //    const canvasOutput = document.getElementById('canvasOutputBlock');
+        //    const ctx = canvasOutput.getContext('2d');
+        //    ctx.clearRect(0, 0, canvasOutput.width, canvasOutput.height);
+        //    cv.drawContours(this.cv_pictures[i], contours, -1, [255, 255, 255, 255], 1, cv.LINE_8);
+        //    cv.imshow('canvasOutputBlock', this.cv_pictures[i]);
+        //    
+        //}
     }
 
     remove_all_output_blocks = () => {
