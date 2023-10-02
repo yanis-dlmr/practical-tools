@@ -232,7 +232,7 @@ class PictureManager {
             cv.cvtColor(src, src, cv.COLOR_RGBA2GRAY, 0);
 
             // Threshold the picture
-            cv.threshold(src, src, 70, 255, cv.THRESH_BINARY);
+            cv.threshold(src, src, 50, 255, cv.THRESH_BINARY);
             src.name = 'Threshold' + this.cv_pictures[i].name;
             this.add_cv_output_block('Threshold', 'nomnomnom', src);
 
