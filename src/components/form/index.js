@@ -29,6 +29,8 @@ class Form {
             label.className = "form-check-label";
             label.htmlFor = check_input.id;
             label.textContent = check_input.label;
+            // put label to no valid state
+            label.classList.add('is-invalid');
             
             div.appendChild(input);
             div.appendChild(label);
