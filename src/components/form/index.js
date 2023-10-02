@@ -51,26 +51,26 @@ class Form {
                     if ('son_id' in check_input) {
                         // put all elements with check_input.son_id as required and not disabled on all the document (not only on the form)
                         list_check_input.forEach(check_input => {
-                            check_input.son_id.forEach(son_id => {
+                            for (let son_id of check_input.son_id) {
                                 let inputs = document.querySelectorAll(`input[id^="${son_id}"]`);
                                 inputs.forEach(input => {
                                     input.required = true;
                                     input.disabled = false;
                                 });
-                            });
+                            }
                         });
                     }
                 } else {
                     if ('son_id' in check_input) {
                         // put all elements with check_input.son_id as not required and disabled on all the document (not only on the form)
                         list_check_input.forEach(check_input => {
-                            check_input.son_id.forEach(son_id => {
+                            for (let son_id of check_input.son_id) {
                                 let inputs = document.querySelectorAll(`input[id^="${son_id}"]`);
                                 inputs.forEach(input => {
                                     input.required = false;
                                     input.disabled = true;
                                 });
-                            });
+                            }
                         });
                     }
                 }
