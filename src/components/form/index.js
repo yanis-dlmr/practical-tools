@@ -6,6 +6,7 @@ class Form {
         this.form = document.createElement('form');
         this.form.classList.add('custom-form');    
         this.form.classList.add('needs-validation');
+        this.form.id = 'form';
         //this.form.setAttribute('novalidate', '');
     }
 
@@ -112,8 +113,9 @@ class Form {
         button.addEventListener('click', function(event) {
             event.preventDefault();
             event.stopPropagation();
-            if (this.form.checkValidity() === false) {
-                this.classList.add('was-validated');
+            var form = document.getElementById('form');
+            if (form.checkValidity() === false) {
+                form.classList.add('was-validated');
             }
         });
         return button;
