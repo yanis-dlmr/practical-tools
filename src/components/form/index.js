@@ -174,6 +174,7 @@ class Form {
         if ("checked" in structure && structure.checked == "true") {
             input.checked = true;
         }
+        input.required = false;
 
         var label = document.createElement("label");
         label.className = "form-check-label";
