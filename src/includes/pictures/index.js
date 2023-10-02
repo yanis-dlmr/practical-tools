@@ -257,6 +257,7 @@ class PictureManager {
             }
             contours_area.sort((a, b) => b[1] - a[1]);
             // For the 2 biggest contours, fit a line to the contour points using least squares
+            let text = '';
             const biggest_contours = [];
             for (let j = 0; j < 2; j++) {
                 const contour = contours_area[j][0];
@@ -277,19 +278,19 @@ class PictureManager {
                 const righty = Math.round(((src.cols - x) * vy / vx) + y);
                 biggest_contours.push([points, [lefty, 0], [righty, src.cols]]);
                 console.log('Equation of the line : y = ' + vy + ' / ' + vx + ' * (x - ' + x + ') + ' + y);
+                text += 'Equation of the line : y = ' + vy + ' / ' + vx + ' * (x - ' + x + ') + ' + y + '\n';
             }
             console.log(biggest_contours);
             // Compute the angle between the 2 lines
             const angle = Math.atan2(biggest_contours[0][0][0][1] - biggest_contours[1][0][0][1], biggest_contours[0][0][0][0] - biggest_contours[1][0][0][0]) * 180 / Math.PI;
             console.log(angle);
-            let text = 'Angle between the 2 lines : ' + angle + '°' + '\n';
+            text += 'Angle between the 2 lines : ' + angle + '°' + '\n';
             // Draw the lines
             for (let j = 0; j < biggest_contours.length; j++) {
                 const points = biggest_contours[j][0];
                 const lefty = biggest_contours[j][1];
                 const righty = biggest_contours[j][2];
                 cv.line(dst, new cv.Point(points[0][0], points[0][1]), new cv.Point(points[1][0], points[1][1]), [255, 0, 0, 255], 2, cv.LINE_AA, 0);
-                text += 'Equation of the line ' + j + ' : y = ' + vy + ' / ' + vx + ' * (x - ' + x + ') + ' + y + '\n';
             }
             dst.name = 'Lines' + this.cv_pictures[i].name;
             this.add_cv_output_block('Lines', text, dst);
