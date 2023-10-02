@@ -408,6 +408,7 @@ class PictureManager {
                             light_intensity_line.push(0);
                         } else {
                             console.log('value', this.cv_pictures[i].data[y * this.cv_pictures[i].width + x]);
+                            console.table(this.cv_pictures[i].data)
                             light_intensity_line.push(this.cv_pictures[i].data[y * this.cv_pictures[i].width + x]);
                         }
                     }
