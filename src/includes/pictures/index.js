@@ -231,6 +231,7 @@ class PictureManager {
             const threshold = new cv.Mat();
             cv.threshold(this.cv_pictures[i], threshold, threshold_min_value, threshold_max_value, threshold_type);
             // Find contours
+            const contours = new cv.MatVector();
             const hierarchy = new cv.Mat();
             const mode = cv.RETR_EXTERNAL;
             const method = cv.CHAIN_APPROX_SIMPLE;
