@@ -410,6 +410,7 @@ class PictureManager {
                     }
                     light_intensity.push(light_intensity_line);
                 }
+                console.log(light_intensity)
                 text = '';
                 for (let j = 0; j < light_intensity.length; j++) {
                     text += 'Light intensity along the line ' + (j+1) + ' : ' + light_intensity[j] + '\n';
