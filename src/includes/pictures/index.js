@@ -231,6 +231,7 @@ class PictureManager {
             const threshold = new cv.Mat();
             cv.threshold(this.cv_pictures[i], threshold, threshold_min_value, threshold_max_value, threshold_type);
             // Find contours
+            const contours = new cv.MatVector();
             cv.findContours(threshold, contours, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE);
         //    // Sort contours by area
         //    const contours_area = [];
