@@ -146,8 +146,7 @@ class Form {
     }
 
     get_importer_element (importer_id) {
-        const importer = new Importer('multiple pictures');
-        importer.id = importer_id;
+        const importer = new Importer(importer_id, 'multiple pictures');
         const formGroup = document.createElement('div');
         formGroup.classList.add('form-group');
         formGroup.appendChild(importer.render());
