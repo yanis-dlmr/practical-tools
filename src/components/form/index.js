@@ -77,6 +77,9 @@ class Form {
 
         var input = document.createElement(`div`);
         input.setAttribute("class", "input-group mb-3");
+        if ("parent_id" in structure) {
+            input.parent_id = structure["parent_id"];
+        }
     
         var span = document.createElement(`span`);
         span.setAttribute("class", "input-group-text col-4");
@@ -86,9 +89,6 @@ class Form {
         text.setAttribute('type', 'text');
         text.setAttribute('class', 'form-control');
         text.id = structure["id"];
-        if ("parent_id" in structure) {
-            text.parent_id = structure["parent_id"];
-        }
         text.classList.add('form-control');
         text.required = true;
     
