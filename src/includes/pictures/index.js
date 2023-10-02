@@ -398,7 +398,7 @@ class PictureManager {
                     const lefty = biggest_contours[j][1];
                     const righty = biggest_contours[j][2];
                     // Get the light intensity along the line
-                    const light_intensity_line = [];
+                    var light_intensity_line = [];
                     // Equation of the line : y = a x + b
                     const a = (points[1][1] - points[0][1]) / (points[1][0] - points[0][0]);
                     const b = points[0][1] - a * points[0][0];
