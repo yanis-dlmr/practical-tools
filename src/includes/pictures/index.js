@@ -226,7 +226,8 @@ class PictureManager {
             console.log('process_pictures : ', i);
             
             // Find contours
-            let src = this.cv_pictures[i];
+            let src_original = this.cv_pictures[i];
+            let src = src_original.clone();
             let dst = cv.Mat.zeros(src.rows, src.cols, cv.CV_8UC3);
             dst.name = 'Contours' + this.cv_pictures[i].name;
             cv.cvtColor(src, src, cv.COLOR_RGBA2GRAY, 0);
@@ -295,7 +296,7 @@ class PictureManager {
             this.add_cv_output_block('Lines', text, dst);
 
             // Draw the lines on the original picture
-            const src2 = this.cv_pictures[i];
+            const src2 = src_original;
             src2.name = 'Lines on original picture' + this.cv_pictures[i].name;
             for (let j = 0; j < biggest_contours.length; j++) {
                 const points = biggest_contours[j][0];
