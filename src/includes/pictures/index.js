@@ -37,7 +37,7 @@ class PictureManager {
         alert.classList.add('m-4');
         alert.style.boxShadow = '0 0.5rem 1rem rgba(0,0,0,0.15)';
         alert.setAttribute(`role`, `alert`);
-        alert.innerHTML = `This tool is still in development, some results may not be accurate. A Python equivalent script is available on my <a class="custom-link" href="https://github.com/yanis-dlmr/picture-treatment" target="_blank">GitHub</a>`;
+        alert.innerHTML = `A Python equivalent script is also available on <a class="custom-link" href="https://github.com/yanis-dlmr/picture-treatment" target="_blank">GitHub</a>. This tool is still in development, some results may not be accurate.`;
         
         var closeButton = document.createElement(`button`);
         closeButton.classList.add(`btn-close`);
