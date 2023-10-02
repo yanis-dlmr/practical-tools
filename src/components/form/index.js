@@ -46,6 +46,13 @@ class Form {
                     list_check_input.forEach(check_input => {
                         if (check_input.id != this.id) {
                             document.getElementById(check_input.id).checked = false;
+                            if ('son_id' in check_input) {
+                                // put all the sons as disabled and not required
+                                check_input.son_id.forEach(son => {
+                                    document.getElementById(son).disabled = true;
+                                    document.getElementById(son).required = false;
+                                });
+                            }
                         }
                     });
                     if ('son_id' in check_input) {
@@ -53,14 +60,6 @@ class Form {
                         check_input.son_id.forEach(son => {
                             document.getElementById(son).disabled = false;
                             document.getElementById(son).required = true;
-                        });
-                    }
-                } else {
-                    if ('son_id' in check_input) {
-                        // put all the sons as disabled and not required
-                        check_input.son_id.forEach(son => {
-                            document.getElementById(son).disabled = true;
-                            document.getElementById(son).required = false;
                         });
                     }
                 }
