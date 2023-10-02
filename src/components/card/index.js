@@ -25,6 +25,10 @@ class Card {
         this.cardBody.appendChild(component);
     }
 
+    removeAllComponents() {
+        this.cardBody.innerHTML = '';
+    }
+
     render() {
         return this.card;
     }

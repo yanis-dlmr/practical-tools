@@ -204,6 +204,10 @@ class PictureManager {
         }
     }
 
+    remove_all_output_blocks = () => {
+        this.card_output.removeAllComponents();
+    }
+
     add_output_block  = (title, text, picture) => {
         const caption = new Caption(title);
         const captionElement = caption.render();
