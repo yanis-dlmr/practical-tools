@@ -24,8 +24,6 @@ class Form {
             input.type = "checkbox";
             input.id = check_input.id;
             input.value = check_input.value;
-            // put input to no valid state
-            input.classList.add('is-invalid');
 
             var label = document.createElement("label");
             label.className = "form-check-label";
@@ -41,10 +39,6 @@ class Form {
         list_check_input.forEach(check_input => {
             document.getElementById(check_input.id).addEventListener('change', function() {
                 if (this.checked) {
-                    // put all checkboxes in valid state
-                    list_check_input.forEach(check_input => {
-                        document.getElementById(check_input.id).classList.add('is-valid');
-                    });
                     list_check_input.forEach(check_input => {
                         if (check_input.id != this.id) {
                             document.getElementById(check_input.id).checked = false;
@@ -52,6 +46,15 @@ class Form {
                     });
                 }
             });
+        });
+
+        // at least one checkbox must be checked to be valid
+        this.form.addEventListener('submit', function(event) {
+            if (!list_check_input.some(check_input => document.getElementById(check_input.id).checked)) {
+                event.preventDefault();
+                event.stopPropagation();
+                alert('Please select at least one option.');
+            }
         });
     }
 
