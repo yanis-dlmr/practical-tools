@@ -209,12 +209,15 @@ class PictureManager {
     }
 
     add_output_block  = (title, text, picture) => {
+        picture_name = picture.src.split('/').pop();
+        picture_size = picture.width + 'x' + picture.height;
+
         const caption = new Caption(title);
         const captionElement = caption.render();
         this.card_output.addComponent(captionElement);
 
         const textElement = document.createElement('p');
-        textElement.innerHTML = text;
+        textElement.innerHTML = text + '\n' + picture_name + ' (' + picture_size + ')';
         this.card_output.addComponent(textElement);
 
         const canvas = document.createElement('canvas');
@@ -224,7 +227,7 @@ class PictureManager {
         this.card_output.addComponent(canvas);
 
         // display image using ctx.drawImage
-        const canvasOutput = document.getElementById('canvasOutputBlock'  + title);
+        const canvasOutput = document.getElementById('canvasOutputBlock'  + picture_name);
         const ctx = canvasOutput.getContext('2d');
         ctx.drawImage(picture, 0, 0);
     }
