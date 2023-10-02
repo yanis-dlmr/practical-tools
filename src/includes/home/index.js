@@ -12,7 +12,7 @@ async function init_home() {
     cardHeader.classList.add('card-header');
     cardHeader.classList.add('custom-big-header')
     cardHeader.id = 'header';
-    cardHeader.textContent = "Practicals Tools"
+    cardHeader.textContent = "Practical Tools"
 
     const cardBody = document.createElement('div');
     // put cardBody1 and cardBody2 next to each other
