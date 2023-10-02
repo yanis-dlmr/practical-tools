@@ -436,7 +436,7 @@ class PictureManager {
                 this.add_output_block_without_picture('Light intensity along the lines', text);
             }
             
-            src.delete(); dst.delete(); contours.delete();
+            src.delete(); dst.delete(); contours.delete(); src_copy.delete(); src_original.delete();
         }
     }
 
