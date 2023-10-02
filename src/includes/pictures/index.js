@@ -341,6 +341,7 @@ class PictureManager {
             // For the n biggest contours, fit a line to the contour points using least squares
             let text = '';
             const biggest_contours = [];
+            const all_angles = [];
             var n_bigger_contours = parseInt(document.getElementById('nb_axis').value);
             for (let j = 0; j < n_bigger_contours; j++) {
                 const contour = contours_area[j][0];
@@ -360,22 +361,13 @@ class PictureManager {
                 const lefty = Math.round((-x * vy / vx) + y);
                 const righty = Math.round(((src.cols - x) * vy / vx) + y);
                 biggest_contours.push([points, [lefty, 0], [righty, src.cols]]);
-                text += 'Equation of the line : y' + (j+1) + ' = ' + vy / vx + ' x + ' + lefty + '\n';
+                // Get angles of all lines with the x axis
+                const angle = Math.atan(vy / vx) * 180 / Math.PI;
+                all_angles.push(angle);
+                
+                text += 'Equation of the line : y' + (j+1) + ' = ' + vy / vx + ' x + ' + lefty + '° with an angle of ' + angle + '° with the x axis\n';
             }
 
-            // Compute the angle between the n lines, 1 with 2, 1 with 3, 2 with 3, etc.
-            // Get angles of all lines with the x axis
-            const all_angles = [];
-            for (let j = 0; j < biggest_contours.length; j++) {
-                const points = biggest_contours[j][0];
-                //const lefty = biggest_contours[j][1];
-                //const righty = biggest_contours[j][2];
-                //const b = lefty[0]
-                const a = (points[0][1] - points[1][1]) / (points[0][0] - points[1][0])
-                const angle = Math.atan(a) * 180 / Math.PI;
-                all_angles.push(angle);
-            }
-            console.table(all_angles);
             // Compare the angles between each line, 1 with 2, 1 with 3, 2 with 3, etc.
             for (let j = 0; j < biggest_contours.length; j++) {
                 for (let k = j + 1; k < biggest_contours.length; k++) {
