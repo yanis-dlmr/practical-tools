@@ -42,7 +42,7 @@ class PictureManager {
             {id: 'display_only', label: 'Display Only', value: 'display_only', checked: 'true'},
             {id: 'average_color', label: 'Average Color', value: 'average_color', checked: 'false'},
             {id: 'average_pictures', label: 'Average Pictures', value: 'average_pictures', checked: 'false'},
-            {id: 'determine_axis', label: 'Determine Axis', value: 'determine_axis', checked: 'false'}
+            {id: 'determine_axis', label: 'Determine Axis', value: 'determine_axis', checked: 'false', son_id: ['determine_axis_threshold_min', 'determine_axis_threshold_max']},
         ];
         let name = 'Select the treatment needed';
         form.add_multiple_check_input_single_choice(list_check_input, name)
