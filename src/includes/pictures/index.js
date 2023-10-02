@@ -240,7 +240,13 @@ class PictureManager {
             let contours = new cv.MatVector();
             let hierarchy = new cv.Mat();
             cv.findContours(src, contours, hierarchy, cv.RETR_CCOMP, cv.CHAIN_APPROX_SIMPLE);
-            
+            for (let i = 0; i < contours.size(); ++i) {
+                let color = new cv.Scalar(Math.round(Math.random() * 255), Math.round(Math.random() * 255),
+                                          Math.round(Math.random() * 255));
+                cv.drawContours(dst, contours, i, color, 1, cv.LINE_8, hierarchy, 100);
+            }
+            this.add_cv_output_block('Contours', "j'espère ça marche", dst);
+            src.delete(); dst.delete(); contours.delete(); hierarchy.delete();
         //    // Sort contours by area
         //    const contours_area = [];
         //    for (let j = 0; j < contours.size(); j++) {
