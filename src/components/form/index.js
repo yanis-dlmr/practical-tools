@@ -49,7 +49,8 @@ class Form {
         });
 
         // at least one checkbox must be checked to be valid
-        this.form.addEventListener('submit', function(event) {
+        var form = document.getElementById('form');
+        form.addEventListener('submit', function(event) {
             if (!list_check_input.some(check_input => document.getElementById(check_input.id).checked)) {
                 event.preventDefault();
                 event.stopPropagation();
