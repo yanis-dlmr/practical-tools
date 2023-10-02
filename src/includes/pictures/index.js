@@ -209,7 +209,7 @@ class PictureManager {
 
         console.log(picture)
 
-        const picture_name = picture.src.split('/').pop();
+        const picture_name = picture.name;
         const picture_size = picture.width + 'x' + picture.height;
 
         const caption = new Caption(title);
