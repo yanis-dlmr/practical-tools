@@ -222,8 +222,8 @@ class PictureManager {
 
         // process the pictures
         console.log('process_pictures');
-        //for (let i = 0; i < this.cv_pictures.length; i++) {
-        //    console.log('process_pictures : ', i);
+        for (let i = 0; i < this.cv_pictures.length; i++) {
+            console.log('process_pictures : ', i);
         //    // Threshold the picture
         //    const threshold_min_value = 100;
         //    const threshold_max_value = 255;
@@ -250,7 +250,7 @@ class PictureManager {
         //    cv.drawContours(this.cv_pictures[i], contours, -1, [255, 255, 255, 255], 1, cv.LINE_8);
         //    cv.imshow('canvasOutputBlock', this.cv_pictures[i]);
         //    
-        //}
+        }
     }
 
     remove_all_output_blocks = () => {
