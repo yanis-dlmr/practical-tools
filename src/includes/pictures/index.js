@@ -287,7 +287,7 @@ class PictureManager {
             }
             this.cv_pictures.push(mat);
         }
-        this.add_cv_output_block('Fist cv picture as test', 'nomnomnom', this.cv_pictures[0])
+        this.add_cv_output_block('Imported picture', '', this.cv_pictures[0])
 
         // process the pictures
         console.log('process_pictures');
@@ -420,17 +420,15 @@ class PictureManager {
 
     add_cv_output_block  = (title, text, picture) => {
 
-        console.log(picture)
-
-        const picture_name = picture.name;
-        const picture_size = picture.width + 'x' + picture.height;
+        //const picture_name = picture.name;
+        //const picture_size = picture.width + 'x' + picture.height;
 
         const caption = new Caption(title);
         const captionElement = caption.render();
         this.card_output.addComponent(captionElement);
 
         const textElement = document.createElement('p');
-        let final_text = text + '\n' + picture_name + ' (' + picture_size + ')';
+        let final_text = text; //'\n' + picture_name + ' (' + picture_size + ')';
         const replacedText = final_text.replace(/\n/g, "<br>");
         textElement.innerHTML = replacedText
         this.card_output.addComponent(textElement);
