@@ -24,6 +24,9 @@ class Form {
             input.type = "checkbox";
             input.id = check_input.id;
             input.value = check_input.value;
+            if ("checked" in check_input && check_input.checked == "true") {
+                input.checked = true;
+            }
 
             var label = document.createElement("label");
             label.className = "form-check-label";
@@ -48,15 +51,6 @@ class Form {
             });
         });
 
-        // at least one checkbox must be checked to be valid
-        var form = document.getElementById('form');
-        form.addEventListener('submit', function(event) {
-            if (!list_check_input.some(check_input => document.getElementById(check_input.id).checked)) {
-                event.preventDefault();
-                event.stopPropagation();
-                alert('Please select at least one option.');
-            }
-        });
     }
 
     add_divider() {

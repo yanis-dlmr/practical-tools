@@ -39,10 +39,10 @@ class PictureManager {
         const formElement = form.render();
         card_parameters.addComponent(formElement);
         let list_check_input = [
-            {id: 'display_only', label: 'Display Only', value: 'display_only'},
-            {id: 'average_color', label: 'Average Color', value: 'average_color'},
-            {id: 'average_pictures', label: 'Average Pictures', value: 'average_pictures'},
-            {id: 'determine_axis', label: 'Determine Axis', value: 'determine_axis'}
+            {id: 'display_only', label: 'Display Only', value: 'display_only', checked: 'true'},
+            {id: 'average_color', label: 'Average Color', value: 'average_color', checked: 'false'},
+            {id: 'average_pictures', label: 'Average Pictures', value: 'average_pictures', checked: 'false'},
+            {id: 'determine_axis', label: 'Determine Axis', value: 'determine_axis', checked: 'false'}
         ];
         let name = 'Select the treatment needed';
         form.add_multiple_check_input_single_choice(list_check_input, name)
