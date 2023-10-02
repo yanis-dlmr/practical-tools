@@ -9,7 +9,7 @@ const main_check_input = [
     {id: 'display_only', label: 'Display Only', value: 'display_only', checked: 'false'},
     {id: 'average_color', label: 'Average Color', value: 'average_color', checked: 'false'},
     {id: 'average_pictures', label: 'Average Pictures', value: 'average_pictures', checked: 'false'},
-    {id: 'determine_axis', label: 'Determine Axis', value: 'determine_axis', checked: 'false', son_id: ['threshold_min', 'threshold_max', 'nb_axis']},
+    {id: 'determine_axis', label: 'Determine Axis', value: 'determine_axis', checked: 'false', son_id: ['threshold_min', 'threshold_max', 'nb_axis', 'get_light_intensity']},
 ];
 
 
@@ -74,7 +74,7 @@ class PictureManager {
             label: 'Threshold minimum',
             id: 'threshold_min',
             unit: '0 - 255',
-            value: '100'
+            value: '55'
         });
         form.add_text_input({
             label: 'Threshold maximum',
@@ -87,6 +87,12 @@ class PictureManager {
             id: 'nb_axis',
             unit: '2 - 10',
             value: '2'
+        });
+        form.add_switch_input({
+            label: 'Get light intensity along the axis',
+            id: 'get_light_intensity',
+            value: 'false',
+            checked: 'false'
         });
 
         
@@ -444,6 +450,10 @@ class PictureManager {
         const canvasOutput = document.getElementById('canvasOutputBlock' + title);
         const ctx = canvasOutput.getContext('2d');
         cv.imshow('canvasOutputBlock' + title, picture);
+
+        let divider = document.createElement('hr');
+        divider.classList.add('my-4');
+        this.card_output.appendChild(divider);
     }
 }
 

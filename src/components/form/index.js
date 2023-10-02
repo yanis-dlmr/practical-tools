@@ -161,6 +161,30 @@ class Form {
         return formGroup;
     }
 
+    add_switch_input(structure) {
+        let div = document.createElement('div');
+        div.classList.add('form-check');
+        div.classList.add('form-switch');
+
+        var input = document.createElement("input");
+        input.className = "form-check-input";
+        input.type = "checkbox";
+        input.id = structure.id;
+        input.value = structure.value;
+        if ("checked" in structure && structure.checked == "true") {
+            input.checked = true;
+        }
+
+        var label = document.createElement("label");
+        label.className = "form-check-label";
+        label.htmlFor = structure.id;
+        label.textContent = structure.label;
+        
+        div.appendChild(input);
+        div.appendChild(label);
+        this.form.appendChild(div);
+    }
+    
 
 
     render() {
