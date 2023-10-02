@@ -15,8 +15,8 @@ async function init_home() {
 
     const cardHeader = document.createElement('div');
     cardHeader.classList.add('card-header');
+    cardHeader.classList.add('custom-big-header')
     cardHeader.id = 'header';
-    cardHeader.setAttribute('style', 'text-align: center; font-size: 2.5rem; font-weight: bold; color: #2061ae; border-radius: 0.25rem; padding: 0.5rem 1rem; margin-bottom: 1rem;')
     cardHeader.textContent = "Practicals Tools"
 
     const cardBody = document.createElement('div');

@@ -44,3 +44,13 @@ h4{
 .card-body {
     white-space: pre-wrap;
 }
+
+.custom-big-header{
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #2061ae;
+    border-radius: 0.25rem;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+}
