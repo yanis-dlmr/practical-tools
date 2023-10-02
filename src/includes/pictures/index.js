@@ -35,23 +35,16 @@ class PictureManager {
 
         row.appendChild(containerElementParameters);
 
-        const caption_parameters = new Caption('Select your parameters');
-        const captionElementParameters = caption_parameters.render();
-        card_parameters.addComponent(captionElementParameters);
-
-        const select_parameters = new Select(['Display only', 'Average Color', 'Average picture', 'Determine axis']);
-        const selectElementParameters = select_parameters.render();
-        card_parameters.addComponent(selectElementParameters);
-
         const form = new Form();
         const formElement = form.render();
         card_parameters.addComponent(formElement);
         let list_check_input = [
-            {id: 'check_input1', label: 'Check input 1', value: 'check_input1'},
-            {id: 'check_input2', label: 'Check input 2', value: 'check_input2'},
-            {id: 'check_input3', label: 'Check input 3', value: 'check_input3'}
+            {id: 'display_only', label: 'Display Only', value: 'display_only'},
+            {id: 'average_color', label: 'Average Color', value: 'average_color'},
+            {id: 'average_pictures', label: 'Average Pictures', value: 'average_pictures'},
+            {id: 'determine_axis', label: 'Determine Axis', value: 'determine_axis'}
         ];
-        let name = 'Make you choice';
+        let name = 'Select the kind of treatment you want to apply to your pictures';
         form.add_multiple_check_input_single_choice(list_check_input, name)
 
 
