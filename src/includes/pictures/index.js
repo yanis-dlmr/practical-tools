@@ -77,6 +77,7 @@ class PictureManager {
             }
 
             console.table(this.pictures);
+            this.remove_all_output_blocks();
 
             if (selectElementParameters.value == 'Display only') {
                 this.display_pictures();
@@ -85,6 +86,11 @@ class PictureManager {
             } else if (selectElementParameters.value == 'Determine axis') {
                 this.compute_determine_axis();
             }
+            // clear memory
+            for (let i = 0; i < this.pictures.length; i++) {
+                URL.revokeObjectURL(this.pictures[i].src);
+            }
+
         });
 
 
