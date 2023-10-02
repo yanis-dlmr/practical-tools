@@ -402,6 +402,7 @@ class PictureManager {
                     const b = points[0][1] - a * points[0][0];
                     for (let x = 0; x < this.cv_pictures[i].width; x++) {
                         const y = Math.round(a * x + b);
+                        console.log(x, y)
                         if (y < 0 || y >= this.cv_pictures[i].height) {
                             light_intensity_line.push(0);
                         } else {
