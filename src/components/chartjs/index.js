@@ -42,9 +42,21 @@ class ChartJs {
                 data: this.y_values[i],
                 fill: false,
                 borderColor: 'rgb(75, 192, 192)',
-                tension: 0.1
+                tension: 0.1,
+                yAxisID: 'y-axis-' + i
             });
         }
+        
+        for (let i = 0; i < this.line_names.length; i++) {
+            chart.options.scales['y-axis-' + i] = {
+                type: 'linear',
+                position: 'left',
+                ticks: {
+                    beginAtZero: true
+                }
+            };
+        }
+        
         chart.update();
         return canvas;
     }
