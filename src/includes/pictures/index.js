@@ -530,7 +530,7 @@ class PictureManager {
                 text = '';
                 // Draw the min and max on the picture
                 const src_copy_2 = src_original.clone();
-                const text = '';
+                text = '';
                 for (let j = 0; j < derivative_min_max.length; j++) {
                     const min = derivative_min_max[j][0];
                     const max = derivative_min_max[j][1];
