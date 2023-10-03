@@ -205,6 +205,16 @@ class Form {
         if ("required" in structure && structure.required == "true") {
             input.required = true;
         }
+        
+        var validFeedback = document.createElement('div');
+        validFeedback.classList.add('valid-feedback');
+        validFeedback.textContent = 'Looks good!';
+        input.appendChild(validFeedback);
+    
+        var invalidFeedback = document.createElement('div');
+        invalidFeedback.classList.add('invalid-feedback');
+        invalidFeedback.textContent = 'Please provide a valid value.';
+        input.appendChild(invalidFeedback);
 
         var label = document.createElement("label");
         label.className = "form-check-label";
