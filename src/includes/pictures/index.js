@@ -101,7 +101,8 @@ class PictureManager {
             label: 'Max/Min derivative conditions',
             id: 'max_min_derivative_condition',
             value: 'false',
-            checked: 'false'
+            checked: 'false',
+            friend: 'threshold_condition'
         });
 
         form.add_switch_input({
@@ -110,7 +111,8 @@ class PictureManager {
             value: 'false',
             checked: 'false',
             son_id_to_able: ['threshold_value_condition'],
-            son_id_to_disable: ['threshold_value_condition']
+            son_id_to_disable: ['threshold_value_condition'],
+            friend: 'max_min_derivative_condition'
         });
         form.add_text_input({
             label: 'Threshold value',
