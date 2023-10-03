@@ -467,9 +467,9 @@ class PictureManager {
                         for (let k = 0; k < light_intensity[j].length; k++) {
                             let sum = 0;
                             let count = 0;
-                            for (let l = k - smooth_factor; l <= k + smooth_factor; l++) {
-                                if (l >= 0 && l < light_intensity[j].length) {
-                                    sum += light_intensity[j][l];
+                            for (let i = - smooth_factor; i < smooth_factor; i++) {
+                                if (k + i >= 0 && k + i < light_intensity[j].length) {
+                                    sum += light_intensity[j][k + i];
                                     count++;
                                 }
                             }
