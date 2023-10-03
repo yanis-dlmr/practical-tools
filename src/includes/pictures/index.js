@@ -102,6 +102,7 @@ class PictureManager {
             id: 'max_min_derivative_condition',
             value: 'false',
             checked: 'false',
+            required: 'true',
             friends: ['threshold_condition']
         });
 
@@ -110,6 +111,7 @@ class PictureManager {
             id: 'threshold_condition',
             value: 'false',
             checked: 'false',
+            required: 'true',
             son_id_to_able: ['threshold_value_condition'],
             son_id_to_disable: ['threshold_value_condition'],
             friends: ['max_min_derivative_condition']
