@@ -36,7 +36,9 @@ class ChartJs {
                         beginAtZero: true
                     }
                 }]
-            }
+            },
+            responsive: true,
+            maintainAspectRatio: true
         };
 
         var chart = new Chart(ctx, {
