@@ -93,7 +93,7 @@ class PictureManager {
             id: 'get_light_intensity',
             value: 'false',
             checked: 'false',
-            son_id_to_able: ['limit_condition', 'smooth_factor'],
+            son_id_to_able: ['limit_condition', 'smooth_light_intensity'],
             son_id_to_disable: ['limit_condition', 'smooth_factor', 'smooth_light_intensity']
         });
         form.add_select_input({
