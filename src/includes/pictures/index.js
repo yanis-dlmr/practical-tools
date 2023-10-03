@@ -28,6 +28,11 @@ class PictureManager {
     }
 
     create_body() {
+
+        const row = document.createElement('div');
+        row.classList.add('row', 'custom-row');
+        document.body.appendChild(row);
+        
         // Create the allert 
         var alert = document.createElement(`div`);
         alert.classList.add(`alert`);
@@ -46,12 +51,8 @@ class PictureManager {
         closeButton.setAttribute(`data-bs-dismiss`, `alert`);
         closeButton.setAttribute(`aria-label`, `Close`);
         alert.appendChild(closeButton);
-    
-        document.body.appendChild(alert);
 
-        const row = document.createElement('div');
-        row.classList.add('row', 'custom-row');
-        document.body.appendChild(row);
+        row.appendChild(alert);
 
         // Parameters
         const card_parameters = new Card('Parameters');
