@@ -629,6 +629,9 @@ class PictureManager {
                 
             }
 
+            // Display the picture with the contours
+            hljs.addPlugin(new CopyButtonPlugin());
+            hljs.highlightAll();
             
             src.delete(); dst.delete(); contours.delete(); src_copy.delete(); src_original.delete();
         }
