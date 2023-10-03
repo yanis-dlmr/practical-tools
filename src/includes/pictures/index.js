@@ -463,22 +463,19 @@ class PictureManager {
                 // Get the min and max of the derivative
                 const derivative_min_max = [];
                 for (let j = 0; j < derivative.length; j++) {
-                    const derivative_min_max_line = [];
-                    let derivative_min = 0;
-                    let derivative_max = 0;
-
-                    // Get the min and max of the derivative
+                    let min = 0;
+                    let max = 0;
                     for (let k = 0; k < derivative[j].length; k++) {
-                        if (derivative[j][k] < derivative_min) {
-                            derivative_min = derivative[j][k];
+                        if (derivative[j][k] < min) {
+                            min = derivative[j][k];
                         }
-                        if (derivative[j][k] > derivative_max) {
-                            derivative_max = derivative[j][k];
+                        if (derivative[j][k] > max) {
+                            max = derivative[j][k];
                         }
                     }
-                    derivative_min_max_line.push(derivative_min);
-                    derivative_min_max_line.push(derivative_max);
+                    derivative_min_max.push([min, max]);
                 }
+                console.log('derivative_min_max', derivative_min_max)
                 this.add_output_title('Min and max of the derivative of the light intensity')
                 text = '';
                 for (let j = 0; j < derivative_min_max.length; j++) {
