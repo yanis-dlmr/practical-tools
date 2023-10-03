@@ -35,7 +35,6 @@ class PictureManager {
         
         // Create the alert 
         var alert = document.createElement(`div`);
-        alert.classList.add('col-12');
         alert.classList.add(`alert`);
         alert.classList.add(`alert-primary`);
         alert.classList.add(`alert-dismissible`);
@@ -53,7 +52,11 @@ class PictureManager {
         closeButton.setAttribute(`aria-label`, `Close`);
         alert.appendChild(closeButton);
 
-        row.appendChild(alert);
+        const container_alert = new Container('12');
+        container.addComponent(container_alert);
+        const containerElementAlert = container.render();
+
+        row.appendChild(containerElementAlert);
 
         // Parameters
         const card_parameters = new Card('Parameters');
