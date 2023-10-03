@@ -95,6 +95,11 @@ class PictureManager {
             checked: 'false',
             son_id: ['limit_condition', 'smooth_factor', 'smooth_light_intensity']
         });
+        form.add_select_input({
+            label: 'Limit condition',
+            id: 'limit_condition',
+            options: ['min max derivative', 'average value as threshold']
+        });
         form.add_switch_input({
             label: 'Smooth the light intensity',
             id: 'smooth_light_intensity',
@@ -108,11 +113,6 @@ class PictureManager {
             unit: '0 - 1',
             value: '0.5'
         })
-        form.add_select_input({
-            label: 'Limit condition',
-            id: 'limit_condition',
-            options: ['min max derivative', 'average value as threshold']
-        });
 
         
         // Manually check the first one in order to trigger the event change

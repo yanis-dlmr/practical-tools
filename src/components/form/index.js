@@ -75,6 +75,10 @@ class Form {
                                 // put all the sons as disabled and not required
                                 check_input.son_id_to_disable.forEach(son => {
                                     document.getElementById(son).disabled = true;
+                                    // if checkbox then uncheck
+                                    if (document.getElementById(son).type == 'checkbox') {
+                                        document.getElementById(son).checked = false;
+                                    }
                                     document.getElementById(son).required = false;
                                 });
                             }
@@ -223,6 +227,10 @@ class Form {
                     structure.son_id.forEach(son => {
                         document.getElementById(son).disabled = true;
                         document.getElementById(son).required = false;
+                        // if checkbox then uncheck
+                        if (document.getElementById(son).type == 'checkbox') {
+                            document.getElementById(son).checked = false;
+                        }
                     });
                 }
             }
