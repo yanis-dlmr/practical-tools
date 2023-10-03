@@ -667,7 +667,7 @@ class PictureManager {
     //}
 
     add_output_array = (array) => { // Display array between brackets and inside a code block
-        const text = '[\n    ' + array + '\n    ]';
+        const text = '[\n    ' + array + '\n]';
         const embededBlock = new EmbededBlock(text);
         const embededBlockElement = embededBlock.render();
         this.card_output.addComponent(embededBlockElement);

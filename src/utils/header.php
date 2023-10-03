@@ -4,4 +4,3 @@
     hljs.highlightAll();
     hljs.addPlugin(new CopyButtonPlugin());
 </script>
-<script src="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
