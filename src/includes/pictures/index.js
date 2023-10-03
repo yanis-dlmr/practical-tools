@@ -658,7 +658,7 @@ class PictureManager {
                 const chartJsElement = chartjs.render();
 
                 const chart_box = document.createElement('div');
-                chart_box.classList.add('col-6');
+                chart_box.classList.add('col-md-6');
                 chart_box.className = 'chart_box';
                 chart_box.appendChild(chartJsElement);
                 chartJsElement.style.width = '100%';
