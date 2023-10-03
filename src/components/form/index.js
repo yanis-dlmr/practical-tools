@@ -214,9 +214,9 @@ class Form {
         this.form.appendChild(div);
         document.getElementById(structure.id).addEventListener('change', function() {
             if (this.checked) {
-                if ('friend' in structure) {
+                if ('friends' in structure) {
                     // uncheck all the friends and put them at not required
-                    structure.friend.forEach(friend => {
+                    structure.friends.forEach(friend => {
                         document.getElementById(friend).checked = false;
                         document.getElementById(friend).required = false;
                     });
