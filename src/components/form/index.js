@@ -218,6 +218,7 @@ class Form {
                     // uncheck all the friends and put them at not required
                     structure.friends.forEach(friend => {
                         document.getElementById(friend).checked = false;
+                        document.getElementById(friend).dispatchEvent(new Event('change'));
                         document.getElementById(friend).required = false;
                     });
                 }
