@@ -636,7 +636,7 @@ class PictureManager {
             // Chart box row containing all the charts
             const chart_box_row = document.createElement('div');
             chart_box_row.className = 'row';
-            this.output.appendChild(chart_box_row);
+            this.card_output.addComponent(chart_box_row);
 
             // Create a chart for each line
             const line_names = ['Light intensity'];
