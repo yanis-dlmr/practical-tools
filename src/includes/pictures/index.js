@@ -444,6 +444,8 @@ class PictureManager {
             }
 
             // Derivative of the light intensity to determine the min and max
+            const limit_condition = document.getElementById('limit_condition').value;
+            console.log('limit_condition', limit_condition);
 
             
             src.delete(); dst.delete(); contours.delete(); src_copy.delete(); src_original.delete();
