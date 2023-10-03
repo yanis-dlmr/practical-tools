@@ -167,7 +167,7 @@ class PictureManager {
         card.addComponent(captionElement);
 
         let divider = document.createElement('hr');
-        divider.classList.add('my-4');
+        divider.classList.add('custom-divider');
         card.addComponent(divider);
 
         const importer = form.get_importer_element('importer_id');
@@ -653,7 +653,7 @@ class PictureManager {
         this.card_output.addComponent(captionElement);
         
         let divider = document.createElement('hr');
-        divider.classList.add('my-4');
+        divider.classList.add('custom-divider');
         this.card_output.addComponent(divider);
     }
 
@@ -696,7 +696,7 @@ class PictureManager {
         this.card_output.addComponent(captionElement);
         
         let divider = document.createElement('hr');
-        divider.classList.add('my-4');
+        divider.classList.add('custom-divider');
         this.card_output.addComponent(divider);
 
         const textElement = document.createElement('p');
@@ -724,7 +724,7 @@ class PictureManager {
         this.card_output.addComponent(captionElement);
         
         let divider = document.createElement('hr');
-        divider.classList.add('my-4');
+        divider.classList.add('custom-divider');
         this.card_output.addComponent(divider);
 
         const textElement = document.createElement('p');
@@ -752,7 +752,7 @@ class PictureManager {
         this.card_output.addComponent(captionElement);
         
         let divider = document.createElement('hr');
-        divider.classList.add('my-4');
+        divider.classList.add('custom-divider');
         this.card_output.addComponent(divider);
 
         const textElement = document.createElement('p');

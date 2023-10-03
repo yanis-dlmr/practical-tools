@@ -68,3 +68,8 @@ h4{
 .custom-pre{
     border-radius: 0.5rem;
 }
+
+.custom-divider{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
