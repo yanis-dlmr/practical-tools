@@ -276,8 +276,8 @@ class PictureManager {
     }
 
     compute_average_picture = () => { // Compute the average of all the pictures and display it in the output block, with the original size
-        // extract all arrays of pixels and make the average
-        const arrays = [];
+        // convert all the pictures into cv.Mat
+        this.cv_pictures = [];
         for (let i = 0; i < this.pictures.length; i++) {
             const canvas = document.createElement('canvas');
             canvas.width = this.pictures[i].width;
@@ -287,42 +287,17 @@ class PictureManager {
             const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
             const data = imageData.data;
             const length = data.length;
-            const array = [];
-            for (let j = 0; j < length; j += 4) {
-                array.push([data[j], data[j + 1], data[j + 2]]);
+            const mat = new cv.Mat(canvas.height, canvas.width, cv.CV_8UC4);
+            const mat_data = mat.data;
+            for (let j = 0; j < length; j++) {
+                mat_data[j] = data[j];
             }
-            arrays.push(array);
+            mat.height = canvas.height;
+            mat.width = canvas.width;
+            console.log(mat.data)
+            this.cv_pictures.push(mat);
+            this.add_cv_output_block('Imported picture', '', this.cv_pictures[i])
         }
-        const average_array = [];
-        for (let i = 0; i < arrays[0].length; i++) {
-            const average = [0, 0, 0];
-            for (let j = 0; j < arrays.length; j++) {
-                average[0] += arrays[j][i][0];
-                average[1] += arrays[j][i][1];
-                average[2] += arrays[j][i][2];
-            }
-            average[0] /= arrays.length;
-            average[1] /= arrays.length;
-            average[2] /= arrays.length;
-            average_array.push(average);
-        }
-        // create the average picture
-        this.average_picture = document.createElement('canvas');
-        this.average_picture.id = 'canvasOutputBlock';
-        this.average_picture.width = this.pictures[0].width;
-        this.average_picture.height = this.pictures[0].height;
-        const ctx = this.average_picture.getContext('2d');
-        ctx.clearRect(0, 0, this.average_picture.width, this.average_picture.height);
-        const imageData = ctx.getImageData(0, 0, this.average_picture.width, this.average_picture.height);
-        const data = imageData.data;
-        const length = data.length;
-        for (let i = 0; i < length; i += 4) {
-            data[i] = average_array[i / 4][0];
-            data[i + 1] = average_array[i / 4][1];
-            data[i + 2] = average_array[i / 4][2];
-        }
-        ctx.putImageData(imageData, 0, 0);
-        this.add_output_block('Average Picture', 'nomnomnom', this.average_picture);
     }
 
     compute_determine_axis = () => {
