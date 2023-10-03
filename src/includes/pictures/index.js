@@ -9,7 +9,7 @@ const main_check_input = [
     {id: 'display_only', label: 'Display Only', value: 'display_only', checked: 'false'},
     {id: 'average_color', label: 'Average Color', value: 'average_color', checked: 'false'},
     {id: 'average_pictures', label: 'Average Pictures', value: 'average_pictures', checked: 'false'},
-    {id: 'determine_axis', label: 'Determine Axis', value: 'determine_axis', checked: 'false', son_id_to_able: ['threshold_min', 'threshold_max', 'nb_axis', 'get_light_intensity'], son_id_to_disable: ['threshold_min', 'threshold_max', 'nb_axis', 'get_light_intensity', 'limit_condition']},
+    {id: 'determine_axis', label: 'Determine Axis', value: 'determine_axis', checked: 'false', son_id_to_able: ['threshold_min', 'threshold_max', 'nb_axis', 'get_light_intensity', 'smooth_light_intensity'], son_id_to_disable: ['threshold_min', 'threshold_max', 'nb_axis', 'get_light_intensity', 'limit_condition', 'smooth_light_intensity']},
 ];
 
 
@@ -95,6 +95,12 @@ class PictureManager {
             checked: 'false',
             son_id: ['limit_condition']
         });
+        form.add_check_input({
+            label: 'Smooth the light intensity',
+            id: 'smooth_light_intensity',
+            value: 'false',
+            checked: 'false'
+        })
         form.add_select_input({
             label: 'Limit condition',
             id: 'limit_condition',
@@ -442,6 +448,35 @@ class PictureManager {
                     this.add_output_array(light_intensity[j]);
                 }
 
+                // Make the light intensity smoother
+                const smooth_light_intensity_bool = document.getElementById('smooth_light_intensity').checked;
+                if (smooth_light_intensity_bool) {
+                    const smooth_light_intensity = [];
+                    const smooth_light_intensity_window = document.getElementById('smooth_light_intensity_window').value;
+                    for (let j = 0; j < light_intensity.length; j++) {
+                        const smooth_light_intensity_line = [];
+                        for (let k = 0; k < light_intensity[j].length; k++) {
+                            let sum = 0;
+                            let count = 0;
+                            for (let l = k - smooth_light_intensity_window; l <= k + smooth_light_intensity_window; l++) {
+                                if (l >= 0 && l < light_intensity[j].length) {
+                                    sum += light_intensity[j][l];
+                                    count++;
+                                }
+                            }
+                            const average = sum / count;
+                            smooth_light_intensity_line.push(average);
+                        }
+                        smooth_light_intensity.push(smooth_light_intensity_line);
+                    }
+                    this.add_output_title('Smooth light intensity along the lines')
+                    text = '';
+                    for (let j = 0; j < smooth_light_intensity.length; j++) {
+                        this.add_output_text('Smooth light intensity along the line ' + (j+1) + ' : ');
+                        this.add_output_array(smooth_light_intensity[j]);
+                    }
+                }
+
                 // Derivative of the light intensity to determine the min and max
                 const limit_condition = document.getElementById('limit_condition').value;
                 const derivative = [];
@@ -463,14 +498,20 @@ class PictureManager {
                 // Get the min and max of the derivative
                 const derivative_min_max = [];
                 for (let j = 0; j < derivative.length; j++) {
+                    // Equation of the line : y = a x + b
+                    const equation = biggest_contours[j][3];
+                    const a = equation[0];
+                    const b = equation[1];
                     let min = [];
                     let max = [];
-                    for (let k = 0; k < derivative[j].length; k++) {
-                        if (derivative[j][k] < min[2] || min.length == 0) {
-                            min = [j, k, derivative[j][k]];
+                    for (let x = 0; x < derivative[j].length; x++) {
+                        if (derivative[j][x] < min[2] || min.length == 0) {
+                            const y = Math.round(a * x + b);
+                            min = [x, y, derivative[j][x]];
                         }
-                        if (derivative[j][k] > max[2] || max.length == 0) {
-                            max = [j, k, derivative[j][k]];
+                        if (derivative[j][x] > max[2] || max.length == 0) {
+                            const y = Math.round(a * x + b);
+                            max = [x, y, derivative[j][x]];
                         }
                     }
                     derivative_min_max.push([min, max]);
@@ -482,8 +523,8 @@ class PictureManager {
                     const min = derivative_min_max[j][0];
                     const max = derivative_min_max[j][1];
                     this.add_output_text('Min and max of the derivative of the light intensity along the line ' + (j+1) + ' : ');
-                    this.add_output_text('The minimum is at the index ' + min[1] + ' with the value ' + min[2]);
-                    this.add_output_text('The maximum is at the index ' + max[1] + ' with the value ' + max[2]);
+                    this.add_output_text('The minimum is at the index (' + min[0] + ';' + min[1] + ') with the value ' + min[2]);
+                    this.add_output_text('The maximum is at the index (' + max[0] + ';' + max[1] + ') with the value ' + max[2]);
 
                 }
                 

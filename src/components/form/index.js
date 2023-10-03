@@ -11,6 +11,30 @@ class Form {
         //this.form.setAttribute('novalidate', '');
     }
 
+    add_check_input(structure) {
+        let div = document.createElement('div');
+        div.classList.add('form-check');
+
+        var input = document.createElement("input");
+        input.className = "form-check-input";
+        input.type = "checkbox";
+        input.id = structure.id;
+        input.value = structure.value;
+        if ("checked" in structure && structure.checked == "true") {
+            input.checked = true;
+        }
+
+        var label = document.createElement("label");
+        label.className = "form-check-label";
+        label.htmlFor = structure.id;
+        label.textContent = structure.label;
+        
+        div.appendChild(input);
+        div.appendChild(label);
+        this.form.appendChild(div);
+    }
+
+
     add_multiple_check_input_single_choice(list_check_input, name) { // list_check_input = [check_input1, check_input2, ...] with check_input = {id: id, label: label, value: value}
         let caption = new Caption(name);
         this.form.appendChild(caption.render());
