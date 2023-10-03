@@ -4,7 +4,7 @@
 <link rel="icon" href="/src/assets/images/logo.ico">
 <?php include '../config/link.php'; ?>
 <?php include '../config/menu.php'; ?>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
 
 
 <script src="https://unpkg.com/highlightjs-copy@1.0.3/dist/highlightjs-copy.min.js"></script>
