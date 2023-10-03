@@ -620,6 +620,17 @@ class PictureManager {
             // Draw the Chart Js graph of data_to_be_plotted
             console.log('data_to_be_plotted', data_to_be_plotted);
 
+            // Split the data 
+            const data_per_line = [];
+            for (let i = 0; i < data_to_be_plotted[0].length; i++) {
+                data_forline = [];
+                for (let j = 0; j < data_to_be_plotted.length; j++) {
+                    data_forline.push(data_to_be_plotted[i][j]);
+                }
+                data_per_line.push(data_forline);
+            }
+            console.log('data_per_line', data_per_line);
+
 
 
             console.log('list_min_max', list_min_max);
