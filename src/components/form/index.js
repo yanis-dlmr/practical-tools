@@ -155,6 +155,10 @@ class Form {
     add_caption(title) {
         let caption = new Caption(title);
         this.form.appendChild(caption.render());
+        
+        let divider = document.createElement('hr');
+        divider.classList.add('custom-divider');
+        this.form.appendChild(divider);
     }
 
     get_validation_button() {
