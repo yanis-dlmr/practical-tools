@@ -458,9 +458,9 @@ class PictureManager {
                 }
 
                 // Make the light intensity smoother
+                const smooth_light_intensity = [];
                 const smooth_light_intensity_bool = document.getElementById('smooth_light_intensity').checked;
                 if (smooth_light_intensity_bool) {
-                    const smooth_light_intensity = [];
                     const smooth_factor = document.getElementById('smooth_factor').value;
                     for (let j = 0; j < light_intensity.length; j++) {
                         const smooth_light_intensity_line = [];
@@ -484,8 +484,10 @@ class PictureManager {
                         this.add_output_text('Smooth light intensity along the line ' + (j+1) + ' : ');
                         this.add_output_array(smooth_light_intensity[j]);
                     }
-                    console.log(light_intensity)
-                    // Replace the light intensity by the smooth light intensity
+                }
+                console.log(light_intensity)
+                // Replace the light intensity by the smooth light intensity
+                if (smooth_light_intensity_bool) {
                     light_intensity = smooth_light_intensity;
                 }
                 console.log(light_intensity)
