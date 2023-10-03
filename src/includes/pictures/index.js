@@ -93,7 +93,7 @@ class PictureManager {
             id: 'get_light_intensity',
             value: 'false',
             checked: 'false',
-            //son_id: ['limit_condition']
+            son_id: ['limit_condition']
         });
         form.add_select_input({
             label: 'Limit condition',
