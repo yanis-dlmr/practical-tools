@@ -631,6 +631,8 @@ class PictureManager {
             }
             console.log('data_per_line', data_per_line);
 
+            this.add_output_title('Graphical representation of the previous data');
+
             // Create a chart for each line
             const line_names = ['Light intensity'];
             if (smooth_light_intensity_bool) {
