@@ -212,7 +212,7 @@ class Form {
         var label = document.createElement(`label`);
         label.setAttribute("class", "input-group-text col-4");
         label.setAttribute("for", structure.label);
-        label.textContent = main_key;
+        label.textContent = structure.label;
     
         var select = document.createElement(`select`);
         select.setAttribute("class", "form-select");
