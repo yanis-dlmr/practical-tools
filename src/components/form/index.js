@@ -237,6 +237,65 @@ class Form {
         });
     }
 
+    add_multiple_switch_input(structures) { // Same as add_switch_input but we can only check one box
+        for (let i = 0; i < structures.length; i++) {
+            let div = document.createElement('div');
+            div.classList.add('form-check');
+            div.classList.add('form-switch');
+
+            var input = document.createElement("input");
+            input.className = "form-check-input";
+            input.type = "checkbox";
+            input.id = structures[i].id;
+            input.value = structures[i].value;
+            if ("checked" in structures[i] && structures[i].checked == "true") {
+                input.checked = true;
+            }
+            input.required = false;
+
+            var label = document.createElement("label");
+            label.className = "form-check-label";
+            label.htmlFor = structures[i].id;
+            label.textContent = structures[i].label;
+            
+            div.appendChild(input);
+            div.appendChild(label);
+            this.form.appendChild(div);
+            document.getElementById(structures[i].id).addEventListener('change', function() {
+                if (this.checked) {
+                    if ('son_id_to_able' in structures[i]) {
+                        // put all the sons as not disabled and required
+                        structures[i].son_id_to_able.forEach(son => {
+                            document.getElementById(son).disabled = false;
+                            document.getElementById(son).required = true;
+                        });
+                    }
+                    // uncheck all the other boxes
+                    for (let j = 0; j < structures.length; j++) {
+                        if (j != i) {
+                            document.getElementById(structures[j].id).checked = false;
+                        }
+                    }
+                } else {
+                    // can't uncheck all the checkboxes
+                    this.checked = true;
+                    if ('son_id_to_disable' in structures[i]) {
+                        // put all the sons as disabled and not required
+                        structures[i].son_id_to_disable.forEach(son => {
+                            document.getElementById(son).disabled = true;
+                            document.getElementById(son).required = false;
+                            // if checkbox then uncheck
+                            if (document.getElementById(son).type == 'checkbox') {
+                                document.getElementById(son).checked = false;
+                            }
+                        });
+                    }
+                }
+            });
+        }
+    }
+
+
     add_select_input(structure) {
         var input = document.createElement(`div`);
         input.setAttribute("class", "input-group mb-3");

@@ -93,14 +93,36 @@ class PictureManager {
             id: 'get_light_intensity',
             value: 'false',
             checked: 'false',
-            son_id_to_able: ['limit_condition', 'smooth_light_intensity'],
-            son_id_to_disable: ['limit_condition', 'smooth_factor', 'smooth_light_intensity']
+            son_id_to_able: ['max_min_derivative_condition', 'threshold_condition', 'smooth_light_intensity'],
+            son_id_to_disable: ['max_min_derivative_condition', 'threshold_condition', 'threshold_value_condition', 'smooth_factor', 'smooth_light_intensity']
         });
-        form.add_select_input({
-            label: 'Limit condition',
-            id: 'limit_condition',
-            options: ['min max derivative', 'average value as threshold']
-        });
+
+        multiple_switch_input = [
+            {
+                label: 'Max/Min derivative conditions',
+                id: 'max_min_derivative_condition',
+                value: 'false',
+                checked: 'false'
+            },
+            {
+                label: 'Threshold',
+                id: 'threshold_condition',
+                value: 'false',
+                checked: 'false',
+                son_id_to_able: ['threshold_value_condition'],
+                son_id_to_disable: ['threshold_value_condition']
+            },
+        ];
+        form.add_multiple_switch_input(multiple_switch_input)
+        form.add_text_input({
+            label: 'Threshold value',
+            id: 'threshold_value_condition',
+            unit: '0 - 255',
+            value: '55'
+        })
+
+
+
         form.add_switch_input({
             label: 'Smooth the light intensity',
             id: 'smooth_light_intensity',
@@ -493,11 +515,11 @@ class PictureManager {
                 console.log(light_intensity)
 
                 // Derivative of the light intensity to determine the min and max
-                const limit_condition = document.getElementById('limit_condition').value;
+                const max_min_derivative_condition = document.getElementById('max_min_derivative_condition').checked;
 
                 // DERIVATIVE OF THE LIGHT INTENSITY
                 const list_min_max = [];
-                if (limit_condition == 'min max derivative') {
+                if (max_min_derivative_condition) {
                     const derivative = [];
                     for (let j = 0; j < light_intensity.length; j++) {
                         const derivative_line = [];
@@ -534,9 +556,13 @@ class PictureManager {
                         }
                         list_min_max.push([min, max]);
                     }
-                } else if (limit_condition == 'average value as threshold') { // AVERAGE VALUE AS THRESHOLD, 1st and last place where the light intensity is above the average
+                } 
+                
+                // Derivative of the light intensity to determine the min and max
+                const threshold_condition = document.getElementById('threshold_condition').checked;
+                if (threshold_condition) { // threshold_value_condition VALUE AS THRESHOLD, 1st and last place where the light intensity is above the average
                     for (let j = 0; j < light_intensity.length; j++) {
-                        const average = light_intensity[j].reduce((a, b) => a + b, 0) / light_intensity[j].length;
+                        const threshold_value_condition = document.getElementById('threshold_value_condition').value;
                         let min = [];
                         let max = [];
                         // Equation of the line : y = a x + b
@@ -544,13 +570,13 @@ class PictureManager {
                         const a = equation[0];
                         const b = equation[1];
                         for (let x = 0; x < light_intensity[j].length; x++) {
-                            if (light_intensity[j][x] > average && max.length == 0) {
+                            if (light_intensity[j][x] > threshold_value_condition && max.length == 0) {
                                 const y = Math.round(a * x + b);
                                 max = [x, y, light_intensity[j][x]];
                             }
-                            // If the max is found, the min is searched after the 1/8 of the line
-                            const x_lim = Math.round(light_intensity[j].length / 8);
-                            if (light_intensity[j][x] < average && max.length != 0 && min.length == 0 && x > x_lim + max[0]) {
+                            // If the max is found, the min is searched after the 10 pixels
+                            const x_lim = 10;
+                            if (light_intensity[j][x] < threshold_value_condition && max.length != 0 && min.length == 0 && x > x_lim + max[0]) {
                                 const y = Math.round(a * x + b);
                                 min = [x, y, light_intensity[j][x]];
                             }
@@ -558,10 +584,6 @@ class PictureManager {
                         list_min_max.push([min, max]);
                     }
                 }
-
-
-
-
 
 
 
