@@ -496,6 +496,7 @@ class PictureManager {
                 const limit_condition = document.getElementById('limit_condition').value;
 
                 // DERIVATIVE OF THE LIGHT INTENSITY
+                const derivative_min_max = [];
                 if (limit_condition == 'min max derivative') {
                     const derivative = [];
                     for (let j = 0; j < light_intensity.length; j++) {
@@ -514,7 +515,6 @@ class PictureManager {
                     }
                 
                     // Get the min and max of the derivative
-                    const derivative_min_max = [];
                     for (let j = 0; j < derivative.length; j++) {
                         // Equation of the line : y = a x + b
                         const equation = biggest_contours[j][3];
@@ -535,7 +535,6 @@ class PictureManager {
                         derivative_min_max.push([min, max]);
                     }
                 } else if (limit_condition == 'average value as threshold') { // AVERAGE VALUE AS THRESHOLD, 1st and last place where the light intensity is above the average
-                    const derivative_min_max = [];
                     for (let j = 0; j < light_intensity.length; j++) {
                         const average = light_intensity[j].reduce((a, b) => a + b, 0) / light_intensity[j].length;
                         let min = [];
