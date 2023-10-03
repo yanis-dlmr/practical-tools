@@ -287,13 +287,15 @@ class PictureManager {
             const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
             const data = imageData.data;
             const length = data.length;
+            // B and W picture only
+            for (let j = 0; j < length; j += 4) {
+                data[j] = data[j + 1] = data[j + 2] = (data[j] + data[j + 1] + data[j + 2]) / 3;
+            }
             const mat = new cv.Mat(canvas.height, canvas.width, cv.CV_8UC4);
             const mat_data = mat.data;
             for (let j = 0; j < length; j++) {
                 mat_data[j] = data[j];
             }
-            mat.height = canvas.height;
-            mat.width = canvas.width;
             console.log(mat.data)
             this.cv_pictures.push(mat);
             this.add_cv_output_block('Imported picture', '', this.cv_pictures[i])
