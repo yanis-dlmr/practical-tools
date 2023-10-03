@@ -656,7 +656,7 @@ class PictureManager {
                 const chartjs = new ChartJs(title, x_values, y_values, line_names);
                 const chartJsElement = chartjs.render();
 
-                this.card_output.appendChild(chartJsElement);
+                this.card_output.addComponent(chartJsElement);
             }
 
 
