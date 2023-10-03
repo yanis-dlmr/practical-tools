@@ -356,6 +356,10 @@ class Form {
         this.form.appendChild(input);
     }
 
+    is_valid() {
+        return this.form.checkValidity();
+    }
+
     render() {
         return this.form;
     }
