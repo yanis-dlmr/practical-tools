@@ -242,6 +242,13 @@ class Form {
                     });
                 }
             } else {
+                if ('friends' in structure) {
+                    // uncheck all the friends and put them at not required
+                    structure.friends.forEach(friend => {
+                        document.getElementById(friend).checked = true;
+                        document.getElementById(friend).dispatchEvent(new Event('change'));
+                    });
+                }
                 if ('son_id_to_disable' in structure) {
                     // put all the sons as disabled and not required
                     structure.son_id_to_disable.forEach(son => {
