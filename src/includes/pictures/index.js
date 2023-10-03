@@ -639,7 +639,7 @@ class PictureManager {
             }
 
             // Add end 
-            this.add_output_title('End of the processing');
+            this.add_output_title('End of the processing !');
 
             // Display highlighted code
             hljs.addPlugin(new CopyButtonPlugin());
