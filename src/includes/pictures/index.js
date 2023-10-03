@@ -128,6 +128,7 @@ class PictureManager {
             id: 'smooth_light_intensity',
             value: 'false',
             checked: 'false',
+            required: 'false',
             son_id_to_able: ['smooth_factor'],
             son_id_to_disable: ['smooth_factor']
         })
