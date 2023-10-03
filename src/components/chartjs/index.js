@@ -7,10 +7,10 @@ class ChartJs {
     }
 
     render() {
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
+        var canvas = document.createElement('canvas');
+        var ctx = canvas.getContext('2d');
         
-        const chartData = {
+        var chartData = {
             labels: this.x_values,
             datasets: []
         };
@@ -25,7 +25,7 @@ class ChartJs {
             });
         }
         
-        const chartOptions = {
+        var chartOptions = {
             title: {
                 display: true,
                 text: this.title
@@ -39,7 +39,7 @@ class ChartJs {
             }
         };
 
-        const chart = new Chart(ctx, {
+        var chart = new Chart(ctx, {
             type: 'line',
             data: chartData,
             options: chartOptions,

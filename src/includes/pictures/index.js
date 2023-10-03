@@ -660,7 +660,12 @@ class PictureManager {
                 const chart_box = document.createElement('div');
                 chart_box.classList.add('col-6');
                 chart_box.className = 'chart_box';
-                chart_box.appendChild(chartJsElement);
+
+                const chart = document.createElement('div');
+                chart.classList.add('little-chart');
+
+                chart.appendChild(chartJsElement);
+                chart_box.appendChild(chart);
                 chart_box_row.appendChild(chart_box);
             }
 
