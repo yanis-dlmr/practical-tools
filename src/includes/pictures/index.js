@@ -651,9 +651,16 @@ class PictureManager {
 
                 const chartjs = new ChartJs(title, x_values, y_values, line_names);
                 const chartJsElement = chartjs.render();
-                // resize the chart canvas
-                chartJsElement.style.width = '800px';
-                chartJsElement.style.height = '400px';
+                
+                chartJsElement.width = 800;
+                chartJsElement.height = 400;
+                chartJsElement.style.width = '100%';
+                chartJsElement.style.height = 'auto';
+
+                const chart = chartJsElement.chart;
+                if (chart) {
+                    chart.resize();
+                }
 
                 this.card_output.addComponent(chartJsElement);
             }
