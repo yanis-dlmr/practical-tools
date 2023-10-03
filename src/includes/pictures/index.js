@@ -112,8 +112,8 @@ class PictureManager {
         form.add_text_input({
             label: 'Smooth factor',
             id: 'smooth_factor',
-            unit: '0 - 1',
-            value: '0.5'
+            unit: '1 - 30',
+            value: '5'
         })
 
         
@@ -484,9 +484,11 @@ class PictureManager {
                         this.add_output_text('Smooth light intensity along the line ' + (j+1) + ' : ');
                         this.add_output_array(smooth_light_intensity[j]);
                     }
+                    console.log(light_intensity)
                     // Replace the light intensity by the smooth light intensity
                     light_intensity = smooth_light_intensity;
                 }
+                console.log(light_intensity)
 
                 // Derivative of the light intensity to determine the min and max
                 const limit_condition = document.getElementById('limit_condition').value;
