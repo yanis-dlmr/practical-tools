@@ -35,6 +35,7 @@ class PictureManager {
         
         // Create the alert 
         var alert = document.createElement(`div`);
+        alert.classList.add('col-12');
         alert.classList.add(`alert`);
         alert.classList.add(`alert-primary`);
         alert.classList.add(`alert-dismissible`);
@@ -164,6 +165,10 @@ class PictureManager {
         const caption = new Caption('Import your pictures (.BMP, .jpg, .jpeg, .png allowed)');
         const captionElement = caption.render();
         card.addComponent(captionElement);
+
+        let divider = document.createElement('hr');
+        divider.classList.add('my-4');
+        card.addComponent(divider);
 
         const importer = form.get_importer_element('importer_id');
         card.addComponent(importer);
@@ -646,6 +651,10 @@ class PictureManager {
         const caption = new Caption(title);
         const captionElement = caption.render();
         this.card_output.addComponent(captionElement);
+        
+        let divider = document.createElement('hr');
+        divider.classList.add('my-4');
+        this.card_output.addComponent(divider);
     }
 
     add_output_text = (text) => {
@@ -685,6 +694,10 @@ class PictureManager {
         const caption = new Caption(title);
         const captionElement = caption.render();
         this.card_output.addComponent(captionElement);
+        
+        let divider = document.createElement('hr');
+        divider.classList.add('my-4');
+        this.card_output.addComponent(divider);
 
         const textElement = document.createElement('p');
         let final_text = text + '\n' + picture_name + ' (' + picture_size + ')';
@@ -709,6 +722,10 @@ class PictureManager {
         const caption = new Caption(title);
         const captionElement = caption.render();
         this.card_output.addComponent(captionElement);
+        
+        let divider = document.createElement('hr');
+        divider.classList.add('my-4');
+        this.card_output.addComponent(divider);
 
         const textElement = document.createElement('p');
         let final_text = text;
@@ -726,10 +743,6 @@ class PictureManager {
         const canvasOutput = document.getElementById('canvasOutputBlock' + title);
         const ctx = canvasOutput.getContext('2d');
         cv.imshow('canvasOutputBlock' + title, picture);
-
-        let divider = document.createElement('hr');
-        divider.classList.add('my-4');
-        this.card_output.addComponent(divider);
     }
 
     add_output_block_without_picture = (title, text) => {
@@ -737,16 +750,16 @@ class PictureManager {
         const caption = new Caption(title);
         const captionElement = caption.render();
         this.card_output.addComponent(captionElement);
+        
+        let divider = document.createElement('hr');
+        divider.classList.add('my-4');
+        this.card_output.addComponent(divider);
 
         const textElement = document.createElement('p');
         let final_text = text;
         const replacedText = final_text.replace(/\n/g, "<br>");
         textElement.innerHTML = replacedText
         this.card_output.addComponent(textElement);
-
-        let divider = document.createElement('hr');
-        divider.classList.add('my-4');
-        this.card_output.addComponent(divider);
     }
 }
 
