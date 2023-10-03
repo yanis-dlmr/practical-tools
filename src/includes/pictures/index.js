@@ -541,13 +541,13 @@ class PictureManager {
                         let min = [];
                         let max = [];
                         for (let x = 0; x < light_intensity[j].length; x++) {
-                            if (light_intensity[j][x] < average && min.length == 0) {
-                                const y = Math.round(a * x + b);
-                                min = [x, y, light_intensity[j][x]];
-                            }
                             if (light_intensity[j][x] > average && max.length == 0) {
                                 const y = Math.round(a * x + b);
                                 max = [x, y, light_intensity[j][x]];
+                            }
+                            if (light_intensity[j][x] < average && max.length != 0 ) {
+                                const y = Math.round(a * x + b);
+                                min = [x, y, light_intensity[j][x]];
                             }
                         }
                         derivative_min_max.push([min, max]);
