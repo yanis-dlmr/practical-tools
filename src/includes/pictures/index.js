@@ -514,6 +514,8 @@ class PictureManager {
 
                 // Derivative of the light intensity to determine the min and max
                 const max_min_derivative_condition = document.getElementById('max_min_derivative_condition').checked;
+                // Threshold of the light intensity to determine the min and max
+                const threshold_condition = document.getElementById('threshold_condition').checked;
 
                 // DERIVATIVE OF THE LIGHT INTENSITY
                 const list_min_max = [];
@@ -554,11 +556,7 @@ class PictureManager {
                         }
                         list_min_max.push([min, max]);
                     }
-                } 
-                
-                // Derivative of the light intensity to determine the min and max
-                const threshold_condition = document.getElementById('threshold_condition').checked;
-                if (threshold_condition) { // threshold_value_condition VALUE AS THRESHOLD, 1st and last place where the light intensity is above the average
+                } else if (threshold_condition) { // threshold_value_condition VALUE AS THRESHOLD, 1st and last place where the light intensity is above the average
                     for (let j = 0; j < light_intensity.length; j++) {
                         const threshold_value_condition = document.getElementById('threshold_value_condition').value;
                         let min = [];
