@@ -9,7 +9,7 @@ const main_check_input = [
     {id: 'display_only', label: 'Display Only', value: 'display_only', checked: 'false'},
     {id: 'average_color', label: 'Average Color', value: 'average_color', checked: 'false'},
     {id: 'average_pictures', label: 'Average Pictures', value: 'average_pictures', checked: 'false'},
-    {id: 'determine_axis', label: 'Determine Axis', value: 'determine_axis', checked: 'false', son_id: ['threshold_min', 'threshold_max', 'nb_axis', 'get_light_intensity']},
+    {id: 'determine_axis', label: 'Determine Axis', value: 'determine_axis', checked: 'false', son_id: ['threshold_min', 'threshold_max', 'nb_axis', 'get_light_intensity', 'limit_condition']},
 ];
 
 
