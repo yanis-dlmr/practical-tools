@@ -461,13 +461,13 @@ class PictureManager {
                 const smooth_light_intensity_bool = document.getElementById('smooth_light_intensity').checked;
                 if (smooth_light_intensity_bool) {
                     const smooth_light_intensity = [];
-                    const smooth_light_intensity_window = document.getElementById('smooth_light_intensity_window').value;
+                    const smooth_factor = document.getElementById('smooth_factor').value;
                     for (let j = 0; j < light_intensity.length; j++) {
                         const smooth_light_intensity_line = [];
                         for (let k = 0; k < light_intensity[j].length; k++) {
                             let sum = 0;
                             let count = 0;
-                            for (let l = k - smooth_light_intensity_window; l <= k + smooth_light_intensity_window; l++) {
+                            for (let l = k - smooth_factor; l <= k + smooth_factor; l++) {
                                 if (l >= 0 && l < light_intensity[j].length) {
                                     sum += light_intensity[j][l];
                                     count++;
