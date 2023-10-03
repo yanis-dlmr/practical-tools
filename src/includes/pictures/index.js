@@ -636,7 +636,7 @@ class PictureManager {
             // Chart box row containing all the charts
             const chart_box_row = document.createElement('div');
             chart_box_row.className = 'row';
-            this.card_output.addComponent(chart_box_row);
+            this.output.appendChild(chart_box_row);
 
             // Create a chart for each line
             const line_names = ['Light intensity'];
@@ -660,12 +660,9 @@ class PictureManager {
                 const chart_box = document.createElement('div');
                 chart_box.classList.add('col-6');
                 chart_box.className = 'chart_box';
-
-                const chart = document.createElement('div');
-                chart.classList.add('little-chart');
-
-                chart.appendChild(chartJsElement);
-                chart_box.appendChild(chart);
+                chart_box.appendChild(chartJsElement);
+                chartJsElement.style.width = '100%';
+                chartJsElement.width = '100%';
                 chart_box_row.appendChild(chart_box);
             }
 
