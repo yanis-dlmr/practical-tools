@@ -98,7 +98,6 @@ class PictureManager {
         //form.add_select_input({
         //    label: 'Limit condition',
         //    id: 'limit_condition',
-        //    value: 'min max derivative',
         //    options: ['min max derivative', 'average value as threshold']
         //});
 

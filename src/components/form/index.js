@@ -206,24 +206,37 @@ class Form {
     }
 
     add_select_input(structure) {
-        let div = document.createElement('div');
-        div.classList.add('form-group');
-        let label = document.createElement('label');
-        label.setAttribute('for', structure.id);
-        label.textContent = structure.label;
-        div.appendChild(label);
-        let select = document.createElement('select');
-        select.classList.add('form-control');
-        select.id = structure.id;
-        select.required = true;
-        structure.options.forEach(option => {
-            let option_element = document.createElement('option');
-            option_element.value = option.value;
-            option_element.textContent = option.label;
-            select.appendChild(option_element);
+        var input = document.createElement(`div`);
+        input.setAttribute("class", "input-group mb-3");
+    
+        var label = document.createElement(`label`);
+        label.setAttribute("class", "input-group-text col-4");
+        label.setAttribute("for", structure.label);
+        label.textContent = main_key;
+    
+        var select = document.createElement(`select`);
+        select.setAttribute("class", "form-select");
+        select.setAttribute("id", structure.id);
+        select.classList.add('form-select');
+        select.setAttribute('required', true);
+    
+        var option0 = document.createElement(`option`);
+        option0.setAttribute("selected", "true");
+        option0.setAttribute('value', '');
+        option0.textContent = "Choose...";
+        select.appendChild(option0);
+    
+        Object.keys(structure.options).forEach(option_name => {
+            var name = option_name;
+            var option = document.createElement(`option`);
+            option.setAttribute("value", option_name);
+            option.textContent = option_name;
+            select.appendChild(option);
         });
-        div.appendChild(select);
-        this.form.appendChild(div);
+        
+        input.appendChild(label);
+        input.appendChild(select);
+        this.form.appendChild(input);
     }
 
     render() {
