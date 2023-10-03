@@ -494,43 +494,74 @@ class PictureManager {
 
                 // Derivative of the light intensity to determine the min and max
                 const limit_condition = document.getElementById('limit_condition').value;
-                const derivative = [];
-                for (let j = 0; j < light_intensity.length; j++) {
-                    const derivative_line = [];
-                    for (let k = 0; k < light_intensity[j].length - 1; k++) {
-                        const derivative_value = light_intensity[j][k+1] - light_intensity[j][k];
-                        derivative_line.push(derivative_value);
-                    }
-                    derivative.push(derivative_line);
-                }
-                this.add_output_title('Derivative of the light intensity')
-                text = '';
-                for (let j = 0; j < derivative.length; j++) {
-                    this.add_output_text('Derivative of the light intensity along the line ' + (j+1) + ' : ');
-                    this.add_output_array(derivative[j]);
-                }
-            
-                // Get the min and max of the derivative
-                const derivative_min_max = [];
-                for (let j = 0; j < derivative.length; j++) {
-                    // Equation of the line : y = a x + b
-                    const equation = biggest_contours[j][3];
-                    const a = equation[0];
-                    const b = equation[1];
-                    let min = [];
-                    let max = [];
-                    for (let x = 0; x < derivative[j].length; x++) {
-                        if (derivative[j][x] < min[2] || min.length == 0) {
-                            const y = Math.round(a * x + b);
-                            min = [x, y, derivative[j][x]];
+
+                // DERIVATIVE OF THE LIGHT INTENSITY
+                if (limit_condition == 'min max derivative') {
+                    const derivative = [];
+                    for (let j = 0; j < light_intensity.length; j++) {
+                        const derivative_line = [];
+                        for (let k = 0; k < light_intensity[j].length - 1; k++) {
+                            const derivative_value = light_intensity[j][k+1] - light_intensity[j][k];
+                            derivative_line.push(derivative_value);
                         }
-                        if (derivative[j][x] > max[2] || max.length == 0) {
-                            const y = Math.round(a * x + b);
-                            max = [x, y, derivative[j][x]];
-                        }
+                        derivative.push(derivative_line);
                     }
-                    derivative_min_max.push([min, max]);
+                    this.add_output_title('Derivative of the light intensity')
+                    text = '';
+                    for (let j = 0; j < derivative.length; j++) {
+                        this.add_output_text('Derivative of the light intensity along the line ' + (j+1) + ' : ');
+                        this.add_output_array(derivative[j]);
+                    }
+                
+                    // Get the min and max of the derivative
+                    const derivative_min_max = [];
+                    for (let j = 0; j < derivative.length; j++) {
+                        // Equation of the line : y = a x + b
+                        const equation = biggest_contours[j][3];
+                        const a = equation[0];
+                        const b = equation[1];
+                        let min = [];
+                        let max = [];
+                        for (let x = 0; x < derivative[j].length; x++) {
+                            if (derivative[j][x] < min[2] || min.length == 0) {
+                                const y = Math.round(a * x + b);
+                                min = [x, y, derivative[j][x]];
+                            }
+                            if (derivative[j][x] > max[2] || max.length == 0) {
+                                const y = Math.round(a * x + b);
+                                max = [x, y, derivative[j][x]];
+                            }
+                        }
+                        derivative_min_max.push([min, max]);
+                    }
+                } else if (limit_condition == 'average value as threshold') { // AVERAGE VALUE AS THRESHOLD, 1st and last place where the light intensity is above the average
+                    const derivative_min_max = [];
+                    for (let j = 0; j < light_intensity.length; j++) {
+                        const average = light_intensity[j].reduce((a, b) => a + b, 0) / light_intensity[j].length;
+                        let min = [];
+                        let max = [];
+                        for (let x = 0; x < light_intensity[j].length; x++) {
+                            if (light_intensity[j][x] < average && min.length == 0) {
+                                const y = Math.round(a * x + b);
+                                min = [x, y, light_intensity[j][x]];
+                            }
+                            if (light_intensity[j][x] > average && max.length == 0) {
+                                const y = Math.round(a * x + b);
+                                max = [x, y, light_intensity[j][x]];
+                            }
+                        }
+                        derivative_min_max.push([min, max]);
+                    }
                 }
+
+
+
+
+
+
+
+
+
                 console.log('derivative_min_max', derivative_min_max);
                 text = '';
                 // Draw the min and max on the picture
