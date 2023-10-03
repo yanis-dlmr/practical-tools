@@ -479,9 +479,11 @@ class PictureManager {
                 this.add_output_title('Min and max of the derivative of the light intensity')
                 text = '';
                 for (let j = 0; j < derivative_min_max.length; j++) {
+                    const min = derivative_min_max[j][0];
+                    const max = derivative_min_max[j][1];
                     this.add_output_text('Min and max of the derivative of the light intensity along the line ' + (j+1) + ' : ');
-                    this.add_output_text('The minimum is at the index ' + derivative_min_max[j][0][1] + ' with the value ' + derivative_min_max[j][0][2]);
-                    this.add_output_text('The maximum is at the index ' + derivative_min_max[j][1][1] + ' with the value ' + derivative_min_max[j][1][2]);
+                    this.add_output_text('The minimum is at the index ' + min[1] + ' with the value ' + min[2]);
+                    this.add_output_text('The maximum is at the index ' + max[1] + ' with the value ' + max[2]);
 
                 }
                 
