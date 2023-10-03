@@ -496,7 +496,7 @@ class PictureManager {
                 const limit_condition = document.getElementById('limit_condition').value;
 
                 // DERIVATIVE OF THE LIGHT INTENSITY
-                const derivative_min_max = [];
+                const list_min_max = [];
                 if (limit_condition == 'min max derivative') {
                     const derivative = [];
                     for (let j = 0; j < light_intensity.length; j++) {
@@ -532,7 +532,7 @@ class PictureManager {
                                 max = [x, y, derivative[j][x]];
                             }
                         }
-                        derivative_min_max.push([min, max]);
+                        list_min_max.push([min, max]);
                     }
                 } else if (limit_condition == 'average value as threshold') { // AVERAGE VALUE AS THRESHOLD, 1st and last place where the light intensity is above the average
                     for (let j = 0; j < light_intensity.length; j++) {
@@ -548,12 +548,12 @@ class PictureManager {
                                 const y = Math.round(a * x + b);
                                 max = [x, y, light_intensity[j][x]];
                             }
-                            if (light_intensity[j][x] < average && max.length != 0 ) {
+                            if (light_intensity[j][x] < average && max.length != 0 && min.length == 0) {
                                 const y = Math.round(a * x + b);
                                 min = [x, y, light_intensity[j][x]];
                             }
                         }
-                        derivative_min_max.push([min, max]);
+                        list_min_max.push([min, max]);
                     }
                 }
 
@@ -565,14 +565,14 @@ class PictureManager {
 
 
 
-                console.log('derivative_min_max', derivative_min_max);
+                console.log('list_min_max', list_min_max);
                 text = '';
                 // Draw the min and max on the picture
                 const src_copy_2 = src_original.clone();
                 text = '';
-                for (let j = 0; j < derivative_min_max.length; j++) {
-                    const min = derivative_min_max[j][0];
-                    const max = derivative_min_max[j][1];
+                for (let j = 0; j < list_min_max.length; j++) {
+                    const min = list_min_max[j][0];
+                    const max = list_min_max[j][1];
                     text += 'The minimum is at the index (' + min[0] + ';' + min[1] + ') with the value ' + min[2] + '\n';
                     text += 'The maximum is at the index (' + max[0] + ';' + max[1] + ') with the value ' + max[2] + '\n';
                     cv.circle(src_copy_2, new cv.Point(min[0], min[1]), 5, new cv.Scalar(0, 0, 255, 255), 2);
