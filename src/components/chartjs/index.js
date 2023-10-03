@@ -10,6 +10,7 @@ class ChartJs {
     render () {
         // x_values, y_values, line_names should have the same length
         // this length is the number of lines in the chart
+        // for line 1 we have x_values[0], y_values[0], line_names[0] etc.
         const canvas = document.createElement('canvas');
         canvas.setAttribute('id', 'chartjs');
         canvas.setAttribute('width', '400');
@@ -25,10 +26,17 @@ class ChartJs {
                 title: {
                     display: true,
                     text: this.title
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
                 }
             }
         });
-        for (let i = 0; i < this.y_values.length; i++) {
+        for (let i = 0; i < this.line_names.length; i++) {
             chart.data.datasets.push({
                 label: this.line_names[i],
                 data: this.y_values[i],
