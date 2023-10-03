@@ -222,15 +222,15 @@ class Form {
     
         var option0 = document.createElement(`option`);
         option0.setAttribute("selected", "true");
-        option0.setAttribute('value', '');
+        option0.setAttribute('value', '');structure.label
         option0.textContent = "Choose...";
         select.appendChild(option0);
     
-        Object.keys(structure.options).forEach(option_name => {
-            var name = option_name;
+        Object.keys(structure.options).forEach(option_value => {
+            var name = structure.options[option_value];
             var option = document.createElement(`option`);
-            option.setAttribute("value", option_name);
-            option.textContent = option_name;
+            option.setAttribute("value", structure.options[option_value]);
+            option.textContent = structure.options[option_value];
             select.appendChild(option);
         });
         
