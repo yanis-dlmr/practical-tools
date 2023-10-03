@@ -93,7 +93,8 @@ class PictureManager {
             id: 'get_light_intensity',
             value: 'false',
             checked: 'false',
-            son_id: ['limit_condition', 'smooth_factor', 'smooth_light_intensity']
+            son_id_to_able: ['limit_condition', 'smooth_factor'],
+            son_id_to_disable: ['limit_condition', 'smooth_factor', 'smooth_light_intensity']
         });
         form.add_select_input({
             label: 'Limit condition',
@@ -105,7 +106,8 @@ class PictureManager {
             id: 'smooth_light_intensity',
             value: 'false',
             checked: 'false',
-            son_id: ['smooth_factor']
+            son_id_to_able: ['smooth_factor'],
+            son_id_to_disable: ['smooth_factor']
         })
         form.add_text_input({
             label: 'Smooth factor',

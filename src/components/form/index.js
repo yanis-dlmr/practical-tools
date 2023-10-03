@@ -214,17 +214,17 @@ class Form {
         this.form.appendChild(div);
         document.getElementById(structure.id).addEventListener('change', function() {
             if (this.checked) {
-                if ('son_id' in structure) {
+                if ('son_id_to_able' in structure) {
                     // put all the sons as not disabled and required
-                    structure.son_id.forEach(son => {
+                    structure.son_id_to_able.forEach(son => {
                         document.getElementById(son).disabled = false;
                         document.getElementById(son).required = true;
                     });
                 }
             } else {
-                if ('son_id' in structure) {
+                if ('son_id_to_disable' in structure) {
                     // put all the sons as disabled and not required
-                    structure.son_id.forEach(son => {
+                    structure.son_id_to_disable.forEach(son => {
                         document.getElementById(son).disabled = true;
                         document.getElementById(son).required = false;
                         // if checkbox then uncheck
