@@ -565,14 +565,14 @@ class PictureManager {
                         const equation = biggest_contours[j][3];
                         const a = equation[0];
                         const b = equation[1];
-                        for (let x = 0; x < light_intensity[j].length; x++) {
+                        for (let x = 0; x < light_intensity[j].length; x++) { // 1st the threshold_value_condition is reached
                             if (light_intensity[j][x] > threshold_value_condition && max.length == 0) {
                                 const y = Math.round(a * x + b);
                                 max = [x, y, light_intensity[j][x]];
                             }
-                            // If the max is found, the min is searched after the 10 pixels
-                            const x_lim = 10;
-                            if (light_intensity[j][x] < threshold_value_condition && max.length != 0 && min.length == 0 && x > x_lim + max[0]) {
+                        }
+                        for (let x = light_intensity[j].length - 1; x >= 0; x--) { // 2nd the threshold_value_condition is reached
+                            if (light_intensity[j][x] > threshold_value_condition && min.length == 0) {
                                 const y = Math.round(a * x + b);
                                 min = [x, y, light_intensity[j][x]];
                             }
