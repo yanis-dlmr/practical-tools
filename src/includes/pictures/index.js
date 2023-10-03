@@ -5,6 +5,7 @@ import { Button } from '/src/components/button/index.js';
 import { Select } from '/src/components/select/index.js';
 import { Form } from '/src/components/form/index.js';
 import { EmbededBlock } from '/src/components/embeded_block/index.js';
+import { ChartJs } from '/src/components/chartjs/index.js';
 
 const main_check_input = [
     {id: 'display_only', label: 'Display Only', value: 'display_only', checked: 'false'},
@@ -471,6 +472,8 @@ class PictureManager {
         }
         this.add_cv_output_block('Lines on original picture', text, src2);
 
+        const data_to_be_plotted = [];
+
         // Get light intensity along the lines accross all the pictures
         const light_intensity_bool = document.getElementById('get_light_intensity').checked;
         var light_intensity = [];
@@ -500,6 +503,7 @@ class PictureManager {
                 }
                 light_intensity.push(light_intensity_line);
             }
+            data_to_be_plotted.push(light_intensity);
             this.add_output_title('Light intensity along the lines')
             text = '';
             for (let j = 0; j < light_intensity.length; j++) {
@@ -535,6 +539,7 @@ class PictureManager {
                     this.add_output_array(smooth_light_intensity[j]);
                 }
             }
+            data_to_be_plotted.push(smooth_light_intensity);
             console.log(light_intensity)
             // Replace the light intensity by the smooth light intensity
             if (smooth_light_intensity_bool) {
@@ -559,6 +564,7 @@ class PictureManager {
                     }
                     derivative.push(derivative_line);
                 }
+                data_to_be_plotted.push(derivative);
                 this.add_output_title('Derivative of the light intensity')
                 text = '';
                 for (let j = 0; j < derivative.length; j++) {
@@ -611,7 +617,8 @@ class PictureManager {
                 }
             }
 
-
+            // Draw the Chart Js graph of data_to_be_plotted
+            console.log('data_to_be_plotted', data_to_be_plotted);
 
 
 
