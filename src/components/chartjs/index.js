@@ -9,7 +9,6 @@ class ChartJs {
     render() {
         const canvas = document.createElement('canvas');
         canvas.setAttribute('id', 'chartjs');
-        parent.appendChild(canvas);
         const ctx = canvas.getContext('2d');
         
         const chartData = {
