@@ -463,13 +463,13 @@ class PictureManager {
                 // Get the min and max of the derivative
                 const derivative_min_max = [];
                 for (let j = 0; j < derivative.length; j++) {
-                    let min = 0;
-                    let max = 0;
+                    let min = [];
+                    let max = [];
                     for (let k = 0; k < derivative[j].length; k++) {
-                        if (derivative[j][k] < min[2]) {
+                        if (derivative[j][k] < min[2] || min.length == 0) {
                             min = [j, k, derivative[j][k]];
                         }
-                        if (derivative[j][k] > max[2]) {
+                        if (derivative[j][k] > max[2] || max.length == 0) {
                             max = [j, k, derivative[j][k]];
                         }
                     }
