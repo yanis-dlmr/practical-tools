@@ -8,10 +8,6 @@
     </head>
 
     <body>
-<pre><code class="language-js">hljs.addPlugin(new CopyButtonPluginClass({
-    hook: (text, el) => text.toUpperCase()
-}));</code></pre>
-
         <script async src="/src/includes/pictures/opencv.js" type="text/javascript"></script>
         <?php include '../utils/header.php'; ?>
     </body>
