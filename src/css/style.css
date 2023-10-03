@@ -29,6 +29,7 @@ h4{
 
 .card-body {
     white-space: pre-wrap;
+    padding: 1rem;
 }
 
 .custom-header{
@@ -66,6 +67,4 @@ h4{
 
 .custom-pre{
     border-radius: 0.5rem;
-    margin-left: 1rem;
-    margin-right: 1rem;
 }
