@@ -53,8 +53,8 @@ class PictureManager {
         alert.appendChild(closeButton);
 
         const container_alert = new Container('12');
-        container.addComponent(container_alert);
-        const containerElementAlert = container.render();
+        container_alert.addComponent(alert);
+        const containerElementAlert = container_alert.render();
 
         row.appendChild(containerElementAlert);
 
