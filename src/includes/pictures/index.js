@@ -52,7 +52,7 @@ class PictureManager {
         closeButton.setAttribute(`aria-label`, `Close`);
         alert.appendChild(closeButton);
 
-        const container_alert = new Container('12');
+        const container_alert = new Container('12', 'center');
         container_alert.addComponent(alert);
         const containerElementAlert = container_alert.render();
 
@@ -62,7 +62,7 @@ class PictureManager {
         const card_parameters = new Card('Parameters');
         const cardElementParameters = card_parameters.render();
 
-        const container_parameters = new Container('5');
+        const container_parameters = new Container('5', 'left');
         container_parameters.addComponent(cardElementParameters);
         const containerElementParameters = container_parameters.render();
 
@@ -159,7 +159,7 @@ class PictureManager {
         const card = new Card('Data importation');
         const cardElement = card.render();
 
-        const container = new Container('7');
+        const container = new Container('7', 'right');
         container.addComponent(cardElement);
         const containerElement = container.render();
 
@@ -228,7 +228,7 @@ class PictureManager {
         this.card_output = new Card('Output');
         const cardElementOutput = this.card_output.render();
 
-        const container_output = new Container('12');
+        const container_output = new Container('12', 'center');
         container_output.addComponent(cardElementOutput);
         const containerElementOutput = container_output.render();
 
