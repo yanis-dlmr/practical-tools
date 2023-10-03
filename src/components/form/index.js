@@ -38,6 +38,10 @@ class Form {
     add_multiple_check_input_single_choice(list_check_input, name) { // list_check_input = [check_input1, check_input2, ...] with check_input = {id: id, label: label, value: value}
         let caption = new Caption(name);
         this.form.appendChild(caption.render());
+        
+        let divider = document.createElement('hr');
+        divider.classList.add('custom-divider');
+        this.form.addComponent(divider);
 
         
         list_check_input.forEach(check_input => {

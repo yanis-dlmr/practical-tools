@@ -40,7 +40,7 @@ class PictureManager {
         alert.classList.add(`alert-dismissible`);
         alert.classList.add(`fade`);
         alert.classList.add(`show`);
-        alert.classList.add('m-4');
+        alert.classList.add('m-3');
         alert.style.boxShadow = '0 0.5rem 1rem rgba(0,0,0,0.15)';
         alert.setAttribute(`role`, `alert`);
         alert.innerHTML = `A Python equivalent script is also available on <a class="custom-link" href="https://github.com/yanis-dlmr/picture-treatment" target="_blank">GitHub</a>. This tool is still in development, some results may not be accurate.`;
