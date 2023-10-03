@@ -536,7 +536,7 @@ class PictureManager {
                     const max = derivative_min_max[j][1];
                     text += 'The minimum is at the index (' + min[0] + ';' + min[1] + ') with the value ' + min[2] + '\n';
                     text += 'The maximum is at the index (' + max[0] + ';' + max[1] + ') with the value ' + max[2] + '\n';
-                    src_copy_2.drawCircle(new cv.Point(min[0], min[1]), 5, new cv.Vec3(0, 0, 255), 2);
+                    cv.drawCircle(src_copy_2, new cv.Point(min[0], min[1]), 5, new cv.Scalar(0, 0, 255, 255), 2);
                 }
                 this.add_cv_output_block('Min and max of the derivative of the light intensity along the line ', text, src_copy_2);
                 
