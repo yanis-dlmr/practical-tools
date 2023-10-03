@@ -10,7 +10,7 @@ class ChartJs {
     render () {
         // x_values, y_values, line_names should have the same length
         // this length is the number of lines in the chart
-        // for line 1 we have x_values[0], y_values[0], line_names[0] etc.
+        // for line 1 we have x_values, y_values[0], line_names[0] etc.
         const canvas = document.createElement('canvas');
         canvas.setAttribute('id', 'chartjs');
         canvas.setAttribute('width', '400');
@@ -45,9 +45,6 @@ class ChartJs {
                 tension: 0.1,
                 yAxisID: 'y-axis-' + i
             });
-        }
-        
-        for (let i = 0; i < this.line_names.length; i++) {
             chart.options.scales['y-axis-' + i] = {
                 type: 'linear',
                 position: 'left',

@@ -645,13 +645,9 @@ class PictureManager {
                 const title = 'Line ' + (i+1);
                 const y_values = data_per_line[i];
                 const x_values = [];
-                const x_value = [];
                 for (let j = 0; j < y_values[0].length; j++) {
-                    x_value.push(j);
+                    x_values.push(j);
                 }
-                x_values.push(x_value);
-                x_values.push(x_value);
-                x_values.push(x_value);
 
                 const chartjs = new ChartJs(title, x_values, y_values, line_names);
                 const chartJsElement = chartjs.render();
