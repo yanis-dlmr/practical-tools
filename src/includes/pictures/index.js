@@ -548,7 +548,9 @@ class PictureManager {
                                 const y = Math.round(a * x + b);
                                 max = [x, y, light_intensity[j][x]];
                             }
-                            if (light_intensity[j][x] < average && max.length != 0 && min.length == 0) {
+                            // If the max is found, the min is searched after the 1/8 of the line
+                            const x_lim = Math.round(light_intensity[j].length / 8);
+                            if (light_intensity[j][x] < average && max.length != 0 && min.length == 0 && x > x_lim + max[0]) {
                                 const y = Math.round(a * x + b);
                                 min = [x, y, light_intensity[j][x]];
                             }
