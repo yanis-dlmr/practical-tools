@@ -177,6 +177,11 @@ class PictureManager {
                 return;
             }
 
+            // If form is not valid, return
+            if (!form.is_valid()) {
+                return;
+            }
+
             this.pictures = [];
             // store all the pictures in an array
             for (let i = 0; i < files.length; i++) {
