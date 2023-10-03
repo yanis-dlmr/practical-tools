@@ -4,7 +4,7 @@ class EmbededBlock {
         this.array = array;
     }
 
-    render() { // render embeded block using Code Highlight <pre><code> &lt;script> YOUR_CODE &lt;script> </code></pre>
+    render() { // render embeded block using highlight.js
         const pre = document.createElement('pre');
         const code = document.createElement('code');
         code.setAttribute('class', 'language-javascript');

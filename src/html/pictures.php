@@ -13,5 +13,6 @@
     </body>
 
     <script type="module" src="/src/includes/pictures/index.js"></script>
+    <script>hljs.highlightAll();</script>
 
 </html>
