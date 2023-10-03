@@ -625,7 +625,7 @@ class PictureManager {
             for (let i = 0; i < data_to_be_plotted[0].length; i++) {
                 const data_for_line = [];
                 for (let j = 0; j < data_to_be_plotted.length; j++) {
-                    data_for_line.push(data_to_be_plotted[i][j]);
+                    data_for_line.push(data_to_be_plotted[j][i]);
                 }
                 data_per_line.push(data_for_line);
             }
