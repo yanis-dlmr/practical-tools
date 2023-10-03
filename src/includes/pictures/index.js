@@ -631,6 +631,27 @@ class PictureManager {
             }
             console.log('data_per_line', data_per_line);
 
+            // Create a chart for each line
+            for (let i = 0; i < data_per_line.length; i++) {
+                const title = 'Line ' + (i+1);
+                const type = 'line';
+                const labels = [];
+                for (let j = 0; j < data_per_line[i][0].length; j++) {
+                    labels.push(j);
+                }
+                const data = [];
+                for (let j = 0; j < data_per_line[i].length; j++) {
+                    const data_for_line = [];
+                    for (let k = 0; k < data_per_line[i][j].length; k++) {
+                        data_for_line.push(data_per_line[i][j][k]);
+                    }
+                    data.push(data_for_line);
+                }
+                const chartjs = new ChartJs(title, type, labels, data);
+                const chartElement = chartjs.render();
+                this.card_output.addComponent(chartElement);
+            }
+
 
 
             console.log('list_min_max', list_min_max);
