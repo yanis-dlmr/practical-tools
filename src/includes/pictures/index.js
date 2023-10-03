@@ -484,6 +484,8 @@ class PictureManager {
                         this.add_output_text('Smooth light intensity along the line ' + (j+1) + ' : ');
                         this.add_output_array(smooth_light_intensity[j]);
                     }
+                    // Replace the light intensity by the smooth light intensity
+                    light_intensity = smooth_light_intensity;
                 }
 
                 // Derivative of the light intensity to determine the min and max
