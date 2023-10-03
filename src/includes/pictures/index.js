@@ -539,6 +539,10 @@ class PictureManager {
                         const average = light_intensity[j].reduce((a, b) => a + b, 0) / light_intensity[j].length;
                         let min = [];
                         let max = [];
+                        // Equation of the line : y = a x + b
+                        const equation = biggest_contours[j][3];
+                        const a = equation[0];
+                        const b = equation[1];
                         for (let x = 0; x < light_intensity[j].length; x++) {
                             if (light_intensity[j][x] > average && max.length == 0) {
                                 const y = Math.round(a * x + b);
