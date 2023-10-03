@@ -441,11 +441,54 @@ class PictureManager {
                     this.add_output_text('Light intensity along the line ' + (j+1) + ' : ');
                     this.add_output_array(light_intensity[j]);
                 }
-            }
 
-            // Derivative of the light intensity to determine the min and max
-            const limit_condition = document.getElementById('limit_condition').value;
-            console.log('limit_condition', limit_condition);
+                // Derivative of the light intensity to determine the min and max
+                const limit_condition = document.getElementById('limit_condition').value;
+                const derivative_bool = document.getElementById('get_derivative').checked;
+                if (derivative_bool) {
+                    const derivative = [];
+                    for (let j = 0; j < light_intensity.length; j++) {
+                        const derivative_line = [];
+                        for (let k = 0; k < light_intensity[j].length - 1; k++) {
+                            const derivative_value = light_intensity[j][k+1] - light_intensity[j][k];
+                            derivative_line.push(derivative_value);
+                        }
+                        derivative.push(derivative_line);
+                    }
+                    this.add_output_title('Derivative of the light intensity')
+                    text = '';
+                    for (let j = 0; j < derivative.length; j++) {
+                        this.add_output_text('Derivative of the light intensity along the line ' + (j+1) + ' : ');
+                        this.add_output_array(derivative[j]);
+                    }
+                
+                    // Get the min and max of the derivative
+                    const derivative_min_max = [];
+                    for (let j = 0; j < derivative.length; j++) {
+                        const derivative_min_max_line = [];
+                        let derivative_min = 0;
+                        let derivative_max = 0;
+    
+                        // Get the min and max of the derivative
+                        for (let k = 0; k < derivative[j].length; k++) {
+                            if (derivative[j][k] < derivative_min) {
+                                derivative_min = derivative[j][k];
+                            }
+                            if (derivative[j][k] > derivative_max) {
+                                derivative_max = derivative[j][k];
+                            }
+                        }
+                        derivative_min_max_line.push(derivative_min);
+                        derivative_min_max_line.push(derivative_max);
+                    }
+                    this.add_output_title('Min and max of the derivative of the light intensity')
+                    text = '';
+                    for (let j = 0; j < derivative_min_max.length; j++) {
+                        this.add_output_text('Min and max of the derivative of the light intensity along the line ' + (j+1) + ' : ');
+                        this.add_output_array(derivative_min_max[j]);
+                    }
+                }
+            }
 
             
             src.delete(); dst.delete(); contours.delete(); src_copy.delete(); src_original.delete();
