@@ -97,22 +97,21 @@ class PictureManager {
             son_id_to_disable: ['max_min_derivative_condition', 'threshold_condition', 'threshold_value_condition', 'smooth_factor', 'smooth_light_intensity']
         });
 
-        form.add_multiple_switch_input([
-            {
-                label: 'Max/Min derivative conditions',
-                id: 'max_min_derivative_condition',
-                value: 'false',
-                checked: 'false'
-            },
-            {
-                label: 'Threshold',
-                id: 'threshold_condition',
-                value: 'false',
-                checked: 'false',
-                son_id_to_able: ['threshold_value_condition'],
-                son_id_to_disable: ['threshold_value_condition']
-            }
-        ]);
+        form.add_switch_input({
+            label: 'Max/Min derivative conditions',
+            id: 'max_min_derivative_condition',
+            value: 'false',
+            checked: 'false'
+        });
+
+        form.add_switch_input({
+            label: 'Threshold',
+            id: 'threshold_condition',
+            value: 'false',
+            checked: 'false',
+            son_id_to_able: ['threshold_value_condition'],
+            son_id_to_disable: ['threshold_value_condition']
+        });
         form.add_text_input({
             label: 'Threshold value',
             id: 'threshold_value_condition',
