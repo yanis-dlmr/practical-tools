@@ -623,11 +623,11 @@ class PictureManager {
             // Split the data 
             const data_per_line = [];
             for (let i = 0; i < data_to_be_plotted[0].length; i++) {
-                data_forline = [];
+                const data_for_line = [];
                 for (let j = 0; j < data_to_be_plotted.length; j++) {
-                    data_forline.push(data_to_be_plotted[i][j]);
+                    data_for_line.push(data_to_be_plotted[i][j]);
                 }
-                data_per_line.push(data_forline);
+                data_per_line.push(data_for_line);
             }
             console.log('data_per_line', data_per_line);
 
