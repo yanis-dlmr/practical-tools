@@ -632,24 +632,29 @@ class PictureManager {
             console.log('data_per_line', data_per_line);
 
             // Create a chart for each line
+            const line_names = ['Light intensity'];
+            if (smooth_light_intensity_bool) {
+                line_names.push('Smooth light intensity');
+            }
+            if (max_min_derivative_condition) {
+                line_names.push('Derivative of the light intensity');
+            }
             for (let i = 0; i < data_per_line.length; i++) {
                 const title = 'Line ' + (i+1);
-                const type = 'line';
-                const labels = [];
-                for (let j = 0; j < data_per_line[i][0].length; j++) {
-                    labels.push(j);
+                const y_values = data_per_line[i];
+                const x_values = [];
+                const x_value = [];
+                for (let j = 0; j < y_values[0].length; j++) {
+                    x_value.push(j);
                 }
-                const data = [];
-                for (let j = 0; j < data_per_line[i].length; j++) {
-                    const data_for_line = [];
-                    for (let k = 0; k < data_per_line[i][j].length; k++) {
-                        data_for_line.push(data_per_line[i][j][k]);
-                    }
-                    data.push(data_for_line);
-                }
-                const chartjs = new ChartJs(title, type, labels, data);
-                const chartElement = chartjs.render();
-                this.card_output.addComponent(chartElement);
+                x_values.push(x_value);
+                x_values.push(x_value);
+                x_values.push(x_value);
+
+                const chartjs = new ChartJs(title, x_values, y_values, line_names);
+                const chartJsElement = chartjs.render();
+
+                this.card_output.appendChild(chartJsElement);
             }
 
 

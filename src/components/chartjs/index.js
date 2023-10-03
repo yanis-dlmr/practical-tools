@@ -1,41 +1,46 @@
 class ChartJs {
 
-    constructor (title, type, labels, data) {
-        this.chart = document.createElement('canvas');
-        this.chart.setAttribute('id', 'myChart');
-        this.chart.setAttribute('width', '400');
-        this.chart.setAttribute('height', '400');
-        this.chart.setAttribute('class', 'custom-chart');
-        this.chart.setAttribute('style', 'max-width: 100%;');
-        this.chart.setAttribute('style', 'max-height: 100%;');
-
+    constructor (title, x_values, y_values, line_names) {
         this.title = title;
-        this.type = type;
-        this.labels = labels;
-        this.data = data;
+        this.x_values = x_values;
+        this.y_values = y_values;
+        this.line_names = line_names;
     }
 
-    render() {
-        const data = this.data;
-        const ctx = this.chart.getContext('2d');
-        const config = {
+    render () {
+        const canvas = document.createElement('canvas');
+        canvas.setAttribute('id', 'chartjs');
+        canvas.setAttribute('width', '400');
+        canvas.setAttribute('height', '400');
+        const ctx = canvas.getContext('2d');
+        const chart = new Chart(ctx, {
             type: 'line',
-            data: data,
+            data: {
+                labels: this.x_values,
+                datasets: this.y_values
+            },
             options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'top',
-                    },
-                    title: {
-                        display: true,
-                        text: this.title
+                title: {
+                    display: true,
+                    text: this.title
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                },
+                legend : {
+                    display: true,
+                    position: 'bottom',
+                    labels: {
+                        fontColor: '#000'
                     }
                 }
-            },
-        };
-        const myChart = new Chart(ctx, config);
-        return this.chart;
+            }
+        });
+        return canvas;
     }
 
 }
