@@ -467,10 +467,10 @@ class PictureManager {
                     let max = 0;
                     for (let k = 0; k < derivative[j].length; k++) {
                         if (derivative[j][k] < min) {
-                            min = derivative[j][k];
+                            min = [j, k, derivative[j][k]];
                         }
                         if (derivative[j][k] > max) {
-                            max = derivative[j][k];
+                            max = [j, k, derivative[j][k]];
                         }
                     }
                     derivative_min_max.push([min, max]);
@@ -480,7 +480,9 @@ class PictureManager {
                 text = '';
                 for (let j = 0; j < derivative_min_max.length; j++) {
                     this.add_output_text('Min and max of the derivative of the light intensity along the line ' + (j+1) + ' : ');
-                    this.add_output_array(derivative_min_max[j]);
+                    for(let k = 0; k < derivative_min_max[j].length; k++) {
+                        this.add_output_array(derivative_min_max[j][k]);
+                    }
                 }
                 
             }
