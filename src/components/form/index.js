@@ -79,7 +79,7 @@ class Form {
                                     if (document.getElementById(son).type == 'checkbox') {
                                         document.getElementById(son).checked = false;
                                     }
-                                    document.getElementById(son).required = false;
+                                    //document.getElementById(son).required = false;
                                 });
                             }
                         }
@@ -88,7 +88,7 @@ class Form {
                         // put all the sons as not disabled and required
                         check_input.son_id_to_able.forEach(son => {
                             document.getElementById(son).disabled = false;
-                            document.getElementById(son).required = true;
+                            //document.getElementById(son).required = true;
                         });
                     }
                 } else {
@@ -238,7 +238,7 @@ class Form {
                     // put all the sons as not disabled and required
                     structure.son_id_to_able.forEach(son => {
                         document.getElementById(son).disabled = false;
-                        document.getElementById(son).required = true;
+                        //document.getElementById(son).required = true;
                     });
                 }
             } else {
@@ -246,7 +246,7 @@ class Form {
                     // put all the sons as disabled and not required
                     structure.son_id_to_disable.forEach(son => {
                         document.getElementById(son).disabled = true;
-                        document.getElementById(son).required = false;
+                        //document.getElementById(son).required = false;
                         // if checkbox then uncheck
                         if (document.getElementById(son).type == 'checkbox') {
                             document.getElementById(son).checked = false;
