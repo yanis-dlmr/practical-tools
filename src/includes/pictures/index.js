@@ -30,9 +30,8 @@ class PictureManager {
     create_body() {
 
         const row = document.createElement('div');
-        row.classList.add('row', 'custom-row');
         document.body.appendChild(row);
-        
+
         // Create the allert 
         var alert = document.createElement(`div`);
         alert.classList.add(`alert`);
