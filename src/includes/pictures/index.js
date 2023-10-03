@@ -4,6 +4,7 @@ import { Caption } from '/src/components/caption/index.js';
 import { Button } from '/src/components/button/index.js';
 import { Select } from '/src/components/select/index.js';
 import { Form } from '/src/components/form/index.js';
+import { EmbededBlock } from '/src/components/embeded_block/index.js';
 
 const main_check_input = [
     {id: 'display_only', label: 'Display Only', value: 'display_only', checked: 'false'},
@@ -650,19 +651,25 @@ class PictureManager {
         this.card_output.addComponent(textElement);
     }
 
+    //add_output_array = (array) => { // Display array between brackets and inside a code block
+    //    const textElement = document.createElement('p');
+    //    let final_text = '[';
+    //    for (let i = 0; i < array.length; i++) {
+    //        final_text += array[i];
+    //        if (i < array.length - 1) {
+    //            final_text += ', ';
+    //        }
+    //    }
+    //    final_text += ']';
+    //    const replacedText = final_text.replace(/\n/g, "<br>");
+    //    textElement.innerHTML = replacedText
+    //    this.card_output.addComponent(textElement);
+    //}
+
     add_output_array = (array) => { // Display array between brackets and inside a code block
-        const textElement = document.createElement('p');
-        let final_text = '[';
-        for (let i = 0; i < array.length; i++) {
-            final_text += array[i];
-            if (i < array.length - 1) {
-                final_text += ', ';
-            }
-        }
-        final_text += ']';
-        const replacedText = final_text.replace(/\n/g, "<br>");
-        textElement.innerHTML = replacedText
-        this.card_output.addComponent(textElement);
+        const embededBlock = new EmbededBlock(array);
+        const embededBlockElement = embededBlock.render();
+        this.card_output.addComponent(embededBlockElement);
     }
 
     add_output_block = (title, text, picture) => {
