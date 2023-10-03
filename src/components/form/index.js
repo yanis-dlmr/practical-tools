@@ -202,9 +202,7 @@ class Form {
         if ("checked" in structure && structure.checked == "true") {
             input.checked = true;
         }
-        if ("required" in structure && structure.required == "true") {
-            input.required = true;
-        }
+        input.required = true;
         
         var validFeedback = document.createElement('div');
         validFeedback.classList.add('valid-feedback');
