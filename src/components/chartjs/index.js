@@ -6,8 +6,7 @@ class ChartJs {
         this.line_names = line_names;
     }
 
-    render(parent_id) {
-        const parent = document.getElementById(parent_id);
+    render() {
         const canvas = document.createElement('canvas');
         canvas.setAttribute('id', 'chartjs');
         parent.appendChild(canvas);
