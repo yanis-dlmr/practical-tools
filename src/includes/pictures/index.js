@@ -629,7 +629,7 @@ class PictureManager {
                 
             }
 
-            // Display the picture with the contours
+            // Display highlighted code
             hljs.addPlugin(new CopyButtonPlugin());
             hljs.highlightAll();
             
