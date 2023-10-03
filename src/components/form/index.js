@@ -47,18 +47,18 @@ class Form {
                     list_check_input.forEach(check_input => {
                         if (check_input.id != this.id) {
                             document.getElementById(check_input.id).checked = false;
-                            if ('son_id' in check_input) {
+                            if ('son_id_to_disable' in check_input) {
                                 // put all the sons as disabled and not required
-                                check_input.son_id.forEach(son => {
+                                check_input.son_id_to_disable.forEach(son => {
                                     document.getElementById(son).disabled = true;
                                     document.getElementById(son).required = false;
                                 });
                             }
                         }
                     });
-                    if ('son_id' in check_input) {
+                    if ('son_id_to_able' in check_input) {
                         // put all the sons as not disabled and required
-                        check_input.son_id.forEach(son => {
+                        check_input.son_id_to_able.forEach(son => {
                             document.getElementById(son).disabled = false;
                             document.getElementById(son).required = true;
                         });
