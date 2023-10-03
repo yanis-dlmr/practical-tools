@@ -525,8 +525,7 @@ class PictureManager {
                     }
                     derivative_min_max.push([min, max]);
                 }
-                console.log('derivative_min_max', derivative_min_max)
-                this.add_output_title('Min and max of the derivative of the light intensity')
+                console.log('derivative_min_max', derivative_min_max);
                 text = '';
                 // Draw the min and max on the picture
                 const src_copy_2 = src_original.clone();
@@ -538,6 +537,9 @@ class PictureManager {
                     text += 'The maximum is at the index (' + max[0] + ';' + max[1] + ') with the value ' + max[2] + '\n';
                     cv.circle(src_copy_2, new cv.Point(min[0], min[1]), 5, new cv.Scalar(0, 0, 255, 255), 2);
                     cv.circle(src_copy_2, new cv.Point(max[0], max[1]), 5, new cv.Scalar(0, 255, 0, 255), 2);
+                    // Compute the pixel length between the min and the max
+                    const pixel_length = Math.sqrt(Math.pow(max[0] - min[0], 2) + Math.pow(max[1] - min[1], 2));
+                    text += 'The pixel length between the min and the max is ' + pixel_length + ' px\n';
                 }
                 this.add_cv_output_block('Min and max of the derivative of the light intensity along the line ', text, src_copy_2);
                 
