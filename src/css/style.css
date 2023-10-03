@@ -6,6 +6,10 @@ body {
     padding: 0;
 }
 
+.custom-row {
+    --bs-gutter-x: 0;
+}
+
 .icon-menu{
     margin-right: 5px;
     height: 25px;
