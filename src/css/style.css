@@ -27,8 +27,7 @@ h4{
     text-decoration: none;
 }
 
-.card-body {
-    white-space: pre-wrap;
+.custom-card-body {
     padding: 1rem;
 }
 
