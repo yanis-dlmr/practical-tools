@@ -8,6 +8,8 @@ class ChartJs {
 
     render() {
         var canvas = document.createElement('canvas');
+        canvas.style.width = 300;
+        canvas.style.height = 300;
         var ctx = canvas.getContext('2d');
         
         var chartData = {
