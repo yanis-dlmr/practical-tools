@@ -8,7 +8,6 @@ class ChartJs {
 
     render() {
         const canvas = document.createElement('canvas');
-        canvas.setAttribute('id', 'chartjs');
         const ctx = canvas.getContext('2d');
         
         const chartData = {
@@ -46,8 +45,7 @@ class ChartJs {
             options: chartOptions,
         });
         
-        chart.update();
-        return canvas;
+        return chart.canvas;
     }
 }
 
