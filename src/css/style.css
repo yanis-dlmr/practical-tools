@@ -29,7 +29,10 @@ h4{
 }
 
 .custom-card-body {
-    padding: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 0rem;
+    padding-bottom: 2rem;
 }
 
 .custom-header{
@@ -38,7 +41,6 @@ h4{
     color: #2061ae;
     border-radius: 0.25rem;
     padding: 0.5rem 1rem;
-    margin-bottom: 1rem;
 }
 
 .custom-big-header{
