@@ -6,11 +6,11 @@ class ChartJs {
         this.line_names = line_names;
     }
 
-    render() {
+    render(parent_id) {
+        const parent = document.getElementById(parent_id);
         const canvas = document.createElement('canvas');
         canvas.setAttribute('id', 'chartjs');
-        canvas.setAttribute('width', '400');
-        canvas.setAttribute('height', '400');
+        parent.appendChild(canvas);
         const ctx = canvas.getContext('2d');
         
         const chartData = {

@@ -633,6 +633,11 @@ class PictureManager {
 
             this.add_output_title('Graphical representation of the previous data');
 
+            // Chart box row containing all the charts
+            const chart_box_row = document.createElement('div');
+            chart_box_row.className = 'row';
+            this.output.appendChild(chart_box_row);
+
             // Create a chart for each line
             const line_names = ['Light intensity'];
             if (smooth_light_intensity_bool) {
@@ -651,18 +656,12 @@ class PictureManager {
 
                 const chartjs = new ChartJs(title, x_values, y_values, line_names);
                 const chartJsElement = chartjs.render();
-                
-                chartJsElement.width = 800;
-                chartJsElement.height = 400;
-                chartJsElement.style.width = '100%';
-                chartJsElement.style.height = 'auto';
 
-                const chart = chartJsElement.chart;
-                if (chart) {
-                    chart.resize();
-                }
-
-                this.card_output.addComponent(chartJsElement);
+                const chart_box = document.createElement('div');
+                chart_box.classList.add('col-6');
+                chart_box.className = 'chart_box';
+                chart_box.appendChild(chartJsElement);
+                chart_box_row.appendChild(chart_box);
             }
 
 
