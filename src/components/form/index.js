@@ -41,7 +41,7 @@ class Form {
         
         let divider = document.createElement('hr');
         divider.classList.add('custom-divider');
-        this.form.addComponent(divider);
+        this.form.appendChild(divider);
 
         
         list_check_input.forEach(check_input => {
