@@ -700,7 +700,6 @@ class PictureManager {
 
         // Rerender MathJax-script
         MathJax.typeset();
-        MathJax.typesetPromise();
         
         src.delete(); dst.delete(); contours.delete(); src_copy.delete(); src_original.delete();
     
@@ -721,7 +720,7 @@ class PictureManager {
     }
 
     add_output_text = (text) => {
-        const textElement = document.createElement('div');
+        const textElement = document.createElement('p');
         const replacedText = text.replace(/\n/g, "<br>");
         textElement.innerHTML = replacedText
         this.card_output.addComponent(textElement);
@@ -762,7 +761,7 @@ class PictureManager {
         divider.classList.add('custom-divider');
         this.card_output.addComponent(divider);
 
-        const textElement = document.createElement('div');
+        const textElement = document.createElement('p');
         let final_text = text + '\n' + picture_name + ' (' + picture_size + ')';
         const replacedText = final_text.replace(/\n/g, "<br>");
         textElement.innerHTML = replacedText
@@ -790,7 +789,7 @@ class PictureManager {
         divider.classList.add('custom-divider');
         this.card_output.addComponent(divider);
 
-        const textElement = document.createElement('div');
+        const textElement = document.createElement('p');
         let final_text = text;
         const replacedText = final_text.replace(/\n/g, "<br>");
         textElement.innerHTML = replacedText
@@ -818,7 +817,7 @@ class PictureManager {
         divider.classList.add('custom-divider');
         this.card_output.addComponent(divider);
 
-        const textElement = document.createElement('div');
+        const textElement = document.createElement('p');
         let final_text = text;
         const replacedText = final_text.replace(/\n/g, "<br>");
         textElement.innerHTML = replacedText
