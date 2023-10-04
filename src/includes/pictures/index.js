@@ -185,10 +185,20 @@ class PictureManager {
         bloc_importer_container.appendChild(impoter_bloc);
 
         const example_button = new Button('Example');
-        example_button.set_onclick(() => { // add the example picture
+        example_button.set_onclick(() => {
             const importerElement = document.getElementById('importer_id');
             const example_picture = '/src/assets/images/_example_picture.png';
-            importerElement.files = [ example_picture ];
+        
+            const blob = new Blob([''], { type: 'image/png' });
+            const file = new File([blob], '_example_picture.png', { type: 'image/png' });
+        
+            const fileList = new FileList();
+            fileList.add(file);
+        
+            Object.defineProperty(importerElement, 'files', { value: fileList });
+        
+            const event = new Event('change', { bubbles: true });
+            importerElement.dispatchEvent(event);
         });
 
         const example_buttonElement = example_button.render();
