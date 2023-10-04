@@ -665,7 +665,7 @@ class PictureManager {
 
                 chart_box.classList.add('col-md-6');
                 //chart_box.style.position = 'relative';
-                chart_box.style.height = '80vw';
+                chart_box.style.height = '40vw';
             }
 
 
