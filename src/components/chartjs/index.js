@@ -22,8 +22,9 @@ class ChartJs {
                 label: this.line_names[i],
                 data: this.y_values[i],
                 fill: false,
-                borderColor: 'rgb(75, 192, 192)',
+                //borderColor: 'rgb(75, 192, 192)',
                 tension: 0.1,
+                pointRadius: 0,
             });
         }
         
