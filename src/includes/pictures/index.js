@@ -699,7 +699,6 @@ class PictureManager {
         hljs.highlightAll();
 
         // Rerender MathJax-script
-        $("#content").load("{% static 'newContent.txt' %}", () => MathJax.typeset());
         MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
         MathJax.typeset();
         MathJax.typesetPromise();
