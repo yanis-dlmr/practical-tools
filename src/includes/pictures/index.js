@@ -182,7 +182,7 @@ class PictureManager {
         const impoter_bloc = document.createElement('div');
         impoter_bloc.classList.add('col-8');
         impoter_bloc.appendChild(importer);
-        bloc_importer_container.addComponent(impoter_bloc);
+        bloc_importer_container.appendChild(impoter_bloc);
 
         const example_button = new Button('Example');
         example_button.set_onclick(() => { // add the example picture
@@ -194,7 +194,7 @@ class PictureManager {
         const example_button_bloc = document.createElement('div');
         example_button_bloc.classList.add('col-4');
         example_button_bloc.appendChild(example_buttonElement);
-        bloc_importer_container.addComponent(example_button_bloc);
+        bloc_importer_container.appendChild(example_button_bloc);
 
 
         const validation_button = form.get_validation_button();
