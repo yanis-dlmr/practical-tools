@@ -188,15 +188,13 @@ class PictureManager {
         example_button.set_onclick(() => {
             const importerElement = document.getElementById('importer_id');
             const example_picture = '/src/assets/images/_example_picture.png';
-        
             const blob = new Blob([''], { type: 'image/png' });
-            const file = new File([blob], '_example_picture.png', { type: 'image/png' });
-        
+            blob.name = '_example_picture.png';
             const fileList = new FileList();
-            fileList.add(file);
-        
-            Object.defineProperty(importerElement, 'files', { value: fileList });
-        
+            fileList.item = (index) => fileList[index];
+            fileList.length = 1;
+            fileList[0] = blob;
+            importerElement.files = fileList;
             const event = new Event('change', { bubbles: true });
             importerElement.dispatchEvent(event);
         });
