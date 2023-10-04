@@ -697,6 +697,9 @@ class PictureManager {
         // Display highlighted code
         hljs.addPlugin(new CopyButtonPlugin());
         hljs.highlightAll();
+
+        // Rerender MathJax-script
+        MathJax.typeset();
         
         src.delete(); dst.delete(); contours.delete(); src_copy.delete(); src_original.delete();
     
