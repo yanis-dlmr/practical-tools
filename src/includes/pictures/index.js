@@ -749,9 +749,6 @@ class PictureManager {
 
     add_output_block = (title, text, picture) => {
 
-        const picture_name = picture.name;
-        const picture_size = picture.width + 'x' + picture.height;
-
         const caption = new Caption(title);
         const captionElement = caption.render();
         this.card_output.addComponent(captionElement);
@@ -761,19 +758,19 @@ class PictureManager {
         this.card_output.addComponent(divider);
 
         const textElement = document.createElement('p');
-        let final_text = text + '\n' + picture_name + ' (' + picture_size + ')';
+        let final_text = text;
         const replacedText = final_text.replace(/\n/g, "<br>");
         textElement.innerHTML = replacedText
         this.card_output.addComponent(textElement);
 
         const canvas = document.createElement('canvas');
-        canvas.id = 'canvasOutputBlock' + picture_name;
+        canvas.id = 'canvasOutputBlock';
         canvas.width = picture.width;
         canvas.height = picture.height;
         this.card_output.addComponent(canvas);
 
         // display image using ctx.drawImage
-        const canvasOutput = document.getElementById('canvasOutputBlock'  + picture_name);
+        const canvasOutput = document.getElementById('canvasOutputBlock');
         const ctx = canvasOutput.getContext('2d');
         ctx.drawImage(picture, 0, 0);
     }
