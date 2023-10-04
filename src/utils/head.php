@@ -10,3 +10,18 @@
 
 <script src="https://unpkg.com/highlightjs-copy@1.0.3/dist/highlightjs-copy.min.js"></script>
 <link rel="stylesheet" href="https://unpkg.com/highlightjs-copy@1.0.3/dist/highlightjs-copy.min.css" />
+
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [
+                ['$', '$'],
+                ['\\(', '\\)']
+            ],
+            svg: {
+                fontCache: 'global'
+            }
+        }
+    };
+</script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
