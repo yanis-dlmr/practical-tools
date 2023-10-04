@@ -174,8 +174,28 @@ class PictureManager {
         divider.classList.add('custom-divider');
         card.addComponent(divider);
 
+        const bloc_importer_container = document.createElement('div');
+        bloc_importer_container.classList.add('row');
+        card.addComponent(bloc_importer_container);
+
         const importer = form.get_importer_element('importer_id');
-        card.addComponent(importer);
+        const impoter_bloc = document.createElement('div');
+        impoter_bloc.classList.add('col-8');
+        impoter_bloc.appendChild(importer);
+        bloc_importer_container.addComponent(impoter_bloc);
+
+        const example_button = new Button('Example');
+        example_button.set_onclick(() => { // add the example picture
+            const importerElement = document.getElementById('importer_id');
+            importerElement.files = [new File(['/src/assets/images/_example_picture.png'], 'example.png')];
+        });
+
+        const example_buttonElement = example_button.render();
+        const example_button_bloc = document.createElement('div');
+        example_button_bloc.classList.add('col-4');
+        example_button_bloc.appendChild(example_buttonElement);
+        bloc_importer_container.addComponent(example_button_bloc);
+
 
         const validation_button = form.get_validation_button();
         card.addComponent(validation_button);
