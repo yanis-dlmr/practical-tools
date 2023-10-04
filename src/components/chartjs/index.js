@@ -40,7 +40,7 @@ class ChartJs {
                 }]
             },
             responsive: true,
-            maintainAspectRatio: true
+            maintainAspectRatio: false,
         };
 
         var chart = new Chart(ctx, {
