@@ -286,68 +286,55 @@ class PictureManager {
         this.add_output_block('Average Color', 'This is the average color of your picture', this.average_picture);
     }
 
-    compute_average_picture = () => { // Compute the average of all the pictures and display it in the output block, with the original size
-        // convert all the pictures into cv.Mat
+    compute_average_picture = () => {
+        // Convert all the pictures into cv.Mat
         this.cv_pictures = [];
-        for (let i = 0; i < this.pictures.length; i++) {
-            const canvas = document.createElement('canvas');
-            canvas.width = this.pictures[i].width;
-            canvas.height = this.pictures[i].height;
-            const ctx = canvas.getContext('2d');
+        const pictureCount = this.pictures.length;
+        const canvas = document.createElement('canvas');
+        canvas.width = this.pictures[0].width;
+        canvas.height = this.pictures[0].height;
+        const ctx = canvas.getContext('2d');
+    
+        for (let i = 0; i < pictureCount; i++) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.drawImage(this.pictures[i], 0, 0);
             const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-            const data = imageData.data;
-            const length = data.length;
             const mat = new cv.Mat(canvas.height, canvas.width, cv.CV_8UC4);
-            const mat_data = mat.data;
-            for (let j = 0; j < length; j++) {
-                mat_data[j] = data[j];
-            }
-            mat.height = canvas.height;
-            mat.width = canvas.width;
+            mat.data.set(imageData.data);
             this.cv_pictures.push(mat);
         }
-
-        // sum all the pictures into one array 
-        const sum = [];
-        for (let i = 0; i < this.cv_pictures[0].data.length; i++) {
-            sum.push(0);
+    
+        // Sum all the pictures into one array
+        const sumMat = new cv.Mat(canvas.height, canvas.width, cv.CV_8UC4);
+        sumMat.setTo(new cv.Scalar(0, 0, 0, 0));
+        for (let i = 0; i < pictureCount; i++) {
+            cv.add(sumMat, this.cv_pictures[i], sumMat);
         }
-        for (let i = 0; i < this.cv_pictures.length; i++) {
-            for (let j = 0; j < this.cv_pictures[i].data.length; j++) {
-                sum[j] += this.cv_pictures[i].data[j];
-            }
-        }
-        console.log('sum', sum)
         
-        // compute the average
-        const average = [];
-        for (let i = 0; i < sum.length; i++) {
-            average.push(sum[i] / this.cv_pictures.length);
-        }
-        console.log('average', average)
-
-        // display the average picture
+        // Compute the average
+        const averageMat = new cv.Mat();
+        cv.divide(sumMat, new cv.Scalar(pictureCount, pictureCount, pictureCount, pictureCount), averageMat);
+    
+        // Display the average picture
         const average_picture = document.createElement('canvas');
         average_picture.id = 'canvasOutputBlock';
-        average_picture.width = this.pictures[0].width;
-        average_picture.height = this.pictures[0].height;
-        const ctx = average_picture.getContext('2d');
-        ctx.clearRect(0, 0, average_picture.width, average_picture.height);
-        const imageData = ctx.getImageData(0, 0, average_picture.width, average_picture.height);
-        const data = imageData.data;
-        for (let i = 0; i < data.length; i++) {
-            data[i] = average[i];
-        }
-        ctx.putImageData(imageData, 0, 0);
+        average_picture.width = canvas.width;
+        average_picture.height = canvas.height;
+        const ctx2 = average_picture.getContext('2d');
+        ctx2.clearRect(0, 0, average_picture.width, average_picture.height);
+        const outputImageData = ctx2.getImageData(0, 0, average_picture.width, average_picture.height);
+        outputImageData.data.set(averageMat.data);
+        ctx2.putImageData(outputImageData, 0, 0);
         this.add_output_block('Average Picture', 'This is the average picture of your pictures', average_picture);
-
-        // free the memory
+    
+        // Free the memory
         for (let i = 0; i < this.cv_pictures.length; i++) {
             this.cv_pictures[i].delete();
         }
-
+        sumMat.delete();
+        averageMat.delete();
     }
+    
 
     compute_determine_axis = () => {
         // convert all the pictures into cv.Mat
