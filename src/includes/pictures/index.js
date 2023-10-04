@@ -180,19 +180,20 @@ class PictureManager {
 
         const importer = form.get_importer_element('importer_id');
         const impoter_bloc = document.createElement('div');
-        impoter_bloc.classList.add('col-8');
+        impoter_bloc.classList.add('col-10');
         impoter_bloc.appendChild(importer);
         bloc_importer_container.appendChild(impoter_bloc);
 
         const example_button = new Button('Example');
         example_button.set_onclick(() => { // add the example picture
             const importerElement = document.getElementById('importer_id');
-            importerElement.files = [new File(['/src/assets/images/_example_picture.png'], 'example.png')];
+            const example_picture = '/src/assets/images/_example_picture.png';
+            importerElement.files = [ example_picture ];
         });
 
         const example_buttonElement = example_button.render();
         const example_button_bloc = document.createElement('div');
-        example_button_bloc.classList.add('col-4');
+        example_button_bloc.classList.add('col-2');
         example_button_bloc.appendChild(example_buttonElement);
         bloc_importer_container.appendChild(example_button_bloc);
 
