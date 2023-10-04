@@ -721,14 +721,14 @@ class PictureManager {
     }
 
     add_output_text = (text) => {
-        const textElement = document.createElement('p');
+        const textElement = document.createElement('div');
         const replacedText = text.replace(/\n/g, "<br>");
         textElement.innerHTML = replacedText
         this.card_output.addComponent(textElement);
     }
 
     //add_output_array = (array) => { // Display array between brackets and inside a code block
-    //    const textElement = document.createElement('p');
+    //    const textElement = document.createElement('div');
     //    let final_text = '[';
     //    for (let i = 0; i < array.length; i++) {
     //        final_text += array[i];
@@ -762,7 +762,7 @@ class PictureManager {
         divider.classList.add('custom-divider');
         this.card_output.addComponent(divider);
 
-        const textElement = document.createElement('p');
+        const textElement = document.createElement('div');
         let final_text = text + '\n' + picture_name + ' (' + picture_size + ')';
         const replacedText = final_text.replace(/\n/g, "<br>");
         textElement.innerHTML = replacedText
@@ -790,7 +790,7 @@ class PictureManager {
         divider.classList.add('custom-divider');
         this.card_output.addComponent(divider);
 
-        const textElement = document.createElement('p');
+        const textElement = document.createElement('div');
         let final_text = text;
         const replacedText = final_text.replace(/\n/g, "<br>");
         textElement.innerHTML = replacedText
@@ -818,7 +818,7 @@ class PictureManager {
         divider.classList.add('custom-divider');
         this.card_output.addComponent(divider);
 
-        const textElement = document.createElement('p');
+        const textElement = document.createElement('div');
         let final_text = text;
         const replacedText = final_text.replace(/\n/g, "<br>");
         textElement.innerHTML = replacedText
