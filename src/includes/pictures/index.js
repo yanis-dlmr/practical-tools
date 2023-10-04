@@ -666,7 +666,7 @@ class PictureManager {
                 chart_box.classList.add('col-md-6');
                 //chart_box.style.position = 'relative';
                 chart_box.style.padding = '0.5rem';
-                chart_box.style.height = '40%';
+                chart_box.style.height = '50%';
             }
 
 
