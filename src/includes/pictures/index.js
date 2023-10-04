@@ -184,20 +184,15 @@ class PictureManager {
         impoter_bloc.appendChild(importer);
         bloc_importer_container.appendChild(impoter_bloc);
 
-        const example_button = new Button('Example');
+        const example_button = new Button('Download example');
         example_button.set_onclick(() => {
-            const importerElement = document.getElementById('importer_id');
             const example_picture = '/src/assets/images/_example_picture.png';
-            const blob = new Blob([''], { type: 'image/png' });
-            blob.name = '_example_picture.png';
-            const fileList = new FileList();
-            fileList.item = (index) => fileList[index];
-            fileList.length = 1;
-            fileList[0] = blob;
-            importerElement.files = fileList;
-            const event = new Event('change', { bubbles: true });
-            importerElement.dispatchEvent(event);
+            const link = document.createElement('a');
+            link.href = example_picture;
+            link.download = 'example_picture.png';
+            link.click();
         });
+        
 
         const example_buttonElement = example_button.render();
         const example_button_bloc = document.createElement('div');
