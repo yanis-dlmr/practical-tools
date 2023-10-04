@@ -28,9 +28,11 @@ class ChartJs {
         }
         
         var chartOptions = {
-            title: {
-                display: true,
-                text: this.title
+            plugins: {
+                title: {
+                    display: true,
+                    text: this.title,
+                }
             },
             scales: {
                 yAxes: [{
