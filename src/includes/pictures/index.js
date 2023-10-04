@@ -538,8 +538,8 @@ class PictureManager {
                     this.add_output_text('Smooth light intensity along the line ' + (j+1) + ' : ');
                     this.add_output_array(smooth_light_intensity[j]);
                 }
+                data_to_be_plotted.push(smooth_light_intensity);
             }
-            data_to_be_plotted.push(smooth_light_intensity);
             console.log(light_intensity)
             // Replace the light intensity by the smooth light intensity
             if (smooth_light_intensity_bool) {
