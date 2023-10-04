@@ -18,11 +18,10 @@ class ChartJs {
         };
         
         for (let i = 0; i < this.line_names.length; i++) {
-            chartData.datasets.push({
+            chartData.datasets.unshift({
                 label: this.line_names[i],
                 data: this.y_values[i],
                 fill: false,
-                //borderColor: 'rgb(75, 192, 192)',
                 tension: 0.1,
                 pointRadius: 0,
             });
