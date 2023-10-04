@@ -699,6 +699,7 @@ class PictureManager {
         hljs.highlightAll();
 
         // Rerender MathJax-script
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
         MathJax.typeset();
         MathJax.typesetPromise();
         
