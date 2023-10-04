@@ -13,15 +13,6 @@
 
 <script>
     MathJax = {
-        options: {
-            menuOptions: {
-            settings: {
-                    assistiveMml: true,
-                    collapsible: false,
-                    explorer: false
-                }
-            }
-        },
         tex: {
             inlineMath: [
                 ['$', '$'],
