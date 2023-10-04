@@ -308,11 +308,15 @@ class PictureManager {
             this.cv_pictures.push(mat);
         }
 
+        console.log('Init done, start computing...')
+
         // sum all the pictures into one array 
         const sum = [];
         for (let i = 0; i < this.cv_pictures[0].data.length; i++) {
             sum.push(0);
         }
+
+        console.log('sum', sum)
         for (let i = 0; i < this.cv_pictures.length; i++) {
             for (let j = 0; j < this.cv_pictures[i].data.length; j++) {
                 sum[j] += this.cv_pictures[i].data[j];
