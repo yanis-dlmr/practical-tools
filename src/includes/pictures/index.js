@@ -180,7 +180,7 @@ class PictureManager {
 
         const importer = form.get_importer_element('importer_id');
         const impoter_bloc = document.createElement('div');
-        impoter_bloc.classList.add('col-10');
+        impoter_bloc.classList.add('col-9');
         impoter_bloc.appendChild(importer);
         bloc_importer_container.appendChild(impoter_bloc);
 
@@ -196,7 +196,7 @@ class PictureManager {
 
         const example_buttonElement = example_button.render();
         const example_button_bloc = document.createElement('div');
-        example_button_bloc.classList.add('col-2');
+        example_button_bloc.classList.add('col-3');
         example_button_bloc.appendChild(example_buttonElement);
         bloc_importer_container.appendChild(example_button_bloc);
 

@@ -13,6 +13,7 @@ class Button {
         button.classList.add('btn', 'btn-primary');
         button.innerHTML = this.text;
         button.classList.add('mb-3');
+        button.style.width = '100%';
         if (this.onclick) {
             button.addEventListener('click', this.onclick);
         }
