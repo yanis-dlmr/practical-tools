@@ -185,7 +185,7 @@ class PictureManager {
         bloc_importer_container.appendChild(impoter_bloc);
 
         const example_button = new Button('Example');
-        example_button.addEventListener('click', () => {
+        example_button.set_onclick(() => { // add the example picture
             const importerElement = document.getElementById('importer_id');
             importerElement.files = [new File(['/src/assets/images/_example_picture.png'], 'example.png')];
         });
