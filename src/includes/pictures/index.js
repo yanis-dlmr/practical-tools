@@ -700,6 +700,7 @@ class PictureManager {
 
         // Rerender MathJax-script
         MathJax.typeset();
+        MathJax.typesetPromise();
         
         src.delete(); dst.delete(); contours.delete(); src_copy.delete(); src_original.delete();
     
