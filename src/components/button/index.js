@@ -11,6 +11,7 @@ class Button {
     render() {
         const button = document.createElement('button');
         button.classList.add('btn', 'btn-primary');
+        button.classList.add('amelia-button');
         button.innerHTML = this.text;
         button.classList.add('mb-3');
         button.style.width = '100%';
