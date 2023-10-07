@@ -275,7 +275,7 @@ class PictureManager {
 
     display_pictures = () => { // Display all the pictures in the output block with their original size
         for (let i = 0; i < this.pictures.length; i++) {
-            this.add_output_block('Original picture number : ' + i , 'This is your original picture', this.pictures[i]);
+            this.add_output_block('Original picture number ' + (i+1) , 'This is your original picture', this.pictures[i]);
         }
     }
 
