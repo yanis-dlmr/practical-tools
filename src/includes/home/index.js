@@ -38,7 +38,7 @@ This site contains tools developed in order to help students during their practi
 • A tool to handle <a class="custom-link" href="/pictures">Pictures</a> and do treatments on them 
 
 <h4> Disclaimer </h4>
-The tools are still in development, some features may not work properly. If you encounter any problems, please contact us.
+The tools are still in development, some features may not work properly.
 `
 //cardBody2 next to cardBody1
     const cardBody2 = document.createElement('div');
@@ -58,7 +58,7 @@ The tools are still in development, some features may not work properly. If you 
     cardFooter.setAttribute('style', 'text-align: center; font-size: 1rem; color: #2061ae; border-radius: 0.25rem; padding: 0.5rem 1rem; margin-top: 1rem;')
     cardFooter.innerHTML = 
     `
-Contact me on this e-mail adress: <a class="custom-link" href="mailto:yanis.delamare@insa-rouen.fr">yanis.delamare@insa-rouen.fr</a>
+If you encounter any problems, please contact me on this e-mail adress: <a class="custom-link" href="mailto:yanis.delamare@insa-rouen.fr">yanis.delamare@insa-rouen.fr</a>
     `
 
     cardContainer.appendChild(cardHeader);
