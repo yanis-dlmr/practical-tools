@@ -34,7 +34,7 @@ async function init_home() {
 `<h4> Welcome ! </h4>
 This site contains tools developed in order to help students during their practicals in the department Energetic and Propulsion.
 
-<h4> The website is divided into 1 categories for the moment: </h4>
+<h4> The website is divided into 1 category: </h4>
 • A tool to handle <a class="custom-link" href="/pictures">Pictures</a> and do treatments on them 
 
 <h4> Disclaimer </h4>
