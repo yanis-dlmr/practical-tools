@@ -56,7 +56,7 @@ The tools are still in development, some features may not work properly. If you 
     cardFooter.classList.add('card-footer');
     cardFooter.id = 'footer';
     cardFooter.setAttribute('style', 'text-align: center; font-size: 1rem; color: #2061ae; border-radius: 0.25rem; padding: 0.5rem 1rem; margin-top: 1rem;')
-    cardFooter.textContent = 
+    cardFooter.innerHTML = 
     `
 Contact: <a class="custom-link" href="mailto:yanis.delamare@insa-rouen.fr">
     `
