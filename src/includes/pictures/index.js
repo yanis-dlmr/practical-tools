@@ -275,7 +275,7 @@ class PictureManager {
 
     display_pictures = () => { // Display all the pictures in the output block with their original size
         for (let i = 0; i < this.pictures.length; i++) {
-            this.add_output_block('This is your original picture', 'This is your original picture', this.pictures[i]);
+            this.add_output_block('Original picture number : ' + i , 'This is your original picture', this.pictures[i]);
         }
     }
 
@@ -788,13 +788,13 @@ class PictureManager {
         this.card_output.addComponent(textElement);
 
         const canvas = document.createElement('canvas');
-        canvas.id = 'canvasOutputBlock';
+        canvas.id = 'canvasOutputBlock' + title;
         canvas.width = picture.width;
         canvas.height = picture.height;
         this.card_output.addComponent(canvas);
 
         // display image using ctx.drawImage
-        const canvasOutput = document.getElementById('canvasOutputBlock');
+        const canvasOutput = document.getElementById('canvasOutputBlock' + title);
         const ctx = canvasOutput.getContext('2d');
         ctx.drawImage(picture, 0, 0);
     }
