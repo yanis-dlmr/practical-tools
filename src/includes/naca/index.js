@@ -7,9 +7,14 @@ import { Form } from '/src/components/form/index.js';
 import { EmbededBlock } from '/src/components/embeded_block/index.js';
 import { ChartJs } from '/src/components/chartjs/index.js';
 
-
-
-
+const naca_types = {
+    label: 'NACA Types',
+    id: 'naca_types',
+    options: [
+        { value: '4-digit', text: '4-digit' },
+        { value: '5-digit', text: '5-digit' },
+    ]
+}
 
 document.addEventListener('DOMContentLoaded', function() {
     new NacaManager();
@@ -44,6 +49,8 @@ class NacaManager {
         card.addComponent(formElement);
         
         form.add_caption('NACA Profile');
+
+        form.add_select_input(naca_types)
     }
 }
 
