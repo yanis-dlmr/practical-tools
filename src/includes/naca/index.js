@@ -8,7 +8,7 @@ import { EmbededBlock } from '/src/components/embeded_block/index.js';
 import { ChartJs } from '/src/components/chartjs/index.js';
 
 const naca_types = {
-    label: 'NACA Types',
+    label: 'Profile shape',
     id: 'naca_types',
     options: [
         '4-digit',
@@ -51,6 +51,17 @@ class NacaManager {
         form.add_caption('NACA Profile');
 
         form.add_select_input(naca_types)
+        
+        const validation_button = form.get_validation_button();
+        card.addComponent(validation_button);
+
+        validation_button.addEventListener('click', async () => {
+            // If form is not valid, return
+            if (!form.is_valid()) {
+                return;
+            }
+        
+        });
     }
 }
 
