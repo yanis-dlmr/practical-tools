@@ -11,8 +11,8 @@ const naca_types = {
     label: 'NACA Types',
     id: 'naca_types',
     options: [
-        { value: '4-digit', text: '4-digit' },
-        { value: '5-digit', text: '5-digit' },
+        '4-digit',
+        '5-digit',
     ]
 }
 
