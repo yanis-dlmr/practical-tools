@@ -41,7 +41,7 @@ class NacaManager {
 
         const form = new Form();
         const formElement = form.render();
-        cardElement.addComponent(formElement);
+        card.addComponent(formElement);
         
         form.add_caption('NACA Profile');
     }
