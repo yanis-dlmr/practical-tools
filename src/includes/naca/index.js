@@ -13,7 +13,7 @@ const naca_types = {
     id: 'naca_types',
     options: [
         '4-digit',
-        '5-digit',
+        //'5-digit',
     ],
     son_id_to_able: ['digits'],
     son_id_to_disable: ['digits']
