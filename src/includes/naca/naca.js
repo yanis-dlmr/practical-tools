@@ -85,6 +85,14 @@ class NACA {
         return this.yc;
     }
 
+    get_x_top_profile() {
+        return this.xu;
+    }
+
+    get_x_bottom_profile() {
+        return this.xl;
+    }
+
     get_y_top_profile() {
         return this.yu;
     }
