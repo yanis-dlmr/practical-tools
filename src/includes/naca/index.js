@@ -73,7 +73,7 @@ class NacaManager {
                 return;
             }
             
-            this.remove_all_output_blocks();
+            this.card_output.removeAllComponents();
 
             // Get form data
             const form_data = form.get_data();
