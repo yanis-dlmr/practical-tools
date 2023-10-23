@@ -94,6 +94,7 @@ class NacaManager {
             const y_values = [yc, yt, y_bottom_profile, y_top_profile];
             const line_names = ['Camber line', 'Thickness', 'Upper surface', 'Lower surface'];
 
+            this.add_output_title('Graphical representation of the profile')
             // Chart box row containing all the charts
             const chart_box_row = document.createElement('div');
             chart_box_row.className = 'row';
@@ -114,7 +115,7 @@ class NacaManager {
             chart_box.style.padding = '1rem';
             chart_box.style.height = '450px';
 
-            this.add_output_title('Differennt data of the profile');
+            this.add_output_title('Different data of the profile');
             for(let i = 0; i < line_names.length; i++) {
                 this.add_output_text(line_names[i] + ' x');
                 this.add_output_array(x_values[i]);
