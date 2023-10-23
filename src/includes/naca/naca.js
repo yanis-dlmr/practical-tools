@@ -24,14 +24,14 @@ class NACA {
         const naca_type = this.get_naca_type();
         const naca_chord = this.get_naca_chord();
 
-        const naca_m = naca_digits[0] / 100;
-        const naca_p = naca_digits[1] / 10;
+        const naca_m = naca_digits[0];
+        const naca_p = naca_digits[1];
 
         for (let i = 0; i < this.x.length; i++) {
             if (this.x[i] <= naca_p * naca_chord) {
-                this.yc[i] = naca_m / Math.pow(naca_p, 2) * (2 * naca_p * this.x[i] / naca_chord - Math.pow(this.x[i] / naca_chord, 2));
+                this.yc[i] = naca_m * x[i] / Math.pow(naca_p, 2) * (2 * naca_p - this.x[i] / naca_chord);
             } else {
-                this.yc[i] = naca_m / Math.pow(1 - naca_p, 2) * (1 - 2 * naca_p + 2 * naca_p * this.x[i] / naca_chord - Math.pow(this.x[i] / naca_chord, 2));
+                this.yc[i] = naca_m * (naca_chord - this.x[i]) / Math.pow(1 - naca_p, 2) * (1 + this.x[i] / naca_chord - 2 * naca_p);
             }
         }
 
