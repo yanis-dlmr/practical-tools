@@ -9,8 +9,10 @@ class NACA {
         this.yt = [];
         this.yc = [];
 
-        this.y_up_profile = [];
-        this.y_down_profile = [];
+        this.xu = [];
+        this.yu = [];
+        this.xl = [];
+        this.yl = [];
         
         this.generate_naca_profile();
     }
@@ -42,14 +44,18 @@ class NACA {
             this.yt[i] = naca_t/0.2 * (0.2969 * Math.sqrt(this.x[i]/naca_chord) - 0.1260 * (this.x[i]/naca_chord) - 0.3516 * Math.pow(this.x[i]/naca_chord, 2) + 0.2843 * Math.pow(this.x[i]/naca_chord, 3) - 0.1015 * Math.pow(this.x[i]/naca_chord, 4));
         }
 
-        // Generate y_up_profile
+        // Generate xu, yu, xl, yl
         for (let i = 0; i < this.x.length; i++) {
-            this.y_up_profile[i] = this.yc[i] + this.yt[i];
-        }
-
-        // Generate y_down_profile
-        for (let i = 0; i < this.x.length; i++) {
-            this.y_down_profile[i] = this.yc[i] - this.yt[i];
+            let theta
+            if (this.x[i] <= naca_p * naca_chord) {
+                theta = Math.atan(2 * naca_m / Math.pow(naca_p, 2) * (naca_p - this.x[i] / naca_chord));
+            } else {
+                theta = Math.atan(2 * naca_m / Math.pow(1 - naca_p, 2) * (naca_p - this.x[i] / naca_chord));
+            }
+            this.xu[i] = this.x[i] - this.yt[i] * Math.sin(theta);
+            this.yu[i] = this.yc[i] + this.yt[i] * Math.cos(theta);
+            this.xl[i] = this.x[i] + this.yt[i] * Math.sin(theta);
+            this.yl[i] = this.yc[i] - this.yt[i] * Math.cos(theta);
         }
     }
 
@@ -78,11 +84,11 @@ class NACA {
     }
 
     get_y_top_profile() {
-        return this.y_up_profile;
+        return this.yu;
     }
 
     get_y_bottom_profile() {
-        return this.y_down_profile;
+        return this.yl;
     }
 
 }
