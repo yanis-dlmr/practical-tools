@@ -6,6 +6,7 @@ import { Select } from '/src/components/select/index.js';
 import { Form } from '/src/components/form/index.js';
 import { EmbededBlock } from '/src/components/embeded_block/index.js';
 import { ChartJs } from '/src/components/chartjs/index.js';
+import { NACA } from '/src/includes/naca/naca.js';
 
 const naca_types = {
     label: 'Profile shape',
@@ -75,6 +76,32 @@ class NacaManager {
             // Get form data
             const form_data = form.get_data();
             console.table(form_data);
+
+            // Create NACA object
+            const naca = new NACA(form_data.naca_types, form_data.digits, 1);
+            const profile = naca.get_naca_profile();
+            const x_values = profile[0];
+            const y_values = [profile[1]];
+            const line_names = ['NACA ' + form_data.naca_types + form_data.digits];
+
+            // Chart box row containing all the charts
+            const chart_box_row = document.createElement('div');
+            chart_box_row.className = 'row';
+
+            this.card_output.addComponent(chart_box_row);
+
+            const chartjs = new ChartJs(title, x_values, y_values, line_names);
+            const chartJsElement = chartjs.render();
+
+            const chart_box = document.createElement('div');
+            chart_box.appendChild(chartJsElement);
+            chartJsElement.style.width = '100%';
+            chartJsElement.width = '100%';
+            chart_box_row.appendChild(chart_box);
+
+            chart_box.classList.add('col-md-12');
+            chart_box.style.padding = '1rem';
+            chart_box.style.height = '450px';
         });
         
         // Output  
