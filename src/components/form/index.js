@@ -362,6 +362,45 @@ class Form {
         input.appendChild(label);
         input.appendChild(select);
         this.form.appendChild(input);
+
+        
+        document.getElementById(structure.id).addEventListener('change', function() {
+            if (this.checked) {
+                if ('friends' in structure) {
+                    // uncheck all the friends and put them at not required
+                    structure.friends.forEach(friend => {
+                        document.getElementById(friend).checked = false;
+                        document.getElementById(friend).dispatchEvent(new Event('change'));
+                        document.getElementById(friend).required = false;
+                    });
+                }
+                if ('son_id_to_able' in structure) {
+                    // put all the sons as not disabled and required
+                    structure.son_id_to_able.forEach(son => {
+                        document.getElementById(son).disabled = false;
+                        //document.getElementById(son).required = true;
+                    });
+                }
+            } else {
+                if ('friends' in structure) {
+                    // put them at required
+                    structure.friends.forEach(friend => {
+                        document.getElementById(friend).required = true;
+                    });
+                }
+                if ('son_id_to_disable' in structure) {
+                    // put all the sons as disabled and not required
+                    structure.son_id_to_disable.forEach(son => {
+                        document.getElementById(son).disabled = true;
+                        //document.getElementById(son).required = false;
+                        // if checkbox then uncheck
+                        if (document.getElementById(son).type == 'checkbox') {
+                            document.getElementById(son).checked = false;
+                        }
+                    });
+                }
+            }
+        });
     }
 
     is_valid() {

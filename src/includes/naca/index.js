@@ -13,7 +13,16 @@ const naca_types = {
     options: [
         '4-digit',
         '5-digit',
-    ]
+    ],
+    son_id_to_able: ['digits'],
+    son_id_to_disable: ['digits']
+}
+
+const naca_digits = {
+    label: 'Digits',
+    id: 'digits',
+    unit: '',
+    value: '0012',
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -51,6 +60,7 @@ class NacaManager {
         form.add_caption('NACA Profile');
 
         form.add_select_input(naca_types)
+        form.add_text_input(naca_digits);
         
         const validation_button = form.get_validation_button();
         card.addComponent(validation_button);
@@ -60,8 +70,17 @@ class NacaManager {
             if (!form.is_valid()) {
                 return;
             }
-        
         });
+        
+        // Output  
+        this.card_output = new Card('Output');
+        const cardElementOutput = this.card_output.render();
+
+        const container_output = new Container('12', 'center');
+        container_output.addComponent(cardElementOutput);
+        const containerElementOutput = container_output.render();
+
+        row.appendChild(containerElementOutput);
     }
 }
 
