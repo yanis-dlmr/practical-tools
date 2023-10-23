@@ -122,6 +122,16 @@ class NacaManager {
                 this.add_output_text(line_names[i] + ' y');
                 this.add_output_array(y_values[i]);
             }
+            
+            // Add end 
+            this.add_output_title('End of the processing !');
+
+            // Display highlighted code
+            hljs.addPlugin(new CopyButtonPlugin());
+            hljs.highlightAll();
+
+            // Rerender MathJax-script
+            MathJax.typeset();
         });
         
         // Output  
