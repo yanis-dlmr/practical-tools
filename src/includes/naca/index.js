@@ -72,6 +72,8 @@ class NacaManager {
             if (!form.is_valid()) {
                 return;
             }
+            
+            this.remove_all_output_blocks();
 
             // Get form data
             const form_data = form.get_data();
