@@ -82,9 +82,10 @@ class NacaManager {
             const up_profile = naca.get_naca_top_profile();
             const x_values = up_profile[0];
             const y_values = [up_profile[1]];
+            const line_names = ['Top NACA ' + form_data.digits + ' profile'];
             const bottom_profile = naca.get_naca_bottom_profile();
             y_values.push(bottom_profile[1]);
-            const line_names = ['NACA ' + form_data.digits];
+            line_names.push('Bottom NACA ' + form_data.digits + ' profile');
 
             // Chart box row containing all the charts
             const chart_box_row = document.createElement('div');
