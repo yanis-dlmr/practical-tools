@@ -38,6 +38,8 @@ class NACA {
         const x_values = Array.from(Array(100).keys()).map(x => x * this.naca_chord / 100);
         // Generate y values
         const y_values = x_values.map(x => this.get_naca_top_y(x));
+        // Return x and y values
+        return [x_values, y_values];
     }
 
 }
