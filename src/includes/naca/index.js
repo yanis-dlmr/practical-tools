@@ -113,6 +113,14 @@ class NacaManager {
             chart_box.classList.add('col-md-12');
             chart_box.style.padding = '1rem';
             chart_box.style.height = '450px';
+
+            this.add_output_title('Differennt data of the profile');
+            for(let i = 0; i < line_names.length; i++) {
+                this.add_output_text(line_names[i] + ' x');
+                this.add_output_array(x_values[i]);
+                this.add_output_text(line_names[i] + ' y');
+                this.add_output_array(y_values[i]);
+            }
         });
         
         // Output  
@@ -125,5 +133,30 @@ class NacaManager {
 
         row.appendChild(containerElementOutput);
     }
+
+    add_output_title = (title) => {
+        const caption = new Caption(title);
+        const captionElement = caption.render();
+        this.card_output.addComponent(captionElement);
+        
+        let divider = document.createElement('hr');
+        divider.classList.add('custom-divider');
+        this.card_output.addComponent(divider);
+    }
+
+    add_output_text = (text) => {
+        const textElement = document.createElement('p');
+        const replacedText = text.replace(/\n/g, "<br>");
+        textElement.innerHTML = replacedText
+        this.card_output.addComponent(textElement);
+    }
+
+    add_output_array = (array) => { // Display array between brackets and inside a code block
+        const text = '[\n    ' + array + '\n]';
+        const embededBlock = new EmbededBlock(text);
+        const embededBlockElement = embededBlock.render();
+        this.card_output.addComponent(embededBlockElement);
+    }
+
 }
 
