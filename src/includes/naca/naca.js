@@ -4,6 +4,53 @@ class NACA {
         this.naca_type = naca_type;
         this.naca_digits = naca_digits;
         this.naca_chord = naca_chord;
+
+        this.x = [];
+        this.yt = [];
+        this.yc = [];
+
+        this.y_up_profile = [];
+        this.y_down_profile = [];
+        
+        this.generate_naca_profile();
+    }
+
+    generate_naca_profile() {
+        // Generate x range from 0 to chord with 100 points
+        this.x = Array.from(Array(100).keys()).map(x => x * this.naca_chord / 100);
+
+        // Generate yc 
+        const naca_digits = this.get_naca_digits();
+        const naca_type = this.get_naca_type();
+        const naca_chord = this.get_naca_chord();
+
+        const naca_m = naca_digits[0] / 100;
+        const naca_p = naca_digits[1] / 10;
+
+        for (let i = 0; i < this.x.length; i++) {
+            if (this.x[i] <= naca_p * naca_chord) {
+                this.yc[i] = naca_m / Math.pow(naca_p, 2) * (2 * naca_p * this.x[i] / naca_chord - Math.pow(this.x[i] / naca_chord, 2));
+            } else {
+                this.yc[i] = naca_m / Math.pow(1 - naca_p, 2) * (1 - 2 * naca_p + 2 * naca_p * this.x[i] / naca_chord - Math.pow(this.x[i] / naca_chord, 2));
+            }
+        }
+
+        // Generate yt
+        const naca_t = ( naca_digits[2] * 10 + naca_digits[3] ) / 100;
+
+        for (let i = 0; i < this.x.length; i++) {
+            this.yt[i] = naca_t/0.2 * (0.2969 * Math.sqrt(this.x[i]/naca_chord) - 0.1260 * (this.x[i]/naca_chord) - 0.3516 * Math.pow(this.x[i]/naca_chord, 2) + 0.2843 * Math.pow(this.x[i]/naca_chord, 3) - 0.1015 * Math.pow(this.x[i]/naca_chord, 4));
+        }
+
+        // Generate y_up_profile
+        for (let i = 0; i < this.x.length; i++) {
+            this.y_up_profile[i] = this.yc[i] + this.yt[i];
+        }
+
+        // Generate y_down_profile
+        for (let i = 0; i < this.x.length; i++) {
+            this.y_down_profile[i] = this.yc[i] - this.yt[i];
+        }
     }
 
     get_naca_type() {
@@ -18,46 +65,24 @@ class NACA {
         return this.naca_chord;
     }
 
-    get_naca_top_y(x) {
-        const naca_digits = this.get_naca_digits();
-        const naca_type = this.get_naca_type();
-        const naca_chord = this.get_naca_chord();
-
-        const naca_t = ( naca_digits[2] * 10 + naca_digits[3] ) / 100;
-
-        const y = naca_t/0.2 * (0.2969 * Math.sqrt(x/naca_chord) - 0.1260 * (x/naca_chord) - 0.3516 * Math.pow(x/naca_chord, 2) + 0.2843 * Math.pow(x/naca_chord, 3) - 0.1015 * Math.pow(x/naca_chord, 4));
-
-        return y;
+    get_x() {
+        return this.x;
     }
 
-    get_naca_bottom_y(x) {
-        const naca_digits = this.get_naca_digits();
-        const naca_type = this.get_naca_type();
-        const naca_chord = this.get_naca_chord();
-        
-        const naca_t = ( naca_digits[2] * 10 + naca_digits[3] ) / 100;
-        
-        const y = naca_t/0.2 * (0.2969 * Math.sqrt(x/naca_chord) - 0.1260 * (x/naca_chord) - 0.3516 * Math.pow(x/naca_chord, 2) + 0.2843 * Math.pow(x/naca_chord, 3) - 0.1015 * Math.pow(x/naca_chord, 4));
-
-        return -y;
+    get_yt() {
+        return this.yt;
     }
 
-    get_naca_top_profile() {
-        // Generate x range from 0 to chord with 100 points
-        const x_values = Array.from(Array(100).keys()).map(x => x * this.naca_chord / 100);
-        // Generate y values
-        const y_values = x_values.map(x => this.get_naca_top_y(x));
-        // Return x and y values
-        return [x_values, y_values];
+    get_yc() {
+        return this.yc;
     }
 
-    get_naca_bottom_profile() {
-        // Generate x range from 0 to chord with 100 points
-        const x_values = Array.from(Array(100).keys()).map(x => x * this.naca_chord / 100);
-        // Generate y values
-        const y_values = x_values.map(x => this.get_naca_bottom_y(x));
-        // Return x and y values
-        return [x_values, y_values];
+    get_y_top_profile() {
+        return this.y_up_profile;
+    }
+
+    get_y_bottom_profile() {
+        return this.y_down_profile;
     }
 
 }

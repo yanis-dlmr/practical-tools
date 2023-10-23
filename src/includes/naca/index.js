@@ -79,13 +79,15 @@ class NacaManager {
 
             // Create NACA object
             const naca = new NACA(form_data.naca_types, form_data.digits, 1);
-            const up_profile = naca.get_naca_top_profile();
-            const x_values = up_profile[0];
-            const y_values = [up_profile[1]];
-            const line_names = ['Top NACA ' + form_data.digits + ' profile'];
-            const bottom_profile = naca.get_naca_bottom_profile();
-            y_values.push(bottom_profile[1]);
-            line_names.push('Bottom NACA ' + form_data.digits + ' profile');
+            const x = naca.get_x();
+            const yc = naca.get_yc();
+            const yt = naca.get_yt();
+            const y_up_profile = naca.get_y_up_profile();
+            const y_bottom_profile = naca.get_y_bottom_profile();
+
+            const x_values = [x];
+            const y_values = [yc, yt, y_up_profile, y_bottom_profile];
+            const line_names = ['Camber line', 'Thickness', 'Top profile', 'Bottom profile'];
 
             // Chart box row containing all the charts
             const chart_box_row = document.createElement('div');
