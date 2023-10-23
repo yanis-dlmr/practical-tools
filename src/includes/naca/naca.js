@@ -24,8 +24,8 @@ class NACA {
         const naca_type = this.get_naca_type();
         const naca_chord = this.get_naca_chord();
 
-        const naca_m = naca_digits[0];
-        const naca_p = naca_digits[1];
+        const naca_m = naca_digits[0] / 100;
+        const naca_p = naca_digits[1] / 10;
 
         for (let i = 0; i < this.x.length; i++) {
             if (this.x[i] <= naca_p * naca_chord) {
