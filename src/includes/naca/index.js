@@ -22,7 +22,7 @@ const naca_digits = {
     label: 'Digits',
     id: 'digits',
     unit: '',
-    value: '0012',
+    value: '',
     disabled: true,
 }
 
