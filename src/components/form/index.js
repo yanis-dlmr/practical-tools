@@ -126,6 +126,9 @@ class Form {
         text.classList.add('form-control');
         text.required = true;
         text.value = structure["value"];
+        if ("disabled" in structure && structure["disabled"] == true) {
+            text.disabled = true;
+        }
     
         input.appendChild(span);
         input.appendChild(text);
@@ -137,9 +140,6 @@ class Form {
             input.appendChild(unit);
         };
 
-        if ("disabled" in structure && structure["disabled"] == "true") {
-            text.disabled = true;
-        }
     
         
         var validFeedback = document.createElement('div');
