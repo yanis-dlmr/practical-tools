@@ -79,7 +79,7 @@ class NacaManager {
 
             // Create NACA object
             const naca = new NACA(form_data.naca_types, form_data.digits, 1);
-            const profile = naca.get_naca_profile();
+            const profile = naca.get_naca_top_profile();
             const x_values = profile[0];
             const y_values = [profile[1]];
             const line_names = ['NACA ' + form_data.naca_types + form_data.digits];
