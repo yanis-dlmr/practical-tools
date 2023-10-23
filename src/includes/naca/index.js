@@ -82,7 +82,7 @@ class NacaManager {
             const x = naca.get_x();
             const yc = naca.get_yc();
             const yt = naca.get_yt();
-            const y_up_profile = naca.get_y_up_profile();
+            const y_up_profile = naca.get_y_top_profile();
             const y_bottom_profile = naca.get_y_bottom_profile();
 
             const x_values = [x];
