@@ -71,6 +71,10 @@ class NacaManager {
             if (!form.is_valid()) {
                 return;
             }
+
+            // Get form data
+            const form_data = form.get_data();
+            console.table(form_data);
         });
         
         // Output  

@@ -407,6 +407,18 @@ class Form {
         });
     }
 
+    get_data() {
+        var data = {};
+        for (let i = 0; i < this.form.elements.length; i++) {
+            if (this.form.elements[i].type == 'checkbox') {
+                data[this.form.elements[i].id] = this.form.elements[i].checked;
+            } else {
+                data[this.form.elements[i].id] = this.form.elements[i].value;
+            }
+        }
+        return data;
+    }
+
     is_valid() {
         return this.form.checkValidity();
     }
