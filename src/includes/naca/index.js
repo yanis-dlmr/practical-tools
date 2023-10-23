@@ -85,7 +85,7 @@ class NacaManager {
             const y_up_profile = naca.get_y_top_profile();
             const y_bottom_profile = naca.get_y_bottom_profile();
 
-            const x_values = [x];
+            const x_values = x;
             const y_values = [yc, yt, y_up_profile, y_bottom_profile];
             const line_names = ['Camber line', 'Thickness', 'Top profile', 'Bottom profile'];
 
