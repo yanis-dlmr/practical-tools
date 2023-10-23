@@ -29,7 +29,7 @@ class NACA {
 
         for (let i = 0; i < this.x.length; i++) {
             if (this.x[i] <= naca_p * naca_chord) {
-                this.yc[i] = naca_m * x[i] / Math.pow(naca_p, 2) * (2 * naca_p - this.x[i] / naca_chord);
+                this.yc[i] = naca_m * this.x[i] / Math.pow(naca_p, 2) * (2 * naca_p - this.x[i] / naca_chord);
             } else {
                 this.yc[i] = naca_m * (naca_chord - this.x[i]) / Math.pow(1 - naca_p, 2) * (1 + this.x[i] / naca_chord - 2 * naca_p);
             }
