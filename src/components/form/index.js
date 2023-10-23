@@ -136,6 +136,10 @@ class Form {
             unit.textContent = structure["unit"];
             input.appendChild(unit);
         };
+
+        if ("disabled" in structure && structure["disabled"] == "true") {
+            text.disabled = true;
+        }
     
         
         var validFeedback = document.createElement('div');

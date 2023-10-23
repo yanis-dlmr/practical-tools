@@ -23,6 +23,7 @@ const naca_digits = {
     id: 'digits',
     unit: '',
     value: '0012',
+    disabled: true,
 }
 
 document.addEventListener('DOMContentLoaded', function() {
