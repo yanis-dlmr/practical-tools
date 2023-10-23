@@ -369,7 +369,7 @@ class Form {
 
         
         document.getElementById(structure.id).addEventListener('change', function() {
-            if (this.checked) {
+            if (this.value != '') {
                 if ('friends' in structure) {
                     // uncheck all the friends and put them at not required
                     structure.friends.forEach(friend => {
