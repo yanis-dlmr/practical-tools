@@ -5,6 +5,12 @@ class NACA {
         this.naca_digits = naca_digits;
         this.naca_chord = naca_chord;
 
+        this.naca_m = naca_digits[0] / 100;
+        this.naca_p = naca_digits[1] / 10;
+        this.naca_t = ( naca_digits[2] * 10 + naca_digits[3] ) / 100;
+
+        console.table(this.naca_m, this.naca_p, this.naca_t);
+
         this.x = [];
         this.yt = [];
         this.yc = [];
@@ -21,36 +27,28 @@ class NACA {
         // Generate x range from 0 to chord with 100 points
         this.x = Array.from(Array(100).keys()).map(x => x * this.naca_chord / 100);
 
-        // Generate yc 
-        const naca_digits = this.get_naca_digits();
-        const naca_type = this.get_naca_type();
-        const naca_chord = this.get_naca_chord();
-
-        const naca_m = naca_digits[0] / 100;
-        const naca_p = naca_digits[1] / 10;
-
+        // Generate yc (camber line)
         for (let i = 0; i < this.x.length; i++) {
-            if (this.x[i] <= naca_p * naca_chord) {
-                this.yc[i] = naca_m * this.x[i] / Math.pow(naca_p, 2) * (2 * naca_p - this.x[i] / naca_chord);
+            if (this.x[i] <= this.naca_p * this.naca_chord) {
+                this.yc[i] = this.naca_m * this.x[i] / Math.pow(this.naca_p, 2) * (2 * this.naca_p - this.x[i] / this.naca_chord);
             } else {
-                this.yc[i] = naca_m * (naca_chord - this.x[i]) / Math.pow(1 - naca_p, 2) * (1 + this.x[i] / naca_chord - 2 * naca_p);
+                this.yc[i] = this.naca_m * (this.naca_chord - this.x[i]) / Math.pow(1 - this.naca_p, 2) * (1 + this.x[i] / this.naca_chord - 2 * this.naca_p);
             }
         }
 
         // Generate yt
-        const naca_t = ( naca_digits[2] * 10 + naca_digits[3] ) / 100;
 
         for (let i = 0; i < this.x.length; i++) {
-            this.yt[i] = naca_t/0.2 * (0.2969 * Math.sqrt(this.x[i]/naca_chord) - 0.1260 * (this.x[i]/naca_chord) - 0.3516 * Math.pow(this.x[i]/naca_chord, 2) + 0.2843 * Math.pow(this.x[i]/naca_chord, 3) - 0.1015 * Math.pow(this.x[i]/naca_chord, 4));
+            this.yt[i] = this.naca_t/0.2 * (0.2969 * Math.sqrt(this.x[i]/this.naca_chord) - 0.1260 * (this.x[i]/this.naca_chord) - 0.3516 * Math.pow(this.x[i]/this.naca_chord, 2) + 0.2843 * Math.pow(this.x[i]/this.naca_chord, 3) - 0.1015 * Math.pow(this.x[i]/this.naca_chord, 4));
         }
 
         // Generate xu, yu, xl, yl
         for (let i = 0; i < this.x.length; i++) {
             let theta
-            if (this.x[i] <= naca_p * naca_chord) {
-                theta = Math.atan(2 * naca_m / Math.pow(naca_p, 2) * (naca_p - this.x[i] / naca_chord));
+            if (this.x[i] <= this.naca_p * this.naca_chord) {
+                theta = Math.atan(2 * this.naca_m / Math.pow(this.naca_p, 2) * (this.naca_p - this.x[i] / this.naca_chord));
             } else {
-                theta = Math.atan(2 * naca_m / Math.pow(1 - naca_p, 2) * (naca_p - this.x[i] / naca_chord));
+                theta = Math.atan(2 * this.naca_m / Math.pow(1 - this.naca_p, 2) * (this.naca_p - this.x[i] / this.naca_chord));
             }
             this.xu[i] = this.x[i] - this.yt[i] * Math.sin(theta);
             this.yu[i] = this.yc[i] + this.yt[i] * Math.cos(theta);
