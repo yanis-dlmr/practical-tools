@@ -79,10 +79,12 @@ class NacaManager {
 
             // Create NACA object
             const naca = new NACA(form_data.naca_types, form_data.digits, 1);
-            const profile = naca.get_naca_top_profile();
-            const x_values = profile[0];
-            const y_values = [profile[1]];
-            const line_names = ['NACA ' + form_data.naca_types + form_data.digits];
+            const up_profile = naca.get_naca_top_profile();
+            const x_values = up_profile[0];
+            const y_values = [up_profile[1]];
+            const bottom_profile = naca.get_naca_bottom_profile();
+            y_values.push(bottom_profile[1]);
+            const line_names = ['NACA ' + form_data.digits];
 
             // Chart box row containing all the charts
             const chart_box_row = document.createElement('div');
@@ -90,7 +92,7 @@ class NacaManager {
 
             this.card_output.addComponent(chart_box_row);
 
-            const title = 'NACA ' + form_data.naca_types + form_data.digits;
+            const title = 'NACA ' + form_data.digits;
             const chartjs = new ChartJs(title, x_values, y_values, line_names);
             const chartJsElement = chartjs.render();
 
