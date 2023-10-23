@@ -100,7 +100,7 @@ class NacaManager {
 
             const title = 'NACA ' + form_data.digits;
             const chartjs = new ChartJs(title, x_values, y_values, line_names);
-            const chartJsElement = chartjs.render_lists_x();
+            const chartJsElement = chartjs.render();
 
             const chart_box = document.createElement('div');
             chart_box.appendChild(chartJsElement);
