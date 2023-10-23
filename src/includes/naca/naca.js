@@ -19,12 +19,11 @@ class NACA {
     }
 
     get_naca_profile() {
-        // Generate x range from 0 to chord
-        const x = [...Array(this.naca_chord + 1).keys()];
-        // Generate y range
-        const y = x.map(x => this.get_y(x));
-        // Return profile
-        return [x, y];
+        // Generate x range from 0 to chord with 100 points
+        const x_values = Array.from(Array(100).keys()).map(x => x * this.naca_chord / 100);
+        // Generate y values
+        const y_values = x_values.map(x => x_values);
+        return [x_values, y_values];
     }
 
 }
