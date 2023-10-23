@@ -88,9 +88,9 @@ class NacaManager {
             const x_bottom_profile = naca.get_x_bottom_profile();
             const y_bottom_profile = naca.get_y_bottom_profile();
 
-            const x_values = [x, x, x_top_profile, x_bottom_profile];
-            const y_values = [yc, yt, y_bottom_profile, y_top_profile];
-            const line_names = ['Camber line', 'Thickness', 'Upper surface', 'Lower surface'];
+            const x_values = [x];
+            const y_values = [yc, yt];
+            const line_names = ['Camber line', 'Thickness'];
 
             // Chart box row containing all the charts
             const chart_box_row = document.createElement('div');
@@ -101,6 +101,9 @@ class NacaManager {
             const title = 'NACA ' + form_data.digits;
             const chartjs = new ChartJs(title, x_values, y_values, line_names);
             const chartJsElement = chartjs.render_lists_x();
+
+            chartjs.add_line(x_top_profile, y_top_profile, 'Top profile');
+            chartjs.add_line(x_bottom_profile, y_bottom_profile, 'Bottom profile');
 
             const chart_box = document.createElement('div');
             chart_box.appendChild(chartJsElement);
