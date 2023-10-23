@@ -13,14 +13,21 @@ class ChartJs {
         var ctx = canvas.getContext('2d');
         
         var chartData = {
-            labels: this.x_values,
-            datasets: []
+            labels: this.x_values[0],
+            datasets: [],
         };
         
         for (let i = 0; i < this.line_names.length; i++) {
+            var data = [];
+            for (let j = 0; j < this.x_values[i].length; j++) {
+                data.push({
+                    x: this.x_values[i][j],
+                    y: this.y_values[i][j],
+                });
+            }
             chartData.datasets.unshift({
                 label: this.line_names[i],
-                data: this.y_values[i],
+                data: data,
                 fill: false,
                 tension: 0.1,
                 pointRadius: 0,
@@ -45,26 +52,6 @@ class ChartJs {
         });
         
         return chart.canvas;
-    }
-
-    add_line(x_values, y_values, line_name) { // add line directly to chart
-        var chartData = {
-            labels: x_values,
-            datasets: []
-        };
-
-        chartData.datasets.unshift({
-            label: line_name,
-            data: y_values,
-            fill: false,
-            tension: 0.1,
-            pointRadius: 0,
-        });
-
-        this.chart.data = chartData;
-        this.chart.update();
-
-        return this.chart.canvas;
     }
 
 }
