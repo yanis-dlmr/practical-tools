@@ -8,6 +8,7 @@ class NACA {
         this.naca_m = naca_digits[0] / 100;
         this.naca_p = naca_digits[1] / 10;
         this.naca_t = ( naca_digits[2] * 10 + naca_digits[3] ) / 100;
+        console.log(naca_digits[2], naca_digits[3])
 
         console.table(this.naca_m, this.naca_p, this.naca_t);
 
