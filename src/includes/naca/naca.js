@@ -23,7 +23,7 @@ class NACA {
         const naca_type = this.get_naca_type();
         const naca_chord = this.get_naca_chord();
 
-        const naca_t = naca_digits[2,3] / 100;
+        const naca_t = naca_digits[2,4] / 100;
 
         const y = naca_t/0.2 * (0.2969 * Math.sqrt(x/naca_chord) - 0.1260 * (x/naca_chord) - 0.3516 * Math.pow(x/naca_chord, 2) + 0.2843 * Math.pow(x/naca_chord, 3) - 0.1015 * Math.pow(x/naca_chord, 4));
 
@@ -35,7 +35,7 @@ class NACA {
         const naca_type = this.get_naca_type();
         const naca_chord = this.get_naca_chord();
         
-        const naca_t = naca_digits[2,3] / 100;
+        const naca_t = naca_digits[2,4] / 100;
         
         const y = naca_t/0.2 * (0.2969 * Math.sqrt(x/naca_chord) - 0.1260 * (x/naca_chord) - 0.3516 * Math.pow(x/naca_chord, 2) + 0.2843 * Math.pow(x/naca_chord, 3) - 0.1015 * Math.pow(x/naca_chord, 4));
 
