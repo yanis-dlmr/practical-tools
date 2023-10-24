@@ -35,6 +35,7 @@ class NACA {
         this.x = Array.from(Array(100).keys()).map(x => x * this.naca_chord / 100);
 
         // Generate yc (camber line)
+        const x_origin = this.naca_chord / 2;
         for (let i = 0; i < this.x.length; i++) {
             this.theta[i] = (Math.PI/180) * (180 - Math.acos((this.x[i] - x_origin) / this.naca_chord));;
 
