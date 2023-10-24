@@ -19,6 +19,9 @@ class NACA {
         this.yt = [];
         this.yc = [];
 
+        this.theta = [];
+        this.yc_theta = [];
+
         this.xu = [];
         this.yu = [];
         this.xl = [];
@@ -33,11 +36,15 @@ class NACA {
 
         // Generate yc (camber line)
         for (let i = 0; i < this.x.length; i++) {
+            this.theta[i] = (Math.PI/180) * (180 - Math.acos((this.x[i] - x_origin) / this.naca_chord));;
+
             if (this.x[i] <= this.naca_p * this.naca_chord) {
                 this.yc[i] = this.naca_m * this.x[i] / Math.pow(this.naca_p, 2) * (2 * this.naca_p - this.x[i] / this.naca_chord);
             } else {
                 this.yc[i] = this.naca_m * (this.naca_chord - this.x[i]) / Math.pow(1 - this.naca_p, 2) * (1 + this.x[i] / this.naca_chord - 2 * this.naca_p);
             }
+
+            this.yc_theta[i] = Math.atan(this.yc[i] / this.x[i]);
         }
 
         // Generate yt
@@ -99,6 +106,14 @@ class NACA {
 
     get_y_bottom_profile() {
         return this.yl;
+    }
+
+    get_theta() {
+        return this.theta;
+    }
+
+    get_yc_theta() {
+        return this.yc_theta;
     }
 
 }

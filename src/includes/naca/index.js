@@ -94,7 +94,7 @@ class NacaManager {
             const y_values = [yc, yt, y_bottom_profile, y_top_profile];
             const line_names = ['Camber line', 'Thickness', 'Upper surface', 'Lower surface'];
 
-            this.add_output_title('Graphical representation of the profile')
+            this.add_output_title('Graphical representation of the profile depending on x');
             // Chart box row containing all the charts
             const chart_box_row = document.createElement('div');
             chart_box_row.className = 'row';
@@ -115,6 +115,8 @@ class NacaManager {
             chart_box.style.padding = '1rem';
             chart_box.style.height = '450px';
 
+
+            ////////////////
             this.add_output_title('Different data of the profile');
             for(let i = 0; i < line_names.length; i++) {
                 this.add_output_text(line_names[i] + ' x');
@@ -122,8 +124,38 @@ class NacaManager {
                 this.add_output_text(line_names[i] + ' y');
                 this.add_output_array(y_values[i]);
             }
+
+            ////////////////
+            this.add_output_title('Graphical representation of the profile depending on theta');
+            const theta = naca.get_theta();
+            const yc_theta = naca.get_yc_theta();
+
+            const x_theta = [theta];
+            const y_theta = [yc_theta];
+            const line_names_theta = ['Camber line'];
+
+            // Chart box row containing all the charts
+            const chart_box_row_2 = document.createElement('div');
+            chart_box_row_2.className = 'row';
+
+            this.card_output.addComponent(chart_box_row_2);
+
+            const title_2 = 'NACA ' + form_data.digits;
+            const chartjs_2 = new ChartJs(title_2, x_theta, y_theta, line_names_theta);
+            const chartJsElement_2 = chartjs_2.render();
+
+            const chart_box_2 = document.createElement('div');
+            chart_box_2.appendChild(chartJsElement_2);
+            chartJsElement_2.style.width = '100%';
+            chartJsElement_2.width = '100%';
+            chart_box_row_2.appendChild(chart_box_2);
+
+            chart_box_2.classList.add('col-md-12');
+            chart_box_2.style.padding = '1rem';
+            chart_box_2.style.height = '450px';
+
             
-            // Add end 
+            //////////////// Add end 
             this.add_output_title('End of the processing !');
 
             // Display highlighted code
