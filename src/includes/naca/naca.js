@@ -38,7 +38,7 @@ class NACA {
         const x_origin = this.naca_chord / 2;
         for (let i = 0; i < this.x.length; i++) {
             // compute theta for point on the circle with x position and only y positive
-            this.theta[i] = Math.acos(1 - 2 * this.x[i] / this.naca_chord) * 180 / Math.PI;
+            this.theta[i] = Math.acos(2 * this.x[i] / this.naca_chord - 1) * 180 / Math.PI;
 
             if (this.x[i] <= this.naca_p * this.naca_chord) {
                 this.yc[i] = this.naca_m * this.x[i] / Math.pow(this.naca_p, 2) * (2 * this.naca_p - this.x[i] / this.naca_chord);
