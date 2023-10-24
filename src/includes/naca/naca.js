@@ -47,9 +47,9 @@ class NACA {
             }
 
             if (this.theta[i] < 90) {
-                this.yc_theta[i] = -Math.atan(this.yc[i] / (this.x[i] - x_origin));
+                this.yc_theta[i] = -Math.atan(this.yc[i] / (x_origin - this.x[i]));
             } else {
-                this.yc_theta[i] = Math.atan(this.yc[i] / (this.x[i] - x_origin));
+                this.yc_theta[i] = Math.atan(this.yc[i] / (x_origin - this.x[i]));
             }
         }
 
