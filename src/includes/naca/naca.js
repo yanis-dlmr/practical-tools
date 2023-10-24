@@ -29,8 +29,6 @@ class NACA {
         this.yl = [];
         
         this.generate_naca_profile();
-
-        this.compute_lift_coefficient();
     }
 
     generate_naca_profile() {
@@ -82,15 +80,6 @@ class NACA {
             this.xl[i] = this.x[i] + this.yt[i] * Math.sin(theta);
             this.yl[i] = this.yc[i] - this.yt[i] * Math.cos(theta);
         }
-    }
-
-    compute_lift_coefficient() {
-        // Compute lift coefficient
-        this.cl = 0;
-        for (let i = 0; i < this.x.length - 1; i++) {
-            this.cl += 0.5 * (this.yu[i] + this.yu[i + 1]) * (this.xu[i + 1] - this.xu[i]);
-        }
-        console.log(this.cl);
     }
 
     get_naca_type() {
