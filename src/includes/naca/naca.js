@@ -58,7 +58,7 @@ class NACA {
 
             this.yc_theta[i] = this.yc[i] / Math.sin(this.theta[i]);
             this.theta[i] = this.theta[i] * 180 / Math.PI;
-            this.theta_rounded = Math.round(this.theta[i] * 100) / 100;
+            this.theta_rounded[i] = Math.round(this.theta[i] * 100) / 100;
         }
 
         // Generate yt
