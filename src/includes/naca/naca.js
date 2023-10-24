@@ -36,9 +36,7 @@ class NACA {
 
         // Generate yc (camber line)
         const x_origin = this.naca_chord / 2;
-        for (let i = 0; i < this.x.length; i++) {
-            // compute theta for point on the circle with x position and only y positive
-            this.theta[i] = Math.acos(2 * this.x[i] / this.naca_chord - 1) * 180 / Math.PI;
+        for (let i = 0; i < this.x.length; i++) {            
 
             if (this.x[i] <= this.naca_p * this.naca_chord) {
                 this.yc[i] = this.naca_m * this.x[i] / Math.pow(this.naca_p, 2) * (2 * this.naca_p - this.x[i] / this.naca_chord);
@@ -47,10 +45,11 @@ class NACA {
             }
 
             if (this.theta[i] < 90) {
-                this.yc_theta[i] = -Math.atan(this.yc[i] / (x_origin - this.x[i]));
+                this.theta[i] = Math.atan(this.yc[i] / (this.x[i] - x_origin));
             } else {
-                this.yc_theta[i] = Math.atan(this.yc[i] / (x_origin - this.x[i]));
+                this.theta[i] = Math.atan(this.yc[i] / (this.x[i] - x_origin)) + Math.PI;
             }
+            this.yc_theta[i] = this.yc[i] / Math.cos(this.theta[i]);
         }
 
         // Generate yt
