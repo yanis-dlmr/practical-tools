@@ -138,7 +138,7 @@ class NacaManager {
 
             var angle_range = [];
             for (let i = 0; i < 180; i+=0.01) {
-                angle_range.push(Math.round(this.i * 100) / 100);
+                angle_range.push(Math.round(i * 100) / 100);
             }
 
             const x_theta = [theta];
