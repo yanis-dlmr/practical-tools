@@ -137,7 +137,7 @@ class NacaManager {
             const yc_theta = naca.get_yc_theta();
 
             var angle_range = [];
-            for (let i = 0; i < 180; i++) {
+            for (let i = 0; i < 180; i+=0.01) {
                 angle_range.push(i);
             }
 
