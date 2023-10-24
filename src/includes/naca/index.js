@@ -127,7 +127,7 @@ class NacaManager {
 
             ////////////////
             this.add_output_title('Graphical representation of the profile depending on theta');
-            const theta = naca.get_theta();
+            const theta = naca.get_theta_rounded();
             const yc_theta = naca.get_yc_theta();
 
             const x_theta = [theta];

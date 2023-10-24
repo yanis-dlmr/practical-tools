@@ -20,6 +20,7 @@ class NACA {
         this.yc = [];
 
         this.theta = [];
+        this.theta_rounded = [];
         this.yc_theta = [];
 
         this.xu = [];
@@ -54,9 +55,10 @@ class NACA {
             } else {
                 this.theta[i] = Math.PI / 2;
             }
-            
+
             this.yc_theta[i] = this.yc[i] / Math.sin(this.theta[i]);
             this.theta[i] = this.theta[i] * 180 / Math.PI;
+            this.theta_rounded = Math.round(this.theta[i] * 100) / 100;
         }
 
         // Generate yt
@@ -122,6 +124,10 @@ class NACA {
 
     get_theta() {
         return this.theta;
+    }
+
+    get_theta_rounded() {
+        return this.theta_rounded;
     }
 
     get_yc_theta() {
