@@ -90,7 +90,13 @@ class NacaManager {
             const x_bottom_profile = naca.get_x_bottom_profile();
             const y_bottom_profile = naca.get_y_bottom_profile();
 
+            var x_range = [];
+            for (let i = 0; i < 1; i += 0.05) {
+                x_range.push(i);
+            }
+
             const x_values = [x, x, x_top_profile, x_bottom_profile];
+            const x_labels = x_range;
             const y_values = [yc, yt, y_bottom_profile, y_top_profile];
             const line_names = ['Camber line', 'Thickness', 'Upper surface', 'Lower surface'];
 
@@ -102,7 +108,7 @@ class NacaManager {
             this.card_output.addComponent(chart_box_row);
 
             const title = 'NACA ' + form_data.digits;
-            const chartjs = new ChartJs(title, x_values, y_values, line_names);
+            const chartjs = new ChartJs(title, x_labels, x_values, y_values, line_names);
             const chartJsElement = chartjs.render();
 
             const chart_box = document.createElement('div');
@@ -136,7 +142,7 @@ class NacaManager {
             }
 
             const x_theta = [theta];
-            const x_labels = angle_range;
+            const x_labels_2 = angle_range;
             const y_theta = [yc_theta];
             const line_names_theta = ['Camber line'];
 
