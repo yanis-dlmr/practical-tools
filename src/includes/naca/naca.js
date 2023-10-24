@@ -47,9 +47,10 @@ class NACA {
             if (this.theta[i] < 90) {
                 this.theta[i] = Math.atan(this.yc[i] / (this.x[i] - x_origin));
             } else {
-                this.theta[i] = Math.atan(this.yc[i] / (this.x[i] - x_origin)) + Math.PI;
+                this.theta[i] = Math.atan(this.yc[i] / (this.x[i] - x_origin)) - Math.PI;
             }
-            this.yc_theta[i] = this.yc[i] / Math.cos(this.theta[i]);
+            this.yc_theta[i] = this.yc[i] / Math.sin(this.theta[i]);
+            this.theta[i] = this.theta[i] * 180 / Math.PI;
         }
 
         // Generate yt
