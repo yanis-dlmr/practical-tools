@@ -1,10 +1,12 @@
 class ChartJs {
-    constructor(title, x_labels, x_values, y_values, line_names) {
+    constructor(title, x_labels, x_values, y_values, line_names, x_label, y_label) {
         this.title = title;
         this.x_labels = x_labels;
         this.x_values = x_values;
         this.y_values = y_values;
         this.line_names = line_names;
+        this.x_label = x_label;
+        this.y_label = y_label;
     }
 
     render() {
@@ -44,6 +46,24 @@ class ChartJs {
             },
             responsive: true,
             maintainAspectRatio: false,
+            scales: {
+                x: {
+                    type: 'linear',
+                    position: 'bottom',
+                    title: {
+                        display: true,
+                        text: this.x_label,
+                    },
+                },
+                y: {
+                    type: 'linear',
+                    position: 'left',
+                    title: {
+                        display: true,
+                        text: this.y_label,
+                    },
+                },
+            },
         };
 
         var chart = new Chart(ctx, {

@@ -94,6 +94,9 @@ class NacaManager {
             for (let i = 0; i < 1; i += 0.01) {
                 x_range.push(Math.round(i * 100) / 100);
             }
+            
+            const x_label = 'x (m)';
+            const y_label = 'z (m)';
 
             const x_values = [x, x, x_top_profile, x_bottom_profile];
             const x_labels = x_range;
@@ -108,7 +111,7 @@ class NacaManager {
             this.card_output.addComponent(chart_box_row);
 
             const title = 'NACA ' + form_data.digits;
-            const chartjs = new ChartJs(title, x_labels, x_values, y_values, line_names);
+            const chartjs = new ChartJs(title, x_labels, x_values, y_values, line_names, x_label, y_label);
             const chartJsElement = chartjs.render();
 
             const chart_box = document.createElement('div');
@@ -146,6 +149,9 @@ class NacaManager {
             const y_theta = [yc_theta];
             const line_names_theta = ['Camber line'];
 
+            const x_label_2 = 'theta (°)';
+            const y_label_2 = 'radius (m)';
+
             // Chart box row containing all the charts
             const chart_box_row_2 = document.createElement('div');
             chart_box_row_2.className = 'row';
@@ -153,7 +159,7 @@ class NacaManager {
             this.card_output.addComponent(chart_box_row_2);
 
             const title_2 = 'NACA ' + form_data.digits;
-            const chartjs_2 = new ChartJs(title_2, x_labels_2, x_theta, y_theta, line_names_theta);
+            const chartjs_2 = new ChartJs(title_2, x_labels_2, x_theta, y_theta, line_names_theta, x_label_2, y_label_2);
             const chartJsElement_2 = chartjs_2.render();
 
             const chart_box_2 = document.createElement('div');
