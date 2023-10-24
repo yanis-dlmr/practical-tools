@@ -1,6 +1,7 @@
 class ChartJs {
-    constructor(title, x_values, y_values, line_names) {
+    constructor(title, x_labels, x_values, y_values, line_names) {
         this.title = title;
+        this.x_labels = x_labels;
         this.x_values = x_values;
         this.y_values = y_values;
         this.line_names = line_names;
@@ -13,7 +14,7 @@ class ChartJs {
         var ctx = canvas.getContext('2d');
         
         var chartData = {
-            labels: this.x_values[0],
+            labels: this.x_labels,
             datasets: [],
         };
         

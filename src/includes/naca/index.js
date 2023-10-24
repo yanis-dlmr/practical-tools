@@ -130,7 +130,13 @@ class NacaManager {
             const theta = naca.get_theta_rounded();
             const yc_theta = naca.get_yc_theta();
 
+            var angle_range = [];
+            for (let i = 0; i < 180; i++) {
+                angle_range.push(i);
+            }
+
             const x_theta = [theta];
+            const x_labels = angle_range;
             const y_theta = [yc_theta];
             const line_names_theta = ['Camber line'];
 
@@ -141,7 +147,7 @@ class NacaManager {
             this.card_output.addComponent(chart_box_row_2);
 
             const title_2 = 'NACA ' + form_data.digits;
-            const chartjs_2 = new ChartJs(title_2, x_theta, y_theta, line_names_theta);
+            const chartjs_2 = new ChartJs(title_2, x_labels, x_theta, y_theta, line_names_theta);
             const chartJsElement_2 = chartjs_2.render();
 
             const chart_box_2 = document.createElement('div');

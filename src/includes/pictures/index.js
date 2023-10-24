@@ -681,7 +681,7 @@ class PictureManager {
                     x_values.push(x_value);
                 }
 
-                const chartjs = new ChartJs(title, x_values, y_values, line_names);
+                const chartjs = new ChartJs(title, x_values[0], x_values, y_values, line_names);
                 const chartJsElement = chartjs.render();
 
                 const chart_box = document.createElement('div');
