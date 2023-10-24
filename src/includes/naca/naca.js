@@ -46,7 +46,7 @@ class NACA {
                 this.yc[i] = this.naca_m * (this.naca_chord - this.x[i]) / Math.pow(1 - this.naca_p, 2) * (1 + this.x[i] / this.naca_chord - 2 * this.naca_p);
             }
 
-            this.yc_theta[i] = Math.atan(this.yc[i] / this.x[i]);
+            this.yc_theta[i] = Math.atan(this.yc[i] / (this.x[i] - x_origin));
         }
 
         // Generate yt
