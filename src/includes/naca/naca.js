@@ -47,8 +47,14 @@ class NACA {
             let x_0 = this.x[i];
             let y = this.yc[i];
             let x = x_origin - x_0;
-            let theta = Math.atan(y / x);
-            this.theta[i] = theta;
+            if (x > 0) {
+                this.theta[i] = Math.atan(y / x);
+            } else if (x < 0) {
+                this.theta[i] = Math.atan(y / x) + Math.PI;
+            } else {
+                this.theta[i] = Math.PI / 2;
+            }
+            
             this.yc_theta[i] = this.yc[i] / Math.sin(this.theta[i]);
             this.theta[i] = this.theta[i] * 180 / Math.PI;
         }
