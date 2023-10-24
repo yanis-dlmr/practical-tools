@@ -91,8 +91,8 @@ class NacaManager {
             const y_bottom_profile = naca.get_y_bottom_profile();
 
             var x_range = [];
-            for (let i = 0; i < 1; i += 0.05) {
-                x_range.push(i);
+            for (let i = 0; i < 1; i += 0.01) {
+                x_range.push(Math.round(i * 100) / 100);
             }
 
             const x_values = [x, x, x_top_profile, x_bottom_profile];
