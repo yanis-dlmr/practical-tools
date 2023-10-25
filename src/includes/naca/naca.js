@@ -29,6 +29,8 @@ class NACA {
         this.yl = [];
         
         this.generate_naca_profile();
+
+        this.compute_lift_coefficient();
     }
 
     generate_naca_profile() {
