@@ -93,7 +93,8 @@ class NACA {
 
         // alpha - A0 = 1/pi * integral(0, pi, dz/dx(theta) dtheta)
         let integral = 0;
-        for (let angle = 0; angle <= 180; angle += 0.1) {
+        for (let i = 0; i <= this.theta.length; i++) {
+            let angle = this.theta[i];
             let theta = angle * Math.PI / 180;
             let dz_dx = this.yc_theta[angle] * Math.cos(theta) - this.yt[angle] * Math.sin(theta);
             integral += dz_dx * 0.1;
@@ -102,7 +103,8 @@ class NACA {
 
         // A1 = 2/pi * integral(0, pi, dz/dx(theta) * cos(theta) dtheta)
         integral = 0;
-        for (let angle = 0; angle <= 180; angle += 0.1) {
+        for (let i = 0; i <= this.theta.length; i++) {
+            let angle = this.theta[i];
             let theta = angle * Math.PI / 180;
             let dz_dx = this.yc_theta[angle] * Math.cos(theta) - this.yt[angle] * Math.sin(theta);
             integral += dz_dx * Math.cos(theta) * 0.1;
@@ -111,7 +113,8 @@ class NACA {
 
         // A2 = 2/pi * integral(0, pi, dz/dx(theta) * cos(2*theta) dtheta)
         integral = 0;
-        for (let angle = 0; angle <= 180; angle += 0.1) {
+        for (let i = 0; i <= this.theta.length; i++) {
+            let angle = this.theta[i];
             let theta = angle * Math.PI / 180;
             let dz_dx = this.yc_theta[angle] * Math.cos(theta) - this.yt[angle] * Math.sin(theta);
             integral += dz_dx * Math.cos(2 * theta) * 0.1;
