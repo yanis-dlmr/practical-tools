@@ -28,6 +28,8 @@ class NACA {
         this.yu = [];
         this.xl = [];
         this.yl = [];
+
+        this.lift_coefficients = [];
         
         this.generate_naca_profile();
 
@@ -140,13 +142,17 @@ class NACA {
         }
         A2 = 2 * integral / Math.PI;
 
-        const angle = 2 * Math.PI / 180;
-        const A0 = angle - alpha0;
-
-        console.log("A0: " + A0, "A1: " + A1, "A2: " + A2);
-        const lift_coefficient = Math.PI * (2*A0 + A1);
-
-        console.log("Lift coefficient: " + lift_coefficient);
+        for (let angle = -30; angle <= 30; angle += 1) {
+            let _angle = angle * Math.PI / 180;
+            const A0 = _angle - alpha0;
+            this.lift_coefficients.push({
+                "angle": angle,
+                "A0": A0,
+                "A1": A1,
+                "A2": A2,
+                "lift_coefficient": Math.PI * (2*A0 + A1)
+            });
+        }
     }
 
     get_naca_type() {
@@ -203,6 +209,10 @@ class NACA {
 
     get_dyc_dx_theta() {
         return this.dyc_dx_theta;
+    }
+
+    get_lift_coefficients() {
+        return this.lift_coefficients;
     }
 
 }

@@ -7,6 +7,7 @@ import { Form } from '/src/components/form/index.js';
 import { EmbededBlock } from '/src/components/embeded_block/index.js';
 import { ChartJs } from '/src/components/chartjs/index.js';
 import { NACA } from '/src/includes/naca/naca.js';
+import { Table } from '/src/components/table/index.js';
 
 const naca_types = {
     label: 'Profile shape',
@@ -175,6 +176,23 @@ class NacaManager {
             chart_box_2.style.padding = '1rem';
             chart_box_2.style.height = '450px';
 
+            ////////////////
+
+            const lift_coefficients = naca.get_lift_coefficients();
+            this.add_output_title('Lift coefficients');
+            const headers = ['Alpha (°)', 'Cl', 'A0', 'A1', 'A2'];
+            let data = [];
+            for (let i = 0; i < lift_coefficients.length; i++) {
+                angle = lift_coefficients[i]["angle"];
+                cl = lift_coefficients[i]["lift_coefficient"];
+                a0 = lift_coefficients[i]["A0"];
+                a1 = lift_coefficients[i]["A1"];
+                a2 = lift_coefficients[i]["A2"];
+
+                data.push([angle, cl, a0, a1, a2]);
+            }
+            this.add_output_table(headers, data);
+
             
             //////////////// Add end 
             this.add_output_title('End of the processing !');
@@ -220,6 +238,12 @@ class NacaManager {
         const embededBlock = new EmbededBlock(text);
         const embededBlockElement = embededBlock.render();
         this.card_output.addComponent(embededBlockElement);
+    }
+
+    add_output_table = (headers, data) => {
+        const table = new Table(headers, data);
+        const tableElement = table.render();
+        this.card_output.addComponent(tableElement);
     }
 
 }
