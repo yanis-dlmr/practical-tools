@@ -121,6 +121,7 @@ class NACA {
         const angle = 0;
         const A0 = angle - alpha0;
 
+        console.log("A0: " + A0, "A1: " + A1, "A2: " + A2);
         const lift_coefficient = Math.PI * (2*A0 + A1);
 
         console.log("Lift coefficient: " + lift_coefficient);
