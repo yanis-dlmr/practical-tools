@@ -98,32 +98,45 @@ class NACA {
 
         // alpha - A0 = 1/pi * integral(0, pi, dz/dx(theta) dtheta)
         let integral = 0;
-        for (let i = 1; i <= this.theta.length - 1; i++) {
-            let angle = this.theta[i];
-            let theta = angle * Math.PI / 180;
-            let dz_dx = this.dyc_dx_theta[i];
-            integral += dz_dx;
+        for (let i = 1; i <= this.theta.length - 2; i++) {
+            let angle_1 = this.theta[i];
+            let theta_1 = angle_1 * Math.PI / 180;
+            let angle_2 = this.theta[i+1];
+            let theta_2 = angle_2 * Math.PI / 180;
+            let delta_theta = theta_2 - theta_1;
+            let avg_dz_dx = (this.dyc_dx_theta[i+1] + this.dyc_dx_theta[i]) / 2;
+            integral += avg_dz_dx * delta_theta;
         }
         alpha0 = integral / Math.PI;
 
         // A1 = 2/pi * integral(0, pi, dz/dx(theta) * cos(theta) dtheta)
         integral = 0;
-        for (let i = 1; i <= this.theta.length - 1; i++) {
-            let angle = this.theta[i];
-            let theta = angle * Math.PI / 180;
-            let dz_dx = this.dyc_dx_theta[i];
-            integral += dz_dx * Math.cos(theta);
+        for (let i = 1; i <= this.theta.length - 2; i++) {
+            let angle_1 = this.theta[i];
+            let theta_1 = angle_1 * Math.PI / 180;
+            let angle_2 = this.theta[i+1];
+            let theta_2 = angle_2 * Math.PI / 180;
+            let delta_theta = theta_2 - theta_1;
+            z_1 = this.dyc_dx_theta[i] * Math.cos(theta);
+            z_2 = this.dyc_dx_theta[i+1] * Math.cos(theta);
+            let avg_z = (z_1 + z_2) / 2;
+            integral += avg_z * delta_theta;
         }
         A1 = 2 * integral / Math.PI;
 
         // A2 = 2/pi * integral(0, pi, dz/dx(theta) * cos(2*theta) dtheta)
         integral = 0;
-        for (let i = 1; i <= this.theta.length - 1; i++) {
-            let angle = this.theta[i];
-            let theta = angle * Math.PI / 180;
-            console.log(theta)
+        for (let i = 1; i <= this.theta.length - 2; i++) {
+            let angle_1 = this.theta[i];
+            let theta_1 = angle_1 * Math.PI / 180;
+            let angle_2 = this.theta[i+1];
+            let theta_2 = angle_2 * Math.PI / 180;
+            let delta_theta = theta_2 - theta_1;
             let dz_dx = this.dyc_dx_theta[i];
-            integral += dz_dx * Math.cos(2 * theta);
+            z_1 = dz_dx * Math.cos(2 * theta_1);
+            z_2 = dz_dx * Math.cos(2 * theta_2);
+            let avg_z = (z_1 + z_2) / 2;
+            integral += avg_z * delta_theta;
         }
         A2 = 2 * integral / Math.PI;
 
