@@ -9,6 +9,7 @@ class Table {
         const table = document.createElement('table');
         table.classList.add('table', 'table-hover', 'table-sm', 'table-bordered', 'table-striped', 'table-responsive');
         table.classList.add('table-light');
+        table.classList.add('mx-auto');
 
         const thead = document.createElement('thead');
         const tr = document.createElement('tr');
