@@ -140,7 +140,7 @@ class NACA {
         }
         A2 = 2 * integral / Math.PI;
 
-        const angle = 2;
+        const angle = 2 * Math.PI / 180;
         const A0 = angle - alpha0;
 
         console.log("A0: " + A0, "A1: " + A1, "A2: " + A2);
