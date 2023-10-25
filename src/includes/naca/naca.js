@@ -117,8 +117,8 @@ class NACA {
             let angle_2 = this.theta[i+1];
             let theta_2 = angle_2 * Math.PI / 180;
             let delta_theta = theta_2 - theta_1;
-            z_1 = this.dyc_dx_theta[i] * Math.cos(theta);
-            z_2 = this.dyc_dx_theta[i+1] * Math.cos(theta);
+            z_1 = this.dyc_dx_theta[i] * Math.cos(theta_1);
+            z_2 = this.dyc_dx_theta[i+1] * Math.cos(theta_2);
             let avg_z = (z_1 + z_2) / 2;
             integral += avg_z * delta_theta;
         }
