@@ -82,6 +82,48 @@ class NACA {
         }
     }
 
+    compute_lift_coefficient() {
+
+        // alpha - A0
+        let alpha0;
+        let A1;
+        let A2;
+
+        // alpha - A0 = 1/pi * integral(0, pi, dz/dx(theta) dtheta)
+        let integral = 0;
+        for (let angle = 0; angle <= 180; angle += 0.1) {
+            let theta = angle * Math.PI / 180;
+            let dz_dx = this.yc_theta[angle] * Math.cos(theta) - this.yt[angle] * Math.sin(theta);
+            integral += dz_dx * 0.1;
+        }
+        alpha0 = integral / Math.PI;
+
+        // A1 = 2/pi * integral(0, pi, dz/dx(theta) * cos(theta) dtheta)
+        integral = 0;
+        for (let angle = 0; angle <= 180; angle += 0.1) {
+            let theta = angle * Math.PI / 180;
+            let dz_dx = this.yc_theta[angle] * Math.cos(theta) - this.yt[angle] * Math.sin(theta);
+            integral += dz_dx * Math.cos(theta) * 0.1;
+        }
+        A1 = 2 * integral / Math.PI;
+
+        // A2 = 2/pi * integral(0, pi, dz/dx(theta) * cos(2*theta) dtheta)
+        integral = 0;
+        for (let angle = 0; angle <= 180; angle += 0.1) {
+            let theta = angle * Math.PI / 180;
+            let dz_dx = this.yc_theta[angle] * Math.cos(theta) - this.yt[angle] * Math.sin(theta);
+            integral += dz_dx * Math.cos(2 * theta) * 0.1;
+        }
+        A2 = 2 * integral / Math.PI;
+
+        const angle = 0;
+        const A0 = angle - alpha0;
+
+        const lift_coefficient = Math.PI * (2*A0 + A1);
+
+        console.log("Lift coefficient: " + lift_coefficient);
+    }
+
     get_naca_type() {
         return this.naca_type;
     }

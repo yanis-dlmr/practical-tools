@@ -101,7 +101,7 @@ class NacaManager {
             const x_values = [x, x, x_top_profile, x_bottom_profile];
             const x_labels = x_range;
             const y_values = [yc, yt, y_bottom_profile, y_top_profile];
-            const line_names = ['Camber line', 'Thickness', 'Upper surface', 'Lower surface'];
+            const line_names = ['Camber line', 'Thickness', 'Lower surface', 'Upper surface'];
 
             this.add_output_title('Graphical representation of the profile depending on x');
             // Chart box row containing all the charts
