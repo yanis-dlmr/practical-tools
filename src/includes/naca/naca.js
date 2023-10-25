@@ -23,6 +23,7 @@ class NACA {
         this.theta_rounded = [];
         this.yc_theta = [];
         this.dyc_dx_theta = [];
+        this.dyc_dx_theta_vrai = [];
 
         this.xu = [];
         this.yu = [];
@@ -34,6 +35,10 @@ class NACA {
         this.generate_naca_profile();
 
         this.compute_lift_coefficient();
+
+        for (let i = 0; i < this.dyc_dx_theta.length; i++) {
+            console.log(this.dyc_dx_theta[i], this.dyc_dx_theta_vrai[i]);
+        }
     }
 
     generate_naca_profile() {
@@ -71,7 +76,6 @@ class NACA {
         }
 
         // Generate yt
-
         for (let i = 0; i < this.x.length; i++) {
             this.yt[i] = this.naca_t/0.2 * (0.2969 * Math.sqrt(this.x[i]/this.naca_chord) - 0.1260 * (this.x[i]/this.naca_chord) - 0.3516 * Math.pow(this.x[i]/this.naca_chord, 2) + 0.2843 * Math.pow(this.x[i]/this.naca_chord, 3) - 0.1015 * Math.pow(this.x[i]/this.naca_chord, 4));
         }
@@ -80,6 +84,7 @@ class NACA {
         for (let i = 0; i < this.x.length; i++) {
             let theta
             if (this.x[i] <= this.naca_p * this.naca_chord) {
+                this.dyc_dx_theta_vrai[i] = 2 * this.naca_m / Math.pow(this.naca_p, 2) * (this.naca_p - this.x[i] / this.naca_chord);
                 theta = Math.atan(2 * this.naca_m / Math.pow(this.naca_p, 2) * (this.naca_p - this.x[i] / this.naca_chord));
             } else {
                 theta = Math.atan(2 * this.naca_m / Math.pow(1 - this.naca_p, 2) * (this.naca_p - this.x[i] / this.naca_chord));
