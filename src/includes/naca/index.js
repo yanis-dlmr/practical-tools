@@ -182,6 +182,8 @@ class NacaManager {
             this.add_output_title('Lift coefficients');
             const headers = ['Alpha (°)', 'Cl', 'A0', 'A1', 'A2'];
             let data = [];
+            let lift_angles = [];
+            let lift_coefficients_values = [];
             for (let i = 0; i < lift_coefficients.length; i++) {
                 let angle = lift_coefficients[i]["angle"];
                 let cl = lift_coefficients[i]["lift_coefficient"];
@@ -189,10 +191,40 @@ class NacaManager {
                 let a1 = lift_coefficients[i]["A1"];
                 let a2 = lift_coefficients[i]["A2"];
 
+                lift_angles.push(angle);
+                lift_coefficients_values.push(cl);
+
                 data.push([angle, cl, a0, a1, a2]);
             }
             this.add_output_table(headers, data);
 
+            // on graph
+            const x_labels_3 = [lift_angles]
+            const x_lift = [lift_angles];
+            const y_lift = [lift_coefficients_values];
+            const line_names_lift = ['Cl'];
+            const x_label_3 = 'alpha (°)';
+            const y_label_3 = 'Cl';
+
+            // Chart box row containing all the charts
+            const chart_box_row_3 = document.createElement('div');
+            chart_box_row_3.className = 'row';
+
+            this.card_output.addComponent(chart_box_row_3);
+
+            const title_3 = 'Lift coefficients';
+            const chartjs_3 = new ChartJs(title_3, x_labels_3, x_lift, y_lift, line_names_lift, x_label_3, y_label_3);
+            const chartJsElement_3 = chartjs_3.render();
+
+            const chart_box_3 = document.createElement('div');
+            chart_box_3.appendChild(chartJsElement_3);
+            chartJsElement_3.style.width = '100%';
+            chartJsElement_3.width = '100%';
+            chart_box_row_3.appendChild(chart_box_3);
+
+            chart_box_3.classList.add('col-md-12');
+            chart_box_3.style.padding = '1rem';
+            chart_box_3.style.height = '450px';
             
             //////////////// Add end 
             this.add_output_title('End of the processing !');
@@ -241,9 +273,12 @@ class NacaManager {
     }
 
     add_output_table = (headers, data) => {
+        const div = document.createElement('div');
+        div.classList.add('text-center');
+        this.card_output.addComponent(div);
         const table = new Table(headers, data);
         const tableElement = table.render();
-        this.card_output.addComponent(tableElement);
+        div.appendChild(tableElement);
     }
 
 }
