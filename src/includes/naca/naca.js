@@ -22,6 +22,7 @@ class NACA {
         this.theta = [];
         this.theta_rounded = [];
         this.yc_theta = [];
+        this.dyc_dx_theta = [];
 
         this.xu = [];
         this.yu = [];
@@ -61,6 +62,10 @@ class NACA {
             this.yc_theta[i] = this.yc[i] / Math.sin(this.theta[i]);
             this.theta[i] = this.theta[i] * 180 / Math.PI;
             this.theta_rounded[i] = Math.round(this.theta[i] * 100) / 100;
+
+            if ( i > 0 ) {
+                this.dyc_dx_theta[i] = (this.yc[i] - this.yc[i-1]) / (this.x[i] - this.x[i-1]);
+            }
         }
 
         // Generate yt
@@ -93,11 +98,11 @@ class NACA {
 
         // alpha - A0 = 1/pi * integral(0, pi, dz/dx(theta) dtheta)
         let integral = 0;
-        for (let i = 0; i <= this.theta.length; i++) {
+        for (let i = 0; i <= this.theta.length - 1; i++) {
             let angle = this.theta[i];
             let theta = angle * Math.PI / 180;
-            let dz_dx = this.yc_theta[i] * Math.cos(theta) - this.yt[i] * Math.sin(theta);
-            integral += dz_dx * 0.1;
+            let dz_dx = this.dyc_dx_theta[i + 1];
+            integral += dz_dx;
         }
         alpha0 = integral / Math.PI;
 
@@ -106,8 +111,8 @@ class NACA {
         for (let i = 0; i <= this.theta.length; i++) {
             let angle = this.theta[i];
             let theta = angle * Math.PI / 180;
-            let dz_dx = this.yc_theta[i] * Math.cos(theta) - this.yt[i] * Math.sin(theta);
-            integral += dz_dx * Math.cos(theta) * 0.1;
+            let dz_dx = this.dyc_dx_theta[i + 1];
+            integral += dz_dx * Math.cos(theta);
         }
         A1 = 2 * integral / Math.PI;
 
@@ -116,8 +121,8 @@ class NACA {
         for (let i = 0; i <= this.theta.length; i++) {
             let angle = this.theta[i];
             let theta = angle * Math.PI / 180;
-            let dz_dx = this.yc_theta[i] * Math.cos(theta) - this.yt[i] * Math.sin(theta);
-            integral += dz_dx * Math.cos(2 * theta) * 0.1;
+            let dz_dx = this.dyc_dx_theta[i + 1];
+            integral += dz_dx * Math.cos(2 * theta);
         }
         A2 = 2 * integral / Math.PI;
 
