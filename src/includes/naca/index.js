@@ -274,7 +274,10 @@ class NacaManager {
 
     add_output_table = (headers, data) => {
         const div = document.createElement('div');
-        div.classList.add('text-center');
+        div.style.display = 'flex';
+        div.style.justifyContent = 'center';
+        div.style.alignItems = 'center';
+        div.style.width = '100%';
         this.card_output.addComponent(div);
         const table = new Table(headers, data);
         const tableElement = table.render();
