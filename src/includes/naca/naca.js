@@ -187,6 +187,10 @@ class NACA {
         return this.yc_theta;
     }
 
+    get_dyc_dx_theta() {
+        return this.dyc_dx_theta;
+    }
+
 }
 
 export { NACA };

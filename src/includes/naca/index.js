@@ -138,16 +138,19 @@ class NacaManager {
             this.add_output_title('Graphical representation of the profile depending on theta');
             const theta = naca.get_theta_rounded();
             const yc_theta = naca.get_yc_theta();
+            const dyc_dx_theta = naca.get_dyc_dx_theta();
+
+            const theta_dyx = theta.slice(1, theta.length);
 
             var angle_range = [];
             for (let i = 0; i < 180; i+=0.01) {
                 angle_range.push(Math.round(i * 100) / 100);
             }
 
-            const x_theta = [theta];
+            const x_theta = [theta, theta_dyx];
             const x_labels_2 = angle_range;
-            const y_theta = [yc_theta];
-            const line_names_theta = ['Camber line'];
+            const y_theta = [yc_theta, dyc_dx_theta];
+            const line_names_theta = ['Camber line', 'dz/dx(theta)'];
 
             const x_label_2 = 'theta (°)';
             const y_label_2 = 'radius (m)';
