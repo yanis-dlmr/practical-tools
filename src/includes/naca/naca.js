@@ -122,6 +122,7 @@ class NACA {
         for (let i = 1; i <= this.theta.length - 1; i++) {
             let angle = this.theta[i];
             let theta = angle * Math.PI / 180;
+            console.log(theta)
             let dz_dx = this.dyc_dx_theta[i];
             integral += dz_dx * Math.cos(2 * theta);
         }
