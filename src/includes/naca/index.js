@@ -183,11 +183,11 @@ class NacaManager {
             const headers = ['Alpha (°)', 'Cl', 'A0', 'A1', 'A2'];
             let data = [];
             for (let i = 0; i < lift_coefficients.length; i++) {
-                angle = lift_coefficients[i]["angle"];
-                cl = lift_coefficients[i]["lift_coefficient"];
-                a0 = lift_coefficients[i]["A0"];
-                a1 = lift_coefficients[i]["A1"];
-                a2 = lift_coefficients[i]["A2"];
+                let angle = lift_coefficients[i]["angle"];
+                let cl = lift_coefficients[i]["lift_coefficient"];
+                let a0 = lift_coefficients[i]["A0"];
+                let a1 = lift_coefficients[i]["A1"];
+                let a2 = lift_coefficients[i]["A2"];
 
                 data.push([angle, cl, a0, a1, a2]);
             }
