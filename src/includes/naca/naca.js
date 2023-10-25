@@ -102,7 +102,6 @@ class NACA {
             let angle = this.theta[i];
             let theta = angle * Math.PI / 180;
             let dz_dx = this.dyc_dx_theta[i];
-            console.log (dz_dx);
             integral += dz_dx;
         }
         alpha0 = integral / Math.PI;
