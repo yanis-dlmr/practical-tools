@@ -187,6 +187,8 @@ class NacaManager {
             let data_2 = [];
             let alpha_list = [];
             let cl_list = [];
+            let cm_ab_list = [];
+            let cm_c4_list = [];
             let a0_list = [];
             let a1_list = [];
             let a2_list = [];
@@ -194,12 +196,16 @@ class NacaManager {
             for (let i = 0; i < lift_coefficients.length; i++) {
                 let angle = lift_coefficients[i]["angle"];
                 let cl = lift_coefficients[i]["lift_coefficient"];
+                let cm_ab = lift_coefficients[i]["cm_ab"];
+                let cm_c4 = lift_coefficients[i]["cm_c4"];
                 let a0 = lift_coefficients[i]["A0"];
                 let a1 = lift_coefficients[i]["A1"];
                 let a2 = lift_coefficients[i]["A2"];
 
                 alpha_list.push(angle + '°');
                 cl_list.push(cl);
+                cm_ab_list.push(cm_ab);
+                cm_c4_list.push(cm_c4);
                 a0_list.push(a0);
                 a1_list.push(a1);
                 a2_list.push(a2);
@@ -212,11 +218,13 @@ class NacaManager {
 
             data_2.push(alpha_list);
             data_2.push(cl_list);
+            data_2.push(cm_ab_list);
+            data_2.push(cm_c4_list);
             data_2.push(a0_list);
             data_2.push(a1_list);
             data_2.push(a2_list);
 
-            const headers_2 = ['Angle', '$C_L$', '$A_0$', '$A_1$', '$A_2$'];
+            const headers_2 = ['Angle', '$C_L$', '$C_{M,AB}$', '$C_{M,c/4}$', '$A_0$', '$A_1$', '$A_2$'];
 
             this.add_output_title('Table of the lift coefficients depending on the angle of attack')
             this.add_output_table_left_headers(headers_2, data_2);

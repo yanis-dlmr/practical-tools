@@ -143,7 +143,9 @@ class NACA {
                 "A0": A0,
                 "A1": A1,
                 "A2": A2,
-                "lift_coefficient": Math.PI * (2*A0 + A1)
+                "lift_coefficient": Math.PI * (2*A0 + A1),
+                "cm_ab": - Math.PI / 2 * (A0 + A1 - 1/2 * A2),
+                "cm_c4": Math.PI / 4 * (A2 - A1)
             });
         }
     }
