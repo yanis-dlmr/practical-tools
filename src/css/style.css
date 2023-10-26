@@ -70,3 +70,8 @@ h4{
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
+
+.table-dark-custom{
+    background-color: #0d1117;
+    color: #79c0ff;
+}
