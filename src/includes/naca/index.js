@@ -179,7 +179,6 @@ class NacaManager {
             ////////////////
 
             const lift_coefficients = naca.get_lift_coefficients();
-            this.add_output_title('Lift coefficients');
             const headers = ['Alpha (°)', 'Cl', 'A0', 'A1', 'A2'];
             let data = [];
             let lift_angles = [];
