@@ -36,7 +36,7 @@ class Table {
 
     render_left_headers() { // put headers on the left side of the table instead of the top
         const table = document.createElement('table');
-        table.classList.add('table', 'table-responsive', 'table-dark', 'table-dark-custom', 'table-borderless');
+        table.classList.add('table', 'table-responsive', 'table-dark-custom', 'table-borderless');
 
         const thead = document.createElement('thead');
         let i = 0;
@@ -58,12 +58,12 @@ class Table {
         for (let i = 1; i < this.data.length; i++) {
             const tr = document.createElement('tr');
             const th = document.createElement('th');
-            th.classList.add('table-header-cell');
+            th.classList.add('table-header-cell', 'table-body-cell');
             th.innerHTML = this.headers[i];
             tr.appendChild(th);
             for (let j = 0; j < this.data[i].length; j++) {
                 const td = document.createElement('td');
-                td.classList.add('table-value-cell');
+                td.classList.add('table-value-cell', 'table-body-cell');
                 //rounded data
                 td.innerHTML = Math.round(this.data[i][j] * 1000) / 1000;
                 tr.appendChild(td);
