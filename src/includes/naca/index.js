@@ -23,7 +23,7 @@ const naca_types = {
 const naca_digits = {
     label: 'Digits',
     id: 'digits',
-    unit: '',
+    unit: 'MPXX',
     value: '',
     disabled: true,
 }
@@ -72,7 +72,7 @@ class NacaManager {
             required: 'true'
         });
         form.add_switch_input({
-            label: 'Thick profile',
+            label: 'Thick profile (Not implemented)',
             id: 'thick_profile',
             value: 'false',
             checked: 'false',
