@@ -217,6 +217,9 @@ class Form {
         if ("required" in structure && structure.required == "true") {
             input.required = true;
         }
+        if ("disabled" in structure && structure.disabled == "true") {
+            input.disabled = true;
+        }
         
         var validFeedback = document.createElement('div');
         validFeedback.classList.add('valid-feedback');

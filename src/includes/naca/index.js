@@ -64,6 +64,21 @@ class NacaManager {
 
         form.add_select_input(naca_types)
         form.add_text_input(naca_digits);
+        form.add_switch_input({
+            label: 'Slim profile',
+            id: 'slim_profile',
+            value: 'true',
+            checked: 'true',
+            required: 'true'
+        });
+        form.add_switch_input({
+            label: 'Thick profile',
+            id: 'thick_profile',
+            value: 'false',
+            checked: 'false',
+            required: 'true',
+            disabled: 'true'
+        });
         
         const validation_button = form.get_validation_button();
         card.addComponent(validation_button);
