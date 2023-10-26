@@ -135,7 +135,7 @@ class NACA {
         }
         A2 = 2 * integral / Math.PI;
 
-        for (let angle = -30; angle <= 30; angle += 1) {
+        for (let angle = -20; angle <= 20; angle += 1) {
             let _angle = angle * Math.PI / 180;
             const A0 = _angle - alpha0;
             this.lift_coefficients.push({
