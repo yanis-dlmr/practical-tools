@@ -74,16 +74,16 @@ h4{
 .table-dark-custom{
     background-color: #0d1117;
     border-radius: 0.5rem;
-    font-size: .875em;
     font-family: "Sans Mono", "Consolas", "Courier", monospace;
     padding: 1em;
 }
 
 .table-value-cell{
     color: #79c0ff;
+    font-size: .875em;
 }
 
 .table-header-cell{
     color: #c9d1d9;
-    font-size: 1em !important;
+    font-size: 1em;
 }
