@@ -140,7 +140,6 @@ class NacaManager {
             const theta = naca.get_theta_rounded();
             const yc_theta = naca.get_yc_theta();
             const dyc_dx_theta = naca.get_dyc_dx_theta();
-            const dyc_dx_theta_vrai = naca.get_dyc_dx_theta_vrai();
 
             const theta_dyx = theta.slice(1, theta.length);
 
@@ -149,10 +148,10 @@ class NacaManager {
                 angle_range.push(Math.round(i * 100) / 100);
             }
 
-            const x_theta = [theta, theta_dyx, theta_dyx];
+            const x_theta = [theta, theta_dyx];
             const x_labels_2 = angle_range;
-            const y_theta = [yc_theta, dyc_dx_theta, dyc_dx_theta_vrai];
-            const line_names_theta = ['Camber line', 'dz/dx(theta)', 'dz/dx(theta) vrai'];
+            const y_theta = [yc_theta, dyc_dx_theta];
+            const line_names_theta = ['Camber line', 'dz/dx(theta)'];
 
             const x_label_2 = 'theta (°)';
             const y_label_2 = 'radius (m)';
