@@ -216,6 +216,10 @@ class NACA {
         return this.dyc_dx_theta;
     }
 
+    get_dyc_dx_theta_vrai() {
+        return this.dyc_dx_theta_vrai;
+    }
+
     get_lift_coefficients() {
         return this.lift_coefficients;
     }
