@@ -199,7 +199,7 @@ class NacaManager {
                 let a1 = lift_coefficients[i]["A1"];
                 let a2 = lift_coefficients[i]["A2"];
 
-                alpha_list.push(angle);
+                alpha_list.push(angle + '°');
                 cl_list.push(cl);
                 a0_list.push(a0);
                 a1_list.push(a1);
