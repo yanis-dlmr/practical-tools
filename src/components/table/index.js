@@ -7,7 +7,7 @@ class Table {
 
     render() {
         const table = document.createElement('table');
-        table.classList.add('table', 'table-responsive', 'table-hover', 'table-bordered');
+        table.classList.add('table', 'table-responsive', 'table-hover');
 
         const thead = document.createElement('thead');
         const tr = document.createElement('tr');
@@ -36,7 +36,7 @@ class Table {
 
     render_left_headers() { // put headers on the left side of the table instead of the top
         const table = document.createElement('table');
-        table.classList.add('table', 'table-responsive', 'table-hover', 'table-bordered');
+        table.classList.add('table', 'table-responsive', 'table-hover');
 
         const thead = document.createElement('thead');
         let i = 0;

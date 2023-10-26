@@ -314,8 +314,8 @@ class NacaManager {
         div.style.display = 'flex';
         div.style.justifyContent = 'center';
         div.style.alignItems = 'center';
-        div.style.paddingLeft = '10%';
-        div.style.paddingRight = '10%';
+        div.style.paddingLeft = '10px';
+        div.style.paddingRight = '10px';
         this.card_output.addComponent(div);
         const table = new Table(headers, data, true);
         const tableElement = table.render_left_headers();
