@@ -311,10 +311,6 @@ class NacaManager {
 
     add_output_table_left_headers = (headers, data) => {
         const div = document.createElement('div');
-        div.style.display = 'flex';
-        div.style.justifyContent = 'center';
-        div.style.alignItems = 'center';
-        div.style.maxWidth = '50vw';
         this.card_output.addComponent(div);
         const table = new Table(headers, data, true);
         const tableElement = table.render_left_headers();
