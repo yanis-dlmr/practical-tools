@@ -184,6 +184,14 @@ class NacaManager {
             let data = [];
             let lift_angles = [];
             let lift_coefficients_values = [];
+
+            let data_2 = [];
+            let alpha_list = [];
+            let cl_list = [];
+            let a0_list = [];
+            let a1_list = [];
+            let a2_list = [];
+
             for (let i = 0; i < lift_coefficients.length; i++) {
                 let angle = lift_coefficients[i]["angle"];
                 let cl = lift_coefficients[i]["lift_coefficient"];
@@ -191,11 +199,28 @@ class NacaManager {
                 let a1 = lift_coefficients[i]["A1"];
                 let a2 = lift_coefficients[i]["A2"];
 
+                alpha_list.push(angle);
+                cl_list.push(cl);
+                a0_list.push(a0);
+                a1_list.push(a1);
+                a2_list.push(a2);
+
                 lift_angles.push(angle);
                 lift_coefficients_values.push(cl);
 
                 data.push([angle, cl, a0, a1, a2]);
             }
+
+            data_2.push(alpha_list);
+            data_2.push(cl_list);
+            data_2.push(a0_list);
+            data_2.push(a1_list);
+            data_2.push(a2_list);
+
+            const headers_2 = ['Alpha (°)', 'Cl', 'A0', 'A1', 'A2'];
+
+            this.add_output_table_left_headers(headers_2, data_2);
+
             this.add_output_table(headers, data);
 
             // on graph
@@ -281,6 +306,18 @@ class NacaManager {
         this.card_output.addComponent(div);
         const table = new Table(headers, data);
         const tableElement = table.render();
+        div.appendChild(tableElement);
+    }
+
+    add_output_table_left_headers = (headers, data) => {
+        const div = document.createElement('div');
+        div.style.display = 'flex';
+        div.style.justifyContent = 'center';
+        div.style.alignItems = 'center';
+        div.style.maxWidth = '50vw';
+        this.card_output.addComponent(div);
+        const table = new Table(headers, data, true);
+        const tableElement = table.render_left_headers();
         div.appendChild(tableElement);
     }
 
