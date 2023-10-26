@@ -85,5 +85,5 @@ h4{
 
 .table-header-cell{
     color: #c9d1d9;
-    font-size: 1em;
+    font-size: 1em !important;
 }
