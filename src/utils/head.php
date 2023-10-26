@@ -17,10 +17,7 @@
             inlineMath: [
                 ['$', '$'],
                 ['\\(', '\\)']
-            ],
-            svg: {
-                fontCache: 'global'
-            }
+            ]
         }
     };
 </script>
