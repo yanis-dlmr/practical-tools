@@ -216,7 +216,7 @@ class NacaManager {
             data_2.push(a1_list);
             data_2.push(a2_list);
 
-            const headers_2 = ['Angle', 'Cl', 'A0', 'A1', 'A2'];
+            const headers_2 = ['Angle', '$C_L$', '$A_0$', '$A_1$', '$A_2$'];
 
             this.add_output_title('Table of the lift coefficients depending on the angle of attack')
             this.add_output_table_left_headers(headers_2, data_2);
