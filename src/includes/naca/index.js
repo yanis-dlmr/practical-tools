@@ -219,10 +219,11 @@ class NacaManager {
 
             const headers_2 = ['Angle', 'Cl', 'A0', 'A1', 'A2'];
 
+            this.add_output_text('Table of the lift coefficients depending on the angle of attack and the coefficients A0, A1 and A2 used in the calculation of the lift coefficient')
             this.add_output_table_left_headers(headers_2, data_2);
 
             //this.add_output_table(headers, data);
-
+            this.add_output_text('Graphical representation of the lift coefficients depending on the angle of attack, it doesn\'t take into account the stall angle $\alpha_{stall}$')
             // on graph
             const x_labels_3 = [lift_angles]
             const x_lift = [lift_angles];
