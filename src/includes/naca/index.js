@@ -277,6 +277,7 @@ class NacaManager {
         div.style.display = 'flex';
         div.style.justifyContent = 'center';
         div.style.alignItems = 'center';
+        div.style.maxWidth = '0.5vw';
         this.card_output.addComponent(div);
         const table = new Table(headers, data);
         const tableElement = table.render();

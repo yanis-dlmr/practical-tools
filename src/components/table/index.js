@@ -7,7 +7,7 @@ class Table {
 
     render() {
         const table = document.createElement('table');
-        table.classList.add('table');
+        table.classList.add('table', 'table-striped', 'table-hover');
 
         const thead = document.createElement('thead');
         const tr = document.createElement('tr');
