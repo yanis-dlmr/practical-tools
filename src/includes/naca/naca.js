@@ -77,7 +77,6 @@ class NACA {
             } else {
                 theta = Math.atan(2 * this.naca_m / Math.pow(1 - this.naca_p, 2) * (this.naca_p - this.x[i] / this.naca_chord));
             }
-            console.log(this.theta[i], theta)
             this.xu[i] = this.x[i] - this.yt[i] * Math.sin(theta);
             this.yu[i] = this.yc[i] + this.yt[i] * Math.cos(theta);
             this.xl[i] = this.x[i] + this.yt[i] * Math.sin(theta);

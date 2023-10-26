@@ -7,7 +7,7 @@ class Table {
 
     render() {
         const table = document.createElement('table');
-        table.classList.add('table', 'table-hover', 'table-sm', 'table-bordered', 'table-striped', 'table-responsive');
+        table.classList.add('table', 'table-hover', 'table-sm', 'table-bordered', 'table-striped');
         table.classList.add('table-light');
         table.classList.add('mx-auto');
 
