@@ -87,6 +87,13 @@ h4{
     color: #c9d1d9;
 }
 
-.table-body-cell{
-    border-top: 1rem solid #c9d1d9;
+table.table-bordered{
+    border:1px solid #c9d1d9;
+    margin-top:20px;
+}
+table.table-bordered > thead > tr > th{
+    border:1px solid #c9d1d9;
+}
+table.table-bordered > tbody > tr > td{
+    border:1px solid #c9d1d9;
 }

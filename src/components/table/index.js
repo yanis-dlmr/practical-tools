@@ -58,12 +58,12 @@ class Table {
         for (let i = 1; i < this.data.length; i++) {
             const tr = document.createElement('tr');
             const th = document.createElement('th');
-            th.classList.add('table-header-cell', 'table-body-cell');
+            th.classList.add('table-header-cell');
             th.innerHTML = this.headers[i];
             tr.appendChild(th);
             for (let j = 0; j < this.data[i].length; j++) {
                 const td = document.createElement('td');
-                td.classList.add('table-value-cell', 'table-body-cell');
+                td.classList.add('table-value-cell');
                 //rounded data
                 td.innerHTML = Math.round(this.data[i][j] * 1000) / 1000;
                 tr.appendChild(td);
