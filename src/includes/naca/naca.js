@@ -84,11 +84,12 @@ class NACA {
         for (let i = 0; i < this.x.length; i++) {
             let theta
             if (this.x[i] <= this.naca_p * this.naca_chord) {
+                this.dyc_dx_theta_vrai[i] = 2 * this.naca_m / Math.pow(this.naca_p, 2) * (this.naca_p - this.x[i] / this.naca_chord);
                 theta = Math.atan(2 * this.naca_m / Math.pow(this.naca_p, 2) * (this.naca_p - this.x[i] / this.naca_chord));
             } else {
+                this.dyc_dx_theta_vrai[i] = 2 * this.naca_m / Math.pow(1 - this.naca_p, 2) * (this.naca_p - this.x[i] / this.naca_chord);
                 theta = Math.atan(2 * this.naca_m / Math.pow(1 - this.naca_p, 2) * (this.naca_p - this.x[i] / this.naca_chord));
             }
-            this.dyc_dx_theta_vrai[i] = 2 * this.naca_m / Math.pow(this.naca_p, 2) * (this.naca_p - this.x[i] / this.naca_chord);
             this.xu[i] = this.x[i] - this.yt[i] * Math.sin(theta);
             this.yu[i] = this.yc[i] + this.yt[i] * Math.cos(theta);
             this.xl[i] = this.x[i] + this.yt[i] * Math.sin(theta);
