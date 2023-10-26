@@ -38,8 +38,23 @@ class Table {
         const table = document.createElement('table');
         table.classList.add('table', 'table-responsive', 'table-hover', 'table-light');
 
+        const thead = document.createElement('thead');
+        let i = 0;
+        const tr = document.createElement('tr');
+        const th = document.createElement('th');
+        th.innerHTML = this.headers[i];
+        tr.appendChild(th);
+        for (let j = 0; j < this.data[i].length; j++) {
+            const td = document.createElement('td');
+            //rounded data
+            td.innerHTML = Math.round(this.data[i][j] * 100) / 100;
+            tr.appendChild(td);
+        }
+        thead.appendChild(tr);
+        table.appendChild(thead);
+
         const tbody = document.createElement('tbody');
-        for (let i = 0; i < this.data.length; i++) {
+        for (let i = 1; i < this.data.length; i++) {
             const tr = document.createElement('tr');
             const th = document.createElement('th');
             th.innerHTML = this.headers[i];

@@ -221,7 +221,7 @@ class NacaManager {
 
             this.add_output_table_left_headers(headers_2, data_2);
 
-            this.add_output_table(headers, data);
+            //this.add_output_table(headers, data);
 
             // on graph
             const x_labels_3 = [lift_angles]
