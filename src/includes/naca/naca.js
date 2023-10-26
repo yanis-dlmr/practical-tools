@@ -54,7 +54,7 @@ class NACA {
 
             let x_0 = this.x[i];
             let y = this.yc[i];
-            let x = x_origin - x_0;
+            let x = x_0 - x_origin;
             if (x > 0) {
                 this.theta[i] = Math.atan(y / x);
             } else if (x < 0) {
