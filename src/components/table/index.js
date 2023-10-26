@@ -36,7 +36,7 @@ class Table {
 
     render_left_headers() { // put headers on the left side of the table instead of the top
         const table = document.createElement('table');
-        table.classList.add('table', 'table-striped', 'table-hover');
+        table.classList.add('table', 'table-responsive', 'table-hover', 'table-light');
 
         const tbody = document.createElement('tbody');
         for (let i = 0; i < this.data.length; i++) {
