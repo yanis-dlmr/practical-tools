@@ -46,7 +46,8 @@ class Table {
             tr.appendChild(th);
             for (let j = 0; j < this.data[i].length; j++) {
                 const td = document.createElement('td');
-                td.innerHTML = this.data[i][j];
+                //rounded data
+                td.innerHTML = Math.round(this.data[i][j] * 100) / 100;
                 tr.appendChild(td);
             }
             tbody.appendChild(tr);
