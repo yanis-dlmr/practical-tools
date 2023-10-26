@@ -23,7 +23,7 @@ const naca_types = {
 const naca_digits = {
     label: 'Digits',
     id: 'digits',
-    unit: 'MPXX',
+    unit: '',
     value: '',
     disabled: true,
 }
