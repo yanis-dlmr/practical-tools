@@ -43,6 +43,7 @@ class Table {
         const tr = document.createElement('tr');
         const th = document.createElement('th');
         th.innerHTML = this.headers[i];
+        th.classList.add('table-header-cell');
         tr.appendChild(th);
         for (let j = 0; j < this.data[i].length; j++) {
             const th = document.createElement('th');
@@ -57,6 +58,7 @@ class Table {
         for (let i = 1; i < this.data.length; i++) {
             const tr = document.createElement('tr');
             const th = document.createElement('th');
+            th.classList.add('table-header-cell');
             th.innerHTML = this.headers[i];
             tr.appendChild(th);
             for (let j = 0; j < this.data[i].length; j++) {
