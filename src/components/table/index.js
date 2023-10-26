@@ -34,24 +34,21 @@ class Table {
         return table;
     }
 
-    render_left_headers() {
+    render_left_headers() { // put headers on the left side of the table instead of the top
         const table = document.createElement('table');
         table.classList.add('table', 'table-striped', 'table-hover');
-
-        const thead = document.createElement('thead');
-        const tr = document.createElement('tr');
-        const th = document.createElement('th');
-        th.innerHTML = this.headers[0];
-        tr.appendChild(th);
-        thead.appendChild(tr);
-        table.appendChild(thead);
 
         const tbody = document.createElement('tbody');
         for (let i = 0; i < this.data.length; i++) {
             const tr = document.createElement('tr');
-            const td = document.createElement('td');
-            td.innerHTML = this.data[i][0];
-            tr.appendChild(td);
+            const th = document.createElement('th');
+            th.innerHTML = this.headers[i];
+            tr.appendChild(th);
+            for (let j = 0; j < this.data[i].length; j++) {
+                const td = document.createElement('td');
+                td.innerHTML = this.data[i][j];
+                tr.appendChild(td);
+            }
             tbody.appendChild(tr);
         }
         table.appendChild(tbody);
