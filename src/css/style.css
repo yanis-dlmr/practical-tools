@@ -72,7 +72,7 @@ h4{
 }
 
 .table-dark-custom{
-    background-color: #0d1117;
+    background-color: #0d1117 !important;
     border-radius: 0.5rem;
     font-size: .875em;
     font-family: "Sans Mono", "Consolas", "Courier", monospace;
