@@ -74,7 +74,7 @@ h4{
 .table-dark-custom{
     background-color: #0d1117;
     border-radius: 0.5rem;
-    font-size: .875em;
+    font-size: 1em;
     font-family: "Sans Mono", "Consolas", "Courier", monospace;
     padding: 1em;
 }
@@ -85,15 +85,4 @@ h4{
 
 .table-header-cell{
     color: #c9d1d9;
-}
-
-table.table-bordered{
-    border:1px solid #c9d1d9;
-    margin-top:20px;
-}
-table.table-bordered > thead > tr > th{
-    border:1px solid #c9d1d9;
-}
-table.table-bordered > tbody > tr > td{
-    border:1px solid #c9d1d9;
 }
