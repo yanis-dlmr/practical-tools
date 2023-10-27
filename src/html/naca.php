@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Practical Tools | Airfoil</title>
+        <title>Practical Tools | Naca</title>
         <?php include '../utils/head.php'; ?>
     </head>
 
