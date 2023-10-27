@@ -2,13 +2,13 @@ const customElements = ['mjx-container'];
 
 
 export default {
-    base: '/src/documentation/',
+    base: '/documentation/',
     ignoreDeadLinks: true,
-    outDir: '../src/documentation',
+    outDir: '../documentation',
     title: 'Documentation',
     description: 'Trying to make a perfect documentation to make that website amazing!',
     themeConfig: {
-        logo: '/logo.ico',
+        logo: '/docs/public/logo.ico',
         sidebar: {
             '/': getMainSidebar(),
         },
