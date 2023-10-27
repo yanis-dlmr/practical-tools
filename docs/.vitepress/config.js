@@ -2,7 +2,7 @@ const customElements = ['mjx-container'];
 
 
 export default {
-    base: '/documentation/',
+    base: '/src/documentation/',
     ignoreDeadLinks: true,
     outDir: '../src/documentation',
     title: 'Documentation',
