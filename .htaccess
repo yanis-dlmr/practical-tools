@@ -13,4 +13,4 @@ RewriteRule ^(.*)$ src/html/$1.php [L]
 # Remove /src from /src/documentation/...
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^src/(.*)$ $1 [L]
+RewriteRule ^src/documentation/(.*)$ /documentation/$1 [L]
