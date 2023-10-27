@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Practical Tools | NACA profiles</title>
+        <title>Practical Tools | Airfoil</title>
         <?php include '../utils/head.php'; ?>
     </head>
 
@@ -11,6 +11,6 @@
         <?php include '../utils/header.php'; ?>
     </body>
 
-    <script type="module" src="/src/includes/naca/index.js"></script>
+    <script type="module" src="/src/includes/airfoil/index.js"></script>
 
 </html>

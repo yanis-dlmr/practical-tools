@@ -1,0 +1,8 @@
+:root {
+    --vp-c-brand: #2061ae;
+    --vp-c-brand-light: #2061ae;
+}
+
+mjx-container>svg {
+    display: inline-block;
+}

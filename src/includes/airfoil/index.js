@@ -6,7 +6,7 @@ import { Select } from '/src/components/select/index.js';
 import { Form } from '/src/components/form/index.js';
 import { EmbededBlock } from '/src/components/embeded_block/index.js';
 import { ChartJs } from '/src/components/chartjs/index.js';
-import { NACA } from '/src/includes/naca/naca.js';
+import { NACA } from '/src/includes/airfoil/naca.js';
 import { Table } from '/src/components/table/index.js';
 
 const naca_types = {
