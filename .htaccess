@@ -1,0 +1,11 @@
+RewriteEngine On
+RewriteBase /
+
+# Setup main page at src/html/home.php
+RewriteCond %{REQUEST_URI} ^/$
+RewriteRule ^(.*)$ src/html/home.php [L]
+
+# Remove src/html and .php extension
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ src/html/$1.php [L]
