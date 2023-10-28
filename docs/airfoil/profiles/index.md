@@ -15,10 +15,12 @@ Different profiles are available in the tool. Each profile is detailed:
 
 The notations used in the profiles are detailed:
 
+For the parameters:
 - $m$ is the maximum camber of the profile
 - $p$ is the position of the maximum camber of the profile
 - $t$ is the maximum thickness of the profile in percent of the chord
 
+For the computations:
 - $x$ is the abscissa of the point on the profile
 - $c$ is the chord of the profile
 - $y_c$ is the ordinate of the camber line
@@ -28,6 +30,7 @@ The notations used in the profiles are detailed:
 - $(x_L, y_L)$ is the point on the lower surface of the profile
 - $\alpha$ is the angle of attack
 
+For the output values:
 - $C_P$ is the pressure coefficient
 - $C_L$ is the lift coefficient
 - $C_D$ is the drag coefficient
