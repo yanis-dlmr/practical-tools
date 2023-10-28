@@ -21,11 +21,11 @@ features:
     title: About the project
     details: What is that website about?
     link: ./about/
-  - icon: ⚡️
+  - icon: 📸
     title: Pictures treatment
     details: How work the pictures treatment?
     link: ./pictures-treatment/
-  - icon: 📈
+  - icon: 🛫
     title: Airfoil analysis
     details: How it works?
     link: ./airfoil/
