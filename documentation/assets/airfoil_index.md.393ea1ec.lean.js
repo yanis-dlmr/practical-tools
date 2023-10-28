@@ -1,1 +1,0 @@
-import{_ as e,o as t,c as a}from"./chunks/framework.b543e390.js";const _=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"airfoil/index.md","filePath":"airfoil/index.md"}'),r={name:"airfoil/index.md"};function i(o,n,s,c,d,f){return t(),a("div")}const l=e(r,[["render",i]]);export{_ as __pageData,l as default};

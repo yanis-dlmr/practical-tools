@@ -1,0 +1,1 @@
+import{_ as t,o as e,c as r}from"./chunks/framework.b543e390.js";const _=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"airfoil/theory/thick.md","filePath":"airfoil/theory/thick.md"}'),a={name:"airfoil/theory/thick.md"};function o(i,c,s,n,f,h){return e(),r("div")}const d=t(a,[["render",o]]);export{_ as __pageData,d as default};

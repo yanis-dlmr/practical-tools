@@ -61,8 +61,8 @@ function getMainSidebar() {
         {
             text: 'Pictures Treatment',
             items: [
-                { text: 'Overview', link: '/pictures-treatment/' },
-                { text: 'Details', link: '/pictures-treatment/details' },
+                { text: 'Overview', link: '/pictures/' },
+                { text: 'Details', link: '/pictures/details' },
             ],
         },
         {
@@ -74,8 +74,17 @@ function getMainSidebar() {
                     collapsed: true,
                     items: [
                         { text: 'Overview', link: '/airfoil/profiles/' },
-                        { text: 'Thin profiles', link: '/airfoil/profiles/thin' },
-                        { text: 'Thick profiles', link: '/airfoil/profiles/thick' },
+                        { text: 'NACA 4-digits', link: '/airfoil/profiles/naca-4-digits' },
+                        { text: 'NACA 5-digits', link: '/airfoil/profiles/naca-5-digits' },
+                    ],
+                },
+                {
+                    text: 'Theory',
+                    collapsed: true,
+                    items: [
+                        { text: 'Overview', link: '/airfoil/theory/' },
+                        { text: 'Thin profiles', link: '/airfoil/theory/thin' },
+                        { text: 'Thick profiles', link: '/airfoil/theory/thick' },
                     ],
                 },
             ],
