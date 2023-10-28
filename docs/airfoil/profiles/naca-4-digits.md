@@ -13,7 +13,7 @@ The camber line is defined by the following equation:
 $$
 y_c = \left\{
     \begin{array}{ll}
-        m\frac{x}{p^2} \left( 2p - \frac{x}{c}), & \text{if } 0 \leq x \lt pc \\
+        m\frac{x}{p^2} \left( 2p - \frac{x}{c} \right), & \text{if } 0 \leq x \lt pc \\
         m\frac{c-x}{(1-p)^2} \left( 1 + \frac{x}{c} - 2 p \right), & \text{if } pc \leq x \leq c
     \end{array}
 \right.
