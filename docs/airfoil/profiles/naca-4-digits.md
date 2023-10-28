@@ -3,9 +3,18 @@
 ## Introduction
 
 The NACA 4-digits profile is a profile generated from 4 digits $MPXX$:
-- The first digit $M$ is the maximum camber of the profile in percent of the chord, with $100 \times m = M$ ;
-- The second digit $P$ is the position of the maximum camber of the profile in tenths of the chord, with $10 \times p = P$ ;
-- The third and fourth digits $XX$ are the maximum thickness of the profile in percent of the chord, with $100 \times t = XX$.
+- The first digit $M$ is the maximum camber of the profile in percent of the chord, with:
+$$
+100 \times m = M
+$$
+- The second digit $P$ is the position of the maximum camber of the profile in tenths of the chord, with: 
+$$
+10 \times p = P
+$$ 
+- The third and fourth digits $XX$ are the maximum thickness of the profile in percent of the chord, with: 
+$$
+100 \times t = XX
+$$
 
 ## Camber line
 
