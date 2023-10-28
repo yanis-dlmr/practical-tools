@@ -8,7 +8,7 @@ export default {
     title: 'Documentation',
     description: 'Trying to make a perfect documentation to make that website amazing!',
     themeConfig: {
-        logo: '/docs/public/logo.ico',
+        logo: '/favicon.ico',
         sidebar: {
             '/': getMainSidebar(),
         },
