@@ -79,12 +79,12 @@ function getMainSidebar() {
                     ],
                 },
                 {
-                    text: 'Theory',
+                    text: 'Theorical approach',
                     collapsed: true,
                     items: [
-                        { text: 'Overview', link: '/airfoil/theory/' },
-                        { text: 'Thin profiles', link: '/airfoil/theory/thin' },
-                        { text: 'Thick profiles', link: '/airfoil/theory/thick' },
+                        { text: 'Overview', link: '/airfoil/theorical-approach/' },
+                        { text: 'Thin profiles', link: '/airfoil/theorical-approach/thin' },
+                        { text: 'Thick profiles', link: '/airfoil/theorical-approach/thick' },
                     ],
                 },
             ],
