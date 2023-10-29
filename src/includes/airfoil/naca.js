@@ -66,10 +66,7 @@ class NACA {
                 this.theta[i] = Math.PI / 2;
             }
 
-            this.yc_theta[i] = this.yc[i] / Math.sin(this.theta[i]);
-            if (this.theta[i] == Math.PI / 2) {
-                this.yc_theta[i] = this.yc[i];
-            }
+            this.yc_theta[i] = Math.sqrt(Math.pow(this.yc[i], 2) + Math.pow(this.x[1], 2));
             this.theta[i] = this.theta[i] * 180 / Math.PI;
             this.theta_rounded[i] = Math.round(this.theta[i] * 100) / 100;
 
