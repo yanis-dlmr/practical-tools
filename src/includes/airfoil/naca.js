@@ -77,7 +77,9 @@ class NACA {
             let theta
             if (this.x[i] <= this.naca_p * this.naca_chord) {
                 theta = Math.atan(2 * this.naca_m / Math.pow(this.naca_p, 2) * (this.naca_p - this.x[i] / this.naca_chord));
-                console.log(theta);
+                if (isNaN(theta)) {
+                    theta = Math.PI;
+                }
             } else {
                 theta = Math.atan(2 * this.naca_m / Math.pow(1 - this.naca_p, 2) * (this.naca_p - this.x[i] / this.naca_chord));
             }
