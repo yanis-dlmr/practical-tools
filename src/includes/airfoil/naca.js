@@ -47,7 +47,7 @@ class NACA {
             if (this.x[i] <= this.naca_p * this.naca_chord) {
                 this.yc[i] = this.naca_m * this.x[i] / Math.pow(this.naca_p, 2) * (2 * this.naca_p - this.x[i] / this.naca_chord);
                 console.log(this.yc[i]);
-                if (this.yc[i] == NaN) {
+                if (isNaN(this.yc[i])) {
                     console.log("NAN");
                     this.yc[i] = 0;
                 }
