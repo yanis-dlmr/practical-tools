@@ -53,7 +53,6 @@ class NACA {
             } else {
                 this.yc[i] = this.naca_m * (this.naca_chord - this.x[i]) / Math.pow(1 - this.naca_p, 2) * (1 + this.x[i] / this.naca_chord - 2 * this.naca_p);
                 this.dyc_dx_theta[i] = 2 * this.naca_m / Math.pow(1 - this.naca_p, 2) * (this.naca_p - this.x[i] / this.naca_chord);
-                console.log(this.dyc_dx_theta[i]);
             }
 
             let x_0 = this.x[i];
@@ -68,6 +67,7 @@ class NACA {
             }
 
             this.yc_theta[i] = this.yc[i] / Math.sin(this.theta[i]);
+            console.log(this.yc_theta[i]);
             this.theta[i] = this.theta[i] * 180 / Math.PI;
             this.theta_rounded[i] = Math.round(this.theta[i] * 100) / 100;
 
