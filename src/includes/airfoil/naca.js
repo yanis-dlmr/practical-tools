@@ -46,8 +46,8 @@ class NACA {
 
             if (this.x[i] <= this.naca_p * this.naca_chord) {
                 this.yc[i] = this.naca_m * this.x[i] / Math.pow(this.naca_p, 2) * (2 * this.naca_p - this.x[i] / this.naca_chord);
-                if (this.naca_p == 0) {
-                    this.yc[i] = 0.0;
+                if (this.yc[i] == NaN) {
+                    this.yc[i] = 0;
                 }
                 this.dyc_dx_theta[i] = 2 * this.naca_m / Math.pow(this.naca_p, 2) * (this.naca_p - this.x[i] / this.naca_chord);
             } else {
