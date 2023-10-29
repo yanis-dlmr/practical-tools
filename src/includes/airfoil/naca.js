@@ -38,7 +38,7 @@ class NACA {
 
     generate_naca_profile() {
         // Generate x range from 0 to chord with 100 points
-        this.x = Array.from(Array(100).keys()).map(x => x * this.naca_chord / 100);
+        this.x = Array.from(Array(101).keys()).map(x => x * this.naca_chord / 100);
 
         // Generate yc (camber line)
         const x_origin = this.naca_chord / 2;
