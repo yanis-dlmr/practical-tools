@@ -25,3 +25,22 @@ $$
 The lift coefficient is then calculated using the following equation:
 $$
 C_L = \pi \left( 2 A_0 + A_1 \right)
+$$
+
+## Drag coefficient
+
+The drag coefficient is calculated using the following equation:
+$$
+C_D = \frac{C_L^2}{\pi A_1}
+$$
+
+## Moment coefficient
+
+The moment coefficient is calculated using the following equation:
+$$
+C_{M,BA} = - \frac{\pi}{2} \left( A_0 + A_1 - \frac{1}{2} A_2 \right)
+$$
+
+$$
+C_{M,c/4} = \frac{\pi}{4} \left( A_2 - A_1 \right)
+$$
