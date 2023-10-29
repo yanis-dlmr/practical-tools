@@ -42,5 +42,5 @@ C_{M,BA} = - \frac{\pi}{2} \left( A_0 + A_1 - \frac{1}{2} A_2 \right)
 $$
 
 $$
-C_{M,c/4} = \frac{\pi}{4} \left( A_2 - A_1 \right)
+C_{M,c/4} = C_{M,BA} + \frac{1}{4} C_L =  \frac{\pi}{4} \left( A_2 - A_1 \right)
 $$
