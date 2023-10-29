@@ -46,9 +46,7 @@ class NACA {
 
             if (this.x[i] <= this.naca_p * this.naca_chord) {
                 this.yc[i] = this.naca_m * this.x[i] / Math.pow(this.naca_p, 2) * (2 * this.naca_p - this.x[i] / this.naca_chord);
-                console.log(this.yc[i]);
                 if (isNaN(this.yc[i])) {
-                    console.log("NAN");
                     this.yc[i] = 0;
                 }
                 this.dyc_dx_theta[i] = 2 * this.naca_m / Math.pow(this.naca_p, 2) * (this.naca_p - this.x[i] / this.naca_chord);
@@ -79,6 +77,7 @@ class NACA {
             let theta
             if (this.x[i] <= this.naca_p * this.naca_chord) {
                 theta = Math.atan(2 * this.naca_m / Math.pow(this.naca_p, 2) * (this.naca_p - this.x[i] / this.naca_chord));
+                console.log(theta);
             } else {
                 theta = Math.atan(2 * this.naca_m / Math.pow(1 - this.naca_p, 2) * (this.naca_p - this.x[i] / this.naca_chord));
             }
