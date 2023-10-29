@@ -67,7 +67,6 @@ class NACA {
             }
 
             this.yc_theta[i] = this.yc[i] / Math.sin(this.theta[i]);
-            console.log(this.yc_theta[i]);
             this.theta[i] = this.theta[i] * 180 / Math.PI;
             this.theta_rounded[i] = Math.round(this.theta[i] * 100) / 100;
 
