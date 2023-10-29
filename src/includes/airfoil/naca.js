@@ -67,7 +67,7 @@ class NACA {
             }
 
             this.yc_theta[i] = this.yc[i] / Math.sin(this.theta[i]);
-            if (theta == Math.PI / 2) {
+            if (this.theta[i] == Math.PI / 2) {
                 this.yc_theta[i] = this.yc[i];
             }
             this.theta[i] = this.theta[i] * 180 / Math.PI;
