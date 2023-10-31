@@ -284,6 +284,14 @@ class NacaManager {
             chart_box_3.classList.add('col-md-12');
             chart_box_3.style.padding = '1rem';
             chart_box_3.style.height = '450px';
+
+            ////////////////
+
+            let [ A, B ] = naca.get_A_B();
+
+            this.add_output_title('A and B matrix');
+            this.add_output_array(A);
+            this.add_output_array(B);
             
             //////////////// Add end 
             this.add_output_title('End of the processing !');
