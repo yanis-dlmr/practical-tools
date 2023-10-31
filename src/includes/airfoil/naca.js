@@ -166,8 +166,8 @@ class NACA {
         let yu = this.yu;
         let xl = this.xl;
         let yl = this.yl;
-        let x = [...xu, ...xl.reverse()];
-        let y = [...yu, ...yl.reverse()];
+        let x = [...xl.reverse(), ...xu];
+        let y = [...yl.reverse(), ...yu];
         console.log("x");
         console.table(x);
         console.log("y");
