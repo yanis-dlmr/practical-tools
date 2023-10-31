@@ -47,7 +47,7 @@ class NACA {
 
     generate_naca_profile() {
         // Generate x range from 0 to chord with 100 points
-        this.x = Array.from(Array(101).keys()).map(x => x * this.naca_chord / 100);
+        this.x = Array.from(Array(21).keys()).map(x => x * this.naca_chord / 100);
 
         // Generate yc (camber line)
         const x_origin = this.naca_chord / 2;
@@ -338,6 +338,7 @@ class NACA {
         //let gamma = math.multiply(A_inv, B);
 
         const determinant = math.det(A);
+        console.log(determinant);
 
         if (determinant !== 0) {
             console.log('La matrice est inversible.');
