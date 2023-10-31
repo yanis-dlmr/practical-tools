@@ -313,14 +313,29 @@ class NACA {
         console.table(Cp);
 
         // Compute the coefficient of lift
-        let Cl = 0;
+        
+        // Compute normal and axial coefficient of force
+        let CN = [];
+        let CA = [];
         for (let i = 0; i < num_panels; i++) {
-            Cl += (gamma[i]*S[i]);
+            CN[i] = 0;
+            CA[i] = 0;
         }
-        Cl = Cl/(0.5*this.u_inf*this.chord);
-        console.log("Cl");
-        console.log(Cl);
-            
+
+        for (let i = 0; i < num_panels; i++) {
+            CN[i] = - Cp[i] * Math.cos(this.alpha - phi[i]) * this.chord[i];
+            CA[i] = - Cp[i] * Math.sin(this.alpha - phi[i]) * this.chord[i];
+        }
+
+        // Compute the coefficient of lift
+        let CL = 0;
+
+        for (let i = 0; i < num_panels; i++) {
+            CL += CN[i] * Math.cos(this.alpha) - CA[i] * Math.sin(this.alpha);
+        }
+
+        console.log("CL");
+        console.table(CL);
 
     }
 
