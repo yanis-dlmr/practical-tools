@@ -256,6 +256,7 @@ class NACA {
                         K[i][j] = 0;
                         L[i][j] = 0;
                     } else {
+                        console.log(E)
                         // Compute K
                         let term1 = 0.5 * Cn * Math.log((S[j]*S[j]+2*A*S[j]+B)/B);
                         let term2 = ((Dn-A*Cn)/E) * (Math.atan2((S[j]+A),E) - Math.atan2(A,E));
@@ -306,7 +307,7 @@ class NACA {
         }
 
         for (let i = 0; i < num_panels; i++) {
-            B[i] = - this.u_inf * Math.cos(beta[i]);
+            B[i] = - this.u_inf * 2 * Math.PI * Math.cos(beta[i]);
         }
 
         // Satify the kutta condition
@@ -370,8 +371,8 @@ class NACA {
         }
 
         for (let i = 0; i < num_panels; i++) {
-            CN[i] = - Cp[i] * Math.cos(beta[i]);
-            CA[i] = - Cp[i] * Math.sin(beta[i]);
+            CN[i] = - Cp[i] * Math.sin(beta[i]) * S[i];
+            CA[i] = - Cp[i] * Math.cos(beta[i]) * S[i];
         }
 
         // Compute the coefficient of lift
