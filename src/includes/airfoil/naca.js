@@ -183,6 +183,9 @@ class NACA {
             YB[i] = y[i];
             S[i] = Math.sqrt(Math.pow(x[i+1] - x[i], 2) + Math.pow(y[i+1] - y[i], 2));
             phi[i] = Math.atan2(y[i+1] - y[i], x[i+1] - x[i]);
+            if (phi[i] < 0) {
+                phi[i] += 2 * Math.PI;
+            }
         }
 
         return [x, y, XC, YC, XB, YB, S, phi];
