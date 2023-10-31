@@ -120,15 +120,15 @@ class NacaManager {
             const line_names = ['Camber line', 'Thickness', 'Lower surface', 'Upper surface'];
             
             // Plot all panels
-            const panels = naca.get_panels();
-            for (let i = 0; i < panels.length; i++) {
-                const panel = panels[i];
-                const x = [panel["X0"], panel["X1"]];
-                const y = [panel["Y0"], panel["Y1"]];
-                x_values.push(x);
-                y_values.push(y);
-                line_names.push('Panel ' + i);
-            }
+            //const panels = naca.get_panels();
+            //for (let i = 0; i < panels.length; i++) {
+            //    const panel = panels[i];
+            //    const x = [panel["X0"], panel["X1"]];
+            //    const y = [panel["Y0"], panel["Y1"]];
+            //    x_values.push(x);
+            //    y_values.push(y);
+            //    line_names.push('Panel ' + i);
+            //}
 
             this.add_output_title('Graphical representation of the profile depending on x');
             // Chart box row containing all the charts
