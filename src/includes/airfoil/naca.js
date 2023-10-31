@@ -321,6 +321,10 @@ class NACA {
         console.log("A");
         console.table(A);
         console.log("A size: " + A.length + " x " + A[0].length);
+        
+        // log last row of A_inv
+        console.log("A last row");
+        console.table(A[A.length - 1]);
 
         console.log("B");
         console.table(B);
