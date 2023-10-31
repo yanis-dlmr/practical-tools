@@ -114,10 +114,10 @@ class NacaManager {
             const x_label = 'x (m)';
             const y_label = 'z (m)';
 
-            const x_values = [x, x, x_top_profile, x_bottom_profile, first_panel_x];
+            const x_values = [x, x, x_top_profile, x_bottom_profile];
             const x_labels = x_range;
-            const y_values = [yc, yt, y_bottom_profile, y_top_profile, first_panel_y];
-            const line_names = ['Camber line', 'Thickness', 'Lower surface', 'Upper surface', 'First panel'];
+            const y_values = [yc, yt, y_bottom_profile, y_top_profile];
+            const line_names = ['Camber line', 'Thickness', 'Lower surface', 'Upper surface'];
             
             // Plot all panels
             const panels = naca.get_panels();
