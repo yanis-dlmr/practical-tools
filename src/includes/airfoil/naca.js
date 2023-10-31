@@ -310,7 +310,7 @@ class NACA {
         }
 
         // Satify the kutta condition
-        pos = num_panels - 1;
+        let pos = num_panels - 1;
         for (let i = 0; i < num_panels; i++) {
             A[pos][i] = 0;
         }
