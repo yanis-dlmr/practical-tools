@@ -162,8 +162,12 @@ class NACA {
     }
 
     generate_xc_yc_xb_yb_s_phi() {
-        let x = [...this.xu, ...this.xl.reverse()];
-        let y = [...this.yu, ...this.yl.reverse()];
+        let xu = this.xu;
+        let yu = this.yu;
+        let xl = this.xl;
+        let yl = this.yl;
+        let x = [...xu, ...xl.reverse()];
+        let y = [...yu, ...yl.reverse()];
         console.log("x");
         console.table(x);
         console.log("y");
