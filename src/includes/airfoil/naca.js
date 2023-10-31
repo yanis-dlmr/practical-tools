@@ -339,12 +339,12 @@ class NACA {
 
         console.log("A");
         console.log(A);
-        this.A = A;
+        //this.A = A;
         console.log("A size: " + A.length + " x " + A[0].length);
 
         console.log("B");
         console.table(B);
-        this.B = B;
+        //this.B = B;
         console.log("B size: " + B.length);
 
         // Solve the matrix A and B
@@ -472,13 +472,13 @@ class NACA {
         return this.panels;
     }
 
-    get_A () {
-        return this.A;
-    }
-
-    get_B () {
-        return this.B;
-    }
+    //get_A () {
+    //    return this.A;
+    //}
+//
+    //get_B () {
+    //    return this.B;
+    //}
 
 }
 
