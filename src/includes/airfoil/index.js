@@ -127,7 +127,7 @@ class NacaManager {
                 const y = [panel["Y0"], panel["Y1"]];
                 x_values.push(x);
                 y_values.push(y);
-                line_names.push('Panel ' + i);
+                line_names.push('Panels');
             }
 
             this.add_output_title('Graphical representation of the profile depending on x');
