@@ -168,6 +168,24 @@ class NACA {
         let yl = this.yl;
         let x = [...xl.reverse(), ...xu];
         let y = [...yl.reverse(), ...yu];
+
+        edge = [];
+        for (let i = 0; i < x.length - 1; i++) {
+            edge[i] = (x[i+1] - x[i]) * (y[i+1] - y[i]);
+        }
+        sumEdge = 0;
+        for (let i = 0; i < edge.length; i++) {
+            sumEdge += edge[i];
+        }
+
+        if (sumEdge < 0) {
+            console.log("Points are counter-clockwise. Reversing points.");
+            x.reverse();
+            y.reverse();
+        } else if (sumEdge > 0) {
+            console.log("Points are clockwise. No need to reverse.");
+        }
+
         console.log("x");
         console.table(x);
         console.log("y");
