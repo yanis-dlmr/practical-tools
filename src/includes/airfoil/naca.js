@@ -329,7 +329,10 @@ class NACA {
 
         console.log("B");
         console.table(B);
-        console.log("B size: " + B.length + " x " + B[0].length);
+        console.log("B size: " + B.length);
+        console.log(B[0]);
+        console.log(B[num_panels - 1]);
+        console.log(B[num_panels]);
 
         // Solve the matrix A and B
         //let A_inv = math.inv(A);
