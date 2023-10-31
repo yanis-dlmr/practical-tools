@@ -281,7 +281,8 @@ class NACA {
         console.table(B);
 
         // Solve the matrix A and B
-        let A_inv = Math.inv(A);
+        let A_inv = math.inv(A);
+
         let gamma = Math.multiply(A_inv, B);
 
         console.log("gamma");
