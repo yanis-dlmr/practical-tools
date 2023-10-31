@@ -169,11 +169,11 @@ class NACA {
         let phi = [];
         for (let i = 0; i < this.x.length - 1; i++) {
             XC[i] = (this.x[i] + this.x[i+1]) / 2;
-            YC[i] = (this.y[i] + this.y[i+1]) / 2;
-            XB[i] = (this.x[i] + this.x[i+1]) / 2;
-            YB[i] = (this.y[i] + this.y[i+1]) / 2;
-            S[i] = Math.sqrt(Math.pow(this.x[i+1] - this.x[i], 2) + Math.pow(this.y[i+1] - this.y[i], 2));
-            phi[i] = Math.atan2(this.y[i+1] - this.y[i], this.x[i+1] - this.x[i]);
+            YC[i] = (this.yc[i] + this.yc[i+1]) / 2;
+            XB[i] = this.x[i];
+            YB[i] = this.yc[i];
+            S[i] = Math.sqrt(Math.pow(this.x[i+1] - this.x[i], 2) + Math.pow(this.yc[i+1] - this.yc[i], 2));
+            phi[i] = Math.atan2(this.yc[i+1] - this.yc[i], this.x[i+1] - this.x[i]);
         }
 
         return [XC, YC, XB, YB, S, phi];
