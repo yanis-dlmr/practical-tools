@@ -290,6 +290,38 @@ class NACA {
         console.log("gamma");
         console.table(gamma);
 
+        // Compute the coefficient of pressure Cp and velocity
+        let Vt = [];
+        let Cp = [];
+        for (let i = 0; i < num_panels; i++) {
+            Vt[i] = 0;
+            Cp[i] = 0;
+        }
+
+        for (let i = 0; i < num_panels; i++) {
+            let addVal = 0;
+            for (let j = 0; j < num_panels; j++) {
+                addVal -= gamma[j]/(2*Math.PI) * L[i][j];
+            }
+            Vt[i] = this.u_inf * Math.sin(this.alpha - phi[i]) + addVal + gamma[i]/2;
+            Cp[i] = 1 - (Vt[i]/this.u_inf)*(Vt[i]/this.u_inf);
+        }
+
+        console.log("Vt");
+        console.table(Vt);
+        console.log("Cp");
+        console.table(Cp);
+
+        // Compute the coefficient of lift
+        let Cl = 0;
+        for (let i = 0; i < num_panels; i++) {
+            Cl += (gamma[i]*S[i]);
+        }
+        Cl = Cl/(0.5*this.u_inf*this.chord);
+        console.log("Cl");
+        console.log(Cl);
+            
+
     }
 
     get_naca_type() {
