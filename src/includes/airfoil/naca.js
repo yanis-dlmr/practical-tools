@@ -310,7 +310,13 @@ class NACA {
         }
 
         // Satify the kutta condition
-        // TODO
+        pos = num_panels - 1;
+        for (let i = 0; i < num_panels; i++) {
+            A[pos][i] = 0;
+        }
+        A[pos][0] = 1;
+        A[pos][num_panels - 1] = 1;
+        B[pos] = 0;
 
         console.log("A");
         console.table(A);
