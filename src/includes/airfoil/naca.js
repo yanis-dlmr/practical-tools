@@ -221,6 +221,18 @@ class NACA {
             beta[i] = delta[i] - this.alpha;
         }
 
+        this.panels = [];
+        for (let i = 0; i < x.length - 1; i++) {
+            this.panels.push({
+                "X0": XC[i],
+                "X1": XC[i] + S[i] * Math.cos(delta[i]),
+                "Y0": YC[i],
+                "Y1": YC[i] + S[i] * Math.sin(delta[i]),
+            });
+        }
+
+        console.table(this.panels);
+
         return [x, y, XC, YC, XB, YB, S, phi, delta, beta];
     }
 
