@@ -332,7 +332,7 @@ class NACA {
 
         //let gamma = math.multiply(A_inv, B);
 
-        let gamma = math.lusolve(A, B);
+        let gamma = math.usolve(A, B);
 
         console.log("gamma");
         console.table(gamma);
