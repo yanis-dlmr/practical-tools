@@ -1,1 +1,2 @@
-# Thick airfoil theory
+# The panel method
+

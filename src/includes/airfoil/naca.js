@@ -319,7 +319,7 @@ class NACA {
         B[pos] = 0;
 
         console.log("A");
-        console.table(A);
+        console.log(A);
         console.log("A size: " + A.length + " x " + A[0].length);
 
         console.log("B");
