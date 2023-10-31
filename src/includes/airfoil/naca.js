@@ -181,13 +181,13 @@ class NACA {
             phi[i] = Math.atan2(y[i+1] - y[i], x[i+1] - x[i]);
         }
 
-        return [XC, YC, XB, YB, S, phi];
+        return [x, y, XC, YC, XB, YB, S, phi];
     }
 
     compute_vortex_panel_method() {
 
         // Generate XC, YC, XB, YB, S, and phi
-        let [XC, YC, XB, YB, S, phi] = this.generate_xc_yc_xb_yb_s_phi();
+        let [x, y, XC, YC, XB, YB, S, phi] = this.generate_xc_yc_xb_yb_s_phi();
 
         // Generate the matrix K and L
         let num_panels = x.length - 1;
