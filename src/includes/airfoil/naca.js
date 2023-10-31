@@ -239,6 +239,45 @@ class NACA {
         console.table(K);
         console.table(L);
 
+        // Generate the matrix A and B
+        let A = [];
+        for (let i = 0; i < num_panels; i++) {
+            A[i] = [];
+            for (let j = 0; j < num_panels; j++) {
+                A[i][j] = 0;
+            }
+        }
+        let B = [];
+        for (let i = 0; i < num_panels; i++) {
+            B[i] = 0;
+        }
+
+        // Compute the matrix A and B
+        for (let i = 0; i < num_panels; i++) {
+            for (let j = 0; j < num_panels; j++) {
+                if (j == i) {
+                    A[i][j] = 0;
+                } else {
+                    A[i][j] = - K[i][j];
+                }
+            }
+        }
+
+        for (let i = 0; i < num_panels; i++) {
+            B[i] = - this.u_inf * Math.cos(this.alpha - phi[i]);
+        }
+
+        // Satify the kutta condition
+        for (let i = 0; i < num_panels; i++) {
+            A[0][i] = 1;
+            A[num_panels-1][i] = 1;
+        }
+        B[0] = 0;
+        B[num_panels-1] = 0;
+
+        console.table(A);
+        console.table(B);
+
     }
 
     get_naca_type() {
