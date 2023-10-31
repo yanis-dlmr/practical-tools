@@ -320,6 +320,8 @@ class NACA {
 
         console.log("A");
         console.table(A);
+        console.log("A size: " + A.length + " x " + A[0].length);
+
         console.log("B");
         console.table(B);
 
