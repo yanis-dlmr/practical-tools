@@ -287,12 +287,12 @@ class NacaManager {
 
             ////////////////
 
-            //let A = naca.get_A();
-            //let B = naca.get_B();
+            let A = naca.get_A();
+            let B = naca.get_B();
 
             this.add_output_title('A and B matrix');
-            //this.add_output_array(A);
-            //this.add_output_array(B);
+            this.add_output_array(A);
+            this.add_output_array(B);
             
             //////////////// Add end 
             this.add_output_title('End of the processing !');

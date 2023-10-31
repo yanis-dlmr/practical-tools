@@ -38,8 +38,8 @@ class NACA {
 
         this.compute_lift_coefficient();
 
-        //this.A = [];
-        //this.B = [];
+        this.A = [];
+        this.B = [];
         try {
             this.compute_vortex_panel_method();
         } catch (error) {
@@ -224,12 +224,12 @@ class NACA {
         }
 
         this.panels = [];
-        for (let p = 0; p < x.length - 1; p++) {
+        for (let i = 0; i < x.length - 1; i++) {
             this.panels.push({
-                "X0": XC[p],
-                "X1": XC[p] + S[p] * Math.cos(delta[p]),
-                "Y0": YC[p],
-                "Y1": YC[p] + S[p] * Math.sin(delta[p]),
+                "X0": XC[i],
+                "X1": XC[i] + S[i] * Math.cos(delta[i]),
+                "Y0": YC[i],
+                "Y1": YC[i] + S[i] * Math.sin(delta[i]),
             });
         }
 
@@ -277,14 +277,13 @@ class NACA {
                     } else {
                         // Compute K
                         let term1  = 0.5*Cn*Math.log((S[j]**2 + 2*A*S[j] + B)/B);
-                        let term2  = ((Dn-A*Cn)/E)*(Math.atan2((S[j]+A),E)-Math.atan2(A,E));
-                        console.log(term1, term2)
-                        K[i,j] = term1 + term2;
+                        let term2  = ((Dn-A*Cn)/E)*(math.atan2((S[j]+A),E)-math.atan2(A,E));
+                        K[i][j] = term1 + term2;
 
                         // Compute L
                         let term3  = 0.5*Ct*Math.log((S[j]**2 + 2*A*S[j] + B)/B)
                         let term4  = ((Dt-A*Ct)/E)*(Math.atan2((S[j]+A),E)-Math.atan2(A,E))
-                        L[i,j] = term3 + term4
+                        L[i][j] = term3 + term4
                     }
                 }
                 if (isNaN(K[i][j])) {
@@ -340,12 +339,12 @@ class NACA {
 
         console.log("A");
         console.log(A);
-        //this.A = A;
+        this.A = A;
         console.log("A size: " + A.length + " x " + A[0].length);
 
         console.log("B");
         console.table(B);
-        //this.B = B;
+        this.B = B;
         console.log("B size: " + B.length);
 
         // Solve the matrix A and B
@@ -473,13 +472,13 @@ class NACA {
         return this.panels;
     }
 
-    //get_A () {
-    //    return this.A;
-    //}
-//
-    //get_B () {
-    //    return this.B;
-    //}
+    get_A () {
+        return this.A;
+    }
+
+    get_B () {
+        return this.B;
+    }
 
 }
 
