@@ -323,8 +323,8 @@ class NACA {
         }
 
         for (let i = 0; i < num_panels; i++) {
-            CN[i] = - Cp[i] * Math.cos(this.alpha - phi[i]) * this.chord[i];
-            CA[i] = - Cp[i] * Math.sin(this.alpha - phi[i]) * this.chord[i];
+            CN[i] = - Cp[i] * Math.cos(this.alpha - phi[i]);
+            CA[i] = - Cp[i] * Math.sin(this.alpha - phi[i]);
         }
 
         // Compute the coefficient of lift
