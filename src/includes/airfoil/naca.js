@@ -277,7 +277,7 @@ class NACA {
                     } else {
                         // Compute K
                         let term1  = 0.5*Cn*Math.log((S[j]**2 + 2*A*S[j] + B)/B);
-                        let term2  = ((Dn-A*Cn)/E)*(math.atan2((S[j]+A),E)-math.atan2(A,E));
+                        let term2  = ((Dn-A*Cn)/E)*(Math.atan2((S[j]+A),E)-Math.atan2(A,E));
                         K[i,j] = term1 + term2;
 
                         // Compute L
@@ -287,7 +287,6 @@ class NACA {
                     }
                 }
                 if (isNaN(K[i][j])) {
-                    console.log(S[j], S[j]**2)
                     K[i][j] = 0;
                 }
                 if (isNaN(L[i][j])) {
