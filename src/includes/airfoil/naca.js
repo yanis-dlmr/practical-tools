@@ -321,20 +321,18 @@ class NACA {
         console.log("A");
         console.table(A);
         console.log("A size: " + A.length + " x " + A[0].length);
-        
-        // compute A determinant
-        let A_det = math.det(A);
-        console.log("A_det: " + A_det);
 
         console.log("B");
         console.table(B);
 
         // Solve the matrix A and B
-        let A_inv = math.inv(A);
-        console.log("A_inv");
-        console.table(A_inv);
+        //let A_inv = math.inv(A);
+        //console.log("A_inv");
+        //console.table(A_inv);
 
-        let gamma = math.multiply(A_inv, B);
+        //let gamma = math.multiply(A_inv, B);
+
+        let gamma = math.lusolve(A, B);
 
         console.log("gamma");
         console.table(gamma);
