@@ -352,20 +352,7 @@ class NACA {
 
         //let gamma = math.multiply(A_inv, B);
 
-        //let gamma = math.usolve(A, B);
-
-        // with <script src="https://cdn.jsdelivr.net/gh/nicolaspanel/numjs@0.15.1/dist/numjs.min.js"></script>
-        let gamma_2 = nj.solve(A, B);
-        console.log("gamma_2");
-        console.table(gamma_2);
-
-        // other way to solve
-
-        let A_inv = nj.linalg.inv(A);
-        console.log("A_inv");
-        console.table(A_inv);
-
-        let gamma = nj.dot(A_inv, B);
+        let gamma = math.usolveAll(A, B);
         console.log("gamma");
         console.table(gamma);
 
