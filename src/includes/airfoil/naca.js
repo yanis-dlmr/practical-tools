@@ -38,6 +38,8 @@ class NACA {
 
         this.compute_lift_coefficient();
 
+        this.A = [];
+        this.B = [];
         try {
             this.compute_vortex_panel_method();
         } catch (error) {
