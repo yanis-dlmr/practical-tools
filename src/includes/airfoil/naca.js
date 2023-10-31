@@ -169,11 +169,11 @@ class NACA {
         let x = [...xl.reverse(), ...xu];
         let y = [...yl.reverse(), ...yu];
 
-        edge = [];
+        let edge = [];
         for (let i = 0; i < x.length - 1; i++) {
             edge[i] = (x[i+1] - x[i]) * (y[i+1] - y[i]);
         }
-        sumEdge = 0;
+        let sumEdge = 0;
         for (let i = 0; i < edge.length; i++) {
             sumEdge += edge[i];
         }
