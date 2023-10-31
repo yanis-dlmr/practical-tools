@@ -167,10 +167,10 @@ class NACA {
     }
 
     generate_geometry() {
-        let xu = this.xu;
-        let yu = this.yu;
-        let xl = this.xl;
-        let yl = this.yl;
+        let xu = [...this.xu];
+        let yu = [...this.yu];
+        let xl = [...this.xl];
+        let yl = [...this.yl];
         let x = [...xl.reverse(), ...xu];
         let y = [...yl.reverse(), ...yu];
 
