@@ -161,7 +161,7 @@ class NACA {
         }
     }
 
-    generate_xc_yc_xb_yb_s_phi() {
+    generate_geometry() {
         let xu = this.xu;
         let yu = this.yu;
         let xl = this.xl;
@@ -191,14 +191,20 @@ class NACA {
                 phi[i] += 2 * Math.PI;
             }
         }
+        let delta = [];
+        let beta = [];
+        for (let i = 0; i < x.length - 1; i++) {
+            delta[i] = phi[i] + Math.PI / 2;
+            beta[i] = delta[i] - this.alpha;
+        }
 
-        return [x, y, XC, YC, XB, YB, S, phi];
+        return [x, y, XC, YC, XB, YB, S, phi, delta, beta];
     }
 
     compute_vortex_panel_method() {
 
         // Generate XC, YC, XB, YB, S, and phi
-        let [x, y, XC, YC, XB, YB, S, phi] = this.generate_xc_yc_xb_yb_s_phi();
+        let [x, y, XC, YC, XB, YB, S, phi, delta, beta] = this.generate_geometry();
 
         // Generate the matrix K and L
         let num_panels = x.length - 1;
@@ -282,7 +288,7 @@ class NACA {
         }
 
         for (let i = 0; i < num_panels; i++) {
-            B[i] = - this.u_inf * Math.cos(this.alpha - phi[i]);
+            B[i] = - this.u_inf * Math.cos(beta[i]);
         }
 
         // Satify the kutta condition
@@ -316,7 +322,7 @@ class NACA {
             for (let j = 0; j < num_panels; j++) {
                 addVal -= gamma[j]/(2*Math.PI) * L[i][j];
             }
-            Vt[i] = this.u_inf * Math.sin(this.alpha - phi[i]) + addVal + gamma[i]/2;
+            Vt[i] = this.u_inf * Math.sin(beta[i]) + addVal + gamma[i]/2;
             Cp[i] = 1 - (Vt[i]/this.u_inf)*(Vt[i]/this.u_inf);
         }
 
@@ -336,8 +342,8 @@ class NACA {
         }
 
         for (let i = 0; i < num_panels; i++) {
-            CN[i] = - Cp[i] * Math.cos(this.alpha - phi[i]);
-            CA[i] = - Cp[i] * Math.sin(this.alpha - phi[i]);
+            CN[i] = - Cp[i] * Math.cos(beta[i]);
+            CA[i] = - Cp[i] * Math.sin(beta[i]);
         }
 
         // Compute the coefficient of lift
