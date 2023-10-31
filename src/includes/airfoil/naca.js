@@ -1,6 +1,9 @@
 class NACA {
 
     constructor(naca_type, naca_digits, naca_chord) {
+        this.u_inf = 1;
+        this.alpha = 0;
+
         this.naca_type = naca_type;
         this.naca_digits = naca_digits;
         this.naca_chord = naca_chord;
@@ -236,8 +239,10 @@ class NACA {
             }
         }
 
-        console.table("K", K);
-        console.table("L", L);
+        console.log("K")
+        console.table(K);
+        console.log("L")
+        console.table(L);
 
         // Generate the matrix A and B
         let A = [];
@@ -270,13 +275,16 @@ class NACA {
         // Satify the kutta condition
         // TODO
 
-        console.table("A", A);
-        console.table("B", B);
+        console.log("A");
+        console.table(A);
+        console.log("B");
+        console.table(B);
 
         // Solve the matrix A and B
-        let gamma = Math.usolve(math.inv(A), B);
+        let gamma = Math.multiply(math.inv(A), B);
 
-        console.table("gamma", gamma);
+        console.log("gamma");
+        console.table(gamma);
 
     }
 
