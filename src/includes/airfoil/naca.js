@@ -256,7 +256,6 @@ class NACA {
                         K[i][j] = 0;
                         L[i][j] = 0;
                     } else {
-                        console.log(E)
                         // Compute K
                         let term1 = 0.5 * Cn * Math.log((S[j]*S[j]+2*A*S[j]+B)/B);
                         let term2 = ((Dn-A*Cn)/E) * (Math.atan2((S[j]+A),E) - Math.atan2(A,E));
@@ -264,7 +263,7 @@ class NACA {
 
                         // Compute L
                         let term3 = 0.5 * Dt * Math.log((S[j]*S[j]+2*A*S[j]+B)/B);
-                        let term4 = ((Ct-A*Dt)/E) * (Math.atan2((S[j]+A),E) - Math.atan2(A,E));
+                        let term4 = ((Dt-A*Ct)/E) * (Math.atan2((S[j]+A),E) - Math.atan2(A,E));
                         L[i][j] = term3 + term4;
                     }
                 }
