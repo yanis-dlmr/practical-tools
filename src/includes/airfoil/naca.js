@@ -278,6 +278,7 @@ class NACA {
                         // Compute K
                         let term1  = 0.5*Cn*Math.log((S[j]**2 + 2*A*S[j] + B)/B);
                         let term2  = ((Dn-A*Cn)/E)*(Math.atan2((S[j]+A),E)-Math.atan2(A,E));
+                        console.log(term1, term2)
                         K[i,j] = term1 + term2;
 
                         // Compute L
