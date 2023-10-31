@@ -162,8 +162,12 @@ class NACA {
     }
 
     generate_xc_yc_xb_yb_s_phi() {
-        let x = [...this.xu, ...this.xl];
-        let y = [...this.yu, ...this.yl];
+        let x = [...this.xu, ...this.xl.reverse()];
+        let y = [...this.yu, ...this.yl.reverse()];
+        console.log("x");
+        console.table(x);
+        console.log("y");
+        console.table(y);
 
         // Generate XC, YC, XB, YB, S, and phi
         let XC = [];
