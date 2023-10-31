@@ -294,7 +294,7 @@ class NacaManager {
             console.table(B);
 
             this.add_output_title('A and B matrix');
-            this.add_output_array(A);
+            this.add_output_2d_array(A);
             this.add_output_array(B);
             
             //////////////// Add end 
@@ -338,6 +338,17 @@ class NacaManager {
 
     add_output_array = (array) => { // Display array between brackets and inside a code block
         const text = '[\n    ' + array + '\n]';
+        const embededBlock = new EmbededBlock(text);
+        const embededBlockElement = embededBlock.render();
+        this.card_output.addComponent(embededBlockElement);
+    }
+
+    add_output_2d_array = (array) => { // Display 2d array between brackets and inside a code block
+        const text = '[\n    ';
+        for (let i = 0; i < array.length; i++) {
+            text += '[' + array[i] + '],\n    ';
+        }
+        text += '\n]';
         const embededBlock = new EmbededBlock(text);
         const embededBlockElement = embededBlock.render();
         this.card_output.addComponent(embededBlockElement);
