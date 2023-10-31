@@ -287,7 +287,7 @@ class NACA {
                     }
                 }
                 if (isNaN(K[i][j])) {
-                    console.log(i, j)
+                    console.log(S[j], S[j]**2)
                     K[i][j] = 0;
                 }
                 if (isNaN(L[i][j])) {
