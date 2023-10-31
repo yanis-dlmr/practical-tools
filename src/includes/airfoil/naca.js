@@ -226,6 +226,9 @@ class NACA {
             } else if (beta[i] > 2 * Math.PI) {
                 console.log("beta > 2pi")
                 beta[i] -= 2 * Math.PI;
+                if (beta[i] > 2 * Math.PI) {
+                    console.log("beta STILL > 2pi !!!")
+                }
             }
         }
 
