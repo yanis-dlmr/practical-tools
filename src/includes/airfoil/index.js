@@ -344,7 +344,7 @@ class NacaManager {
     }
 
     add_output_2d_array = (array) => { // Display 2d array between brackets and inside a code block
-        const text = '[\n    ';
+        let text = '[\n    ';
         for (let i = 0; i < array.length; i++) {
             text += '[' + array[i] + '],\n    ';
         }
