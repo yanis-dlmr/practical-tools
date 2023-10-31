@@ -337,6 +337,14 @@ class NACA {
 
         //let gamma = math.multiply(A_inv, B);
 
+        const determinant = math.det(A);
+
+        if (determinant !== 0) {
+            console.log('La matrice est inversible.');
+        } else {
+            console.log('La matrice n\'est pas inversible (singulière).');
+        }
+
         let gamma = math.usolve(A, B);
 
         console.log("gamma");
