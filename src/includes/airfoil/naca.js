@@ -34,6 +34,7 @@ class NACA {
         this.generate_naca_profile();
 
         this.compute_lift_coefficient();
+        this.compute_vortex_panel_method();
     }
 
     generate_naca_profile() {
@@ -151,9 +152,93 @@ class NACA {
                 "A2": A2,
                 "lift_coefficient": Math.PI * (2*A0 + A1),
                 "cm_ab": - Math.PI / 2 * (A0 + A1 - 1/2 * A2),
-                "cm_c4": Math.PI / 4 * (A2 - A1)
+                "cm_c4": Math.PI / 4 * (A2 - A1),
+                "cd": 2 * Math.PI * (A0 + A1) * Math.sin(_angle) * Math.sin(_angle) / this.naca_chord,
             });
         }
+    }
+
+    generate_xc_yc_xb_yb_s_phi() {
+
+        // Generate XC, YC, XB, YB, S, and phi
+        let XC = [];
+        let YC = [];
+        let XB = [];
+        let YB = [];
+        let S = [];
+        let phi = [];
+        for (let i = 0; i < this.x.length - 1; i++) {
+            XC[i] = (this.x[i] + this.x[i+1]) / 2;
+            YC[i] = (this.y[i] + this.y[i+1]) / 2;
+            XB[i] = (this.x[i] + this.x[i+1]) / 2;
+            YB[i] = (this.y[i] + this.y[i+1]) / 2;
+            S[i] = Math.sqrt(Math.pow(this.x[i+1] - this.x[i], 2) + Math.pow(this.y[i+1] - this.y[i], 2));
+            phi[i] = Math.atan2(this.y[i+1] - this.y[i], this.x[i+1] - this.x[i]);
+        }
+
+        return [XC, YC, XB, YB, S, phi];
+    }
+
+    compute_vortex_panel_method() {
+
+        // Generate XC, YC, XB, YB, S, and phi
+        let XC, YC, XB, YB, S, phi = this.generate_xc_yc_xb_yb_s_phi();
+
+        // Generate the matrix K and L
+        let num_panels = this.x.length - 1;
+
+        // Initialize the matrix K and L
+        let K = [];
+        let L = [];
+        for (let i = 0; i < num_panels; i++) {
+            K[i] = [];
+            L[i] = [];
+            for (let j = 0; j < num_panels; j++) {
+                K[i][j] = 0;
+                L[i][j] = 0;
+            }
+        }
+
+        // compute integral Kij and Lij
+        for (let i = 0; i < num_panels; i++) {
+            for (let j = 0; j < num_panels; j++) {
+                if (j != i) {
+                    // Compute intermediate values
+                    let A = -(XC[i] - XB[j]) * Math.cos(phi[j]) - (YC[i] - YB[j]) * Math.sin(phi[j]);
+                    let B = (XC[i] - XB[j]) * (XC[i] - XB[j]) + (YC[i] - YB[j]) * (YC[i] - YB[j]);
+                    let Cn = -Math.cos(phi[i] - phi[j]);
+                    let Dn = (XC[i]-XB[j])*Math.cos(phi[i])+(YC[i]-YB[j])*Math.sin(phi[i])
+                    let Ct = Math.sin(phi[j]-phi[i])
+                    let Dt = (XC[i]-XB[j])*Math.sin(phi[i])-(YC[i]-YB[j])*Math.cos(phi[i])
+                    let E  = Math.sqrt(B-A*A)
+
+                    if (E == 0 || isNaN(E)) {
+                        K[i][j] = 0;
+                        L[i][j] = 0;
+                    } else {
+                        // Compute K
+                        let term1 = 0.5 * Cn * Math.log((S[j]*S[j]+2*A*S[j]+B)/B);
+                        let term2 = ((Dn-A*Cn)/E) * (Math.atan2((S[j]+A),E) - Math.atan2(A,E));
+                        K[i][j] = term1 + term2;
+
+                        // Compute L
+                        let term3 = 0.5 * Dt * Math.log((S[j]*S[j]+2*A*S[j]+B)/B);
+                        let term4 = ((Ct-A*Dt)/E) * (Math.atan2((S[j]+A),E) - Math.atan2(A,E));
+                        L[i][j] = term3 + term4;
+                    }
+                }
+                if (isNaN(K[i][j])) {
+                    K[i][j] = 0;
+                }
+                if (isNaN(L[i][j])) {
+                    L[i][j] = 0;
+                }
+            }
+        }
+
+        console.table(K);
+        console.table(L);
+
     }
 
     get_naca_type() {
