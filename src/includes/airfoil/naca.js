@@ -219,6 +219,14 @@ class NACA {
         for (let i = 0; i < x.length - 1; i++) {
             delta[i] = phi[i] + Math.PI / 2;
             beta[i] = delta[i] - this.alpha;
+            // make all beta between 0 and 2pi
+            if (beta[i] < 0) {
+                console.log("beta < 0")
+                beta[i] += 2 * Math.PI;
+            } else if (beta[i] > 2 * Math.PI) {
+                console.log("beta > 2pi")
+                beta[i] -= 2 * Math.PI;
+            }
         }
 
         this.panels = [];
@@ -370,7 +378,7 @@ class NACA {
                 addVal -= gamma[j]/(2*Math.PI) * L[i][j];
             }
             Vt[i] = this.u_inf * Math.sin(beta[i]) + addVal + gamma[i]/2;
-            Cp[i] = 1 - (Vt[i]/this.u_inf)*(Vt[i]/this.u_inf);
+            Cp[i] = 1 - (Vt[i]/this.u_inf)**2;
         }
 
         console.log("Vt");
