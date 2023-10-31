@@ -464,6 +464,10 @@ class NACA {
         return this.lift_coefficients;
     }
 
+    get_panels() {
+        return this.panels;
+    }
+
 }
 
 export { NACA };

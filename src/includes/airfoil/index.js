@@ -105,6 +105,10 @@ class NacaManager {
             const y_top_profile = naca.get_y_top_profile();
             const x_bottom_profile = naca.get_x_bottom_profile();
             const y_bottom_profile = naca.get_y_bottom_profile();
+            
+            const panels = naca.get_panels();
+            const first_panel_x = [ panels[0]["X0"], panels[0]["X1"] ];
+            const first_panel_y = [ panels[0]["Y0"], panels[0]["Y1"] ];
 
             var x_range = [];
             for (let i = 0; i < 1; i += 0.01) {
@@ -114,10 +118,10 @@ class NacaManager {
             const x_label = 'x (m)';
             const y_label = 'z (m)';
 
-            const x_values = [x, x, x_top_profile, x_bottom_profile];
+            const x_values = [x, x, x_top_profile, x_bottom_profile, first_panel_x];
             const x_labels = x_range;
-            const y_values = [yc, yt, y_bottom_profile, y_top_profile];
-            const line_names = ['Camber line', 'Thickness', 'Lower surface', 'Upper surface'];
+            const y_values = [yc, yt, y_bottom_profile, y_top_profile, first_panel_y];
+            const line_names = ['Camber line', 'Thickness', 'Lower surface', 'Upper surface', 'First panel'];
 
             this.add_output_title('Graphical representation of the profile depending on x');
             // Chart box row containing all the charts
