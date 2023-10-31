@@ -162,6 +162,8 @@ class NACA {
     }
 
     generate_xc_yc_xb_yb_s_phi() {
+        let x = this.xu + this.xl;
+        let y = this.yu + this.yl;
 
         // Generate XC, YC, XB, YB, S, and phi
         let XC = [];
@@ -170,13 +172,13 @@ class NACA {
         let YB = [];
         let S = [];
         let phi = [];
-        for (let i = 0; i < this.x.length - 1; i++) {
-            XC[i] = (this.x[i] + this.x[i+1]) / 2;
-            YC[i] = (this.yc[i] + this.yc[i+1]) / 2;
-            XB[i] = this.x[i];
-            YB[i] = this.yc[i];
-            S[i] = Math.sqrt(Math.pow(this.x[i+1] - this.x[i], 2) + Math.pow(this.yc[i+1] - this.yc[i], 2));
-            phi[i] = Math.atan2(this.yc[i+1] - this.yc[i], this.x[i+1] - this.x[i]);
+        for (let i = 0; i < x.length - 1; i++) {
+            XC[i] = (x[i] + x[i+1]) / 2;
+            YC[i] = (y[i] + y[i+1]) / 2;
+            XB[i] = x[i];
+            YB[i] = y[i];
+            S[i] = Math.sqrt(Math.pow(x[i+1] - x[i], 2) + Math.pow(y[i+1] - y[i], 2));
+            phi[i] = Math.atan2(y[i+1] - y[i], x[i+1] - x[i]);
         }
 
         return [XC, YC, XB, YB, S, phi];
@@ -188,7 +190,7 @@ class NACA {
         let [XC, YC, XB, YB, S, phi] = this.generate_xc_yc_xb_yb_s_phi();
 
         // Generate the matrix K and L
-        let num_panels = this.x.length - 1;
+        let num_panels = x.length - 1;
 
         // Initialize the matrix K and L
         let K = [];
