@@ -290,6 +290,9 @@ class NacaManager {
             let A = naca.get_A();
             let B = naca.get_B();
 
+            console.table(A);
+            console.table(B);
+
             this.add_output_title('A and B matrix');
             this.add_output_array(A);
             this.add_output_array(B);
