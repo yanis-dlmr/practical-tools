@@ -287,7 +287,8 @@ class NacaManager {
 
             ////////////////
 
-            let [ A, B ] = naca.get_A_B();
+            let A = naca.get_A();
+            let B = naca.get_B();
 
             this.add_output_title('A and B matrix');
             this.add_output_array(A);

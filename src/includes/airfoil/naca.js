@@ -472,8 +472,12 @@ class NACA {
         return this.panels;
     }
 
-    get_A_B() {
-        return [this.A, this.B];
+    get_A () {
+        return this.A;
+    }
+
+    get_B () {
+        return this.B;
     }
 
 }
