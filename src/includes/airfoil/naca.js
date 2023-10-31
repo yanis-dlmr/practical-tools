@@ -221,14 +221,9 @@ class NACA {
             beta[i] = delta[i] - this.alpha;
             // make all beta between 0 and 2pi
             if (beta[i] < 0) {
-                console.log("beta < 0")
                 beta[i] += 2 * Math.PI;
             } else if (beta[i] > 2 * Math.PI) {
-                console.log("beta > 2pi")
                 beta[i] -= 2 * Math.PI;
-                if (beta[i] > 2 * Math.PI) {
-                    console.log("beta STILL > 2pi !!!")
-                }
             }
         }
 
