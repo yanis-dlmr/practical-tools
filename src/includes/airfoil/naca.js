@@ -322,9 +322,9 @@ class NACA {
         console.table(A);
         console.log("A size: " + A.length + " x " + A[0].length);
         
-        // log last row of A_inv
-        console.log("A last row");
-        console.table(A[A.length - 1]);
+        // compute A determinant
+        let A_det = math.det(A);
+        console.log("A_det: " + A_det);
 
         console.log("B");
         console.table(B);
