@@ -224,12 +224,12 @@ class NACA {
         }
 
         this.panels = [];
-        for (let i = 0; i < x.length - 1; i++) {
+        for (let p = 0; p < x.length - 1; p++) {
             this.panels.push({
-                "X0": XC[i],
-                "X1": XC[i] + S[i] * Math.cos(delta[i]),
-                "Y0": YC[i],
-                "Y1": YC[i] + S[i] * Math.sin(delta[i]),
+                "X0": XC[p],
+                "X1": XC[p] + S[p] * Math.cos(delta[p]),
+                "Y0": YC[p],
+                "Y1": YC[p] + S[p] * Math.sin(delta[p]),
             });
         }
 
