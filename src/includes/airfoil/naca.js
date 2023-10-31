@@ -261,27 +261,27 @@ class NACA {
             for (let j = 0; j < num_panels; j++) {
                 if (j != i) {
                     // Compute intermediate values
-                    let A = -(XC[i] - XB[j]) * Math.cos(phi[j]) - (YC[i] - YB[j]) * Math.sin(phi[j]);
-                    let B = (XC[i] - XB[j]) * (XC[i] - XB[j]) + (YC[i] - YB[j]) * (YC[i] - YB[j]);
-                    let Cn = -Math.cos(phi[i] - phi[j]);
+                    let A  = -(XC[i]-XB[j])*Math.cos(phi[j])-(YC[i]-YB[j])*Math.sin(phi[j])
+                    let B  = (XC[i]-XB[j])**2 + (YC[i]-YB[j])**2
+                    let Cn = -Math.cos(phi[i]-phi[j])
                     let Dn = (XC[i]-XB[j])*Math.cos(phi[i])+(YC[i]-YB[j])*Math.sin(phi[i])
                     let Ct = Math.sin(phi[j]-phi[i])
                     let Dt = (XC[i]-XB[j])*Math.sin(phi[i])-(YC[i]-YB[j])*Math.cos(phi[i])
-                    let E  = Math.sqrt(B-A*A)
+                    let E  = Math.sqrt(B-A**2)
 
                     if (E == 0 || isNaN(E)) {
                         K[i][j] = 0;
                         L[i][j] = 0;
                     } else {
                         // Compute K
-                        let term1 = 0.5 * Cn * Math.log((S[j]*S[j]+2*A*S[j]+B)/B);
-                        let term2 = ((Dn-A*Cn)/E) * (Math.atan2((S[j]+A),E) - Math.atan2(A,E));
-                        K[i][j] = term1 + term2;
+                        let term1  = 0.5*Cn*Math.log((S[j]**2 + 2*A*S[j] + B)/B);
+                        let term2  = ((Dn-A*Cn)/E)*(math.atan2((S[j]+A),E)-math.atan2(A,E));
+                        K[i,j] = term1 + term2;
 
                         // Compute L
-                        let term3 = 0.5 * Dt * Math.log((S[j]*S[j]+2*A*S[j]+B)/B);
-                        let term4 = ((Dt-A*Ct)/E) * (Math.atan2((S[j]+A),E) - Math.atan2(A,E));
-                        L[i][j] = term3 + term4;
+                        let term3  = 0.5*Ct*Math.log((S[j]**2 + 2*A*S[j] + B)/B)
+                        let term4  = ((Dt-A*Ct)/E)*(Math.atan2((S[j]+A),E)-Math.atan2(A,E))
+                        L[i,j] = term3 + term4
                     }
                 }
                 if (isNaN(K[i][j])) {
