@@ -182,7 +182,7 @@ class NACA {
     compute_vortex_panel_method() {
 
         // Generate XC, YC, XB, YB, S, and phi
-        let XC, YC, XB, YB, S, phi = this.generate_xc_yc_xb_yb_s_phi();
+        let [XC, YC, XB, YB, S, phi] = this.generate_xc_yc_xb_yb_s_phi();
 
         // Generate the matrix K and L
         let num_panels = this.x.length - 1;
