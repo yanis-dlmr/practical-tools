@@ -236,8 +236,8 @@ class NACA {
             }
         }
 
-        console.table(K);
-        console.table(L);
+        console.table("K", K);
+        console.table("L", L);
 
         // Generate the matrix A and B
         let A = [];
@@ -268,15 +268,15 @@ class NACA {
         }
 
         // Satify the kutta condition
-        for (let i = 0; i < num_panels; i++) {
-            A[0][i] = 1;
-            A[num_panels-1][i] = 1;
-        }
-        B[0] = 0;
-        B[num_panels-1] = 0;
+        // TODO
 
-        console.table(A);
-        console.table(B);
+        console.table("A", A);
+        console.table("B", B);
+
+        // Solve the matrix A and B
+        let gamma = math.multiply(math.inv(A), B);
+
+        console.table("gamma", gamma);
 
     }
 
