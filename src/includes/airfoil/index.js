@@ -497,8 +497,8 @@ class NacaManager {
             this.add_output_title('Important results');
             let Cl = naca.get_Cl();
             let Cm = naca.get_Cm();
-            let headers_3 = [ 'Profile', 'Angle of attack', 'Air flow speed', 'Lift coefficient', 'Moment coefficient' ];
-            let values_3 = [ 'NACA ' + form_data.digits, form_data.angle, 1, Cl, Cm ];
+            let headers_3 = [ 'Profile', 'Angle of attack', 'Lift coefficient', 'Moment coefficient' ];
+            let values_3 = [ 'NACA ' + form_data.digits, form_data.angle, Cl, Cm ];
             let data = [];
             for (let i = 0; i < values_3.length; i++) {
                 data.push([values_3[i]]);
