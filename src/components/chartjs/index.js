@@ -80,6 +80,11 @@ class ChartJs {
             chartOptions.plugins.legend = legend;
         }
 
+        // reverse y axis
+        if (this.options.reverseYAxis != undefined && this.options.reverseYAxis == true) {
+            chartOptions.scales.y.reverse = true;
+        }
+
         var chart = new Chart(ctx, {
             type: 'line',
             data: chartData,

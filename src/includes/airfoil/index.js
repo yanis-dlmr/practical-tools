@@ -467,7 +467,8 @@ class NacaManager {
 
                 var title_3 = 'Pressure coefficient';
                 var options = {
-                    marker: true
+                    marker: true,
+                    reverseYAxis: true
                 }
                 var chartjs_3 = new ChartJs(title_3, x_labels_3, x_lift, y_lift, line_names_lift, x_label_3, y_label_3, options);
                 var chartJsElement_3 = chartjs_3.render();
