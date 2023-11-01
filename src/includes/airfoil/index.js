@@ -69,8 +69,8 @@ class NacaManager {
         form.add_switch_input({
             label: 'Thin profile',
             id: 'thin_profile',
-            value: 'true',
-            checked: 'true',
+            value: 'false',
+            checked: 'false',
             required: 'true',
             friends: ['vortex_panel_method']
         });
@@ -80,8 +80,17 @@ class NacaManager {
             value: 'false',
             checked: 'false',
             required: 'true',
-            friends: ['thin_profile']
+            friends: ['thin_profile'],
+            son_id_to_able: ['angle'],
+            son_id_to_disable: ['angle']
         });
+        form.add_text_input({
+            label: 'Angle of attack',
+            id: 'angle',
+            unit: '°',
+            value: '',
+            disabled: true,
+        })
         
         const validation_button = form.get_validation_button();
         card.addComponent(validation_button);
@@ -106,7 +115,8 @@ class NacaManager {
                 method = 'vortex_panel_method';
             }
             console.log(method)
-            const naca = new NACA(form_data.naca_types, form_data.digits, 1, method);
+            const angle = form_data.angle * Math.PI / 180;
+            const naca = new NACA(form_data.naca_types, form_data.digits, 1, angle, method);
             
             const x = naca.get_x();
             const yc = naca.get_yc();

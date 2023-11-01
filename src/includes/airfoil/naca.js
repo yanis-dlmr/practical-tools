@@ -1,8 +1,8 @@
 class NACA {
 
-    constructor(naca_type, naca_digits, naca_chord, method) {
+    constructor(naca_type, naca_digits, naca_chord, alpha, method) {
         this.u_inf = 1;
-        this.alpha = 0;
+        this.alpha = alpha;
 
         this.naca_type = naca_type;
         this.naca_digits = naca_digits;
