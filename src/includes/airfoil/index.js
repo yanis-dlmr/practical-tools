@@ -182,46 +182,46 @@ class NacaManager {
                 this.add_output_array(y_values[i]);
             }
 
-            ////////////////
-            this.add_output_title('Graphical representation of the profile depending on theta');
-            const theta = naca.get_theta_rounded();
-            const yc_theta = naca.get_yc_theta();
-            const dyc_dx_theta = naca.get_dyc_dx_theta();
-
-            const theta_dyx = theta.slice(1, theta.length);
-
-            var angle_range = [];
-            for (let i = 0; i < 180; i+=0.01) {
-                angle_range.push(Math.round(i * 100) / 100);
-            }
-
-            const x_theta = [theta, theta_dyx];
-            const x_labels_2 = angle_range;
-            const y_theta = [yc_theta, dyc_dx_theta];
-            const line_names_theta = ['Camber line', 'dz/dx(theta)'];
-
-            const x_label_2 = 'theta (°)';
-            const y_label_2 = 'radius (m)';
-
-            // Chart box row containing all the charts
-            const chart_box_row_2 = document.createElement('div');
-            chart_box_row_2.className = 'row';
-
-            this.card_output.addComponent(chart_box_row_2);
-
-            const title_2 = 'NACA ' + form_data.digits;
-            const chartjs_2 = new ChartJs(title_2, x_labels_2, x_theta, y_theta, line_names_theta, x_label_2, y_label_2);
-            const chartJsElement_2 = chartjs_2.render();
-
-            const chart_box_2 = document.createElement('div');
-            chart_box_2.appendChild(chartJsElement_2);
-            chartJsElement_2.style.width = '100%';
-            chartJsElement_2.width = '100%';
-            chart_box_row_2.appendChild(chart_box_2);
-
-            chart_box_2.classList.add('col-md-12');
-            chart_box_2.style.padding = '1rem';
-            chart_box_2.style.height = '450px';
+            ////////////////// 
+            //this.add_output_title('Graphical representation of the profile depending on theta');
+            //const theta = naca.get_theta_rounded();
+            //const yc_theta = naca.get_yc_theta();
+            //const dyc_dx_theta = naca.get_dyc_dx_theta();
+//
+            //const theta_dyx = theta.slice(1, theta.length);
+//
+            //var angle_range = [];
+            //for (let i = 0; i < 180; i+=0.01) {
+            //    angle_range.push(Math.round(i * 100) / 100);
+            //}
+//
+            //const x_theta = [theta, theta_dyx];
+            //const x_labels_2 = angle_range;
+            //const y_theta = [yc_theta, dyc_dx_theta];
+            //const line_names_theta = ['Camber line', 'dz/dx(theta)'];
+//
+            //const x_label_2 = 'theta (°)';
+            //const y_label_2 = 'radius (m)';
+//
+            //// Chart box row containing all the charts
+            //const chart_box_row_2 = document.createElement('div');
+            //chart_box_row_2.className = 'row';
+//
+            //this.card_output.addComponent(chart_box_row_2);
+//
+            //const title_2 = 'NACA ' + form_data.digits;
+            //const chartjs_2 = new ChartJs(title_2, x_labels_2, x_theta, y_theta, line_names_theta, x_label_2, y_label_2);
+            //const chartJsElement_2 = chartjs_2.render();
+//
+            //const chart_box_2 = document.createElement('div');
+            //chart_box_2.appendChild(chartJsElement_2);
+            //chartJsElement_2.style.width = '100%';
+            //chartJsElement_2.width = '100%';
+            //chart_box_row_2.appendChild(chart_box_2);
+//
+            //chart_box_2.classList.add('col-md-12');
+            //chart_box_2.style.padding = '1rem';
+            //chart_box_2.style.height = '450px';
 
             if (form_data.thin_profile == true) {
 
