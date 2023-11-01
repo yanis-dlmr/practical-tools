@@ -350,7 +350,7 @@ class NacaManager {
 
                 let number_of_panels = naca.get_number_of_panels();
                 let number_of_points = naca.get_number_of_points();
-                let text = 'Number of panels: ' + number_of_panels + '<br>Number of points: ' + number_of_points;
+                let text = 'Number of panels: $' + number_of_panels + '$<br>Number of points: $' + number_of_points + '$<br>';
                 this.add_output_text(text);
 
                 // on graph
@@ -430,6 +430,12 @@ class NacaManager {
                 chart_box_3.style.padding = '1rem';
                 chart_box_3.style.height = '450px';
 
+                // add x and Cp arrays
+                this.add_output_text('$x$ values');
+                this.add_output_array(x_all);
+                this.add_output_text('$Cp$ values');
+                this.add_output_array(Cp);
+
 
             }
 
@@ -438,10 +444,10 @@ class NacaManager {
             this.add_output_title('Important results');
             let Cl = naca.get_Cl();
             let Cm = naca.get_Cm();
-            let text = "Profile used :       NACA " + form_data.digits + "<br>";
-            text +=    "Angle of attack :    $" + form_data.angle + "°$<br>";
-            text +=    "Lift coefficient :   $" + Cl + "$<br>";
-            text +=    "Moment coefficient : $" + Cm + "$<br>";
+            let text = "Profile used        :$NACA " + form_data.digits + "$<br>";
+            text +=    "Angle of attack     :$" + form_data.angle + "°$<br>";
+            text +=    "Lift coefficient    :$" + Cl + "$<br>";
+            text +=    "Moment coefficient  :$" + Cm + "$<br>";
             this.add_output_text(text);
             
             //////////////// Add end 
