@@ -45,18 +45,18 @@ class ChartJs {
         }
         
         var chartOptions = {
-            legend: {
-                display: true,
-                labels: {
-                    filter: function (legendItem, chartData) {
-                        return (chartData.datasets[legendItem.datasetIndex].label)
-                    },
-                }
-            },
             plugins: {
                 title: {
                     display: true,
                     text: this.title,
+                },
+                legend: {
+                    display: true,
+                    labels: {
+                        filter: function (legendItem, chartData) {
+                            return (chartData.datasets[legendItem.datasetIndex].label)
+                        },
+                    }
                 },
             },
             responsive: true,
