@@ -40,8 +40,9 @@ class ChartJs {
                 data_to_add.pointRadius = 5;
             }
             if (this.options.fill != undefined && this.options.fill[i] == true) {
-                data_to_add.borderColor = 'rgba(0, 0, 255)';
-                data_to_add.backgroundColor = 'rgba(0, 0, 255)';
+                data_to_add.fill = true;
+                data_to_add.fill.borderColor = 'rgba(0, 0, 255)';
+                data_to_add.fill.backgroundColor = 'rgba(0, 0, 255)';
             }
             chartData.datasets.unshift(data_to_add);
         }
