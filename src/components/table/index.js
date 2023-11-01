@@ -66,7 +66,7 @@ class Table {
                 const td = document.createElement('td');
                 td.classList.add('table-value-cell');
                 //rounded data
-                td.innerHTML = this.data[i][j].toFixed(this.precision);
+                td.innerHTML = Math.round(this.data[i][j] * 10**this.precision) / 10**this.precision;
                 tr.appendChild(td);
             }
             tbody.appendChild(tr);
