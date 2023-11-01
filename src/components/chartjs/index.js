@@ -31,13 +31,11 @@ class ChartJs {
             }
             let data_to_add = {
                 data: data,
+                label: this.line_names[i],
                 fill: false,
                 tension: 0.1,
                 pointRadius: 0,
-            }
-            if (this.line_names[i] != '') {
-                data_to_add.label = this.line_names[i];
-            }
+            };
             if (this.marker) {
                 data_to_add.pointRadius = 5;
             }
