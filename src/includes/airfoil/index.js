@@ -99,11 +99,13 @@ class NacaManager {
             console.table(form_data);
 
             // Create NACA object
+            let method
             if (form_data.thin_profile == true) {
-                const naca = new NACA(form_data.naca_types, form_data.digits, 1, 'thin_profile');
+                method = 'thin_profile';
             } else if (form_data.vortex_panel_method == true) {
-                const naca = new NACA(form_data.naca_types, form_data.digits, 1, 'vortex_panel_method');
+                method = 'vortex_panel_method';
             }
+            const naca = new NACA(form_data.naca_types, form_data.digits, 1, method);
             
             const x = naca.get_x();
             const yc = naca.get_yc();
