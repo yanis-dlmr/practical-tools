@@ -173,8 +173,8 @@ class NACA {
         let yu = [...this.yu];
         let xl = [...this.xl];
         let yl = [...this.yl];
-        let x = [...xl.reverse(), ...xu.slice(1)];
-        let y = [...yl.reverse(), ...yu.slice(1)];
+        let x = [...xl, ...xu.reverse().slice(1)];
+        let y = [...yl, ...yu.reverse().slice(1)];
         
 
         let edge = [];
