@@ -41,6 +41,7 @@ class ChartJs {
             }
             if (this.options.fill != undefined && this.options.fill[i] == true) {
                 data_to_add.fill = true;
+                data_to_add.fill.target = 'origin';
                 data_to_add.fill.borderColor = 'rgba(0, 0, 255)';
                 data_to_add.fill.backgroundColor = 'rgba(0, 0, 255)';
             }
