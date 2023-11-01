@@ -50,9 +50,6 @@ class ChartJs {
                     display: true,
                     text: this.title,
                 },
-                legend: { // display the legend only if defined
-                    display: this.line_names.length > 1,
-                },
             },
             responsive: true,
             maintainAspectRatio: false,
