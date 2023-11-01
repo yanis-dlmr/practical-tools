@@ -8,7 +8,6 @@ import { EmbededBlock } from '/src/components/embeded_block/index.js';
 import { ChartJs } from '/src/components/chartjs/index.js';
 import { NACA } from '/src/includes/airfoil/naca.js';
 import { Table } from '/src/components/table/index.js';
-import { values } from 'cncjs/dist/cncjs/server/app';
 
 const naca_types = {
     label: 'Profile shape',
