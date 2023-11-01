@@ -523,11 +523,11 @@ class NACA {
     }
 
     get_number_of_panels() {
-        return x.length - 1;
+        return this.x.length - 1;
     }
 
     get_number_of_points() {
-        return x.length;
+        return this.x.length;
     }
 
 }
