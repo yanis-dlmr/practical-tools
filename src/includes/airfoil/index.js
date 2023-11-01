@@ -206,10 +206,7 @@ class NacaManager {
             chart_box_2.style.padding = '1rem';
             chart_box_2.style.height = '450px';
 
-            // Get data
-            console.table(form_data);
-            console.log(form_data.thin_profile == 'true')
-            if (form_data.thin_profile == 'true') {
+            if (form_data.thin_profile == true) {
 
                 naca.compute_lift_coefficient();
 
@@ -296,7 +293,7 @@ class NacaManager {
                 chart_box_3.style.padding = '1rem';
                 chart_box_3.style.height = '450px';
 
-            } else if (form_data.vortex_panel_method == 'true') {
+            } else if (form_data.vortex_panel_method == true) {
 
                 naca.compute_vortex_panel_method();
 
