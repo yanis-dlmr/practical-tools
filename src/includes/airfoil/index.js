@@ -432,7 +432,8 @@ class NacaManager {
                 var title_3 = 'Panel Method Geometry';
                 var options = {
                     fill: true,
-                    marker: true
+                    marker: true,
+                    showLegend: false
                 }
                 var chartjs_3 = new ChartJs(title_3, x_labels_3, x_values_3, y_values_3, line_names_3, x_label_3, y_label_3, options);
                 var chartJsElement_3 = chartjs_3.render();

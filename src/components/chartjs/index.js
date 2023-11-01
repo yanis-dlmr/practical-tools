@@ -74,6 +74,16 @@ class ChartJs {
             },
         };
 
+        if (not(this.options.showLegend)) {
+            chartOptions.plugins.legend = {
+                display: false
+            };
+        } else {
+            chartOptions.plugins.legend = {
+                display: true
+            };
+        }
+
         var chart = new Chart(ctx, {
             type: 'line',
             data: chartData,
