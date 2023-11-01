@@ -1,5 +1,5 @@
 class ChartJs {
-    constructor(title, x_labels, x_values, y_values, line_names, x_label, y_label) {
+    constructor(title, x_labels, x_values, y_values, line_names, x_label, y_label, marker = false) {
         this.title = title;
         this.x_labels = x_labels;
         this.x_values = x_values;
@@ -7,6 +7,7 @@ class ChartJs {
         this.line_names = line_names;
         this.x_label = x_label;
         this.y_label = y_label;
+        this.marker = marker;
     }
 
     render() {
@@ -28,13 +29,17 @@ class ChartJs {
                     y: this.y_values[i][j],
                 });
             }
-            chartData.datasets.unshift({
+            let data_to_add = {
                 label: this.line_names[i],
                 data: data,
                 fill: false,
                 tension: 0.1,
                 pointRadius: 0,
-            });
+            }
+            if (this.marker) {
+                data_to_add.pointRadius = 5;
+            }
+            chartData.datasets.unshift();
         }
         
         var chartOptions = {

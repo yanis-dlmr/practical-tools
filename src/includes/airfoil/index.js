@@ -138,7 +138,7 @@ class NacaManager {
             this.card_output.addComponent(chart_box_row);
 
             const title = 'NACA ' + form_data.digits;
-            const chartjs = new ChartJs(title, x_labels, x_values, y_values, line_names, x_label, y_label);
+            const chartjs = new ChartJs(title, x_labels, x_values, y_values, line_names, x_label, y_label, true);
             const chartJsElement = chartjs.render();
 
             const chart_box = document.createElement('div');
