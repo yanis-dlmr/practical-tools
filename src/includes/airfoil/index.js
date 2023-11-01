@@ -448,7 +448,7 @@ class NacaManager {
             let units_3 = [ '', '[deg]', '[rad]', '', '' ];
             let values_3 = [ [ 'NACA ' + form_data.digits, form_data.angle, 1, Cl, Cm ] ];
             values_3.push(units_3)
-            this.add_output_table(headers_3, values_3);
+            this.add_output_table_left_headers(headers_3, values_3);
             
             //////////////// Add end 
             this.add_output_title('End of the processing !');
