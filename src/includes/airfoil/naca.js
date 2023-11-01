@@ -352,7 +352,7 @@ class NACA {
             0.0005600,
             0.0001100,
             0.0000000
-        ]
+        ].reverse()
 
         let edge = [];
         for (let i = 0; i < x.length - 1; i++) {
