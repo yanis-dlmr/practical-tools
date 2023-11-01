@@ -386,7 +386,10 @@ class NacaManager {
                 this.card_output.addComponent(chart_box_row_3);
 
                 var title_3 = 'Panel Method Geometry';
-                var chartjs_3 = new ChartJs(title_3, x_labels_3, x_values_3, y_values_3, line_names_3, x_label_3, y_label_3, true);
+                var options = {
+                    marker: true
+                }
+                var chartjs_3 = new ChartJs(title_3, x_labels_3, x_values_3, y_values_3, line_names_3, x_label_3, y_label_3, options);
                 var chartJsElement_3 = chartjs_3.render();
 
                 var chart_box_3 = document.createElement('div');
@@ -462,7 +465,10 @@ class NacaManager {
                 this.card_output.addComponent(chart_box_row_3);
 
                 var title_3 = 'Pressure coefficient';
-                var chartjs_3 = new ChartJs(title_3, x_labels_3, x_lift, y_lift, line_names_lift, x_label_3, y_label_3, true);
+                var options = {
+                    marker: true
+                }
+                var chartjs_3 = new ChartJs(title_3, x_labels_3, x_lift, y_lift, line_names_lift, x_label_3, y_label_3, options);
                 var chartJsElement_3 = chartjs_3.render();
 
                 var chart_box_3 = document.createElement('div');

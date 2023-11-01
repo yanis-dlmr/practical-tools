@@ -1,5 +1,5 @@
 class ChartJs {
-    constructor(title, x_labels, x_values, y_values, line_names, x_label, y_label, options = {}) {
+    constructor(title, x_labels, x_values, y_values, line_names, x_label, y_label, options = {marker : false}) {
         this.title = title;
         this.x_labels = x_labels;
         this.x_values = x_values;
