@@ -175,6 +175,9 @@ class NACA {
         let yl = [...this.yl];
         let x = [...xl.reverse(), ...xu.slice(1), xl[0]];
         let y = [...yl.reverse(), ...yu.slice(1), yl[0]];
+
+        this.x_all = x;
+        this.y_all = y;
         
 
         let edge = [];
@@ -385,6 +388,7 @@ class NACA {
         console.log("Vt");
         console.table(Vt);
         console.log("Cp");
+        this.Cp = Cp;
         console.table(Cp);
 
         // Compute the coefficient of lift
@@ -484,6 +488,18 @@ class NACA {
 
     get_B () {
         return this.B;
+    }
+
+    get_Cp () {
+        return this.Cp;
+    }
+
+    get_x_all() {
+        return this.x_all;
+    }
+
+    get_y_all() {
+        return this.y_all;
     }
 
 }

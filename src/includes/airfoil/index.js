@@ -309,6 +309,37 @@ class NacaManager {
                 this.add_output_array(B);
 
                 ////////////////
+                x_all = naca.get_x_all();
+                Cp = naca.get_Cp();
+
+                this.add_output_title('Graphical representation of the pressure coefficient');
+                // on graph
+                const x_labels_3 = [x_all]
+                const x_lift = [x_all];
+                const y_lift = [Cp];
+                const line_names_lift = ['Pressure coefficient'];
+                const x_label_3 = 'x/c';
+                const y_label_3 = 'Cp';
+
+                // Chart box row containing all the charts
+                const chart_box_row_3 = document.createElement('div');
+                chart_box_row_3.className = 'row';
+
+                this.card_output.addComponent(chart_box_row_3);
+
+                const title_3 = 'Pressure coefficient';
+                const chartjs_3 = new ChartJs(title_3, x_labels_3, x_lift, y_lift, line_names_lift, x_label_3, y_label_3, true);
+                const chartJsElement_3 = chartjs_3.render();
+
+                const chart_box_3 = document.createElement('div');
+                chart_box_3.appendChild(chartJsElement_3);
+                chartJsElement_3.style.width = '100%';
+                chartJsElement_3.width = '100%';
+                chart_box_row_3.appendChild(chart_box_3);
+
+                chart_box_3.classList.add('col-md-12');
+                chart_box_3.style.padding = '1rem';
+                chart_box_3.style.height = '450px';
 
 
             }
