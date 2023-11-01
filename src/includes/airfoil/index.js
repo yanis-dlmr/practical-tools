@@ -481,7 +481,7 @@ class NacaManager {
 
                 chart_box_3.classList.add('col-md-12');
                 chart_box_3.style.padding = '1rem';
-                chart_box_3.style.height = '450px';
+                chart_box_3.style.height = '600px';
 
                 // add x and Cp arrays
                 this.add_output_text('$x$ values');
@@ -489,22 +489,23 @@ class NacaManager {
                 this.add_output_text('$Cp$ values');
                 this.add_output_array(Cp);
 
+                /////////////////
+    
+                this.add_output_title('Important results');
+                let Cl = naca.get_Cl();
+                let Cm = naca.get_Cm();
+                let headers_3 = [ 'Profile', 'Angle of attack', 'Lift coefficient', 'Moment coefficient' ];
+                let values_3 = [ 'NACA ' + form_data.digits, form_data.angle, Cl, Cm ];
+                let data = [];
+                for (let i = 0; i < values_3.length; i++) {
+                    data.push([values_3[i]]);
+                }
+                //values_3.push(units_3)
+                this.add_output_table_left_headers(headers_3, data, 6);
+
 
             }
 
-            /////////////////
-
-            this.add_output_title('Important results');
-            let Cl = naca.get_Cl();
-            let Cm = naca.get_Cm();
-            let headers_3 = [ 'Profile', 'Angle of attack', 'Lift coefficient', 'Moment coefficient' ];
-            let values_3 = [ 'NACA ' + form_data.digits, form_data.angle, Cl, Cm ];
-            let data = [];
-            for (let i = 0; i < values_3.length; i++) {
-                data.push([values_3[i]]);
-            }
-            //values_3.push(units_3)
-            this.add_output_table_left_headers(headers_3, data, 6);
             
             //////////////// Add end 
             this.add_output_title('End of the processing !');
