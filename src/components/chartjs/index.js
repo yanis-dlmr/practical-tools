@@ -39,7 +39,7 @@ class ChartJs {
             if (this.marker) {
                 data_to_add.pointRadius = 5;
             }
-            chartData.datasets.unshift();
+            chartData.datasets.unshift(data_to_add);
         }
         
         var chartOptions = {
