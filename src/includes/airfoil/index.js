@@ -378,24 +378,24 @@ class NacaManager {
 
                 this.add_output_title('Graphical representation of the pressure coefficient');
                 // on graph
-                const x_labels_3 = [x_all]
-                const x_lift = [x_all];
-                const y_lift = [Cp];
-                const line_names_lift = ['Pressure coefficient'];
-                const x_label_3 = 'x/c';
-                const y_label_3 = 'Cp';
+                var x_labels_3 = [x_all]
+                var x_lift = [x_all];
+                var y_lift = [Cp];
+                var line_names_lift = ['Pressure coefficient'];
+                var x_label_3 = 'x/c';
+                var y_label_3 = 'Cp';
 
                 // Chart box row containing all the charts
-                const chart_box_row_3 = document.createElement('div');
+                var chart_box_row_3 = document.createElement('div');
                 chart_box_row_3.className = 'row';
 
                 this.card_output.addComponent(chart_box_row_3);
 
-                const title_3 = 'Pressure coefficient';
-                const chartjs_3 = new ChartJs(title_3, x_labels_3, x_lift, y_lift, line_names_lift, x_label_3, y_label_3, true);
-                const chartJsElement_3 = chartjs_3.render();
+                var title_3 = 'Pressure coefficient';
+                var chartjs_3 = new ChartJs(title_3, x_labels_3, x_lift, y_lift, line_names_lift, x_label_3, y_label_3, true);
+                var chartJsElement_3 = chartjs_3.render();
 
-                const chart_box_3 = document.createElement('div');
+                var chart_box_3 = document.createElement('div');
                 chart_box_3.appendChild(chartJsElement_3);
                 chartJsElement_3.style.width = '100%';
                 chartJsElement_3.width = '100%';
