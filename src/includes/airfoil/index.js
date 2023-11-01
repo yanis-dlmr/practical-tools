@@ -485,7 +485,7 @@ class NacaManager {
     add_output_text = (text) => {
         const textElement = document.createElement('p');
         const replacedText = text.replace(/\n/g, "<br>");
-        textElement.innerText = replacedText
+        textElement.innerHTML = replacedText
         this.card_output.addComponent(textElement);
     }
 
