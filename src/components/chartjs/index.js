@@ -74,7 +74,7 @@ class ChartJs {
             },
         };
 
-        if ((this.options.showLegend)) {
+        if ((this.options.showLegend) && (this.options.showLegend == false)) {
             chartOptions.plugins.legend = {
                 display: this.options.showLegend,
             };
