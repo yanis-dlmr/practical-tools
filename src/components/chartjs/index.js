@@ -75,9 +75,10 @@ class ChartJs {
         };
 
         if ((this.options.showLegend) && (this.options.showLegend == false)) {
-            chartOptions.plugins.legend = {
+            let legend = {
                 display: this.options.showLegend,
             };
+            chartOptions.plugins.legend = legend;
         }
 
         var chart = new Chart(ctx, {
