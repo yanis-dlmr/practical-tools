@@ -99,7 +99,11 @@ class NacaManager {
             console.table(form_data);
 
             // Create NACA object
-            const naca = new NACA(form_data.naca_types, form_data.digits, 1);
+            if (form_data.thin_profile == true) {
+                const naca = new NACA(form_data.naca_types, form_data.digits, 1, 'thin_profile');
+            } else if (form_data.vortex_panel_method == true) {
+                const naca = new NACA(form_data.naca_types, form_data.digits, 1, 'vortex_panel_method');
+            }
             
             const x = naca.get_x();
             const yc = naca.get_yc();
@@ -208,8 +212,6 @@ class NacaManager {
 
             if (form_data.thin_profile == true) {
 
-                naca.compute_lift_coefficient();
-
                 ////////////////
 
                 const lift_coefficients = naca.get_lift_coefficients();
@@ -294,8 +296,6 @@ class NacaManager {
                 chart_box_3.style.height = '450px';
 
             } else if (form_data.vortex_panel_method == true) {
-
-                naca.compute_vortex_panel_method();
 
                 ////////////////
                 let A = naca.get_A();

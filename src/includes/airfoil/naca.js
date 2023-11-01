@@ -1,6 +1,6 @@
 class NACA {
 
-    constructor(naca_type, naca_digits, naca_chord) {
+    constructor(naca_type, naca_digits, naca_chord, method) {
         this.u_inf = 1;
         this.alpha = 0;
 
@@ -35,6 +35,12 @@ class NACA {
         this.lift_coefficients = [];
         
         this.generate_naca_profile();
+
+        if (method == 'thin_profile') {
+            this.compute_lift_coefficient();
+        } else if (method == 'vortex_panel_method') {
+            this.compute_vortex_panel_method();
+        }
     }
 
     generate_naca_profile() {
