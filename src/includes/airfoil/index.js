@@ -522,7 +522,7 @@ class NacaManager {
         div.appendChild(tableElement);
     }
 
-    add_output_table_left_headers = (headers, data) => {
+    add_output_table_left_headers = (headers, data, precision = 3) => {
         const div = document.createElement('div');
         div.style.display = 'flex';
         div.style.justifyContent = 'center';
@@ -530,7 +530,7 @@ class NacaManager {
         div.style.paddingLeft = '10px';
         div.style.paddingRight = '10px';
         this.card_output.addComponent(div);
-        const table = new Table(headers, data, true);
+        const table = new Table(headers, data, precision);
         const tableElement = table.render_left_headers();
         div.appendChild(tableElement);
     }
