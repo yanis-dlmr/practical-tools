@@ -239,11 +239,12 @@ class NACA {
 
         this.panels = [];
         for (let i = 0; i < x.length - 1; i++) {
+            let size_coefficient = 5;
             this.panels.push({
                 "X0": XC[i],
-                "X1": XC[i] + S[i] * Math.cos(delta[i]),
+                "X1": XC[i] + S[i] * Math.cos(delta[i]) * size_coefficient,
                 "Y0": YC[i],
-                "Y1": YC[i] + S[i] * Math.sin(delta[i]),
+                "Y1": YC[i] + S[i] * Math.sin(delta[i]) * size_coefficient,
             });
         }
 
@@ -410,15 +411,22 @@ class NACA {
             CA[i] = - Cp[i] * Math.cos(beta[i]) * S[i];
         }
 
-        // Compute the coefficient of lift
+        // Compute the coefficient of lift and moment
         let CL = 0;
+        let CM = 0;
 
         for (let i = 0; i < num_panels; i++) {
             CL += CN[i] * Math.cos(this.alpha) - CA[i] * Math.sin(this.alpha);
+            CM += Cp[i] * (XC[i] - 0.25) * S[i] * Math.cos(phi[i]);
         }
 
-        console.log("CL");
+        console.log("Cl");
         console.table(CL);
+        this.Cl = CL;
+
+        console.log("Cm");
+        console.table(CM);
+        this.Cm = CM;
 
     }
 
@@ -504,6 +512,22 @@ class NACA {
 
     get_y_all() {
         return this.y_all;
+    }
+
+    get_Cl() {
+        return this.Cl;
+    }
+
+    get_Cm() {
+        return this.Cm;
+    }
+
+    get_number_of_panels() {
+        return x.length - 1;
+    }
+
+    get_number_of_points() {
+        return x.length;
     }
 
 }

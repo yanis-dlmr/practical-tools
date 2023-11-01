@@ -310,24 +310,49 @@ class NacaManager {
 
             } else if (form_data.vortex_panel_method == true) {
 
-                ////////////////
-                let A = naca.get_A();
-                let B = naca.get_B();
+                //////////////////
+                //let A = naca.get_A();
+                //let B = naca.get_B();
 
-                this.add_output_title('A and B matrix');
-                this.add_output_2d_array(A);
-                this.add_output_array(B);
+                //this.add_output_title('A and B matrix');
+                //this.add_output_2d_array(A);
+                //this.add_output_array(B);
 
                 ////////////////
                 const x_all = naca.get_x_all();
                 const y_all = naca.get_y_all();
                 const Cp = naca.get_Cp();
+                let lower_Cp = [];
+                let upper_Cp= [];
+                let lower_x = [];
+                let upper_x = [];
+                let lower_y = [];
+                let upper_y = [];
+
+                for (let i = 0; i < (x_all.length)/2; i++) {
+                    lower_Cp.push(Cp[i]);
+                    lower_x.push(x_all[i]);
+                    lower_y.push(y_all[i]);
+                } 
+
+                for (let i = (x_all.length)/2; i < x_all.length; i++) {
+                    upper_Cp.push(Cp[i]);
+                    upper_x.push(x_all[i]);
+                    upper_y.push(y_all[i]);
+                }
+
 
                 ///////////////////////
 
                 
 
                 this.add_output_title('Graphical representation of the geometry of the profile');
+
+                let number_of_panels = naca.get_number_of_panels();
+                let number_of_points = naca.get_number_of_points();
+                let text = 'Number of panels: ' + number_of_panels + '<br>Number of points: ' + number_of_points;
+                this.add_output_text(text);
+
                 // on graph
                 var x_labels_3 = [x_all]
                 var x_values_3 = [x_all];
@@ -337,7 +362,7 @@ class NacaManager {
                 var y_label_3 = 'y';
 
                 
-                // Plot all panels
+                // Plot panel 1 and 2
                 const panels = naca.get_panels();
                 for (let i = 0; i < panels.length; i++) {
                     const panel = panels[i];
@@ -360,7 +385,7 @@ class NacaManager {
 
                 this.card_output.addComponent(chart_box_row_3);
 
-                var title_3 = 'Pressure coefficient';
+                var title_3 = 'Panel Method Geometry';
                 var chartjs_3 = new ChartJs(title_3, x_labels_3, x_values_3, y_values_3, line_names_3, x_label_3, y_label_3, true);
                 var chartJsElement_3 = chartjs_3.render();
 
@@ -379,9 +404,9 @@ class NacaManager {
                 this.add_output_title('Graphical representation of the pressure coefficient');
                 // on graph
                 var x_labels_3 = [x_all]
-                var x_lift = [x_all];
-                var y_lift = [Cp];
-                var line_names_lift = ['Pressure coefficient'];
+                var x_lift = [upper_x, lower_x];
+                var y_lift = [upper_Cp, lower_Cp];
+                var line_names_lift = ['Upper surface', 'Lower surface'];
                 var x_label_3 = 'x/c';
                 var y_label_3 = 'Cp';
 
@@ -407,6 +432,17 @@ class NacaManager {
 
 
             }
+
+            /////////////////
+
+            this.add_output_title('Important results');
+            Cl = naca.get_Cl();
+            Cm = naca.get_Cm();
+            let text = "Profile used :       NACA " + form_data.digits + "<br>";
+            text +=    "Angle of attack :    $" + form_data.angle + "°$<br>";
+            text +=    "Lift coefficient :   $" + Cl + "$<br>";
+            text +=    "Moment coefficient : $" + Cm + "$<br>";
+            this.add_output_text(text);
             
             //////////////// Add end 
             this.add_output_title('End of the processing !');
