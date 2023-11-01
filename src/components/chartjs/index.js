@@ -1,5 +1,5 @@
 class ChartJs {
-    constructor(title, x_labels, x_values, y_values, line_names, x_label, y_label, marker = false) {
+    constructor(title, x_labels, x_values, y_values, line_names, x_label, y_label, options = {}) {
         this.title = title;
         this.x_labels = x_labels;
         this.x_values = x_values;
@@ -7,7 +7,7 @@ class ChartJs {
         this.line_names = line_names;
         this.x_label = x_label;
         this.y_label = y_label;
-        this.marker = marker;
+        this.options = options;
     }
 
     render() {
@@ -36,8 +36,11 @@ class ChartJs {
                 tension: 0.1,
                 pointRadius: 0,
             };
-            if (this.marker) {
+            if (this.options.marker) {
                 data_to_add.pointRadius = 5;
+            }
+            if (this.options.fill) {
+                data_to_add.borderColor = this.options.fill;
             }
             chartData.datasets.unshift(data_to_add);
         }

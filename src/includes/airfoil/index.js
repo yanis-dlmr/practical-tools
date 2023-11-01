@@ -398,6 +398,51 @@ class NacaManager {
                 chart_box_3.classList.add('col-md-12');
                 chart_box_3.style.padding = '1rem';
                 chart_box_3.style.height = '450px';
+                ////
+                
+
+                // on graph
+                var x_labels_3 = [x_all]
+                var x_values_3 = [x_all];
+                var y_values_3 = [y_all];
+                var line_names_3 = ['Geometry'];
+                var x_label_3 = 'x/c';
+                var y_label_3 = 'y';
+
+                
+                // Plot all panels
+                for (let i = 0; i < panels.length; i++) {
+                    const panel = panels[i];
+                    const x = [panel["X0"], panel["X1"]];
+                    const y = [panel["Y0"], panel["Y1"]];
+                    line_names_3.push('Panel ' + (i+1));
+                    x_values_3.push(x);
+                    y_values_3.push(y);
+                }
+
+                // Chart box row containing all the charts
+                var chart_box_row_3 = document.createElement('div');
+                chart_box_row_3.className = 'row';
+
+                this.card_output.addComponent(chart_box_row_3);
+
+                var title_3 = 'Panel Method Geometry';
+                var options = {
+                    fill: true,
+                    marker: true
+                }
+                var chartjs_3 = new ChartJs(title_3, x_labels_3, x_values_3, y_values_3, line_names_3, x_label_3, y_label_3, true, options);
+                var chartJsElement_3 = chartjs_3.render();
+
+                var chart_box_3 = document.createElement('div');
+                chart_box_3.appendChild(chartJsElement_3);
+                chartJsElement_3.style.width = '100%';
+                chartJsElement_3.width = '100%';
+                chart_box_row_3.appendChild(chart_box_3);
+
+                chart_box_3.classList.add('col-md-12');
+                chart_box_3.style.padding = '1rem';
+                chart_box_3.style.height = '450px';
 
                 ///////////////////////
 
