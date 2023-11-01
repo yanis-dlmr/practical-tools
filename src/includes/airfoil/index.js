@@ -343,14 +343,14 @@ class NacaManager {
                     const panel = panels[i];
                     const x = [panel["X0"], panel["X1"]];
                     const y = [panel["Y0"], panel["Y1"]];
-                    x_values_3.push(x);
-                    y_values_3.push(y);
                     if (i == 0) {
                         line_names_3.push('First panel');
+                        x_values_3.push(x);
+                        y_values_3.push(y);
                     } else if (i == 1) {
                         line_names_3.push('Second panel');
-                    } else {
-                        line_names_3.push('');
+                        x_values_3.push(x);
+                        y_values_3.push(y);
                     }
                 }
 
