@@ -35,9 +35,9 @@ class ChartJs {
                 tension: 0.1,
                 pointRadius: 0,
             }
-            //if (this.line_names[i] != '') {
-            //    data_to_add.label = this.line_names[i];
-            //}
+            if (this.line_names[i] != '') {
+                data_to_add.label = this.line_names[i];
+            }
             if (this.marker) {
                 data_to_add.pointRadius = 5;
             }
@@ -45,6 +45,16 @@ class ChartJs {
         }
         
         var chartOptions = {
+            legend: {
+                display: false
+            },
+            tooltips: {
+                callbacks: {
+                    label: function(tooltipItem) {
+                        return tooltipItem.yLabel;
+                    }
+                }
+            },
             plugins: {
                 title: {
                     display: true,
