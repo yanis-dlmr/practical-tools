@@ -105,6 +105,7 @@ class NacaManager {
             } else if (form_data.vortex_panel_method == true) {
                 method = 'vortex_panel_method';
             }
+            console.log(method)
             const naca = new NACA(form_data.naca_types, form_data.digits, 1, method);
             
             const x = naca.get_x();
