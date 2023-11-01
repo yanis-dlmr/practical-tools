@@ -74,13 +74,9 @@ class ChartJs {
             },
         };
 
-        if (not(this.options.showLegend)) {
+        if ((this.options.showLegend)) {
             chartOptions.plugins.legend = {
-                display: false
-            };
-        } else {
-            chartOptions.plugins.legend = {
-                display: true
+                display: this.options.showLegend;
             };
         }
 
