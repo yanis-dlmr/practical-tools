@@ -320,7 +320,61 @@ class NacaManager {
 
                 ////////////////
                 const x_all = naca.get_x_all();
+                const y_all = naca.get_y_all();
                 const Cp = naca.get_Cp();
+
+                ///////////////////////
+
+                
+
+                this.add_output_title('Graphical representation of the geometry of the profile');
+                // on graph
+                var x_labels_3 = [x_all]
+                var x_lift = [x_all];
+                var y_lift = [y_all];
+                var line_names_lift = ['Geometry'];
+                var x_label_3 = 'x/c';
+                var y_label_3 = 'y';
+
+                
+                // Plot all panels
+                const panels = naca.get_panels();
+                for (let i = 0; i < panels.length; i++) {
+                    const panel = panels[i];
+                    const x = [panel["X0"], panel["X1"]];
+                    const y = [panel["Y0"], panel["Y1"]];
+                    x_values.push(x);
+                    y_values.push(y);
+                    if (i == 0) {
+                        line_names.push('First panel');
+                    } else if (i == 1) {
+                        line_names.push('Second panel');
+                    } else {
+                        line_names.push('');
+                    }
+                }
+
+                // Chart box row containing all the charts
+                var chart_box_row_3 = document.createElement('div');
+                chart_box_row_3.className = 'row';
+
+                this.card_output.addComponent(chart_box_row_3);
+
+                var title_3 = 'Pressure coefficient';
+                var chartjs_3 = new ChartJs(title_3, x_labels_3, x_lift, y_lift, line_names_lift, x_label_3, y_label_3, true);
+                var chartJsElement_3 = chartjs_3.render();
+
+                var chart_box_3 = document.createElement('div');
+                chart_box_3.appendChild(chartJsElement_3);
+                chartJsElement_3.style.width = '100%';
+                chartJsElement_3.width = '100%';
+                chart_box_row_3.appendChild(chart_box_3);
+
+                chart_box_3.classList.add('col-md-12');
+                chart_box_3.style.padding = '1rem';
+                chart_box_3.style.height = '450px';
+
+                ///////////////////////
 
                 this.add_output_title('Graphical representation of the pressure coefficient');
                 // on graph
