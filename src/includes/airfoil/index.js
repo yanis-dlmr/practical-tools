@@ -8,6 +8,7 @@ import { EmbededBlock } from '/src/components/embeded_block/index.js';
 import { ChartJs } from '/src/components/chartjs/index.js';
 import { NACA } from '/src/includes/airfoil/naca.js';
 import { Table } from '/src/components/table/index.js';
+import { values } from 'cncjs/dist/cncjs/server/app';
 
 const naca_types = {
     label: 'Profile shape',
@@ -444,11 +445,11 @@ class NacaManager {
             this.add_output_title('Important results');
             let Cl = naca.get_Cl();
             let Cm = naca.get_Cm();
-            let text = "Profile used        :NACA $" + form_data.digits + "$<br>";
-            text +=    "Angle of attack     : $" + form_data.angle + "°$<br>";
-            text +=    "Lift coefficient    : $" + Cl + "$<br>";
-            text +=    "Moment coefficient  : $" + Cm + "$<br>";
-            this.add_output_text(text);
+            let headers_3 = [ 'Profile', 'Angle of attack', 'Angle of attack', 'Lift coefficient', 'Moment coefficient' ];
+            let units_3 = [ '', '[deg]', '[rad]', '', '' ];
+            let values_3 = [ [ 'NACA ' + naca.get_profile(), naca.get_alpha_deg(), naca.get_alpha_rad(), Cl, Cm ] ];
+            values_3.push(units_3)
+            this.add_output_table(headers_3, values_3);
             
             //////////////// Add end 
             this.add_output_title('End of the processing !');
