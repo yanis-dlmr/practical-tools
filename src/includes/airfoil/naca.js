@@ -239,7 +239,7 @@ class NACA {
 
         this.panels = [];
         for (let i = 0; i < x.length - 1; i++) {
-            let size_coefficient = 20;
+            let size_coefficient = 10;
             this.panels.push({
                 "X0": XC[i],
                 "X1": XC[i] + S[i] * Math.cos(delta[i]) * size_coefficient,
