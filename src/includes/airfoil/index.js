@@ -309,8 +309,8 @@ class NacaManager {
                 this.add_output_array(B);
 
                 ////////////////
-                x_all = naca.get_x_all();
-                Cp = naca.get_Cp();
+                const x_all = naca.get_x_all();
+                const Cp = naca.get_Cp();
 
                 this.add_output_title('Graphical representation of the pressure coefficient');
                 // on graph
