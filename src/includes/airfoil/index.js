@@ -47,7 +47,7 @@ class NacaManager {
         document.body.appendChild(row);
 
         // NACA settings
-        const card = new Card('NACA Parameters');
+        const card = new Card('Airfoil Parameters');
         const cardElement = card.render();
 
         const container = new Container('12', 'center');
@@ -207,6 +207,8 @@ class NacaManager {
             chart_box_2.style.height = '450px';
 
             // Get data
+            console.table(form_data);
+            console.log(form_data.thin_profile == 'true')
             if (form_data.thin_profile == 'true') {
 
                 naca.compute_lift_coefficient();
