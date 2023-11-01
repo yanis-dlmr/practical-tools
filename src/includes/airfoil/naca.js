@@ -186,13 +186,13 @@ class NACA {
             sumEdge += edge[i];
         }
 
-        //if (sumEdge < 0) {
-        //    console.log("Points are counter-clockwise. Reversing points.");
-        //    x.reverse();
-        //    y.reverse();
-        //} else if (sumEdge > 0) {
-        //    console.log("Points are clockwise. No need to reverse.");
-        //}
+        if (sumEdge < 0) {
+            console.log("Points are counter-clockwise. Reversing points.");
+            x.reverse();
+            y.reverse();
+        } else if (sumEdge > 0) {
+            console.log("Points are clockwise. No need to reverse.");
+        }
 
         console.log("x");
         console.table(x);
