@@ -436,8 +436,8 @@ class NacaManager {
             /////////////////
 
             this.add_output_title('Important results');
-            Cl = naca.get_Cl();
-            Cm = naca.get_Cm();
+            let Cl = naca.get_Cl();
+            let Cm = naca.get_Cm();
             let text = "Profile used :       NACA " + form_data.digits + "<br>";
             text +=    "Angle of attack :    $" + form_data.angle + "°$<br>";
             text +=    "Lift coefficient :   $" + Cl + "$<br>";
