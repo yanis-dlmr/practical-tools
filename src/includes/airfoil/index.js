@@ -444,10 +444,10 @@ class NacaManager {
             this.add_output_title('Important results');
             let Cl = naca.get_Cl();
             let Cm = naca.get_Cm();
-            let text = "Profile used        :$NACA " + form_data.digits + "$<br>";
-            text +=    "Angle of attack     :$" + form_data.angle + "°$<br>";
-            text +=    "Lift coefficient    :$" + Cl + "$<br>";
-            text +=    "Moment coefficient  :$" + Cm + "$<br>";
+            let text = "Profile used        :NACA $" + form_data.digits + "$<br>";
+            text +=    "Angle of attack     : $" + form_data.angle + "°$<br>";
+            text +=    "Lift coefficient    : $" + Cl + "$<br>";
+            text +=    "Moment coefficient  : $" + Cm + "$<br>";
             this.add_output_text(text);
             
             //////////////// Add end 
@@ -485,12 +485,12 @@ class NacaManager {
     add_output_text = (text) => {
         const textElement = document.createElement('p');
         const replacedText = text.replace(/\n/g, "<br>");
-        textElement.innerHTML = replacedText
+        textElement.innerText = replacedText
         this.card_output.addComponent(textElement);
     }
 
     add_output_array = (array) => { // Display array between brackets and inside a code block
-        const text = '[\n    ' + array + '\n]';
+        const text = '[\n    ' + array + '    \n]';
         const embededBlock = new EmbededBlock(text);
         const embededBlockElement = embededBlock.render();
         this.card_output.addComponent(embededBlockElement);
@@ -499,9 +499,9 @@ class NacaManager {
     add_output_2d_array = (array) => { // Display 2d array between brackets and inside a code block
         let text = '[\n    ';
         for (let i = 0; i < array.length; i++) {
-            text += '[' + array[i] + '],\n    ';
+            text += '[' + array[i] + '],    \n    ';
         }
-        text += '\n]';
+        text += '    \n]';
         const embededBlock = new EmbededBlock(text);
         const embededBlockElement = embededBlock.render();
         this.card_output.addComponent(embededBlockElement);
