@@ -451,7 +451,7 @@ class NacaManager {
                 data.push([values_3[i]]);
             }
             //values_3.push(units_3)
-            this.add_output_table_left_headers(headers_3, data);
+            this.add_output_table_left_headers(headers_3, data, 6);
             
             //////////////// Add end 
             this.add_output_title('End of the processing !');

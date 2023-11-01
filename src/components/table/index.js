@@ -1,8 +1,9 @@
 class Table {
 
-    constructor(headers, data) {
+    constructor(headers, data, precision = 3) {
         this.headers = headers;
         this.data = data;
+        this.precision = precision;
     }
 
     render() {
@@ -65,7 +66,7 @@ class Table {
                 const td = document.createElement('td');
                 td.classList.add('table-value-cell');
                 //rounded data
-                td.innerHTML = Math.round(this.data[i][j] * 1000) / 1000;
+                td.innerHTML = this.data[i][j].toFixed(this.precision);
                 tr.appendChild(td);
             }
             tbody.appendChild(tr);
