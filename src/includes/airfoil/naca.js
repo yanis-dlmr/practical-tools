@@ -175,9 +175,6 @@ class NACA {
         let yl = [...this.yl];
         let x = [...xl.reverse(), ...xu.slice(1), xl[0]];
         let y = [...yl.reverse(), ...yu.slice(1), yl[0]];
-
-        this.x_all = x;
-        this.y_all = y;
         
 
         let edge = [];
@@ -201,6 +198,9 @@ class NACA {
         console.table(x);
         console.log("y");
         console.table(y);
+
+        this.x_all = x;
+        this.y_all = y;
 
         // Generate XC, YC, XB, YB, S, and phi
         let XC = [];
