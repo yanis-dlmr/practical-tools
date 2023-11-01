@@ -35,14 +35,6 @@ class NACA {
         this.lift_coefficients = [];
         
         this.generate_naca_profile();
-
-        this.compute_lift_coefficient();
-
-        try {
-            this.compute_vortex_panel_method();
-        } catch (error) {
-            console.log(error);
-        }
     }
 
     generate_naca_profile() {

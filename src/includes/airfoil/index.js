@@ -64,20 +64,23 @@ class NacaManager {
 
         form.add_select_input(naca_types)
         form.add_text_input(naca_digits);
+        
+        form.add_caption('Method used');
         form.add_switch_input({
-            label: 'Slim profile',
-            id: 'slim_profile',
+            label: 'Thin profile',
+            id: 'thin_profile',
             value: 'true',
             checked: 'true',
-            required: 'true'
+            required: 'true',
+            son_id_to_disable: ['vortex_panel_method']
         });
         form.add_switch_input({
-            label: 'Thick profile (Not implemented)',
-            id: 'thick_profile',
+            label: 'Vortex Panel Method',
+            id: 'vortex_panel_method',
             value: 'false',
             checked: 'false',
             required: 'true',
-            disabled: 'true'
+            son_id_to_disable: ['thin_profile']
         });
         
         const validation_button = form.get_validation_button();
@@ -97,6 +100,7 @@ class NacaManager {
 
             // Create NACA object
             const naca = new NACA(form_data.naca_types, form_data.digits, 1);
+            
             const x = naca.get_x();
             const yc = naca.get_yc();
             const yt = naca.get_yt();
@@ -202,97 +206,110 @@ class NacaManager {
             chart_box_2.style.padding = '1rem';
             chart_box_2.style.height = '450px';
 
-            ////////////////
+            // Get data
+            if (form_data.thin_profile == 'true') {
 
-            const lift_coefficients = naca.get_lift_coefficients();
-            const headers = ['Alpha (°)', 'Cl', 'A0', 'A1', 'A2'];
-            let data = [];
-            let lift_angles = [];
-            let lift_coefficients_values = [];
+                naca.compute_lift_coefficient();
 
-            let data_2 = [];
-            let alpha_list = [];
-            let cl_list = [];
-            let cm_ab_list = [];
-            let cm_c4_list = [];
-            let a0_list = [];
-            let a1_list = [];
-            let a2_list = [];
+                ////////////////
 
-            for (let i = 0; i < lift_coefficients.length; i++) {
-                let angle = lift_coefficients[i]["angle"];
-                let cl = lift_coefficients[i]["lift_coefficient"];
-                let cm_ab = lift_coefficients[i]["cm_ab"];
-                let cm_c4 = lift_coefficients[i]["cm_c4"];
-                let a0 = lift_coefficients[i]["A0"];
-                let a1 = lift_coefficients[i]["A1"];
-                let a2 = lift_coefficients[i]["A2"];
+                const lift_coefficients = naca.get_lift_coefficients();
+                const headers = ['Alpha (°)', 'Cl', 'A0', 'A1', 'A2'];
+                let data = [];
+                let lift_angles = [];
+                let lift_coefficients_values = [];
 
-                alpha_list.push(angle + '°');
-                cl_list.push(cl);
-                cm_ab_list.push(cm_ab);
-                cm_c4_list.push(cm_c4);
-                a0_list.push(a0);
-                a1_list.push(a1);
-                a2_list.push(a2);
+                let data_2 = [];
+                let alpha_list = [];
+                let cl_list = [];
+                let cm_ab_list = [];
+                let cm_c4_list = [];
+                let a0_list = [];
+                let a1_list = [];
+                let a2_list = [];
 
-                lift_angles.push(angle);
-                lift_coefficients_values.push(cl);
+                for (let i = 0; i < lift_coefficients.length; i++) {
+                    let angle = lift_coefficients[i]["angle"];
+                    let cl = lift_coefficients[i]["lift_coefficient"];
+                    let cm_ab = lift_coefficients[i]["cm_ab"];
+                    let cm_c4 = lift_coefficients[i]["cm_c4"];
+                    let a0 = lift_coefficients[i]["A0"];
+                    let a1 = lift_coefficients[i]["A1"];
+                    let a2 = lift_coefficients[i]["A2"];
 
-                data.push([angle, cl, a0, a1, a2]);
+                    alpha_list.push(angle + '°');
+                    cl_list.push(cl);
+                    cm_ab_list.push(cm_ab);
+                    cm_c4_list.push(cm_c4);
+                    a0_list.push(a0);
+                    a1_list.push(a1);
+                    a2_list.push(a2);
+
+                    lift_angles.push(angle);
+                    lift_coefficients_values.push(cl);
+
+                    data.push([angle, cl, a0, a1, a2]);
+                }
+
+                data_2.push(alpha_list);
+                data_2.push(cl_list);
+                data_2.push(cm_ab_list);
+                data_2.push(cm_c4_list);
+                data_2.push(a0_list);
+                data_2.push(a1_list);
+                data_2.push(a2_list);
+
+                const headers_2 = ['Angle', '$C_L$', '$C_{M,AB}$', '$C_{M,c/4}$', '$A_0$', '$A_1$', '$A_2$'];
+
+                this.add_output_title('Table of the lift coefficients depending on the angle of attack')
+                this.add_output_table_left_headers(headers_2, data_2);
+
+                //this.add_output_table(headers, data);
+                this.add_output_title('Graphical representation of the lift coefficients, it doesn\'t take into account the stall angle')
+                // on graph
+                const x_labels_3 = [lift_angles]
+                const x_lift = [lift_angles];
+                const y_lift = [lift_coefficients_values];
+                const line_names_lift = ['Cl'];
+                const x_label_3 = 'alpha (°)';
+                const y_label_3 = 'Cl';
+
+                // Chart box row containing all the charts
+                const chart_box_row_3 = document.createElement('div');
+                chart_box_row_3.className = 'row';
+
+                this.card_output.addComponent(chart_box_row_3);
+
+                const title_3 = 'Lift coefficients';
+                const chartjs_3 = new ChartJs(title_3, x_labels_3, x_lift, y_lift, line_names_lift, x_label_3, y_label_3);
+                const chartJsElement_3 = chartjs_3.render();
+
+                const chart_box_3 = document.createElement('div');
+                chart_box_3.appendChild(chartJsElement_3);
+                chartJsElement_3.style.width = '100%';
+                chartJsElement_3.width = '100%';
+                chart_box_row_3.appendChild(chart_box_3);
+
+                chart_box_3.classList.add('col-md-12');
+                chart_box_3.style.padding = '1rem';
+                chart_box_3.style.height = '450px';
+
+            } else if (form_data.vortex_panel_method == 'true') {
+
+                naca.compute_vortex_panel_method();
+
+                ////////////////
+                let A = naca.get_A();
+                let B = naca.get_B();
+
+                this.add_output_title('A and B matrix');
+                this.add_output_2d_array(A);
+                this.add_output_array(B);
+
+                ////////////////
+
+
             }
-
-            data_2.push(alpha_list);
-            data_2.push(cl_list);
-            data_2.push(cm_ab_list);
-            data_2.push(cm_c4_list);
-            data_2.push(a0_list);
-            data_2.push(a1_list);
-            data_2.push(a2_list);
-
-            const headers_2 = ['Angle', '$C_L$', '$C_{M,AB}$', '$C_{M,c/4}$', '$A_0$', '$A_1$', '$A_2$'];
-
-            this.add_output_title('Table of the lift coefficients depending on the angle of attack')
-            this.add_output_table_left_headers(headers_2, data_2);
-
-            //this.add_output_table(headers, data);
-            this.add_output_title('Graphical representation of the lift coefficients, it doesn\'t take into account the stall angle')
-            // on graph
-            const x_labels_3 = [lift_angles]
-            const x_lift = [lift_angles];
-            const y_lift = [lift_coefficients_values];
-            const line_names_lift = ['Cl'];
-            const x_label_3 = 'alpha (°)';
-            const y_label_3 = 'Cl';
-
-            // Chart box row containing all the charts
-            const chart_box_row_3 = document.createElement('div');
-            chart_box_row_3.className = 'row';
-
-            this.card_output.addComponent(chart_box_row_3);
-
-            const title_3 = 'Lift coefficients';
-            const chartjs_3 = new ChartJs(title_3, x_labels_3, x_lift, y_lift, line_names_lift, x_label_3, y_label_3);
-            const chartJsElement_3 = chartjs_3.render();
-
-            const chart_box_3 = document.createElement('div');
-            chart_box_3.appendChild(chartJsElement_3);
-            chartJsElement_3.style.width = '100%';
-            chartJsElement_3.width = '100%';
-            chart_box_row_3.appendChild(chart_box_3);
-
-            chart_box_3.classList.add('col-md-12');
-            chart_box_3.style.padding = '1rem';
-            chart_box_3.style.height = '450px';
-
-            ////////////////
-
-            let A = naca.get_A();
-            let B = naca.get_B();
-
-            this.add_output_title('A and B matrix');
-            this.add_output_2d_array(A);
-            this.add_output_array(B);
             
             //////////////// Add end 
             this.add_output_title('End of the processing !');
