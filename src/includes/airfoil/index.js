@@ -431,7 +431,7 @@ class NacaManager {
                     fill: true,
                     marker: true
                 }
-                var chartjs_3 = new ChartJs(title_3, x_labels_3, x_values_3, y_values_3, line_names_3, x_label_3, y_label_3, true, options);
+                var chartjs_3 = new ChartJs(title_3, x_labels_3, x_values_3, y_values_3, line_names_3, x_label_3, y_label_3, options);
                 var chartJsElement_3 = chartjs_3.render();
 
                 var chart_box_3 = document.createElement('div');
