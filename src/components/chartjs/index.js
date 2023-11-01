@@ -39,8 +39,9 @@ class ChartJs {
             if (this.options.marker) {
                 data_to_add.pointRadius = 5;
             }
-            if (this.options.fill) {
-                data_to_add.borderColor = this.options.fill;
+            if (this.options.fill != undefined && this.options.fill[i] == true) {
+                data_to_add.borderColor = 'rgba(0, 0, 0, 0)';
+                data_to_add.backgroundColor = 'rgba(0, 0, 0, 0.1)';
             }
             chartData.datasets.unshift(data_to_add);
         }
@@ -75,7 +76,6 @@ class ChartJs {
         };
 
         if ((this.options.showLegend != undefined) && (this.options.showLegend == false)) {
-            console.log('showLegend is false');
             let legend = {
                 display: this.options.showLegend,
             };
