@@ -45,20 +45,20 @@ class ChartJs {
         }
         
         var chartOptions = {
-            legend: {
-                display: false
-            },
-            tooltips: {
-                callbacks: {
-                    label: function(tooltipItem) {
-                        return tooltipItem.yLabel;
-                    }
-                }
-            },
             plugins: {
                 title: {
                     display: true,
                     text: this.title,
+                },
+                legend: {
+                    display: false
+                },
+                tooltips: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            return tooltipItem.yLabel;
+                        }
+                    }
                 }
             },
             responsive: true,
