@@ -47,8 +47,7 @@ class NACA {
         // Generate x range from 0 to chord with 100 points
         //this.x = Array.from(Array(101).keys()).map(x => x * this.naca_chord / 100);
 
-        let step = 180 / ( (170 - 2) / 2 );
-        for (let angle = 0; angle <= 180; angle += step) {
+        for (let angle = 0; angle <= 180; angle += 2.17) {
             this.x.push(this.naca_chord / 2 * (1 + Math.cos(angle * Math.PI / 180)));
         }
 
