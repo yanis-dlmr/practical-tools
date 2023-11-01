@@ -75,6 +75,7 @@ class ChartJs {
         };
 
         if ((this.options.showLegend) && (this.options.showLegend == false)) {
+            console.log('showLegend is false');
             let legend = {
                 display: this.options.showLegend,
             };
