@@ -72,7 +72,7 @@ class NacaManager {
             value: 'true',
             checked: 'true',
             required: 'true',
-            son_id_to_disable: ['vortex_panel_method']
+            friends: ['vortex_panel_method']
         });
         form.add_switch_input({
             label: 'Vortex Panel Method',
@@ -80,7 +80,7 @@ class NacaManager {
             value: 'false',
             checked: 'false',
             required: 'true',
-            son_id_to_disable: ['thin_profile']
+            friends: ['thin_profile']
         });
         
         const validation_button = form.get_validation_button();
