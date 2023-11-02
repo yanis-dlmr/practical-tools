@@ -6,15 +6,3 @@
 mjx-container>svg {
     display: inline-block;
 }
-
-/* Pour les avertissements */
-.warning {
-    border: 1px solid red; /* Contour rouge */
-    background-color: #ffcfcf; /* Centre plus clair */
-}
-
-  /* Pour les conseils */
-.tip {
-    border: 1px solid #3498db; /* Contour bleu */
-    background-color: #d6eaf8; /* Centre plus clair */
-}
