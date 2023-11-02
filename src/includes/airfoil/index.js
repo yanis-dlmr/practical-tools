@@ -60,7 +60,7 @@ class NacaManager {
         const formElement = form.render();
         card.addComponent(formElement);
         
-        form.add_caption('NACA Profile');
+        form.add_caption('Generate the airfoil geometry');
 
         form.add_select_input(naca_types)
         form.add_text_input(naca_digits);
