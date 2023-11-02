@@ -12,6 +12,7 @@ It can only compute for a given angle of attack.
 You can find some information about the Vortex Panel Method in the following source: 
 
 - Youtube Playlist: [Panel Methods](https://youtube.com/playlist?list=PLxT-itJ3HGuUDVMuWKBxyoY8Dm9O9qstP&si=NaV9lmTT6M3ymNyZ).
+- Github Repository of the previous Youtube Playlist: [Panel Methods](https://github.com/jte0419/Panel_Methods).
 
 ## Panel Geometry
 
