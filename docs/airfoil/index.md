@@ -3,7 +3,7 @@
 ## Introduction
 
 This tool has been developped in order to analyse airfoils through a theorical approach.
-Thanks to this tool, you can get the lift, the drag, the moment and the pressure coefficient of an airfoil and compare them to the experimental values.
+Thanks to this tool, you can get the lift, the moment and the pressure coefficient of an airfoil and compare them to the experimental values.
 
 ## Profiles
 

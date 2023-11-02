@@ -30,3 +30,16 @@ Different parameters are available for the **Determine Axis** option:
         - **Threshold value**: The threshold to reach.
     - **Smooth the light intensity** If this option is checked, the light intensity will be smoothed before processing it.
         - **Smooth factor**: The smoothing factor. The new value will be the average of the previous value and the previous value +/- the smoothing factor.
+
+::: tip Graphical representation of the light intensity along the axis and his derivative
+
+Here is a graphical representation of the light intensity along the axis and his derivative. Note that you can hide curves by clicking on the legend.
+
+![Graph](/picture-treatment/graph.png)
+:::
+
+::: tip Example of picture as output
+
+![Picture as output](/picture-treatment/output.png)
+
+:::
