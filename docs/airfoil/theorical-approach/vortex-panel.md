@@ -23,8 +23,7 @@ The airfoil is divided into $N$ panels. Each panel is defined by:
 - $(XB_{i+1}, YB_{i+1})$: the end of the panel
 - $(XC_a, YC_a)$: the center of the panel with:
 $$
-XC_a = \frac{XB_i + XB_{i+1}}{2}
-YC_a = \frac{YB_i + YB_{i+1}}{2}
+XC_a = \frac{XB_i + XB_{i+1}}{2} \quad \text{and} \quad YC_a = \frac{YB_i + YB_{i+1}}{2}
 $$
 - $S_a$: the length of the panel with:
 $$
@@ -49,7 +48,7 @@ The panels are oriented from the trailing edge to the leading edge in the clockw
 ![Panel Orientation](/airfoil/1st_panels.png)
 :::
 
-::: danger Accuracy issue
+::: danger Accuracy issue <Badge type="warning" text="Will be fixed in the next version" />
 The panels are generated using the following equation:
 $$
 \frac{x}{c} = \frac{1}{2} \left( 1 + \cos \left( \theta \right) \right), \theta \in \left[ 0, 2\pi \right]
