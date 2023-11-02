@@ -7,6 +7,15 @@ Different approaches are used in order to analyse the airfoil. Two approaches ar
 - The Thin Airfoil Theory ([Thin Airfoil Theory](./thin/))
 - The Vortex Panel Method ([Vortex Panel Method](./vortex-panel/))
 
+## Hypothesis
+
+The following hypothesis are made in order to analyse the airfoil:
+
+- The flow is bidimensional
+- The flow is stationary
+- The flow is inviscid
+- Turbulent phenomena are not represented
+
 ## Validation
 
 The results obtained for a NACA 0012 profil with the differents approches are compared with the results obtained with XFOIL and some experimental data. 

@@ -385,7 +385,7 @@ class NacaManager {
 
                 this.card_output.addComponent(chart_box_row_3);
 
-                var title_3 = 'Panel Method Geometry';
+                var title_3 = 'Visualisation of the first two panels';
                 var options = {
                     marker: true
                 }
@@ -429,7 +429,7 @@ class NacaManager {
 
                 this.card_output.addComponent(chart_box_row_3);
 
-                var title_3 = 'Panel Method Geometry';
+                var title_3 = 'Visualization of the panels';
                 var options = {
                     fill: true,
                     marker: true,
