@@ -26,7 +26,7 @@ The panels are oriented from the trailing edge to the leading edge in the clockw
 ![Panel Orientation](/airfoil/1st_panels.png)
 :::
 
-::: danger Warning
+::: danger Accuracy
 The panels are generated using the following equation:
 $$
 \frac{x}{c} = \frac{1}{2} \left( 1 + \cos \left( \theta \right) \right), \theta \in \left[ 0, 2\pi \right]
@@ -34,7 +34,9 @@ $$
 The definition of theses panels is very important for the calculation of the pressure coefficient. If the panels are not defined correctly, the pressure coefficient will not be calculated correctly and we will see a "yoyo" effect on the graph.
 From 0 up to 160 panels, the accuracy of the pressure coefficient increases. After 160 panels, the accuracy of the pressure coefficient is constant.
 The most optimal number of panels seems to be 170. But we still see a "yoyo" effect on the graph.
+
 ![Yoyo Effect](/airfoil/yoyo_effect.png)
+
 :::
 
 ## Validation
