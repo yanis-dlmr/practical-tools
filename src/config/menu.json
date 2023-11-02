@@ -20,5 +20,11 @@
         "url": "/pictures",
         "icon": "/src/assets/images/camera.png",
         "position": "gauche"
-    } 
+    },
+    {
+        "label": "Documentation",
+        "url": "/documentation",
+        "icon": "/src/assets/images/documentation.png",
+        "position": "droite"
+    }
 ]

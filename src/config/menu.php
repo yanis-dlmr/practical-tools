@@ -33,6 +33,9 @@ fetch('/src/config/menu.json')
                 const a = document.createElement("a");
                 a.classList.add("nav-link");
                 a.href = item.url;
+                if (item.url == "/documentation") {
+                    a.target = "_blank";
+                }
                 if (item.icon) {
                     const img = document.createElement("img");
                     img.classList.add("icon-menu");

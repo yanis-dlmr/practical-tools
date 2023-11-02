@@ -46,6 +46,31 @@ class NacaManager {
         row.classList.add('row', 'custom-row');
         document.body.appendChild(row);
 
+        // Create the alert 
+        var alert = document.createElement(`div`);
+        alert.classList.add(`alert`);
+        alert.classList.add(`alert-primary`);
+        alert.classList.add(`alert-dismissible`);
+        alert.classList.add(`fade`);
+        alert.classList.add(`show`);
+        alert.classList.add('m-3');
+        alert.style.boxShadow = '0 0.5rem 1rem rgba(0,0,0,0.15)';
+        alert.setAttribute(`role`, `alert`);
+        alert.innerHTML = `For more informations please take a look a the documentation section related to the Airfoil Tool <a class="custom-link" href="https://practical-tools.yanis-dlmr.fr/documentation/airfoil/" target="_blank">GitHub</a>. This tool is still in development, some results may not be accurate.`;
+        
+        var closeButton = document.createElement(`button`);
+        closeButton.classList.add(`btn-close`);
+        closeButton.setAttribute(`type`, `button`);
+        closeButton.setAttribute(`data-bs-dismiss`, `alert`);
+        closeButton.setAttribute(`aria-label`, `Close`);
+        alert.appendChild(closeButton);
+
+        const container_alert = new Container('12', 'center');
+        container_alert.addComponent(alert);
+        const containerElementAlert = container_alert.render();
+
+        row.appendChild(containerElementAlert);
+
         // NACA settings
         const card = new Card('Airfoil Parameters');
         const cardElement = card.render();
