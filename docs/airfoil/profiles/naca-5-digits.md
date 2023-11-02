@@ -1,5 +1,7 @@
 # NACA 5-digits
 
-## Introduction
+::: tip
 
-Not implemented yet.
+The NACA 5-digits profile is not available yet. Please come back later.
+
+:::

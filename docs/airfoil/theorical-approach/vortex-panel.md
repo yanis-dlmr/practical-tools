@@ -22,12 +22,12 @@ The following figure shows the geometry of the panels for a NACA 0012 profil:
 
 ![Panel Geometry](/airfoil/panels.png)
 
-::: warning Note
+::: tip Note
 The panels are oriented from the trailing edge to the leading edge in the clockwise direction : 
 ![Panel Orientation](/airfoil/1st_panels.png)
 :::
 
-::: danger Accuracy
+::: danger Accuracy issue
 The panels are generated using the following equation:
 $$
 \frac{x}{c} = \frac{1}{2} \left( 1 + \cos \left( \theta \right) \right), \theta \in \left[ 0, 2\pi \right]
@@ -37,6 +37,8 @@ From 0 up to 160 panels, the accuracy of the pressure coefficient increases. Aft
 The most optimal number of panels seems to be 170. But we still see a "yoyo" effect on the graph.
 
 ![Yoyo Effect](/airfoil/yoyo_effect.png)
+
+Take note that the "yoyo" effect doesn't affect the lift coefficient and the moment coefficient.
 
 :::
 
