@@ -9,7 +9,7 @@
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs"
   },
-  "author": "",
+  "author": "Yanis Delamare",
   "license": "ISC",
   "devDependencies": {
     "vitepress": "^1.0.0-rc.24"
