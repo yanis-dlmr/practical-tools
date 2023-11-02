@@ -56,7 +56,7 @@ class NacaManager {
         alert.classList.add('m-3');
         alert.style.boxShadow = '0 0.5rem 1rem rgba(0,0,0,0.15)';
         alert.setAttribute(`role`, `alert`);
-        alert.innerHTML = `For more informations please take a look a the documentation section related to the Airfoil Tool <a class="custom-link" href="https://practical-tools.yanis-dlmr.fr/documentation/airfoil/" target="_blank">GitHub</a>. This tool is still in development, some results may not be accurate.`;
+        alert.innerHTML = `For more informations please take a look a the documentation section related to the <a class="custom-link" href="https://practical-tools.yanis-dlmr.fr/documentation/airfoil/" target="_blank">Airfoil Tool</a>. This tool is still in development, some results may not be accurate.`;
         
         var closeButton = document.createElement(`button`);
         closeButton.classList.add(`btn-close`);
