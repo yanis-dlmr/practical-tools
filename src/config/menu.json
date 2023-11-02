@@ -10,6 +10,12 @@
         "position": "gauche"
     },
     {
+        "label": "Airfoil",
+        "url": "/airfoil",
+        "icon": "/src/assets/images/airfoil.png",
+        "position": "gauche"
+    },
+    {
         "label": "Pictures",
         "url": "/pictures",
         "icon": "/src/assets/images/camera.png",
