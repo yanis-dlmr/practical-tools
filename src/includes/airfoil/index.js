@@ -10,7 +10,7 @@ import { NACA } from '/src/includes/airfoil/naca.js';
 import { Table } from '/src/components/table/index.js';
 
 const naca_types = {
-    label: 'Profile shape',
+    label: 'NACA type',
     id: 'naca_types',
     options: [
         '4-digit',
