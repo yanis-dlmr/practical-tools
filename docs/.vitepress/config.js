@@ -61,8 +61,7 @@ function getMainSidebar() {
         {
             text: 'Pictures Treatment',
             items: [
-                { text: 'Overview', link: '/pictures/' },
-                { text: 'Details', link: '/pictures/details' },
+                { text: 'Overview', link: '/pictures/' }
             ],
         },
         {
