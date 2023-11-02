@@ -83,8 +83,8 @@ function getMainSidebar() {
                     collapsed: true,
                     items: [
                         { text: 'Overview', link: '/airfoil/theorical-approach/' },
-                        { text: 'Thin profiles', link: '/airfoil/theorical-approach/thin' },
-                        { text: 'Thick profiles', link: '/airfoil/theorical-approach/thick' },
+                        { text: 'Thin Airfoil Theory', link: '/airfoil/theorical-approach/thin' },
+                        { text: 'Vortex Panel Method', link: '/airfoil/theorical-approach/vortex-panel' },
                     ],
                 },
             ],
