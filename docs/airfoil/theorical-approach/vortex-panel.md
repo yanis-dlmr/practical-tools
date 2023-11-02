@@ -19,6 +19,13 @@ The airfoil is divided into $N$ panels. Each panel is defined by its two extremi
 
 The following figure shows the geometry of the panels for a NACA 0012 profil:
 
+![Panel Geometry](/airfoil/panels.png)
+
+::: note
+The panels are oriented from the trailing edge to the leading edge in the clockwise direction : 
+![Panel Orientation](/airfoil/1st_panels.png)
+:::
+
 ## Validation
 
 The pressure coefficients obtained for a NACA 0012 profil with the Vortex Panel Method are compared with the results obtained with experimental data.
