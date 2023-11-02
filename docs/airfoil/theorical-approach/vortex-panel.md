@@ -23,8 +23,8 @@ The following figure shows the geometry of the panels for a NACA 0012 profil:
 
 ::: note
 The panels are oriented from the trailing edge to the leading edge in the clockwise direction : 
-![Panel Orientation](/airfoil/1st_panels.png)
 :::
+![Panel Orientation](/airfoil/1st_panels.png)
 
 ## Validation
 
