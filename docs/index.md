@@ -24,7 +24,7 @@ features:
   - icon: 📸
     title: Pictures treatment
     details: How work the pictures treatment?
-    link: ./pictures-treatment/
+    link: ./pictures/
   - icon: 🛫
     title: Airfoil analysis
     details: How it works?

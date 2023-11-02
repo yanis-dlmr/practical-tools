@@ -5,7 +5,7 @@ export default {
     base: '/documentation/',
     ignoreDeadLinks: true,
     outDir: '../documentation',
-    title: 'Documentation',
+    title: 'Practical Tools',
     description: 'Trying to make a perfect documentation to make that website amazing!',
     themeConfig: {
         logo: '/favicon.ico',

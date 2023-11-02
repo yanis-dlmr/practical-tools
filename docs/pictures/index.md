@@ -1,4 +1,4 @@
-# Picture treatment tool
+# Picture treatment tool  <Badge type="tip" text="^1.0.0" />
 
 ## Introduction
 

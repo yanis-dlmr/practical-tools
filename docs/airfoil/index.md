@@ -1,4 +1,4 @@
-# Airfoil analysis
+# Airfoil analysis <Badge type="tip" text="^1.1.0" />
 
 ## Introduction
 
