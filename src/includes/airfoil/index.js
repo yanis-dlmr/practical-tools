@@ -511,6 +511,8 @@ class NacaManager {
                 // add x and Cp arrays
                 this.add_output_text('$x$ values');
                 this.add_output_array(x_all);
+                this.add_output_text('$y$ values');
+                this.add_output_array(y_all);
                 this.add_output_text('$Cp$ values');
                 this.add_output_array(Cp);
 
