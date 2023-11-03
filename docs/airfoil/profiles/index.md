@@ -38,7 +38,7 @@ For the output values:
 
 ## Example
 
-::: tip Example of a NACA 4-digits profile 6409
+::: tip A NACA 4-digits profile 6409 generated with the tool
 
 ![Example of a NACA 4-digits profile 6409](/airfoil/profile.png)
 
