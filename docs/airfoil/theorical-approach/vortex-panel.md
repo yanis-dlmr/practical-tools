@@ -193,8 +193,6 @@ $$
 
 ## Validation
 
-The pressure coefficients obtained for a NACA 0012 profil with the Vortex Panel Method are compared with the results obtained with experimental data.
-
-The comparison is done for a NACA 0012 profil with an angle of attack of 8°. The results are presented in the following graph:
+The pressure coefficients obtained for a NACA 0012 profil with the Vortex Panel Method are compared with the results obtained with experimental data with an angle of attack of 8°. The results are presented in the following graph:
 
 ![Comparison](/airfoil/comparison_cp.png)
