@@ -35,3 +35,11 @@ For the output values:
 - $C_L$ is the lift coefficient
 - $C_D$ is the drag coefficient
 - $C_M$ is the moment coefficient
+
+## Example
+
+::: tip Example of a NACA 4-digits profile 6409
+
+![Example of a NACA 4-digits profile 6409](/airfoil/profile.png)
+
+:::
