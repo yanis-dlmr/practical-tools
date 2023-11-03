@@ -52,6 +52,10 @@ export default {
 function getMainSidebar() {
     return [
         {
+            text: 'Back to the website',    
+            link: '/',
+        },
+        {
             text: 'What is that website',
             items: [
                 { text: 'Overview', link: '/about/' },

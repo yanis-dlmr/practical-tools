@@ -35,7 +35,7 @@ async function init_home() {
 This site contains tools developed in order to help students during their practicals in the department Energetic and Propulsion.
 
 <h4> The website is divided into 2 categories: </h4>
-• A tool analyse <a class="custom-link" href="/airfoil">Airfoil</a> and do calculations on them following multiple methods <br>
+• A tool to analyse <a class="custom-link" href="/airfoil">Airfoil</a> and do calculations on them following multiple methods <br>
 • A tool to handle <a class="custom-link" href="/pictures">Pictures</a> and do treatments on them 
 
 <h4> Disclaimer </h4>
