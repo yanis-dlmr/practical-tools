@@ -31,6 +31,17 @@ Different parameters are available for the **Determine Axis** option:
     - **Smooth the light intensity** If this option is checked, the light intensity will be smoothed before processing it.
         - **Smooth factor**: The smoothing factor. The new value will be the average of the previous value and the previous value +/- the smoothing factor.
 
+Just complete the form below and click on the "Calculate" button. You will get the results of the analysis.
+Make sure that the values you enter are in the right format.
+
+::: details Example
+
+![Example](/picture-treatment/parameters.png)
+
+:::
+
+## Results
+
 ::: tip Graphical representation of the light intensity along the axis and his derivative
 
 Here is a graphical representation of the light intensity along the axis and his derivative. Note that you can hide curves by clicking on the legend.
