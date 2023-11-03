@@ -23,3 +23,9 @@ Please check the validation of the theorical approach in the [theorical approach
 
 Just complete the form below and click on the "Calculate" button. You will get the results of the analysis.
 Make sure that the values you enter are in the right format.
+
+::: tip Example
+
+![Example](/airfoil/parameters.png)
+
+:::
