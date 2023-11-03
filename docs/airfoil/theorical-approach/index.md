@@ -41,9 +41,10 @@ The results obtained with the tool are close to the results obtained with XFOIL 
 Our 2 approaches are validated for small angles of attack, inferior to the stall angle.
 The Vortex Panel Method is more accurate than the Thin Airfoil Theory.
 
-::: warning Limitations
+::: danger Limitations
 
-The tool is not validated for angles of attack superior to the stall angle.
+The tool is not validated for angles of attack superior/close to the stall angle.
 Indeed, turbulent and viscous phenomena are not taken into account in the different theorical approaches.
+Please consider the results obtained with the tool with caution.
 
 :::
