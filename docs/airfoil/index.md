@@ -2,20 +2,20 @@
 
 ## Introduction
 
-This tool has been developped in order to analyse airfoils through a theorical approach.
+This tool has been developped in order to analyse airfoils through a theoretical approach.
 Thanks to this tool, you can get the lift, the moment and the pressure coefficient of an airfoil and compare them to the experimental values.
 
 ## Profiles
 
 Different profiles are available in the tool. You can find more information about them in the [profiles](./profiles/) section.
 
-## Theorical approach
+## Theoretical approach
 
-Different approaches are used in order to analyse the airfoil. You can find more information about them in the [theorical approach](./theorical-approach/) section.
+Different approaches are used in order to analyse the airfoil. You can find more information about them in the [theoretical approach](./theoretical-approach/) section.
 
-::: tip Validation of the theorical approach
+::: tip Validation of the theoretical approach
 
-Please check the validation of the theorical approach in the [theorical approach](./theorical-approach/#validation) section.
+Please check the validation of the theoretical approach in the [theoretical approach](./theoretical-approach/#validation) section.
 
 :::
 

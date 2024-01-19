@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The Vortex Panel Method is a theorical approach used to analyse airfoils. It is more accurate than the Thin Airfoil Theory but still don't take into account the viscous and turbulent effects.
+The Vortex Panel Method is a theoretical approach used to analyse airfoils. It is more accurate than the Thin Airfoil Theory but still don't take into account the viscous and turbulent effects.
 
 The objective of this approach is to calculate the lift coefficient and the moment coefficient of the airfoil but also the pressure coefficient along the airfoil.
 It can only compute for a given angle of attack.

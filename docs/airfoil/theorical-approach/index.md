@@ -1,4 +1,4 @@
-# Theorical approach
+# Theoretical approach
 
 ## Introduction
 
@@ -37,14 +37,14 @@ The comparison is done for different angles of attack. The results are presented
 
 :::
 
-The results obtained with the tool are close to the results obtained with XFOIL and the experimental data. The differences are due to the assumptions made in the theorical approaches.
+The results obtained with the tool are close to the results obtained with XFOIL and the experimental data. The differences are due to the assumptions made in the theoretical approaches.
 Our 2 approaches are validated for small angles of attack, inferior to the stall angle.
 The Vortex Panel Method is more accurate than the Thin Airfoil Theory.
 
 ::: danger Limitations
 
 The tool is not validated for angles of attack superior/close to the stall angle.
-Indeed, turbulent and viscous phenomena are not taken into account in the different theorical approaches.
+Indeed, turbulent and viscous phenomena are not taken into account in the different theoretical approaches.
 Please consider the results obtained with the tool with caution.
 
 :::

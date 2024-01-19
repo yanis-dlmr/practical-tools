@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Different profiles are available in the tool. They are generated from parameters and then analysed with the theorical approach. You can find more information about the theorical approach in the [theorical approach](../theorical-approach/) section.
+Different profiles are available in the tool. They are generated from parameters and then analysed with the theoretical approach. You can find more information about the theoretical approach in the [theoretical approach](../theoretical-approach/) section.
 
 ## Profiles
 

@@ -78,12 +78,12 @@ function getMainSidebar() {
                     ],
                 },
                 {
-                    text: 'Theorical approach',
+                    text: 'Theoretical approach',
                     collapsed: true,
                     items: [
-                        { text: 'Overview', link: '/airfoil/theorical-approach/' },
-                        { text: 'Thin Airfoil Theory', link: '/airfoil/theorical-approach/thin' },
-                        { text: 'Vortex Panel Method', link: '/airfoil/theorical-approach/vortex-panel' },
+                        { text: 'Overview', link: '/airfoil/theoretical-approach/' },
+                        { text: 'Thin Airfoil Theory', link: '/airfoil/theoretical-approach/thin' },
+                        { text: 'Vortex Panel Method', link: '/airfoil/theoretical-approach/vortex-panel' },
                     ],
                 },
             ],

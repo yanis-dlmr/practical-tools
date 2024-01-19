@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The thin airfoil theory is a theorical approach used to analyse airfoils. It is based on the following assumptions:
+The thin airfoil theory is a theoretical approach used to analyse airfoils. It is based on the following assumptions:
 
 - The airfoil is thin, which means that the thickness of the airfoil is small compared to the chord (relative thickness: $\frac{e}{L} \leq 10 \%$) 
 - The camber of the airfoil is small compared to the chord (relative camber: $\frac{f}{L} \leq 5 \%$)
